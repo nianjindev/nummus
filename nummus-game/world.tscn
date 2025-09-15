@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://csm8mguhlkni8" path="res://icon.svg" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://b1kfoj0qpy8wa" path="res://assets/3d/coinTable.fbx" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://c20u3of4tl5mp" path="res://coins/coin_normal.tscn" id="3_tlwt5"]
-[ext_resource type="PackedScene" uid="uid://doa0jh4r81qev" path="res://global_ui.tscn" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://doa0jh4r81qev" path="res://gui/global_ui.tscn" id="4_aqk2v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqk2v"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
