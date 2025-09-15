@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c20u3of4tl5mp"]
 
-[ext_resource type="ArrayMesh" uid="uid://chiqs5mie1lwa" path="res://assets/3d/coin.obj" id="1_1fpnp"]
+[ext_resource type="ArrayMesh" uid="uid://bsc4krl7s2wsj" path="res://assets/3d/coin_base.obj" id="1_trcn2"]
 [ext_resource type="Script" uid="uid://3nddafo22hjr" path="res://coins/coin.gd" id="2_trcn2"]
 
 [sub_resource type="Animation" id="Animation_ldnf3"]
@@ -48,7 +48,7 @@ _data = {
 
 [node name="coinNormal" type="MeshInstance3D"]
 transform = Transform3D(0.157589, 0, 0, 0, 0.157589, 0, 0, 0, 0.157589, 0, 0, 0)
-mesh = ExtResource("1_1fpnp")
+mesh = ExtResource("1_trcn2")
 script = ExtResource("2_trcn2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
