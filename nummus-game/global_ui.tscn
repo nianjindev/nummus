@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://doa0jh4r81qev"]
+
+[ext_resource type="Script" uid="uid://ds3bhctk84mwf" path="res://money.gd" id="1_b2grt"]
+[ext_resource type="Script" uid="uid://pmx2hawrqe24" path="res://health.gd" id="2_22env"]
+
+[node name="GlobalUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 477.0
+offset_bottom = 219.0
+script = ExtResource("1_b2grt")
+
+[node name="Amount" type="RichTextLabel" parent="Money"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 96
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -501.0
+offset_right = 505.0
+offset_bottom = 177.0
+grow_horizontal = 2
+script = ExtResource("2_22env")
+
+[node name="ProgressBar" type="ProgressBar" parent="Health"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 20.0
+value = 10.0
