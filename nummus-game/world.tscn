@@ -41,13 +41,9 @@ mesh = SubResource("QuadMesh_pkg7o")
 transform = Transform3D(0.190489, 0, 0, 0, 0.190489, 0, 0, 0, 0.190489, 0.0517762, 0, -0.0285937)
 
 [node name="coinNormal" parent="." instance=ExtResource("3_tlwt5")]
-<<<<<<< Updated upstream
 transform = Transform3D(0.157588, 0, 0, 0, 0.157588, 0, 0, 0, 0.157589, 0.817489, 0.678351, -0.0125361)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 1, 0)
 
 [node name="GlobalUI" parent="." instance=ExtResource("4_aqk2v")]
-=======
-transform = Transform3D(0.00908742, 0, 0, 0, 0.00908742, 0, 0, 0, 0.00908748, 0, 3.95498, 0)
->>>>>>> Stashed changes
