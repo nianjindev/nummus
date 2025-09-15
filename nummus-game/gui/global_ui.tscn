@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://doa0jh4r81qev"]
 
-[ext_resource type="Script" uid="uid://ds3bhctk84mwf" path="res://money.gd" id="1_b2grt"]
-[ext_resource type="Script" uid="uid://pmx2hawrqe24" path="res://health.gd" id="2_22env"]
+[ext_resource type="Script" uid="uid://ds3bhctk84mwf" path="res://gui/money.gd" id="1_b2grt"]
+[ext_resource type="Script" uid="uid://pmx2hawrqe24" path="res://gui/health.gd" id="2_22env"]
 
 [node name="GlobalUI" type="Control"]
 layout_mode = 3
