@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5vgpkwlvt1i1"]
 
-[ext_resource type="Script" uid="uid://digi8ei46cn0a" path="res://level_manager.gd" id="1_fvluo"]
+[ext_resource type="Script" uid="uid://bla6p3p3h3f5c" path="res://gui/level_manager.gd" id="1_fvluo"]
 
 [node name="LevelManager" type="Control"]
 layout_mode = 3
