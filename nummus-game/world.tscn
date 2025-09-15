@@ -1,8 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://vwukeorb6yvs"]
+[gd_scene load_steps=10 format=3 uid="uid://1gky61ts3sh0"]
 
 [ext_resource type="Texture2D" uid="uid://csm8mguhlkni8" path="res://icon.svg" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://b1kfoj0qpy8wa" path="res://assets/3d/coinTable.fbx" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://c20u3of4tl5mp" path="res://coins/coin_normal.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://doa0jh4r81qev" path="res://global_ui.tscn" id="4_aqk2v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqk2v"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_036b0"]
+sky_material = SubResource("ProceduralSkyMaterial_aqk2v")
+
+[sub_resource type="Environment" id="Environment_dwbse"]
+background_mode = 2
+sky = SubResource("Sky_036b0")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwbse"]
 albedo_texture = ExtResource("1_tlwt5")
@@ -10,6 +24,13 @@ albedo_texture = ExtResource("1_tlwt5")
 [sub_resource type="QuadMesh" id="QuadMesh_pkg7o"]
 
 [node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dwbse")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
 
 [node name="Enemy" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.09161, 0.626827, -0.00254154)
@@ -20,4 +41,9 @@ mesh = SubResource("QuadMesh_pkg7o")
 transform = Transform3D(0.190489, 0, 0, 0, 0.190489, 0, 0, 0, 0.190489, 0.0517762, 0, -0.0285937)
 
 [node name="coinNormal" parent="." instance=ExtResource("3_tlwt5")]
-transform = Transform3D(0.157588, -0.000101201, -2.10034e-05, 0.000101205, 0.157588, 2.869e-05, 2.09845e-05, -2.87039e-05, 0.157589, 0.817489, 0.678351, -0.0125361)
+transform = Transform3D(0.157588, 0, 0, 0, 0.157588, 0, 0, 0, 0.157589, 0.817489, 0.678351, -0.0125361)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 1, 0)
+
+[node name="GlobalUI" parent="." instance=ExtResource("4_aqk2v")]

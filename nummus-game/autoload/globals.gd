@@ -1,8 +1,8 @@
 extends Node
 
-var money = 0
-var health = 20
-var max_health = 20
+var money: int = 0
+var health: int = 20
+var max_health: int = 20
 
 signal health_changed
 signal money_changed
