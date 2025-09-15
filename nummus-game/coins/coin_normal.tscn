@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c20u3of4tl5mp"]
+[gd_scene load_steps=7 format=3 uid="uid://c20u3of4tl5mp"]
 
-[ext_resource type="ArrayMesh" uid="uid://chiqs5mie1lwa" path="res://assets/3d/coin.obj" id="1_1fpnp"]
+[ext_resource type="ArrayMesh" uid="uid://blte8ep6l1esx" path="res://assets/3d/coin_base.obj" id="1_trcn2"]
 [ext_resource type="Script" uid="uid://3nddafo22hjr" path="res://coins/coin.gd" id="2_trcn2"]
 
 [sub_resource type="Animation" id="Animation_ldnf3"]
@@ -17,12 +17,33 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+<<<<<<< Updated upstream
 
 [sub_resource type="Animation" id="Animation_p7sxt"]
 resource_name = "flip"
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
+=======
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.95498, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p7sxt"]
+resource_name = "flip_heads"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = false
+>>>>>>> Stashed changes
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -34,21 +55,75 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+<<<<<<< Updated upstream
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
+=======
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0), Vector3(12.5664, 0, 0), Vector3(18.8496, 0, 0), Vector3(25.1327, 0, 0), Vector3(31.4159, 0, 0), Vector3(34.9066, 0, 0), Vector3(38.3972, 0, 0), Vector3(41.8879, 0, 0), Vector3(46.2512, 0, 0), Vector3(50.2655, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.175387, 0.433333, 0.7419, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 7.9044, 0), Vector3(0, 10.9033, 0), Vector3(0, 7.12712, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_trcn2"]
+resource_name = "flip_tails"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0), Vector3(12.5664, 0, 0), Vector3(18.8496, 0, 0), Vector3(25.1327, 0, 0), Vector3(31.4159, 0, 0), Vector3(34.9066, 0, 0), Vector3(38.3972, 0, 0), Vector3(41.8879, 0, 0), Vector3(46.2512, 0, 0), Vector3(47.1239, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.175387, 0.433333, 0.7419, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 7.9044, 0), Vector3(0, 10.9033, 0), Vector3(0, 7.12712, 0), Vector3(0, 0, 0)]
+>>>>>>> Stashed changes
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7kbo"]
 _data = {
 &"RESET": SubResource("Animation_ldnf3"),
-&"flip": SubResource("Animation_p7sxt")
+&"flip_heads": SubResource("Animation_p7sxt"),
+&"flip_tails": SubResource("Animation_trcn2")
 }
 
 [node name="coinNormal" type="MeshInstance3D"]
-transform = Transform3D(0.157589, 0, 0, 0, 0.157589, 0, 0, 0, 0.157589, 0, 0, 0)
-mesh = ExtResource("1_1fpnp")
+transform = Transform3D(0.157589, 0, 0, 0, 0.157589, 0, 0, 0, 0.157589, 0, 3.95498, 0)
+mesh = ExtResource("1_trcn2")
 script = ExtResource("2_trcn2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
