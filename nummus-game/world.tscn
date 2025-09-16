@@ -41,7 +41,7 @@ mesh = SubResource("QuadMesh_pkg7o")
 transform = Transform3D(0.190489, 0, 0, 0, 0.190489, 0, 0, 0, 0.190489, 0.0517762, 0, -0.0285937)
 
 [node name="coinNormal" parent="." instance=ExtResource("3_tlwt5")]
-transform = Transform3D(0.0190013, 0, 0, 0, 0.0190013, 0, 0, 0, 0.0190014, 0, 5.275, 0)
+transform = Transform3D(0.0190013, 0, 0, 0, 0.00329957, 0.0187127, 0, -0.0187126, 0.00329959, 0, 5.275, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 1, 0)
