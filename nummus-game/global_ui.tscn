@@ -49,7 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 96
 max_value = 20.0
-value = 10.0
+value = 13.4
 show_percentage = false
 
 [node name="HealthText" type="RichTextLabel" parent="Health"]
