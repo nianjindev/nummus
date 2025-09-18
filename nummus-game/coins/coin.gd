@@ -7,6 +7,8 @@ class_name Coin
 @export var ability: String = "none"
 @onready var animation_player: AnimationPlayer = $CoinMesh/AnimationPlayer
 @onready var coin_mesh: MeshInstance3D = $CoinMesh
+var my_array = ["heads", "tails"]
+var weights = PackedFloat32Array([1,1])
 
 func _ready():
 	Signalbus.connect("coin_flipped", Callable(flip))
@@ -14,7 +16,11 @@ func _ready():
 	
 	
 func flip():
-	animation_player.play("flip_heads")
+	var rng = RandomNumberGenerator.new()
+	if my_array[rng.rand_weighted(weights)] == "heads":
+		animation_player.play("flip_heads")
+	else:
+		animation_player.play("flip_tails")
 	
 
 
