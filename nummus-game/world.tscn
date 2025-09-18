@@ -43,4 +43,4 @@ fov = 68.6
 [node name="GlobalUI" parent="." instance=ExtResource("4_aqk2v")]
 
 [node name="CoinBase" parent="." instance=ExtResource("2_036b0")]
-transform = Transform3D(-6.1195915e-10, 0, 0.013999994, 0, 0.013999994, 0, -0.013999994, 0, -6.1195915e-10, 0.37969065, 0.37620765, 0.03480792)
+transform = Transform3D(-2.5787536e-10, 0, 0.0058995006, 0, 0.0058995006, 0, -0.0058995006, 0, -2.5787536e-10, 0.37969065, 0.37620765, 0.03480792)
