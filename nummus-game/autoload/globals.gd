@@ -4,6 +4,8 @@ var money: int = 0
 var health: int = 20
 var max_health: int = 20
 
+var coin_guess = ""
+
 signal health_changed
 signal money_changed
 

@@ -13,14 +13,16 @@ var weights = PackedFloat32Array([1,1])
 func _ready():
 	Signalbus.connect("coin_flipped", Callable(flip))
 	
-	
-	
 func flip():
 	var rng = RandomNumberGenerator.new()
 	if my_array[rng.rand_weighted(weights)] == "heads":
 		animation_player.play("flip_heads")
+		if Globals.coin_guess == "heads":
+			print("Correct")
 	else:
 		animation_player.play("flip_tails")
+		if Globals.coin_guess == "tails":
+			print("Wrong")
 	
 
 
