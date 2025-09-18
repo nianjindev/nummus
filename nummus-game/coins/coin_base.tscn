@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgrch5de5xhey"]
+[gd_scene load_steps=7 format=3 uid="uid://bgrch5de5xhey"]
 
 [ext_resource type="Script" uid="uid://3nddafo22hjr" path="res://coins/coin.gd" id="1_3p7bc"]
 [ext_resource type="ArrayMesh" uid="uid://bsc4krl7s2wsj" path="res://assets/3d/coin_base.obj" id="1_qdkt8"]
@@ -29,7 +29,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -63,7 +63,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -81,21 +81,14 @@ _data = {
 &"flip_tails": SubResource("Animation_p7sxt")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_3p7bc"]
-height = 0.01
-radius = 0.075
-
-[node name="CoinBase" type="RigidBody3D"]
+[node name="CoinBase" type="Node3D"]
 script = ExtResource("1_3p7bc")
 
 [node name="CoinMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.010250717, 0, 0, 0, 0.010250717, 0, 0, 0, 0.010250717, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = ExtResource("1_qdkt8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CoinMesh"]
 libraries = {
 &"": SubResource("AnimationLibrary_j7kbo")
 }
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_3p7bc")

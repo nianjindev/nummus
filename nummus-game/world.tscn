@@ -40,18 +40,18 @@ fov = 68.6
 [node name="Enemy" parent="." instance=ExtResource("1_aqk2v")]
 transform = Transform3D(0.06460202, 0, 0.9979111, 0, 1, 0, -0.9979111, 0, 0.06460202, -1.221482, 0.78024775, 0)
 
-[node name="CoinBase" parent="." instance=ExtResource("2_036b0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0025908947, 0.6308649, -0.05281031)
-
 [node name="GameUI" parent="." instance=ExtResource("5_036b0")]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-gravity_scale = 0.0
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(0.21051848, 0, 0, 0, 0.21051848, 0, 0, 0, 0.21051848, 0, 0, 0)
 mesh = ExtResource("5_dwbse")
+skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015075684, 0.375885, 0)
 shape = SubResource("BoxShape3D_pkg7o")
+
+[node name="CoinBase" parent="." instance=ExtResource("2_036b0")]
+transform = Transform3D(-3.242782e-09, 0, 0.074186206, 0, 0.074186206, 0, -0.074186206, 0, -3.242782e-09, 0.3665498, 0.39807475, -0.01729834)

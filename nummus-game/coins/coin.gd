@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Node3D
 
 class_name Coin
 
@@ -11,9 +11,11 @@ class_name Coin
 func _ready():
 	Signalbus.connect("coin_flipped", Callable(flip))
 	
+	
+	
 func flip():
 	animation_player.play("flip_heads")
 	
-#
-#func _physics_process(delta: float) -> void:
-	#move_and_collide(Vector3(0,9.8*delta,0))
+
+
+	
