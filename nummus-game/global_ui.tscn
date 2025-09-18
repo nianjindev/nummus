@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsw60fkov1alx"]
+[gd_scene load_steps=3 format=3 uid="uid://cgkq1874nru5o"]
 
 [ext_resource type="Script" uid="uid://iymx7fn3vsss" path="res://gui/money.gd" id="1_b2grt"]
 [ext_resource type="Script" uid="uid://b0d6dmsqn3rcu" path="res://gui/health.gd" id="2_22env"]

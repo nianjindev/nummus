@@ -31,17 +31,16 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13063, 0.88028, 0)
 
 [node name="enemySprite" parent="enemy" instance=ExtResource("1_aqk2v")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 skeleton = NodePath("../..")
 
 [node name="coinTable" parent="." instance=ExtResource("2_aqk2v")]
 transform = Transform3D(0.190489, 0, 0, 0, 0.190489, 0, 0, 0, 0.190489, 0.0517762, 0, -0.0285937)
-
-[node name="coinNormal" parent="." instance=ExtResource("3_tlwt5")]
-transform = Transform3D(0.0190013, 0, 0, 0, 0.00329921, 0.0187128, 0, -0.0187127, 0.00329923, 0, 5.275, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.0150396, -0.102423, 0.994627, 0.000813721, 0.994741, 0.102422, -0.999887, -0.000731034, 0.0150438, 1.53611, 0.833486, 0)
 fov = 68.6
 
 [node name="GlobalUI" parent="." instance=ExtResource("4_aqk2v")]
+
+[node name="coinNormal" parent="." instance=ExtResource("3_tlwt5")]
+transform = Transform3D(0.157589, 0, 0, 0, 0.02736246, 0.15519601, 0, -0.15519601, 0.02736246, 0.009638548, 0, 1.6371096)
