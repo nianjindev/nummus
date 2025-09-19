@@ -7,7 +7,6 @@ var in_time: bool
 func _ready():
 	in_time = true
 	timer.start()
-	progress.value = timer.max_time
 
 func _process(_delta: float) -> void:
 	if in_time:

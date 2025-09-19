@@ -61,4 +61,4 @@ autoplay = "idle"
 
 [node name="HealthText" type="Label3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8248655, 0)
-text = "5/5"
+text = "20/20"
