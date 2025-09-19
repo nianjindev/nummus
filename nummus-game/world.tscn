@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d3tgw7j1mag6w" path="res://enemies/enemy.tscn" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bgrch5de5xhey" path="res://coins/coin_base.tscn" id="2_036b0"]
-[ext_resource type="PackedScene" uid="uid://doa0jh4r81qev" path="res://gui/global_ui.tscn" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://cgkq1874nru5o" path="res://gui/global_ui.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://nv30vjbkrio1" path="res://gui/game_ui.tscn" id="5_036b0"]
 [ext_resource type="ArrayMesh" uid="uid://df0dli0p2ydry" path="res://assets/3d/coin_table.obj" id="5_dwbse"]
 
@@ -35,12 +35,8 @@ shadow_enabled = true
 transform = Transform3D(0.015039595, -0.10242296, 0.99462724, 0.0008137207, 0.99474066, 0.10242234, -0.99988663, -0.0007310418, 0.015043839, 1.670432, 0.96669024, 0)
 fov = 68.6
 
-[node name="GlobalUI" parent="." instance=ExtResource("4_aqk2v")]
-
 [node name="Enemy" parent="." instance=ExtResource("1_aqk2v")]
 transform = Transform3D(0.06460202, 0, 0.9979111, 0, 1, 0, -0.9979111, 0, 0.06460202, -1.221482, 0.78024775, 0)
-
-[node name="GameUI" parent="." instance=ExtResource("5_036b0")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -55,3 +51,7 @@ shape = SubResource("BoxShape3D_pkg7o")
 
 [node name="CoinBase" parent="." instance=ExtResource("2_036b0")]
 transform = Transform3D(-3.242782e-09, 0, 0.074186206, 0, 0.074186206, 0, -0.074186206, 0, -3.242782e-09, 0.3665498, 0.39807475, -0.01729834)
+
+[node name="GlobalUI" parent="." instance=ExtResource("4_aqk2v")]
+
+[node name="GameUI" parent="." instance=ExtResource("5_036b0")]
