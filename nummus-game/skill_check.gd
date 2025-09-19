@@ -3,16 +3,15 @@ extends Control
 @onready var progress: ProgressBar = $TimerBar
 
 var in_time: bool
-var label_text: String = "Press Space in %s seconds"
 
 func _ready():
 	in_time = true
 	timer.start()
-	progress.value = 100
+	progress.value = timer.max_time
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if in_time:
-		progress.value -= delta
+		progress.value = timer.time_left
 		if Input.is_action_pressed("ui_accept"):
 			print("good job!")
 			self.queue_free()
