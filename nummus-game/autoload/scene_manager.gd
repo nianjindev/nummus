@@ -19,8 +19,14 @@ func _deferred_goto_scene(path):
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
 
-	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
-	get_tree().current_scene = current_scene
-
 func goto_scene(path):
 	_deferred_goto_scene.call_deferred(path)
+
+func _deferred_add_scene(path):
+	# make sure it frees itself after its done
+	var new_scene = ResourceLoader.load(path).instantiate()
+	get_tree().root.add_child(new_scene)
+
+func add_scene(path):
+	_deferred_add_scene.call_deferred(path)
+

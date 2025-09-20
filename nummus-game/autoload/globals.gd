@@ -4,17 +4,17 @@ var money: int = 0
 var health: int = 20
 var max_health: int = 20
 
-var enemy: Node3D
-var enemy_easy = ResourceLoader.load("res://enemies/enemy.tscn")
+var in_favor = false
 
-var coin_guess = ""
+var current_enemy: Node3D
+var enemy_easy = ResourceLoader.load("res://enemies/enemy.tscn")
 
 signal health_changed
 signal money_changed
 signal enemy_health_changed
 
 func _ready():
-	enemy = enemy_easy.instantiate()
+	current_enemy = enemy_easy.instantiate()
 	
 func _process(_delta: float) -> void:
 	if health > max_health:
@@ -36,9 +36,9 @@ func change_health(add: bool, amount: int):
 	
 func change_current_enemy_health(add: bool, amount: int):
 	if add:
-		enemy.health += amount
+		current_enemy.health += amount
 	else:
-		enemy.health = amount
+		current_enemy.health = amount
 	enemy_health_changed.emit()
 	
 	

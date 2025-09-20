@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://vwukeorb6yvs"]
+[gd_scene load_steps=11 format=3 uid="uid://vwukeorb6yvs"]
 
 [ext_resource type="PackedScene" uid="uid://d3tgw7j1mag6w" path="res://enemies/enemy.tscn" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bgrch5de5xhey" path="res://coins/coin_base.tscn" id="2_036b0"]
 [ext_resource type="PackedScene" uid="uid://cgkq1874nru5o" path="res://gui/global_ui.tscn" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://dvtnos8vnayja" path="res://gui/skill_check.tscn" id="4_dwbse"]
 [ext_resource type="PackedScene" uid="uid://nv30vjbkrio1" path="res://gui/game_ui.tscn" id="5_036b0"]
 [ext_resource type="ArrayMesh" uid="uid://df0dli0p2ydry" path="res://assets/3d/coin_table.obj" id="5_dwbse"]
 
@@ -55,3 +56,6 @@ transform = Transform3D(-3.242782e-09, 0, 0.074186206, 0, 0.074186206, 0, -0.074
 [node name="GlobalUI" parent="." instance=ExtResource("4_aqk2v")]
 
 [node name="GameUI" parent="." instance=ExtResource("5_036b0")]
+
+[node name="SkillCheck" parent="." instance=ExtResource("4_dwbse")]
+visible = false
