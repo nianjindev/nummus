@@ -16,9 +16,10 @@ you can enter shops and buy upgrades for yourself and your coins
 
 # how to install:
 prequisites: git cli
+
 clone the project
 ```
-git clone https://github.com/nianjindev/nummus.git:nummus-game
+git clone https://github.com/nianjindev/nummus.git
 ```
 download [godot v4.5](https://godotengine.org/releases/4.5/)
 
