@@ -9,7 +9,7 @@ func _ready():
 	
 func change_health(add: bool, amount: int):
 	if add:
-		if health + amount < 0:
+		if health + amount < 0 or health + amount == 0:
 			health = 0
 			Signalbus.current_enemy_defeated.emit()
 		else:

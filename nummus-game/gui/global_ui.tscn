@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgkq1874nru5o"]
+[gd_scene load_steps=8 format=3 uid="uid://cgkq1874nru5o"]
 
 [ext_resource type="Script" uid="uid://iymx7fn3vsss" path="res://gui/money.gd" id="1_b2grt"]
 [ext_resource type="Script" uid="uid://b0d6dmsqn3rcu" path="res://gui/health.gd" id="2_22env"]
 [ext_resource type="Texture2D" uid="uid://bjdkwvpqaeul0" path="res://assets/2d/placeholder_healthbar.png" id="3_gjitu"]
 [ext_resource type="Texture2D" uid="uid://dpatl1i6460cp" path="res://assets/2d/placeholder_health.png" id="4_af06w"]
+[ext_resource type="Script" uid="uid://bbxm05mjnkk3g" path="res://gui/stage.gd" id="5_t228w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_36pdv"]
 atlas = ExtResource("3_gjitu")
@@ -116,6 +117,7 @@ offset_left = 1601.0
 offset_top = 956.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+script = ExtResource("5_t228w")
 
 [node name="NextStage" type="Button" parent="Stage"]
 visible = false
