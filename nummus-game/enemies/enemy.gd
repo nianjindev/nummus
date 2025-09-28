@@ -5,7 +5,11 @@ extends Node3D
 var health = 5
 
 func _ready():
-	Globals.connect("enemy_health_changed", Callable(change_health))
+	Signalbus.change_enemy_health.connect(change_health)
 	
-func change_health():
-	health_text.text = str(Globals.health as int)+"/5"
+func change_health(add: bool, amount: int):
+	if add:
+		health += amount
+	else:
+		health = amount
+	health_text.text = str(health as int)+"/5"
