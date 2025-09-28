@@ -1,5 +1,9 @@
 extends Node
 
+#Initialized in  coin_flip_buttons.gd
+var coin_flip_buttons: Control = null
+
+#Player Stats
 var money: int = 0
 var health: int = 20
 var max_health: int = 20
@@ -43,6 +47,7 @@ func change_current_enemy_health(add: bool, amount: int):
 	else:
 		current_enemy.health = amount
 	enemy_health_changed.emit()
+
 	
 
 	

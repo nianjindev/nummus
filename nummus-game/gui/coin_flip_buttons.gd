@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	Globals.coin_flip_buttons = $"."
+
 func _on_skip_pressed() -> void:
 	Signalbus.coin_flipped.emit("skip")
 
