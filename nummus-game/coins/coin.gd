@@ -11,17 +11,20 @@ var skill_check = "res://gui/skill_check.tscn"
 var sides = ["heads", "tails"]
 var weights = PackedFloat32Array([1,1])
 
+func _ready():
+	Signalbus.coin_flipped.connect(flip)
+	
+	
 func run_heads_effect():
 	Signalbus.change_enemy_health.emit(true, -damage)
 	
 func run_tails_effect():
-	Globals.change_health(true, 1)
+	Globals.change_health(true, 1)	
 
-func _ready():
-	Signalbus.coin_flipped.connect(flip)
-	
 func check_flipped_side(flipped_side: int, state:String):
 	#flipped side = index returned by weighted array
+	Signalbus.change_game_ui_coin_flip_button_visibility.emit(false) #Hides Game UI at the beginning of the flip
+	
 	if sides[flipped_side] == "heads":
 		animation_player.play("flip_heads")
 		if state == "heads":

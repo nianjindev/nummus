@@ -92,3 +92,5 @@ mesh = ExtResource("1_qdkt8")
 libraries = {
 &"": SubResource("AnimationLibrary_j7kbo")
 }
+
+[connection signal="animation_finished" from="CoinMesh/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://nv30vjbkrio1"]
 
-[ext_resource type="Script" uid="uid://du20072pbh8qc" path="res://gui/button.gd" id="1_vdk76"]
+[ext_resource type="Script" uid="uid://b67fiai3w6bis" path="res://gui/coin_flip_buttons.gd" id="1_vdk76"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -10,55 +10,60 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Heads" type="Button" parent="."]
+[node name="CoinFlipButtons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vdk76")
+
+[node name="Heads" type="Button" parent="CoinFlipButtons"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -89.0
+offset_left = 740.0
+offset_top = 951.0
+offset_right = 940.0
+offset_bottom = 1040.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 text = "Heads"
-script = ExtResource("1_vdk76")
 
-[node name="Tails" type="Button" parent="."]
+[node name="Tails" type="Button" parent="CoinFlipButtons"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -90.0
-offset_right = 227.0
-offset_bottom = -1.0
+offset_left = 943.0
+offset_top = 950.0
+offset_right = 1167.0
+offset_bottom = 1039.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 text = "Tails"
-script = ExtResource("1_vdk76")
 
-[node name="Skip" type="Button" parent="."]
+[node name="Skip" type="Button" parent="CoinFlipButtons"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -98.0
-offset_top = -175.0
-offset_right = 99.0
-offset_bottom = -92.0
+offset_left = 842.0
+offset_top = 865.0
+offset_right = 1039.0
+offset_bottom = 948.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 text = "Skip"
-script = ExtResource("1_vdk76")
 
-[connection signal="pressed" from="Heads" to="Heads" method="_on_heads_pressed"]
-[connection signal="pressed" from="Tails" to="Heads" method="_on_tails_pressed"]
-[connection signal="pressed" from="Skip" to="Heads" method="_on_skip_pressed"]
+[connection signal="pressed" from="CoinFlipButtons/Heads" to="CoinFlipButtons" method="_on_heads_pressed"]
+[connection signal="pressed" from="CoinFlipButtons/Tails" to="CoinFlipButtons" method="_on_tails_pressed"]
+[connection signal="pressed" from="CoinFlipButtons/Skip" to="CoinFlipButtons" method="_on_skip_pressed"]

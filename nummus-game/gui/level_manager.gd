@@ -8,6 +8,7 @@ extends Control
 func _ready():
 	level_2.disabled = true
 	level_3.disabled = true
+	
 func _on_level_1_pressed() -> void:
 	pass
 
