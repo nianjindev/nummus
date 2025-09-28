@@ -9,7 +9,11 @@ func _ready():
 	
 func change_health(add: bool, amount: int):
 	if add:
-		health += amount
+		if health + amount < 0:
+			health = 0
+			Signalbus.current_enemy_defeated.emit()
+		else:
+			health += amount
 	else:
 		health = amount
 	health_text.text = str(health as int)+"/5"

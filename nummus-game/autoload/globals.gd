@@ -2,7 +2,7 @@ extends Node
 
 #Initialized in  coin_flip_buttons.gd
 var coin_flip_buttons: Control = null
-
+var next_stage_button: Button = null
 #Player Stats
 var money: int = 0
 var health: int = 20

@@ -4,6 +4,7 @@ signal coin_flipped(state: String)
 signal skill_check_begin(time: float)
 signal skill_check_finish(success: bool)
 signal change_enemy_health(add: bool, amount: int)
+signal current_enemy_defeated()
 
 
 func _ready():

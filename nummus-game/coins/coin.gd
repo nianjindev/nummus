@@ -14,31 +14,40 @@ var weights = PackedFloat32Array([1,1])
 func _ready():
 	Signalbus.coin_flipped.connect(flip)
 	
-func run_heads_effect():
+func run_successful_heads_effect():
 	Signalbus.change_enemy_health.emit(true, -damage)
 	
-func run_tails_effect():
+func run_successful_tails_effect():
 	Globals.change_health(true, 1)	
-
-func show_game_ui():
+	
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Globals.coin_flip_buttons.show()
+	
+	match anim_name:
+		"flip_heads_success":
+			run_successful_heads_effect()
+		"flip_heads_fail":
+			return
+		"flip_tails_success":
+			run_successful_tails_effect()
+		"flip_tails_fail":
+			return
 
 func check_flipped_side(flipped_side: int, state:String):
 	#flipped side = index returned by weighted array
-	
 	if sides[flipped_side] == "heads":
-		animation_player.play("flip_heads")
 		if state == "heads":
-			run_heads_effect()
+			animation_player.play("flip_heads_success")
 			print("Correct")
 		else:
+			animation_player.play("flip_heads_fail")
 			print("Wrong")
 	else:
-		animation_player.play("flip_tails")
 		if state == "tails":
-			run_tails_effect()
+			animation_player.play("flip_tails_success")
 			print("Correct")
 		else:
+			animation_player.play("flip_tails_fail")
 			print("Wrong")
 	
 func set_weights(state:String):
@@ -47,21 +56,19 @@ func set_weights(state:String):
 		weights.set(sides.find(state), 2) 
 		
 func flip(state: String):
-	Globals.coin_flip_buttons.hide()
+	if state == "skip":
+		# IDEA: maybe being in favor and skipping gives money
+		return
+	else:
+		Globals.coin_flip_buttons.hide()
+		
 	var rng = RandomNumberGenerator.new()
 	print("Got signal coin_flipped")
 	Signalbus.skill_check_begin.emit(2)
 	await Signalbus.skill_check_finish
 	print("skill check finished, state %s" % state)
-	if state == "skip":
-		# IDEA: maybe being in favor and skipping gives money
-		return
 		
 	set_weights(state)
 	
 	check_flipped_side(rng.rand_weighted(weights), state)
-	
-	
-
-
 	
