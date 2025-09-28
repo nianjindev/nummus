@@ -10,7 +10,7 @@ func _ready():
 	in_time = false
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event == InputEventKey and event.pressed and event.keycode == KEY_SPACE and in_time:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE and in_time:
 		Signalbus.skill_check_finish.emit(true)
 		in_time = false
 		self.visible = false
