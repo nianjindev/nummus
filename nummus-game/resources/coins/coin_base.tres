@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Coin" load_steps=3 format=3 uid="uid://d35ga8hv2jlvh"]
+
+[ext_resource type="Script" uid="uid://c1jkf850n711e" path="res://resources/coins/coin_class.gd" id="1_3i1ip"]
+[ext_resource type="ArrayMesh" uid="uid://bsc4krl7s2wsj" path="res://assets/3d/coin_base.obj" id="1_qhwql"]
+
+[resource]
+script = ExtResource("1_3i1ip")
+coin_texture = ExtResource("1_qhwql")
+coin_effect = "coin_base"
+coin_stats = Dictionary[String, int]({
+"damage": 5,
+"heal": 3
+})
+metadata/_custom_type_script = "uid://c1jkf850n711e"

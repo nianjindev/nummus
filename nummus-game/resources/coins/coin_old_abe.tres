@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Coin" load_steps=3 format=3 uid="uid://dj73eohb1fsui"]
+
+[ext_resource type="Script" uid="uid://c1jkf850n711e" path="res://resources/coins/coin_class.gd" id="1_aan4f"]
+[ext_resource type="ArrayMesh" uid="uid://bsc4krl7s2wsj" path="res://assets/3d/coin_base.obj" id="1_xd5um"]
+
+[resource]
+script = ExtResource("1_aan4f")
+coin_texture = ExtResource("1_xd5um")
+coin_effect = "old_abe"
+has_pre = true
+coin_stats = Dictionary[String, int]({
+"damage": 6,
+"head": 1,
+"tail": 0
+})
+metadata/_custom_type_script = "uid://c1jkf850n711e"

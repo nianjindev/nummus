@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="nummus-game"
+run/main_scene="uid://bydht7j8q5mvr"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +20,7 @@ config/icon="res://icon.svg"
 SceneManager="*res://autoload/scene_manager.gd"
 Globals="*res://autoload/globals.gd"
 Signalbus="*res://autoload/signalbus.gd"
+CoinEffects="*res://autoload/coin_effects.gd"
 
 [display]
 
