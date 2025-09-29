@@ -12,16 +12,27 @@ var in_favor = false
 
 var current_enemy: Node3D
 var current_coin: Node3D
-var enemy_easy = ResourceLoader.load("res://enemies/enemy.tscn")
-var coin_base = ResourceLoader.load("res://coins/coin_base.tscn")
+@onready var enemy_base = ResourceLoader.load("res://enemies/enemy.tscn")
+@onready var coin_base = ResourceLoader.load("res://coins/coin_base.tscn")
 
 signal health_changed
 signal money_changed
 signal enemy_health_changed
 
 func _ready():
-	current_enemy = enemy_easy.instantiate()
+	current_enemy = enemy_base.instantiate()
+	current_enemy.enemy_id = preload("res://resources/enemies/smug_man.tres")
+	current_enemy.position = Vector3(-1.604,1.4,0.0)
+	current_enemy.rotate_y(PI/2)
+	current_enemy.scale = Vector3(0.2,0.2,0.2)
+	SceneManager.current_scene.add_child.call_deferred(current_enemy)
+
 	current_coin = coin_base.instantiate()
+	current_coin.coin_id = preload("res://resources/coins/coin_base.tres")
+	current_coin.position = Vector3(0.367, 0.398, -0.017)
+	current_coin.scale = Vector3(0.08, 0.08, 0.08)
+	current_coin.rotate_y(PI/2)
+	SceneManager.current_scene.add_child.call_deferred(current_coin)
 	
 func _process(_delta: float) -> void:
 	if health > max_health:
@@ -47,8 +58,3 @@ func change_current_enemy_health(add: bool, amount: int):
 	else:
 		current_enemy.health = amount
 	enemy_health_changed.emit()
-
-	
-
-	
-	

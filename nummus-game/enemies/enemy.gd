@@ -1,11 +1,15 @@
-extends Node3D
+extends AnimatedSprite3D
 
-@onready var health_text: Label3D = $MeshInstance3D/HealthText
-
-var health = 5
+@onready var health_text: Label3D = $HealthText
+@export var enemy_id: Enemy
+var health: int
 
 func _ready():
 	Signalbus.change_enemy_health.connect(change_health)
+	health = enemy_id.health
+	sprite_frames = enemy_id.enemy_expressions
+
+
 	
 func change_health(add: bool, amount: int):
 	if add:

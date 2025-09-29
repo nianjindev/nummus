@@ -1,6 +1,5 @@
 extends Node3D
 
-class_name Coin
 var skill_check = "res://gui/skill_check.tscn"
 
 @export var damage: int = 1
@@ -11,25 +10,26 @@ var skill_check = "res://gui/skill_check.tscn"
 var sides = ["heads", "tails"]
 var weights = PackedFloat32Array([1,1])
 
+@export var coin_id: Coin
+var coin_func: String
+var coin_stats: Dictionary
+
 func _ready():
 	Signalbus.coin_flipped.connect(flip)
-	
-func run_successful_heads_effect():
-	Signalbus.change_enemy_health.emit(true, -damage)
-	
-func run_successful_tails_effect():
-	Globals.change_health(true, 1)	
+	coin_mesh.mesh = coin_id.coin_texture
+	coin_func = coin_id.coin_effect
+	coin_stats = coin_id.coin_stats
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Globals.coin_flip_buttons.show()
 	
 	match anim_name:
 		"flip_heads_success":
-			run_successful_heads_effect()
-		"flip_heads_fail":
+			CoinEffects.coin_call.emit(coin_func, coin_stats, true)
+		"flip_heads_fail": # IDEA: all fails do misfortune
 			return
 		"flip_tails_success":
-			run_successful_tails_effect()
+			CoinEffects.coin_call.emit(coin_func, coin_stats, false)
 		"flip_tails_fail":
 			return
 

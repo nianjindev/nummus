@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://dcspy7387pquk"]
+
+[ext_resource type="Script" uid="uid://dlb0rp3fkxykt" path="res://resources/enemies/enemy_class.gd" id="1_kbqwn"]
+
+[resource]
+script = ExtResource("1_kbqwn")
+metadata/_custom_type_script = "uid://dlb0rp3fkxykt"
