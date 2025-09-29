@@ -64,7 +64,7 @@ func flip(state: String):
 		
 	var rng = RandomNumberGenerator.new()
 	print("Got signal coin_flipped")
-	Signalbus.skill_check_begin.emit(2)
+	Signalbus.skill_check_begin.emit(50, 180, 4)
 	await Signalbus.skill_check_finish
 	print("skill check finished, state %s" % state)
 		
