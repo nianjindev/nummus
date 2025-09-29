@@ -134,3 +134,5 @@ offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Next Stage"
+
+[connection signal="pressed" from="Stage/NextStage" to="Stage" method="_on_next_stage_pressed"]

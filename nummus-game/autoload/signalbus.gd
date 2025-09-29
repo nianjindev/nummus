@@ -18,6 +18,8 @@ func _on_skill_check(success: bool):
 		Globals.in_favor = false
 
 func _on_current_enemy_defeated():
+	Globals.coin_flip_buttons.hide()
+	SceneManager.goto_scene("res://stages/shop.tscn")
 	Globals.next_stage_button.show()
 	
 		
