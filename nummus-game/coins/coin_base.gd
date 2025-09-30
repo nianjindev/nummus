@@ -1,7 +1,5 @@
 extends Node3D
 
-var skill_check = "res://gui/skill_check.tscn"
-
 @export var damage: int = 1
 @export var level: int = 1
 @export var ability: String = "none"

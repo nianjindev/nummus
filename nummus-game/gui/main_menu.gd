@@ -1,6 +1,6 @@
 extends Control
 
-var world:String = "res://world.tscn"
+var world:String = "res://base_level.tscn"
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

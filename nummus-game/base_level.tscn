@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://vwukeorb6yvs"]
+[gd_scene load_steps=10 format=3 uid="uid://vwukeorb6yvs"]
 
-[ext_resource type="PackedScene" uid="uid://d3tgw7j1mag6w" path="res://enemies/enemy.tscn" id="1_aqk2v"]
-[ext_resource type="PackedScene" uid="uid://cgkq1874nru5o" path="res://gui/global_ui.tscn" id="4_aqk2v"]
-[ext_resource type="PackedScene" uid="uid://dvtnos8vnayja" path="res://gui/skill_check.tscn" id="4_dwbse"]
-[ext_resource type="PackedScene" uid="uid://nv30vjbkrio1" path="res://gui/game_ui.tscn" id="5_036b0"]
-[ext_resource type="ArrayMesh" uid="uid://df0dli0p2ydry" path="res://assets/3d/coin_table.obj" id="5_dwbse"]
-[ext_resource type="Resource" uid="uid://dcspy7387pquk" path="res://resources/enemies/smug_man.tres" id="6_dwbse"]
+[ext_resource type="ArrayMesh" uid="uid://df0dli0p2ydry" path="res://assets/3d/coin_table.obj" id="1_3o4py"]
+[ext_resource type="Script" uid="uid://d22vmb2a3xedj" path="res://base_level.gd" id="1_ftfrf"]
+[ext_resource type="PackedScene" uid="uid://cgkq1874nru5o" path="res://gui/global_ui.tscn" id="2_ftfrf"]
+[ext_resource type="PackedScene" uid="uid://nv30vjbkrio1" path="res://gui/game_ui.tscn" id="3_u2wky"]
+[ext_resource type="PackedScene" uid="uid://dvtnos8vnayja" path="res://gui/skill_check.tscn" id="4_2elnx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqk2v"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -23,7 +22,8 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_pkg7o"]
 size = Vector3(1.9002686, 0.062927246, 1)
 
-[node name="World" type="Node3D"]
+[node name="BaseLevel" type="Node3D"]
+script = ExtResource("1_ftfrf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dwbse")
@@ -40,19 +40,15 @@ fov = 50.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(0.21051848, 0, 0, 0, 0.21051848, 0, 0, 0, 0.21051848, 0, 0, 0)
-mesh = ExtResource("5_dwbse")
+mesh = ExtResource("1_3o4py")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015075684, 0.375885, 0)
 shape = SubResource("BoxShape3D_pkg7o")
 
-[node name="GlobalUI" parent="." instance=ExtResource("4_aqk2v")]
+[node name="GlobalUI" parent="." instance=ExtResource("2_ftfrf")]
 
-[node name="GameUI" parent="." instance=ExtResource("5_036b0")]
+[node name="GameUI" parent="." instance=ExtResource("3_u2wky")]
 
-[node name="SkillCheck" parent="." instance=ExtResource("4_dwbse")]
-
-[node name="Enemy" parent="." instance=ExtResource("1_aqk2v")]
-transform = Transform3D(0.29298925, 0, 0.9561157, 0, 1, 0, -0.9561157, 0, 0.29298925, 0, 0, 0)
-enemy_id = ExtResource("6_dwbse")
+[node name="SkillCheck" parent="." instance=ExtResource("4_2elnx")]
