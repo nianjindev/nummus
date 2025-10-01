@@ -1,7 +1,24 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://dcspy7387pquk"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://dcspy7387pquk"]
 
+[ext_resource type="Texture2D" uid="uid://bnofq2hlt6kgu" path="res://assets/2d/smug_guy.png" id="1_2mvsy"]
 [ext_resource type="Script" uid="uid://dlb0rp3fkxykt" path="res://resources/enemies/enemy_class.gd" id="1_kbqwn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gs5x"]
+atlas = ExtResource("1_2mvsy")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbqwn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gs5x")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_kbqwn")
+enemy_expressions = SubResource("SpriteFrames_kbqwn")
 metadata/_custom_type_script = "uid://dlb0rp3fkxykt"

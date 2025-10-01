@@ -151,14 +151,17 @@ _data = {
 &"flip_tails_success": SubResource("Animation_p7sxt")
 }
 
-[node name="CoinBase" type="MeshInstance3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = ExtResource("1_im0vi")
+[node name="CoinBase" type="Node3D"]
 script = ExtResource("1_3p7bc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CoinMesh")
 libraries = {
 &"": SubResource("AnimationLibrary_j7kbo")
 }
+
+[node name="CoinMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_im0vi")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

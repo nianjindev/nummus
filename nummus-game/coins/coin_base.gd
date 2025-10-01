@@ -1,9 +1,10 @@
-extends MeshInstance3D
+extends Node3D
 
 @export var damage: int = 1
 @export var level: int = 1
 @export var ability: String = "none"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var coin_mesh: MeshInstance3D = $CoinMesh
 var sides = ["heads", "tails"]
 var weights = PackedFloat32Array([1,1])
 
@@ -16,11 +17,15 @@ func _ready():
 	Signalbus.coin_flipped.connect(flip)
 
 	# instance of coin resources
-	self.material_override = StandardMaterial3D.new()
-	self.material_override.albedo_texture = coin_id.coin_texture
-	self.material_override.texture_filter = 0
+	coin_mesh.material_override = StandardMaterial3D.new()
+	coin_mesh.material_override.albedo_texture = coin_id.coin_texture
+	coin_mesh.material_override.texture_filter = 0
 	coin_func = coin_id.coin_effect
 	coin_stats = coin_id.coin_stats
+
+	# transform me
+	position = Vector3(0.367, 0.398, -0.017)
+	scale = Vector3(0.1,0.1,0.1)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Signalbus.toggle_ui.emit(true)

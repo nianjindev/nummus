@@ -1,22 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3tgw7j1mag6w"]
+[gd_scene load_steps=5 format=3 uid="uid://d3tgw7j1mag6w"]
 
 [ext_resource type="Script" uid="uid://y2i1v32uojnf" path="res://enemies/enemy.gd" id="1_7frlh"]
-[ext_resource type="Texture2D" uid="uid://cnuaibnt4im6s" path="res://assets/2d/smug.jpg" id="1_fw1ev"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7frlh"]
-atlas = ExtResource("1_fw1ev")
-region = Rect2(0, 0, 735, 648)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_orwns"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7frlh")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_7frlh"]
 length = 0.001
@@ -44,16 +28,18 @@ _data = {
 &"idle": SubResource("Animation_fw1ev")
 }
 
-[node name="Enemy" type="AnimatedSprite3D"]
-sprite_frames = SubResource("SpriteFrames_orwns")
+[node name="Enemy" type="Node3D"]
 script = ExtResource("1_7frlh")
 
-[node name="HealthText" type="Label3D" parent="."]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 4, 0)
-text = "5/5"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../EnemySprite")
 libraries = {
 &"": SubResource("AnimationLibrary_orwns")
 }
 autoplay = "idle"
+
+[node name="EnemySprite" type="AnimatedSprite3D" parent="."]
+
+[node name="HealthText" type="Label3D" parent="EnemySprite"]
+transform = Transform3D(2.255, 0, 0, 0, 2.255, 0, 0, 0, 2.255, 0, 0.9074528, 0)
+text = "5/5"
