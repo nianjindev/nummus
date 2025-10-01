@@ -12,15 +12,18 @@ var coin_func: String
 var coin_stats: Dictionary
 
 func _ready():
+	# flip signal
 	Signalbus.coin_flipped.connect(flip)
-	self.mesh = coin_id.coin_mesh
-	self.material_override = coin_id.coin_texture
-	
+
+	# instance of coin resources
+	self.material_override = StandardMaterial3D.new()
+	self.material_override.albedo_texture = coin_id.coin_texture
+	self.material_override.texture_filter = 0
 	coin_func = coin_id.coin_effect
 	coin_stats = coin_id.coin_stats
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	Globals.coin_flip_buttons.show()
+	Signalbus.toggle_ui.emit(true)
 	
 	match anim_name:
 		"flip_heads_success":
@@ -59,7 +62,7 @@ func flip(state: String):
 		# IDEA: maybe being in favor and skipping gives money
 		return
 	else:
-		Globals.coin_flip_buttons.hide()
+		Signalbus.toggle_ui.emit(false)
 		
 	var rng = RandomNumberGenerator.new()
 	print("Got signal coin_flipped")

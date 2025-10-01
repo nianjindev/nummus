@@ -11,3 +11,4 @@ func _on_settings_pressed() -> void:
 
 func _on_play_pressed() -> void:
 	SceneManager.goto_scene(world)
+

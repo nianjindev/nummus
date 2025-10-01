@@ -1,25 +1,30 @@
 extends Node
 
 signal gui_spawned
-
-var global_ui_path: String = "res://gui/global_ui.tscn"
-var game_ui_path: String = "res://gui/game_ui.tscn"
-var skill_check_path: String = "res://gui/skill_check.tscn"
+var all_ui_path: Dictionary[String, String] = {
+	"global_ui_path":"res://gui/global_ui.tscn",
+	"game_ui_path":"res://gui/game_ui.tscn",
+	"skill_check_path":"res://gui/skill_check.tscn"
+}
 
 var global_ui: Control
-var game_iu: Control
+var game_ui: Control
 var skill_check: Control
+var uis: Array[Control] = [global_ui, game_ui, skill_check]
 
 func _ready() -> void:
 	spawn_all.call_deferred()
 
 func spawn_all():
-	global_ui = ResourceLoader.load(global_ui_path).instantiate()
-	game_iu = ResourceLoader.load(game_ui_path).instantiate()
-	skill_check = ResourceLoader.load(skill_check_path).instantiate()
+	for scene in all_ui_path.values():
+		add_scene(scene)
 	gui_spawned.emit()
 
-func show_global_ui():
-	global_ui.visible = true
-func hide_global_ui():
-	global_ui.visible = false
+func _deferred_add_scene(path):
+	# make sure it frees itself after its done
+	var new_scene = ResourceLoader.load(path).instantiate()
+	get_tree().root.add_child(new_scene)
+	return new_scene
+
+func add_scene(path):
+	_deferred_add_scene.call_deferred(path)

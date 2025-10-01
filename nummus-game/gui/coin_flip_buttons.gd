@@ -1,7 +1,10 @@
 extends Control
 
 func _ready():
-	Globals.coin_flip_buttons = $"."
+	Signalbus.toggle_ui.connect(toggle)
+
+func toggle(visible: bool):
+	self.visible = visible
 
 func _on_skip_pressed() -> void:
 	Signalbus.coin_flipped.emit("skip")
