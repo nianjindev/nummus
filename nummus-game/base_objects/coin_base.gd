@@ -32,11 +32,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
 	match anim_name:
 		"flip_heads_success":
-			CoinEffects.coin_call.emit(coin_func, coin_stats, true)
+			CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.HEADS)
 		"flip_heads_fail": # IDEA: all fails do misfortune
 			return
 		"flip_tails_success":
-			CoinEffects.coin_call.emit(coin_func, coin_stats, false)
+			CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.TAILS)
 		"flip_tails_fail":
 			return
 
@@ -64,7 +64,7 @@ func set_weights(state:String):
 		
 func flip(state: String):
 	if state == "skip":
-		# IDEA: maybe being in favor and skipping gives money
+		CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.SKIP)
 		return
 	else:
 		Signalbus.toggle_ui.emit(false)

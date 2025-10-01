@@ -20,4 +20,4 @@ func _on_skill_check(success: bool):
 
 func _on_current_enemy_defeated():
 	Signalbus.toggle_ui.emit(false)
-	SceneManager.goto_scene("res://stages/shop.tscn")
+	# open win menu

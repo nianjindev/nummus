@@ -19,7 +19,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event.pressed and event.keycode == KEY_SPACE and in_time:
 		var end = diff + initial_angle
 		print("When you pressed space, the needle was at %s degrees. The beginning was at %s and the end was at %s" % [needle.radial_initial_angle, initial_angle, end])
-		if needle.radial_initial_angle >= initial_angle and needle.radial_initial_angle <= end:
+		if (needle.radial_initial_angle >= initial_angle and needle.radial_initial_angle <= end) or (needle.radial_initial_angle+360 >= initial_angle and needle.radial_initial_angle+360 <= end):
 			print("YOU HIT THE NEEDLE")
 			close(true)
 		else:
