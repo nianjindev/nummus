@@ -33,8 +33,10 @@ window/size/viewport_height=1080
 
 folder_colors={
 "res://assets/": "orange",
-"res://coins/": "yellow",
-"res://gui/": "green"
+"res://autoload/": "purple",
+"res://base_objects/": "red",
+"res://gui/": "green",
+"res://resources/": "teal"
 }
 
 [input]
