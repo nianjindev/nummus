@@ -30,13 +30,13 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.015039595, -0.10242296, 0.99462724, 0.0008137207, 0.99474066, 0.10242234, -0.99988663, -0.00073104165, 0.015043839, 2.1850078, 0.96669024, 0)
-fov = 50.0
+transform = Transform3D(0.01570728, -0.34689286, 0.9377732, 0, 0.9378889, 0.34693566, -0.9998766, -0.0054494157, 0.014731685, 1.3244811, 1.0790656, 0)
+fov = 90.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(0.21051848, 0, 0, 0, 0.21051848, 0, 0, 0, 0.21051848, 0, 0, 0)
+transform = Transform3D(0.21051848, 0, 0, 0, 0.21051848, 0, 0, 0, 0.64167446, 0, 0, 0)
 mesh = ExtResource("1_3o4py")
 skeleton = NodePath("")
 

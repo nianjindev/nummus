@@ -7,7 +7,7 @@ var current_coin: Node3D
 
 func spawn_base_coin():
 	current_coin = coin_base.instantiate()
-	current_coin.coin_id = ResourceLoader.load("res://resources/coins/coin_base.tres")
+	current_coin.coin_id = ResourceLoader.load("res://resources/coins/coin_1787.tres")
 	SceneManager.current_scene.add_child.call_deferred(current_coin)
 
 func spawn_base_enemy():
