@@ -1,10 +1,9 @@
-extends Node3D
+extends MeshInstance3D
 
 @export var damage: int = 1
 @export var level: int = 1
 @export var ability: String = "none"
-@onready var animation_player: AnimationPlayer = $CoinMesh/AnimationPlayer
-@onready var coin_mesh: MeshInstance3D = $CoinMesh
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 var sides = ["heads", "tails"]
 var weights = PackedFloat32Array([1,1])
 
@@ -14,7 +13,9 @@ var coin_stats: Dictionary
 
 func _ready():
 	Signalbus.coin_flipped.connect(flip)
-	coin_mesh.mesh = coin_id.coin_texture
+	self.mesh = coin_id.coin_mesh
+	self.material_override = coin_id.coin_texture
+	
 	coin_func = coin_id.coin_effect
 	coin_stats = coin_id.coin_stats
 	

@@ -2,8 +2,8 @@ extends Node
 
 @onready var enemy_base = ResourceLoader.load("res://enemies/enemy.tscn")
 @onready var coin_base = ResourceLoader.load("res://coins/coin_base.tscn")
-var current_enemy: Node3D
-var current_coin: Node3D
+var current_enemy: AnimatedSprite3D
+var current_coin: MeshInstance3D
 
 func spawn_base_coin():
 	current_coin = coin_base.instantiate()
