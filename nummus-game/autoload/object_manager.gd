@@ -1,7 +1,7 @@
 extends Node
 
-@onready var enemy_base = ResourceLoader.load("res://base_objects/enemy.tscn")
-@onready var coin_base = ResourceLoader.load("res://base_objects/coin_base.tscn")
+@onready var enemy_base = ResourceLoader.load(Constants.SCENE_PATHS.base_enemy)
+@onready var coin_base = ResourceLoader.load(Constants.SCENE_PATHS.base_coin)
 var current_enemy: Node3D
 var current_coin: Node3D
 
