@@ -13,7 +13,7 @@
 sky_material = SubResource("ProceduralSkyMaterial_0f8fb")
 
 [sub_resource type="Environment" id="Environment_kmqgc"]
-background_mode = 2
+background_mode = 1
 sky = SubResource("Sky_3q1a4")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
@@ -39,7 +39,8 @@ animations = [{
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.6227914, -0.77456737, 0.11034594, 0.22908333, -0.045674503, 0.97233474, -0.74809885, 0.63084024, 0.2058862, 0, 5.7214184, -1.0442309)
-light_energy = 3.804
+light_color = Color(0.7510744, 0.74836457, 0.6600197, 1)
+light_energy = 16.0
 light_indirect_energy = 3.969
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
@@ -58,7 +59,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2
 mesh = ExtResource("3_hxjiy")
 
 [node name="ShopWall" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.9294162, -5.696075)
+transform = Transform3D(-4.371139e-08, 0, -1.6295767, 0, 2.1993814, 0, 1, 0, -7.123106e-08, 0, 1.9294162, -5.696075)
 mesh = ExtResource("4_ya44s")
 
 [node name="ShopTable" type="MeshInstance3D" parent="."]
