@@ -9,6 +9,7 @@ func _ready():
 	Signalbus.change_enemy_health.connect(change_health)
 	health = enemy_id.health
 	animated_sprite.sprite_frames = enemy_id.enemy_expressions
+	animated_sprite.play("neutral")
 
 	# transform
 	position = Vector3(-1.604,1,0.0)
