@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://smvg3nwqqw6x"]
+[gd_scene load_steps=12 format=3 uid="uid://smvg3nwqqw6x"]
 
 [ext_resource type="ArrayMesh" uid="uid://clj1nhn3sqwg8" path="res://assets/3d/shop_floor.obj" id="1_yxe34"]
-[ext_resource type="ArrayMesh" uid="uid://bsc4krl7s2wsj" path="res://assets/3d/coin_base.obj" id="2_8ah0j"]
-[ext_resource type="ArrayMesh" uid="uid://3h3aubiopxyy" path="res://assets/3d/shop_carpet.obj" id="3_kmqgc"]
-[ext_resource type="ArrayMesh" uid="uid://uhpn156k5ixy" path="res://assets/3d/shop_ground.obj" id="4_kmqgc"]
+[ext_resource type="ArrayMesh" uid="uid://bylbmwndumjtv" path="res://assets/3d/shop_shelf.obj" id="3_hxjiy"]
+[ext_resource type="ArrayMesh" uid="uid://di4p7r3k6ddnu" path="res://assets/3d/shop_wall.obj" id="4_ya44s"]
 [ext_resource type="PackedScene" uid="uid://cgkq1874nru5o" path="res://gui/global_ui.tscn" id="5_0f8fb"]
+[ext_resource type="ArrayMesh" uid="uid://dc1ulk0am4cx4" path="res://assets/3d/shop_table.obj" id="5_hhiwf"]
+[ext_resource type="Texture2D" uid="uid://oydm4bxteeau" path="res://assets/2d/shopkeeper.png" id="6_ya44s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0f8fb"]
 
@@ -19,10 +20,27 @@ ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhiwf"]
+atlas = ExtResource("6_ya44s")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48b30"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhiwf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="Shop" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 12.249588, -2.2694368)
+transform = Transform3D(-0.6227914, -0.77456737, 0.11034594, 0.22908333, -0.045674503, 0.97233474, -0.74809885, 0.63084024, 0.2058862, 0, 5.7214184, -1.0442309)
+light_energy = 3.804
+light_indirect_energy = 3.969
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
 
@@ -33,29 +51,26 @@ environment = SubResource("Environment_kmqgc")
 transform = Transform3D(0.81101, 0, 0, 0, 0.81101, 0, 0, 0, 0.81101, 0, 0, 0)
 mesh = ExtResource("1_yxe34")
 
-[node name="CoinBase" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.050325915, 0, 0, 0, 0.050325915, 0, 0, 0, 0.050325915, -1.9379225, 2.4417233, -2.29287)
-mesh = ExtResource("2_8ah0j")
+[node name="GlobalUI" parent="." instance=ExtResource("5_0f8fb")]
 
-[node name="CoinCarpet" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.885097, 0, 0, 0, 0.885097, 0, 0, 0, 0.885097, 0, 0.058161676, -2.8373563)
-mesh = ExtResource("3_kmqgc")
+[node name="ShopShelf" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7006216, -5.293378)
+mesh = ExtResource("3_hxjiy")
 
-[node name="UpgradeCarpet" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.885097, 0, 0, 0, 0.885097, 0, 0, 0, 0.885097, 0, 0.058568113, 1.0243688)
-mesh = ExtResource("3_kmqgc")
+[node name="ShopWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.9294162, -5.696075)
+mesh = ExtResource("4_ya44s")
 
-[node name="RelicCarpet" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.885097, 0, 0, 0, 0.885097, 0, 0, 0, 0.885097, 0, 0.058161676, 5.113982)
-mesh = ExtResource("3_kmqgc")
-
-[node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
-mesh = ExtResource("4_kmqgc")
+[node name="ShopTable" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.017591119, -2.5242217)
+mesh = ExtResource("5_hhiwf")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.241, 0)
-projection = 1
-size = 14.61
+transform = Transform3D(1, 0, 0, 0, 0.9997187, 0.023716785, 0, -0.023716785, 0.9997187, 0, 1.9803946, 0.4990542)
+fov = 52.5
 
-[node name="GlobalUI" parent="." instance=ExtResource("5_0f8fb")]
+[node name="Shopkeeper" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.008915901, 1.9134233, -3.220599)
+sprite_frames = SubResource("SpriteFrames_48b30")
+animation = &"idle"
+autoplay = "idle"
