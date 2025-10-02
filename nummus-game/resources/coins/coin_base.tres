@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Coin" load_steps=3 format=3 uid="uid://d35ga8hv2jlvh"]
+[gd_resource type="Resource" script_class="Coin_Stats" load_steps=3 format=3 uid="uid://d35ga8hv2jlvh"]
 
 [ext_resource type="Script" uid="uid://c1jkf850n711e" path="res://resources/coins/coin_class.gd" id="1_3i1ip"]
 [ext_resource type="Texture2D" uid="uid://dtrmefh7wqlh6" path="res://assets/2d/fbcoin_64fitted.png" id="2_j5nci"]

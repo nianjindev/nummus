@@ -9,6 +9,7 @@ func spawn_base_coin():
 	current_coin = coin_base.instantiate()
 	current_coin.coin_id = ResourceLoader.load(Constants.COINS.base)
 	SceneManager.current_scene.add_child.call_deferred(current_coin)
+	Inventory.add_item(current_coin)
 
 func spawn_base_enemy():
 	current_enemy = enemy_base.instantiate()

@@ -1,5 +1,5 @@
 extends Resource
-class_name Coin
+class_name CoinStats
 
 @export var coin_texture: Texture2D
 @export var coin_effect: String

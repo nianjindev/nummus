@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name Coin
+
 @export var damage: int = 1
 @export var level: int = 1
 @export var ability: String = "none"
@@ -8,7 +10,7 @@ extends Node3D
 var sides = ["heads", "tails"]
 var weights = PackedFloat32Array([1,1])
 
-@export var coin_id: Coin
+@export var coin_id: CoinStats
 var coin_func: String
 var coin_stats: Dictionary
 
