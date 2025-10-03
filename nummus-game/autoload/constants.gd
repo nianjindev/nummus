@@ -8,6 +8,14 @@ const SCENE_PATHS: Dictionary[String, String] = {
 
 }
 
+const UI_PATHS: Dictionary[String, String] = {
+	"global_ui_path":"res://gui/global_ui.tscn",
+	"game_ui_path":"res://gui/game_ui.tscn",
+	"skill_check_path":"res://gui/skill_check.tscn",
+	"debug_menu":"res://gui/debug.tscn",
+	"main_menu":"uid://bydht7j8q5mvr"
+}
+
 const COINS: Dictionary = {
 	"base":"uid://d35ga8hv2jlvh",
 	"1787":"uid://bgh5v2n073rl7",
