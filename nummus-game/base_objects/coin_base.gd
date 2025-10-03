@@ -11,8 +11,8 @@ var sides = ["heads", "tails"]
 var weights = PackedFloat32Array([1,1])
 
 @export var coin_id: CoinStats
-var coin_func: String
 var coin_stats: Dictionary
+var coin_effect: RefCounted
 
 func _ready():
 	# flip signal
@@ -22,8 +22,8 @@ func _ready():
 	coin_mesh.material_override = StandardMaterial3D.new()
 	coin_mesh.material_override.albedo_texture = coin_id.coin_texture
 	coin_mesh.material_override.texture_filter = 0
-	coin_func = coin_id.coin_effect
 	coin_stats = coin_id.coin_stats
+	coin_effect = coin_id.effect.new()
 
 	# transform me
 	position = Vector3(0.367, 0.398, -0.017)
@@ -34,11 +34,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
 	match anim_name:
 		"flip_heads_success":
-			CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.HEADS)
+			coin_effect.effect(coin_stats, Sides.HEADS)
 		"flip_heads_fail": # IDEA: all fails do misfortune
 			return
 		"flip_tails_success":
-			CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.TAILS)
+			coin_effect.effect(coin_stats, Sides.TAILS)
 		"flip_tails_fail":
 			return
 
@@ -66,7 +66,6 @@ func set_weights(state:String):
 		
 func flip(state: String):
 	if state == "skip":
-		CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.SKIP)
 		return
 	else:
 		Signalbus.toggle_ui.emit(false)
