@@ -55,7 +55,7 @@ mesh = ExtResource("1_yxe34")
 [node name="GlobalUI" parent="." instance=ExtResource("5_0f8fb")]
 
 [node name="ShopShelf" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7006216, -5.293378)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.77890253, 2.7006216, -5.293378)
 mesh = ExtResource("3_hxjiy")
 
 [node name="ShopWall" type="MeshInstance3D" parent="."]
@@ -71,7 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9997187, 0.023716785, 0, -0.023716785, 0.9
 fov = 52.5
 
 [node name="Shopkeeper" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.008915901, 1.9134233, -3.220599)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.1691031, 1.9134233, -3.220599)
 sprite_frames = SubResource("SpriteFrames_48b30")
 animation = &"idle"
 autoplay = "idle"
