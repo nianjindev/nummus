@@ -7,6 +7,12 @@ var max_health: int = 20
 
 var in_favor = false # winning the skill check apparently
 
+var max_fortune: int = 100
+var fortune: int = 0
+
+var max_misfortune: int = 100
+var misfortune: int = 0
+
 # signals that interact with GlobalUI
 signal health_changed
 signal money_changed
