@@ -1,6 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=11 format=3 uid="uid://nv30vjbkrio1"]
 
-[ext_resource type="Script" uid="uid://b67fiai3w6bis" path="res://gui/coin_flip_buttons.gd" id="1_vdk76"]
+[ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
+[ext_resource type="Texture2D" uid="uid://bt4k6s7mesjg5" path="res://assets/2d/mass_GUI.png" id="2_j17tf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j17tf"]
+atlas = ExtResource("2_j17tf")
+region = Rect2(324, 715, 34, 316)
+margin = Rect2(10, 7, 0, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lqx5y"]
+load_path = "res://.godot/imported/mass_GUI.png-461b187129df5243b54d668face36ea8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hojdg"]
+atlas = SubResource("CompressedTexture2D_lqx5y")
+region = Rect2(67, 708, 54, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqx5y"]
+atlas = ExtResource("2_j17tf")
+region = Rect2(226, 715, 34, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24vp8"]
+atlas = SubResource("CompressedTexture2D_lqx5y")
+region = Rect2(151, 708, 54, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubwhq"]
+atlas = ExtResource("2_j17tf")
+region = Rect2(275, 715, 34, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri5v8"]
+atlas = ExtResource("2_j17tf")
+region = Rect2(65, 637, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2737"]
+atlas = ExtResource("2_j17tf")
+region = Rect2(151, 637, 56, 56)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -10,12 +43,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_lqx5y")
 
 [node name="CoinFlipButtons" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_vdk76")
 
 [node name="Heads" type="Button" parent="CoinFlipButtons"]
 layout_mode = 1
@@ -65,6 +98,71 @@ grow_vertical = 0
 focus_mode = 0
 text = "Skip"
 
-[connection signal="pressed" from="CoinFlipButtons/Heads" to="CoinFlipButtons" method="_on_heads_pressed"]
-[connection signal="pressed" from="CoinFlipButtons/Tails" to="CoinFlipButtons" method="_on_tails_pressed"]
-[connection signal="pressed" from="CoinFlipButtons/Skip" to="CoinFlipButtons" method="_on_skip_pressed"]
+[node name="Bars" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -490.0
+offset_right = 211.0
+grow_vertical = 0
+
+[node name="FortuneBar" type="TextureProgressBar" parent="Bars"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -110.5
+offset_right = -8.5
+offset_bottom = 219.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 25.0
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_j17tf")
+texture_over = SubResource("AtlasTexture_hojdg")
+texture_progress = SubResource("AtlasTexture_lqx5y")
+texture_progress_offset = Vector2(10, 7)
+
+[node name="MisfortuneBar" type="TextureProgressBar" parent="Bars"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 35.5
+offset_top = -110.5
+offset_right = 89.5
+offset_bottom = 219.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 86.0
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_j17tf")
+texture_over = SubResource("AtlasTexture_24vp8")
+texture_progress = SubResource("AtlasTexture_ubwhq")
+texture_progress_offset = Vector2(10, 7)
+
+[node name="FortuneFace" type="TextureRect" parent="Bars"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 67.0
+offset_right = 97.0
+offset_bottom = 123.0
+texture = SubResource("AtlasTexture_ri5v8")
+
+[node name="MisfortuneFace" type="TextureRect" parent="Bars"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 68.0
+offset_right = 196.0
+offset_bottom = 124.0
+texture = SubResource("AtlasTexture_l2737")
+
+[connection signal="pressed" from="CoinFlipButtons/Heads" to="." method="_on_heads_pressed"]
+[connection signal="pressed" from="CoinFlipButtons/Tails" to="." method="_on_tails_pressed"]
+[connection signal="pressed" from="CoinFlipButtons/Skip" to="." method="_on_skip_pressed"]

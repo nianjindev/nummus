@@ -30,7 +30,7 @@ func _ready():
 	scale = Vector3(0.1,0.1,0.1)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	Signalbus.toggle_ui.emit(true)
+	Signalbus.toggle_game_ui.emit(true)
 	
 	match anim_name:
 		"flip_heads_success":
@@ -69,7 +69,7 @@ func flip(state: String):
 		CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.SKIP)
 		return
 	else:
-		Signalbus.toggle_ui.emit(false)
+		Signalbus.toggle_game_ui.emit(false)
 		
 	var rng = RandomNumberGenerator.new()
 	print("Got signal coin_flipped")
