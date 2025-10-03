@@ -39,7 +39,9 @@ func _on_current_enemy_defeated():
 	# open win menu
 
 func _on_fortune_changed(add: bool, amount: int, update_ui: bool):
-	if add:
+	if Globals.fortune + amount > Globals.max_fortune or Globals.fortune + amount < 0 or amount > Globals.max_fortune:
+		Globals.fortune = Globals.fortune
+	elif add:
 		Globals.fortune += amount
 	else:
 		Globals.fortune = amount
@@ -48,7 +50,9 @@ func _on_fortune_changed(add: bool, amount: int, update_ui: bool):
 		update_fortune_bar_ui.emit()
 		
 func _on_misfortune_changed(add: bool, amount: int, update_ui: bool):
-	if add:
+	if Globals.misfortune + amount > Globals.max_misfortune or Globals.misfortune + amount < 0 or amount > Globals.max_misfortune:
+		Globals.misfortune = Globals.max_misfortune
+	elif add:
 		Globals.misfortune += amount
 	else:
 		Globals.misfortune = amount

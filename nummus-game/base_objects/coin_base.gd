@@ -30,16 +30,20 @@ func _ready():
 	scale = Vector3(0.1,0.1,0.1)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	Signalbus.toggle_game_ui.emit(true)
+	Signalbus.toggle_coin_flip_ui.emit(true)
 	
 	match anim_name:
 		"flip_heads_success":
 			CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.HEADS)
 		"flip_heads_fail": # IDEA: all fails do misfortune
+			Signalbus.change_fortune_and_update_ui.emit(true, 20, true)
+			Signalbus.change_misfortune_and_update_ui.emit(true, 20, true)
 			return
 		"flip_tails_success":
 			CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.TAILS)
 		"flip_tails_fail":
+			Signalbus.change_fortune_and_update_ui.emit(true, 20, true)
+			Signalbus.change_misfortune_and_update_ui.emit(true, 20, true)
 			return
 
 func check_flipped_side(flipped_side: int, state:String):
@@ -50,6 +54,7 @@ func check_flipped_side(flipped_side: int, state:String):
 			print("Correct")
 		else:
 			animation_player.play("flip_heads_fail")
+			
 			print("Wrong")
 	else:
 		if state == "tails":
@@ -57,7 +62,10 @@ func check_flipped_side(flipped_side: int, state:String):
 			print("Correct")
 		else:
 			animation_player.play("flip_tails_fail")
+			
 			print("Wrong")
+	
+
 	
 func set_weights(state:String):
 	#If player completes skill check, increases their chosen side's weight
@@ -69,7 +77,7 @@ func flip(state: String):
 		CoinEffects.coin_call.emit(coin_func, coin_stats, Sides.SKIP)
 		return
 	else:
-		Signalbus.toggle_game_ui.emit(false)
+		Signalbus.toggle_coin_flip_ui.emit(false)
 		
 	var rng = RandomNumberGenerator.new()
 	print("Got signal coin_flipped")
