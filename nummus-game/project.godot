@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="nummus-game"
-run/main_scene="uid://bydht7j8q5mvr"
+run/main_scene="uid://ch6m86xmmbhek"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,13 +20,13 @@ config/icon="res://icon.svg"
 SceneManager="*res://autoload/scene_manager.gd"
 Globals="*res://autoload/globals.gd"
 Signalbus="*res://autoload/signalbus.gd"
-CoinEffects="*res://autoload/coin_effects.gd"
 ObjectManager="*res://autoload/object_manager.gd"
 GuiManager="*res://autoload/gui_manager.gd"
 Sides="*res://autoload/sides.gd"
 Constants="*res://autoload/constants.gd"
 Inventory="*res://autoload/inventory.gd"
 RecursiveEffect="*res://autoload/recursive_effect.gd"
+CommonEffects="*res://autoload/coin_effects.gd"
 
 [display]
 
@@ -68,4 +68,5 @@ reload={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_repeat=1
 textures/default_filters/use_nearest_mipmap_filter=true
