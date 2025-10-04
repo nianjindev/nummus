@@ -5,3 +5,5 @@ func effect(stats: Dictionary, side):
 		CommonEffects.do_damage(stats.damage)
 	elif side == Sides.TAILS:
 		CommonEffects.heal_health(stats.heal)
+func pre_effect(_stats: Dictionary):
+	pass
