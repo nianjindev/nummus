@@ -17,9 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SceneManager="*res://autoload/scene_manager.gd"
 Globals="*res://autoload/globals.gd"
 Signalbus="*res://autoload/signalbus.gd"
 ObjectManager="*res://autoload/object_manager.gd"
+GuiManager="*res://autoload/gui_manager.gd"
 Sides="*res://autoload/sides.gd"
 Constants="*res://autoload/constants.gd"
 Inventory="*res://autoload/inventory.gd"
