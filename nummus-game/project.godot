@@ -26,6 +26,7 @@ GuiManager="*res://autoload/gui_manager.gd"
 Sides="*res://autoload/sides.gd"
 Constants="*res://autoload/constants.gd"
 Inventory="*res://autoload/inventory.gd"
+RecursiveEffect="*res://autoload/recursive_effect.gd"
 
 [display]
 
