@@ -17,6 +17,10 @@ var misfortune: int = 0
 signal health_changed
 signal money_changed
 
+# luck
+var head_weight: float = 0.5
+var tail_weight: float = 0.5
+
 
 func change_money(add: bool, amount: int):
 	if add:
@@ -33,3 +37,7 @@ func change_health(add: bool, amount: int):
 	if health > max_health:
 		health = max_health
 	health_changed.emit()
+
+func reset_weights():
+	head_weight = 0.5
+	tail_weight = 0.5

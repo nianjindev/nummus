@@ -3,7 +3,8 @@ class_name EffectOldAbe extends Effect
 func effect(stats: Dictionary, side):
 	if side == Sides.HEADS:
 		CommonEffects.do_damage(stats.damage)
-	elif side == Sides.TAILS:
-		CommonEffects.heal_health(stats.heal)
 func pre_effect(_stats: Dictionary):
-	pass
+	Globals.head_weight = 1
+	Globals.tail_weight = 0
+func recurring(_stats: Dictionary):
+	pass # Don't change if there is no recurring effect

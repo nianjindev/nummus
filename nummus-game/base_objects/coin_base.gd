@@ -2,14 +2,15 @@ extends Node3D
 
 class_name Coin
 
-@export var damage: int = 1
-@export var level: int = 1
-@export var ability: String = "none"
+# children
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var coin_mesh: MeshInstance3D = $CoinMesh
-var sides = ["heads", "tails"]
-var weights = PackedFloat32Array([1,1])
 
+# flipping
+var sides = [Sides.HEADS, Sides.TAILS]
+var weights: Array[float] = [0.5, 0.5]
+
+# coin stats
 @export var coin_id: CoinStats
 var coin_stats: Dictionary
 var coin_effect: RefCounted
@@ -45,11 +46,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			Signalbus.change_fortune_and_update_ui.emit(true, 20, true)
 			Signalbus.change_misfortune_and_update_ui.emit(true, 20, true)
 			return
+	
+	Globals.reset_weights()
 
-func check_flipped_side(flipped_side: int, state:String):
+func check_flipped_side(flipped_side: int, state: int):
 	#flipped side = index returned by weighted array
-	if sides[flipped_side] == "heads":
-		if state == "heads":
+	if sides[flipped_side] == Sides.HEADS:
+		if state == Sides.HEADS:
 			animation_player.play("flip_heads_success")
 			print("Correct")
 		else:
@@ -57,7 +60,7 @@ func check_flipped_side(flipped_side: int, state:String):
 			
 			print("Wrong")
 	else:
-		if state == "tails":
+		if state == Sides.TAILS:
 			animation_player.play("flip_tails_success")
 			print("Correct")
 		else:
@@ -67,24 +70,18 @@ func check_flipped_side(flipped_side: int, state:String):
 	
 
 	
-func set_weights(state:String):
-	#If player completes skill check, increases their chosen side's weight
-	if Globals.in_favor:
-		weights.set(sides.find(state), 2) 
+func set_weights():
+	weights.set(sides.find(Sides.HEADS), Globals.head_weight)
+	weights.set(sides.find(Sides.TAILS), Globals.tail_weight)
 		
-func flip(state: String):
-	if state == "skip":
+func flip(state: int):
+	if state == Sides.SKIP:
 		return
 	else:
 		Signalbus.toggle_coin_flip_ui.emit(false)
+		coin_effect.pre_effect(coin_stats)
 		
 	var rng = RandomNumberGenerator.new()
-	print("Got signal coin_flipped")
-	Signalbus.skill_check_begin.emit(50, 180, 4)
-	await Signalbus.skill_check_finish
-	print("skill check finished, state %s" % state)
-		
-	set_weights(state)
+	set_weights()
 	
 	check_flipped_side(rng.rand_weighted(weights), state)
-	

@@ -12,14 +12,22 @@ grow_vertical = 2
 script = ExtResource("1_fvluo")
 metadata/_edit_lock_ = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3078085, 0.30905578, 0.5554565, 1)
+
 [node name="Level1" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -417.0
+offset_top = -400.0
 offset_right = 300.0
-offset_bottom = -17.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 48
 text = "Level 1"
@@ -51,7 +59,23 @@ offset_top = -400.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 48
-text = "Level 3"
+text = "Boss"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -478.0
+offset_top = -60.0
+offset_right = 478.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 136
+text = "Circle: Limbo"
 
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]

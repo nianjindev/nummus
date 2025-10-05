@@ -7,4 +7,7 @@ func effect(stats: Dictionary, side):
 		CommonEffects.heal_health(stats.heal)
 
 func pre_effect(_stats: Dictionary):
-	pass # Leave blank if there is no pre effect
+	pass # Don't change if there is no pre effect
+
+func recurring(_stats: Dictionary):
+	pass # Don't change if there is no recurring effect
