@@ -1,39 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=12 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
-[ext_resource type="Texture2D" uid="uid://bt4k6s7mesjg5" path="res://assets/2d/mass_GUI.png" id="2_j17tf"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j17tf"]
-atlas = ExtResource("2_j17tf")
-region = Rect2(324, 715, 34, 316)
-margin = Rect2(10, 7, 0, 0)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lqx5y"]
-load_path = "res://.godot/imported/mass_GUI.png-461b187129df5243b54d668face36ea8.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hojdg"]
-atlas = SubResource("CompressedTexture2D_lqx5y")
-region = Rect2(67, 708, 54, 330)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lqx5y"]
-atlas = ExtResource("2_j17tf")
-region = Rect2(226, 715, 34, 316)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_24vp8"]
-atlas = SubResource("CompressedTexture2D_lqx5y")
-region = Rect2(151, 708, 54, 330)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubwhq"]
-atlas = ExtResource("2_j17tf")
-region = Rect2(275, 715, 34, 316)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ri5v8"]
-atlas = ExtResource("2_j17tf")
-region = Rect2(65, 637, 56, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2737"]
-atlas = ExtResource("2_j17tf")
-region = Rect2(151, 637, 56, 56)
+[ext_resource type="Texture2D" uid="uid://25p6o6gq0bqn" path="res://assets/2d/bar_under_small.png" id="2_jyy5j"]
+[ext_resource type="Texture2D" uid="uid://1gdn7m8wesjy" path="res://assets/2d/bar_over_small.png" id="3_bvxe6"]
+[ext_resource type="Texture2D" uid="uid://bqrn807x3kby1" path="res://assets/2d/progress_fortune.png" id="4_w86w5"]
+[ext_resource type="Texture2D" uid="uid://3erwkid1bywu" path="res://assets/2d/progress_misfortune.png" id="5_meomy"]
+[ext_resource type="Texture2D" uid="uid://g7vd2mnpnmic" path="res://assets/2d/fortune_face.png" id="6_f1box"]
+[ext_resource type="Texture2D" uid="uid://clg6eg705e2lx" path="res://assets/2d/misfortune_face.png" id="7_4oujh"]
+[ext_resource type="Texture2D" uid="uid://bci38xaomk08c" path="res://assets/2d/bar_under_big.png" id="8_ha3dy"]
+[ext_resource type="Texture2D" uid="uid://jch5sbhi1vs0" path="res://assets/2d/bar_over_big.png" id="9_mxtsb"]
+[ext_resource type="Texture2D" uid="uid://bronhad3508ye" path="res://assets/2d/progress_health.png" id="10_4u1xr"]
+[ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/under_money.png" id="11_jvsgh"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -98,68 +75,111 @@ grow_vertical = 0
 focus_mode = 0
 text = "Skip"
 
-[node name="Bars" type="Control" parent="."]
+[node name="PlayerInterface" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FortuneBars" type="Control" parent="PlayerInterface"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -490.0
-offset_right = 211.0
+offset_left = 18.0
+offset_top = -332.0
+offset_right = 688.0
+offset_bottom = -9.0
 grow_vertical = 0
 
-[node name="FortuneBar" type="TextureProgressBar" parent="Bars"]
+[node name="FortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.5
-offset_top = -110.5
-offset_right = -8.5
-offset_bottom = 219.5
+offset_left = -302.0
+offset_top = 50.5
+offset_right = 64.0
+offset_bottom = 85.5
 grow_horizontal = 2
 grow_vertical = 2
-fill_mode = 3
-texture_under = SubResource("AtlasTexture_j17tf")
-texture_over = SubResource("AtlasTexture_hojdg")
-texture_progress = SubResource("AtlasTexture_lqx5y")
-texture_progress_offset = Vector2(10, 7)
+value = 24.0
+texture_under = ExtResource("2_jyy5j")
+texture_over = ExtResource("3_bvxe6")
+texture_progress = ExtResource("4_w86w5")
+texture_progress_offset = Vector2(8, 6)
 
-[node name="MisfortuneBar" type="TextureProgressBar" parent="Bars"]
+[node name="MisfortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 35.5
-offset_top = -110.5
-offset_right = 89.5
-offset_bottom = 219.5
+offset_left = -302.0
+offset_top = 93.5
+offset_right = 64.0
+offset_bottom = 128.5
 grow_horizontal = 2
 grow_vertical = 2
-fill_mode = 3
-texture_under = SubResource("AtlasTexture_j17tf")
-texture_over = SubResource("AtlasTexture_24vp8")
-texture_progress = SubResource("AtlasTexture_ubwhq")
-texture_progress_offset = Vector2(10, 7)
+value = 27.0
+texture_under = ExtResource("2_jyy5j")
+texture_over = ExtResource("3_bvxe6")
+texture_progress = ExtResource("5_meomy")
+texture_progress_offset = Vector2(8, 6)
 
-[node name="FortuneFace" type="TextureRect" parent="Bars"]
+[node name="FortuneFace" type="TextureRect" parent="PlayerInterface/FortuneBars"]
 layout_mode = 0
-offset_left = 41.0
-offset_top = 67.0
-offset_right = 97.0
-offset_bottom = 123.0
-texture = SubResource("AtlasTexture_ri5v8")
+offset_left = 405.0
+offset_top = 212.0
+offset_right = 436.0
+offset_bottom = 244.0
+texture = ExtResource("6_f1box")
 
-[node name="MisfortuneFace" type="TextureRect" parent="Bars"]
+[node name="MisfortuneFace" type="TextureRect" parent="PlayerInterface/FortuneBars"]
 layout_mode = 0
-offset_left = 140.0
-offset_top = 68.0
-offset_right = 196.0
-offset_bottom = 124.0
-texture = SubResource("AtlasTexture_l2737")
+offset_left = 405.0
+offset_top = 257.0
+offset_right = 436.0
+offset_bottom = 289.0
+texture = ExtResource("7_4oujh")
+
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerInterface"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 862.0
+offset_right = 596.0
+offset_bottom = 952.0
+value = 16.0
+texture_under = ExtResource("8_ha3dy")
+texture_over = ExtResource("9_mxtsb")
+texture_progress = ExtResource("10_4u1xr")
+texture_progress_offset = Vector2(11, 17)
+
+[node name="MoneyBackdrop" type="TextureRect" parent="PlayerInterface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -493.0
+offset_top = 421.0
+offset_right = -376.0
+offset_bottom = 498.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_jvsgh")
 
 [connection signal="pressed" from="CoinFlipButtons/Heads" to="." method="_on_heads_pressed"]
 [connection signal="pressed" from="CoinFlipButtons/Tails" to="." method="_on_tails_pressed"]
