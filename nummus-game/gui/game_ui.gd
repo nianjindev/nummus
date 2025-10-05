@@ -1,12 +1,6 @@
 extends Control
 
-@onready var fortune_bar: TextureProgressBar = $Bars/FortuneBar
-@onready var misfortune_bar: TextureProgressBar = $Bars/MisfortuneBar
 @onready var coin_flip_buttons: Control = $CoinFlipButtons
-@onready var bars: Control = $Bars
-
-
-
 
 func _ready():
 	Signalbus.toggle_game_ui.connect(toggle_all)
