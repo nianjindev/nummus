@@ -5,6 +5,8 @@ class_name Coin
 # children
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var coin_mesh: MeshInstance3D = $CoinMesh
+@onready var hoverable: Node3D = $Hoverable
+@onready var area: Area3D = $Area3D
 
 # flipping
 var sides = [Sides.HEADS, Sides.TAILS]
@@ -38,6 +40,11 @@ func _ready():
 
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0
+
+	# hoverable
+	area.mouse_entered.connect(toggle_visible.bind(true))
+	area.mouse_entered.connect(print.bind("Hello"))
+	area.mouse_exited.connect(toggle_visible.bind(false))
 
 	# transform me
 	if current_state == Constants.display_type.PLAY:
@@ -101,3 +108,9 @@ func flip(state: int):
 	set_weights()
 	
 	check_flipped_side(rng.rand_weighted(weights), state)
+
+
+
+func toggle_visible(on: bool):
+	if current_state == Constants.display_type.SHOP:
+		hoverable.visible = on
