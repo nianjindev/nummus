@@ -12,11 +12,13 @@ signal level_loaded
 ######## Change Values ########
 signal change_fortune_and_update_ui(add: bool, amount: int, update_ui: bool)
 signal change_misfortune_and_update_ui(add: bool, amount: int, update_ui: bool)
+signal change_health_and_update_ui(add: bool, amount: int, update_ui: bool)
 signal change_enemy_health(add: bool, amount: int)
 
 ######## UI ########
 signal update_fortune_bar_ui() 
 signal update_misfortune_bar_ui()
+signal update_health_bar_ui()
 signal toggle_game_ui(show: bool)
 signal toggle_coin_flip_ui(show: bool)
 signal toggle_bar_ui(show: bool)
@@ -27,6 +29,7 @@ func _ready():
 	current_enemy_defeated.connect(_on_current_enemy_defeated)
 	change_fortune_and_update_ui.connect(_on_fortune_changed)
 	change_misfortune_and_update_ui.connect(_on_misfortune_changed)
+	change_health_and_update_ui.connect(_on_health_changed)
 
 func _on_skill_check(success: bool):
 	if success:
@@ -60,5 +63,14 @@ func _on_misfortune_changed(add: bool, amount: int, update_ui: bool):
 	if update_ui:
 		update_misfortune_bar_ui.emit()
 		
+func _on_health_changed(add: bool, amount: int, update_ui: bool):
+	if Globals.health + amount > Globals.max_health or Globals.health + amount < 0 or amount > Globals.max_health:
+		Globals.health = Globals.health
+	elif add:
+		Globals.health += amount
+	else:
+		Globals.health = amount
 	
+	if update_ui:
+		update_health_bar_ui.emit()
 	
