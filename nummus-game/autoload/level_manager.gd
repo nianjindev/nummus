@@ -2,4 +2,4 @@ extends Node
 
 func next_stage():
 	if SceneManager.current_scene.name == "BaseLevel":
-		print("hello")
+		SceneManager.goto_scene(Constants.SCENE_PATHS.shop)

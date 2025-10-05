@@ -83,9 +83,6 @@ transform = Transform3D(0.81101, 0, 0, 0, 0.81101, 0, 0, 0, 0.81101, 0, 0, 0)
 mesh = ExtResource("1_yxe34")
 skeleton = NodePath("../..")
 
-[node name="ShopShelf" parent="Models" instance=ExtResource("2_hxjiy")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6964942, 2.1363757, -4.366078)
-
 [node name="ShopWall" type="MeshInstance3D" parent="Models"]
 transform = Transform3D(-4.371139e-08, 0, -1.6295767, 0, 2.1993814, 0, 1, 0, -7.123106e-08, 0, 1.9294162, -5.696075)
 mesh = ExtResource("4_ya44s")
@@ -111,3 +108,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_orwns")
 }
 autoplay = "idle"
+
+[node name="ShopShelf" parent="." instance=ExtResource("2_hxjiy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6964942, 2.1363757, -4.366078)

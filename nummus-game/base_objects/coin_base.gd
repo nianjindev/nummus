@@ -37,13 +37,13 @@ func _ready():
 	coin_stats = coin_id.coin_stats
 	coin_effect = coin_id.effect.new()
 	self.name = coin_id.name
+	hoverable.label.text = coin_id.description
 
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0
 
 	# hoverable
 	area.mouse_entered.connect(toggle_visible.bind(true))
-	area.mouse_entered.connect(print.bind("Hello"))
 	area.mouse_exited.connect(toggle_visible.bind(false))
 
 	# transform me
