@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cef8ru8rhxwv"]
+
+[ext_resource type="ArrayMesh" uid="uid://bylbmwndumjtv" path="res://assets/3d/shop_shelf.obj" id="1_21c6i"]
+[ext_resource type="Script" uid="uid://ctenm1hghy2l4" path="res://base_objects/shop_shelf.gd" id="1_lydsj"]
+
+[node name="ShopShelf" type="Node3D"]
+script = ExtResource("1_lydsj")
+
+[node name="ShelfModel" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_21c6i")
