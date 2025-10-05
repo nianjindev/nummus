@@ -54,7 +54,7 @@ mesh = ExtResource("1_yxe34")
 [node name="GlobalUI" parent="." instance=ExtResource("5_0f8fb")]
 
 [node name="ShopShelf" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.97519314, 1.681112, -5.293378)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6964942, 2.1363757, -4.366078)
 mesh = ExtResource("3_hxjiy")
 
 [node name="ShopWall" type="MeshInstance3D" parent="."]
