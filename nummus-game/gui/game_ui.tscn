@@ -1,16 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=2 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
-[ext_resource type="Texture2D" uid="uid://25p6o6gq0bqn" path="res://assets/2d/bar_under_small.png" id="2_jyy5j"]
-[ext_resource type="Texture2D" uid="uid://1gdn7m8wesjy" path="res://assets/2d/bar_over_small.png" id="3_bvxe6"]
-[ext_resource type="Texture2D" uid="uid://bqrn807x3kby1" path="res://assets/2d/progress_fortune.png" id="4_w86w5"]
-[ext_resource type="Texture2D" uid="uid://3erwkid1bywu" path="res://assets/2d/progress_misfortune.png" id="5_meomy"]
-[ext_resource type="Texture2D" uid="uid://g7vd2mnpnmic" path="res://assets/2d/fortune_face.png" id="6_f1box"]
-[ext_resource type="Texture2D" uid="uid://clg6eg705e2lx" path="res://assets/2d/misfortune_face.png" id="7_4oujh"]
-[ext_resource type="Texture2D" uid="uid://bci38xaomk08c" path="res://assets/2d/bar_under_big.png" id="8_ha3dy"]
-[ext_resource type="Texture2D" uid="uid://jch5sbhi1vs0" path="res://assets/2d/bar_over_big.png" id="9_mxtsb"]
-[ext_resource type="Texture2D" uid="uid://bronhad3508ye" path="res://assets/2d/progress_health.png" id="10_4u1xr"]
-[ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/under_money.png" id="11_jvsgh"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -74,109 +64,6 @@ grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 text = "Skip"
-
-[node name="PlayerInterface" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -935.0
-offset_top = -532.0
-offset_right = -200.0
-offset_bottom = -256.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="FortuneBars" type="Control" parent="PlayerInterface"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = -332.0
-offset_right = 688.0
-offset_bottom = -9.0
-grow_vertical = 0
-
-[node name="FortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -344.0
-offset_top = 43.5
-offset_right = 115.0
-offset_bottom = 90.5
-grow_horizontal = 2
-grow_vertical = 2
-value = 24.0
-texture_under = ExtResource("2_jyy5j")
-texture_over = ExtResource("3_bvxe6")
-texture_progress = ExtResource("4_w86w5")
-
-[node name="MisfortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -344.0
-offset_top = 101.5
-offset_right = 115.0
-offset_bottom = 148.5
-grow_horizontal = 2
-grow_vertical = 2
-value = 64.0
-texture_under = ExtResource("2_jyy5j")
-texture_over = ExtResource("3_bvxe6")
-texture_progress = ExtResource("5_meomy")
-
-[node name="FortuneFace" type="TextureRect" parent="PlayerInterface/FortuneBars"]
-layout_mode = 0
-offset_left = 452.0
-offset_top = 209.0
-offset_right = 492.0
-offset_bottom = 251.0
-texture = ExtResource("6_f1box")
-
-[node name="MisfortuneFace" type="TextureRect" parent="PlayerInterface/FortuneBars"]
-layout_mode = 0
-offset_left = 454.0
-offset_top = 265.0
-offset_right = 495.0
-offset_bottom = 307.0
-texture = ExtResource("7_4oujh")
-
-[node name="HealthBar" type="TextureProgressBar" parent="PlayerInterface"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -259.5
-offset_right = 725.0
-offset_bottom = -140.5
-grow_vertical = 0
-value = 16.0
-texture_under = ExtResource("8_ha3dy")
-texture_over = ExtResource("9_mxtsb")
-texture_progress = ExtResource("10_4u1xr")
-
-[node name="MoneyBackdrop" type="TextureRect" parent="PlayerInterface"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 525.0
-offset_top = -124.5
-offset_right = 715.0
-offset_bottom = -22.5
-grow_vertical = 0
-texture = ExtResource("11_jvsgh")
 
 [connection signal="pressed" from="CoinFlipButtons/Heads" to="." method="_on_heads_pressed"]
 [connection signal="pressed" from="CoinFlipButtons/Tails" to="." method="_on_tails_pressed"]

@@ -11,9 +11,6 @@ extends Control
 func _ready():
 	Signalbus.toggle_game_ui.connect(toggle_all)
 	Signalbus.toggle_coin_flip_ui.connect(_on_coin_flip_ui_toggled)
-	Signalbus.toggle_bar_ui.connect(_on_bar_ui_toggled)
-	Signalbus.update_fortune_bar_ui.connect(_on_fortune_bar_value_changed)
-	Signalbus.update_misfortune_bar_ui.connect(_on_misfortune_bar_value_changed)
 	
 
 
@@ -23,18 +20,6 @@ func toggle_all(visible: bool):
 
 func _on_coin_flip_ui_toggled(visible: bool):
 	coin_flip_buttons.visible = visible
-	
-func _on_bar_ui_toggled(visible: bool):
-	bars.visible = visible
-	
-
-
-#Changing UI Values
-func _on_fortune_bar_value_changed():
-	fortune_bar.value = Globals.fortune
-		
-func _on_misfortune_bar_value_changed():
-	misfortune_bar.value = Globals.misfortune
 	
 #Coin Flipping Handling
 func _on_heads_pressed() -> void:

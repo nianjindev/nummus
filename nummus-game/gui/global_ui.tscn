@@ -1,18 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgkq1874nru5o"]
+[gd_scene load_steps=13 format=3 uid="uid://cgkq1874nru5o"]
 
-[ext_resource type="Script" uid="uid://iymx7fn3vsss" path="res://gui/money.gd" id="1_b2grt"]
-[ext_resource type="Script" uid="uid://b0d6dmsqn3rcu" path="res://gui/health.gd" id="2_22env"]
-[ext_resource type="Texture2D" uid="uid://bjdkwvpqaeul0" path="res://assets/2d/placeholder_healthbar.png" id="3_gjitu"]
-[ext_resource type="Texture2D" uid="uid://dpatl1i6460cp" path="res://assets/2d/placeholder_health.png" id="4_af06w"]
+[ext_resource type="Script" uid="uid://4wjymveihx57" path="res://gui/global_ui.gd" id="1_s6kbw"]
 [ext_resource type="Script" uid="uid://bbxm05mjnkk3g" path="res://gui/stage.gd" id="5_t228w"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_36pdv"]
-atlas = ExtResource("3_gjitu")
-region = Rect2(6, 65, 83, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4s7pk"]
-atlas = ExtResource("4_af06w")
-region = Rect2(5.931116, 53.129345, 81.22046, 11.870655)
+[ext_resource type="Texture2D" uid="uid://25p6o6gq0bqn" path="res://assets/2d/bar_under_small.png" id="6_qbh03"]
+[ext_resource type="Texture2D" uid="uid://1gdn7m8wesjy" path="res://assets/2d/bar_over_small.png" id="7_xt8b7"]
+[ext_resource type="Texture2D" uid="uid://bqrn807x3kby1" path="res://assets/2d/progress_fortune.png" id="8_cqrd0"]
+[ext_resource type="Texture2D" uid="uid://3erwkid1bywu" path="res://assets/2d/progress_misfortune.png" id="9_8q2nc"]
+[ext_resource type="Texture2D" uid="uid://g7vd2mnpnmic" path="res://assets/2d/fortune_face.png" id="10_2p7ws"]
+[ext_resource type="Texture2D" uid="uid://clg6eg705e2lx" path="res://assets/2d/misfortune_face.png" id="11_50bnc"]
+[ext_resource type="Texture2D" uid="uid://bci38xaomk08c" path="res://assets/2d/bar_under_big.png" id="12_qujq2"]
+[ext_resource type="Texture2D" uid="uid://jch5sbhi1vs0" path="res://assets/2d/bar_over_big.png" id="13_crqig"]
+[ext_resource type="Texture2D" uid="uid://bronhad3508ye" path="res://assets/2d/progress_health.png" id="14_h1f0h"]
+[ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/under_money.png" id="15_ll540"]
 
 [node name="GlobalUI" type="Control"]
 layout_mode = 3
@@ -22,82 +21,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_s6kbw")
 metadata/_edit_lock_ = true
-
-[node name="Money" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -720.6425
-offset_top = -519.0
-offset_right = -596.3575
-offset_bottom = -379.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_b2grt")
-
-[node name="Amount" type="RichTextLabel" parent="Money"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(1, 1, 0.23921569, 1)
-theme_override_font_sizes/normal_font_size = 56
-text = "$0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Health" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -363.0
-offset_top = -1.0
-offset_right = 371.0
-offset_bottom = 181.0
-grow_horizontal = 2
-script = ExtResource("2_22env")
-
-[node name="HealthProgressBar" type="TextureProgressBar" parent="Health"]
-texture_filter = 1
-layout_mode = 1
-offset_right = 83.0
-offset_bottom = 11.0
-scale = Vector2(8.84, 8.84)
-max_value = 20.0
-value = 16.0
-texture_over = SubResource("AtlasTexture_36pdv")
-texture_progress = SubResource("AtlasTexture_4s7pk")
-
-[node name="HealthText" type="RichTextLabel" parent="Health"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -105.0
-offset_top = -100.0
-offset_right = 105.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 56
-text = "20/20"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Stage" type="Control" parent="."]
 anchors_preset = 0
@@ -122,5 +47,117 @@ offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Next Stage"
+
+[node name="PlayerInterface" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 14.0
+offset_right = 756.0
+offset_bottom = 289.5
+
+[node name="FortuneBars" type="Control" parent="PlayerInterface"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -332.0
+offset_right = 688.0
+offset_bottom = -9.0
+grow_vertical = 0
+
+[node name="FortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = 43.5
+offset_right = 115.0
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 24.0
+texture_under = ExtResource("6_qbh03")
+texture_over = ExtResource("7_xt8b7")
+texture_progress = ExtResource("8_cqrd0")
+
+[node name="MisfortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = 101.5
+offset_right = 115.0
+offset_bottom = 148.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 64.0
+texture_under = ExtResource("6_qbh03")
+texture_over = ExtResource("7_xt8b7")
+texture_progress = ExtResource("9_8q2nc")
+
+[node name="FortuneFace" type="TextureRect" parent="PlayerInterface/FortuneBars"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 209.0
+offset_right = 492.0
+offset_bottom = 251.0
+texture = ExtResource("10_2p7ws")
+
+[node name="MisfortuneFace" type="TextureRect" parent="PlayerInterface/FortuneBars"]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 265.0
+offset_right = 495.0
+offset_bottom = 307.0
+texture = ExtResource("11_50bnc")
+
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerInterface"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -259.5
+offset_right = 725.0
+offset_bottom = -140.5
+grow_vertical = 0
+value = 16.0
+texture_under = ExtResource("12_qujq2")
+texture_over = ExtResource("13_crqig")
+texture_progress = ExtResource("14_h1f0h")
+
+[node name="MoneyBackdrop" type="TextureRect" parent="PlayerInterface"]
+layout_mode = 1
+offset_left = 521.0
+offset_top = 155.0
+offset_right = 711.0
+offset_bottom = 257.0
+texture = ExtResource("15_ll540")
+
+[node name="Amount" type="RichTextLabel" parent="PlayerInterface/MoneyBackdrop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -55.0
+offset_right = 48.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 0.23921569, 1)
+theme_override_font_sizes/normal_font_size = 56
+text = "$0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Stage/NextStage" to="Stage" method="_on_next_stage_pressed"]
