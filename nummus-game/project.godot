@@ -27,6 +27,7 @@ Constants="*res://autoload/constants.gd"
 Inventory="*res://autoload/inventory.gd"
 RecursiveEffect="*res://autoload/recursive_effect.gd"
 CommonEffects="*res://autoload/coin_effects.gd"
+LevelManager="*res://autoload/level_manager.gd"
 
 [display]
 

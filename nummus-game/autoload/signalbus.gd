@@ -39,6 +39,7 @@ func _on_skill_check(success: bool):
 
 func _on_current_enemy_defeated():
 	Signalbus.toggle_game_ui.emit(false)
+	LevelManager.next_stage()
 	# open win menu
 
 func _on_fortune_changed(add: bool, amount: int, update_ui: bool):
