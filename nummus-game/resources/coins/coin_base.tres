@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("1_3i1ip")
+name = "Coin"
 coin_texture = ExtResource("2_j5nci")
-coin_effect = "effect_base"
 coin_stats = Dictionary[String, int]({
 "damage": 5,
 "heal": 3

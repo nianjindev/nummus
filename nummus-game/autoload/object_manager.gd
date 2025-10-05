@@ -5,10 +5,10 @@ extends Node
 var current_enemy: Enemy
 var current_coin: Coin
 
-func spawn_base_coin() -> Coin:
+func create_coin(coin_path: String, state: Constants.display_type) -> Coin:
 	current_coin = coin_base.instantiate()
-	current_coin.coin_id = ResourceLoader.load(Constants.COINS.old_abe)
-	Inventory.add_item(current_coin)
+	current_coin.current_state = state
+	current_coin.coin_id = ResourceLoader.load(coin_path)
 	return current_coin
 
 func spawn_base_enemy():

@@ -3,7 +3,7 @@ extends Node3D
 class_name Enemy
 
 @onready var health_text: Label3D = $EnemySprite/HealthText
-@export var enemy_id: Enemy
+@export var enemy_id: EnemyStats
 @onready var animated_sprite: AnimatedSprite3D = $EnemySprite
 var health: int
 

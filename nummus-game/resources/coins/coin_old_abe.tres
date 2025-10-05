@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_aan4f")
+name = "Old Abe"
 coin_texture = ExtResource("1_64lkw")
 coin_stats = Dictionary[String, int]({
 "damage": 6,

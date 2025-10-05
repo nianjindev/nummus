@@ -23,3 +23,5 @@ const COINS: Dictionary = {
 	"lucky":"",
 	"healthy":"",
 }
+
+enum display_type{PLAY, SHOP, HAND}

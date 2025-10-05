@@ -15,8 +15,17 @@ var weights: Array[float] = [0.5, 0.5]
 var coin_stats: Dictionary
 var coin_effect: RefCounted
 
+# coin state
+@export var current_state: Constants.display_type
+
+# func _init(state: Constants.display_type) -> void:
+# 	current_state = state
+
+
 func _ready():
 	# flip signal
+	if current_state == null:
+		current_state = Constants.display_type.SHOP
 	Signalbus.coin_flipped.connect(flip)
 
 	# instance of coin resources
@@ -25,10 +34,17 @@ func _ready():
 	coin_mesh.material_override.texture_filter = 0
 	coin_stats = coin_id.coin_stats
 	coin_effect = coin_id.effect.new()
+	self.name = coin_id.name
+
+	# change material
+	coin_mesh.material_override.metallic_specular = 0.0
 
 	# transform me
-	position = Vector3(0.367, 0.398, -0.017)
-	scale = Vector3(0.1,0.1,0.1)
+	if current_state == Constants.display_type.PLAY:
+		scale = Vector3(0.1,0.1,0.1)
+	elif current_state == Constants.display_type.SHOP:
+		scale = Vector3(0.3,0.3,0.3)
+		rotate_z(-PI/2)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Signalbus.toggle_coin_flip_ui.emit(true)
