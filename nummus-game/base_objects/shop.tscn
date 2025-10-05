@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://smvg3nwqqw6x"]
+[gd_scene load_steps=14 format=3 uid="uid://smvg3nwqqw6x"]
 
 [ext_resource type="ArrayMesh" uid="uid://clj1nhn3sqwg8" path="res://assets/3d/shop_floor.obj" id="1_yxe34"]
-[ext_resource type="ArrayMesh" uid="uid://bylbmwndumjtv" path="res://assets/3d/shop_shelf.obj" id="3_hxjiy"]
+[ext_resource type="PackedScene" uid="uid://cef8ru8rhxwv" path="res://base_objects/shop_shelf.tscn" id="2_hxjiy"]
 [ext_resource type="ArrayMesh" uid="uid://di4p7r3k6ddnu" path="res://assets/3d/shop_wall.obj" id="4_ya44s"]
-[ext_resource type="PackedScene" uid="uid://cgkq1874nru5o" path="res://gui/global_ui.tscn" id="5_0f8fb"]
 [ext_resource type="ArrayMesh" uid="uid://dc1ulk0am4cx4" path="res://assets/3d/shop_table.obj" id="5_hhiwf"]
 [ext_resource type="Texture2D" uid="uid://oydm4bxteeau" path="res://assets/2d/shopkeeper.png" id="6_ya44s"]
 
@@ -35,11 +34,37 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_7frlh"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_fw1ev"]
+resource_name = "idle"
+length = 2.8667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.46667, 2.8667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.13, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_orwns"]
+_data = {
+&"RESET": SubResource("Animation_7frlh"),
+&"idle": SubResource("Animation_fw1ev")
+}
+
 [node name="Shop" type="Node3D"]
 metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.6909833, 0.7228707, 0, -0.7228707, 0.6909833, 0, 3.4861343, 2.1731377)
+transform = Transform3D(1, 0, 0, 0, 0.9666761, 0.2560026, 0, -0.2560026, 0.9666761, 0, 3.0844762, 2.835453)
 light_energy = 7.6
 shadow_enabled = true
 directional_shadow_max_distance = 330.0
@@ -47,30 +72,42 @@ directional_shadow_max_distance = 330.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kmqgc")
 
-[node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.81101, 0, 0, 0, 0.81101, 0, 0, 0, 0.81101, 0, 0, 0)
-mesh = ExtResource("1_yxe34")
-
-[node name="GlobalUI" parent="." instance=ExtResource("5_0f8fb")]
-
-[node name="ShopShelf" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6964942, 2.1363757, -4.366078)
-mesh = ExtResource("3_hxjiy")
-
-[node name="ShopWall" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1.6295767, 0, 2.1993814, 0, 1, 0, -7.123106e-08, 0, 1.9294162, -5.696075)
-mesh = ExtResource("4_ya44s")
-
-[node name="ShopTable" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.017591119, -2.5242217)
-mesh = ExtResource("5_hhiwf")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9997187, 0.023716785, 0, -0.023716785, 0.9997187, 0, 1.9803946, -1.1122167)
 fov = 70.0
 
-[node name="Shopkeeper" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.5582032, 1.9134233, -3.220599)
+[node name="Models" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Models"]
+transform = Transform3D(0.81101, 0, 0, 0, 0.81101, 0, 0, 0, 0.81101, 0, 0, 0)
+mesh = ExtResource("1_yxe34")
+skeleton = NodePath("../..")
+
+[node name="ShopShelf" parent="Models" instance=ExtResource("2_hxjiy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6964942, 2.1363757, -4.366078)
+
+[node name="ShopWall" type="MeshInstance3D" parent="Models"]
+transform = Transform3D(-4.371139e-08, 0, -1.6295767, 0, 2.1993814, 0, 1, 0, -7.123106e-08, 0, 1.9294162, -5.696075)
+mesh = ExtResource("4_ya44s")
+skeleton = NodePath("../..")
+
+[node name="ShopTable" type="MeshInstance3D" parent="Models"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.017591119, -2.5242217)
+mesh = ExtResource("5_hhiwf")
+skeleton = NodePath("../..")
+
+[node name="Shopkeeper" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5582032, 1.9134233, -3.220599)
+
+[node name="ShopkeeperSprite" type="AnimatedSprite3D" parent="Shopkeeper"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_48b30")
 animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shopkeeper"]
+root_node = NodePath("../ShopkeeperSprite")
+libraries = {
+&"": SubResource("AnimationLibrary_orwns")
+}
 autoplay = "idle"
