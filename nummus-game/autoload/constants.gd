@@ -20,8 +20,8 @@ const COINS: Dictionary = {
 	"base":"uid://d35ga8hv2jlvh",
 	"1787":"uid://bgh5v2n073rl7",
 	"old_abe":"uid://dj73eohb1fsui",
-	"lucky":"",
-	"healthy":"",
+	#"lucky":"",
+	#"healthy":"",
 }
 
 enum display_type{PLAY, SHOP, HAND}
