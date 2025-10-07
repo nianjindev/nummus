@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8fd0h78jf6w4"]
+
+[ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/under_money.png" id="1_m2ixq"]
+
+[node name="TexturePanel" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 44.0
+offset_right = 450.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_m2ixq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -100.0
+offset_right = 155.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer"]
+custom_minimum_size = Vector2(320, 150)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "On Heads: [color=red]5 DMG[/color]
+
+On Tails: [color=green]3 HP[/color]"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer"]
+custom_minimum_size = Vector2(320, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 26
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
+text = "Basic Coin"
+fit_content = true
+scroll_active = false

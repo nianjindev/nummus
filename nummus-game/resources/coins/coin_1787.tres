@@ -12,6 +12,6 @@ coin_stats = Dictionary[String, int]({
 "damage": 5,
 "money": 3
 })
-description = "On tails, gives $3, no heal."
+description = "Heads: [color=red][wave amp=50.0 freq=5.0 connected=1]4 DMG[/wave][/color][br]Tails:[color=yellow]$3[/color]"
 effect = ExtResource("2_6oosx")
 metadata/_custom_type_script = "uid://c1jkf850n711e"

@@ -1,3 +1,4 @@
 extends Node3D
 
-@export var label: Label
+@export var title: RichTextLabel
+@export var description: RichTextLabel

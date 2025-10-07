@@ -37,7 +37,8 @@ func _ready():
 	coin_stats = coin_id.coin_stats
 	coin_effect = coin_id.effect.new()
 	self.name = coin_id.name
-	hoverable.label.text = coin_id.description
+	hoverable.description.text = coin_id.description
+	hoverable.title.text = coin_id.name
 
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0

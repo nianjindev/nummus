@@ -1,14 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://btm435kprguv0"]
 
 [ext_resource type="Script" uid="uid://51xixnftbdec" path="res://base_objects/hoverable.gd" id="1_jbaiw"]
-[ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/under_money.png" id="1_om7hi"]
+[ext_resource type="PackedScene" uid="uid://b8fd0h78jf6w4" path="res://gui/hoverable_object/texture_panel.tscn" id="2_jbaiw"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dd0wm"]
 viewport_path = NodePath("Sprite3D/SubViewport")
 
-[node name="Hoverable" type="Node3D" node_paths=PackedStringArray("label")]
+[node name="Hoverable" type="Node3D" node_paths=PackedStringArray("title", "description")]
 script = ExtResource("1_jbaiw")
-label = NodePath("Sprite3D/SubViewport/Panel/MarginContainer/Label")
+title = NodePath("Sprite3D/SubViewport/TexturePanel/MarginContainer/Title")
+description = NodePath("Sprite3D/SubViewport/TexturePanel/MarginContainer/Description")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
@@ -19,37 +20,6 @@ texture = SubResource("ViewportTexture_dd0wm")
 transparent_bg = true
 size = Vector2i(1024, 1024)
 
-[node name="Panel" type="TextureRect" parent="Sprite3D/SubViewport"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 44.0
-offset_right = 450.0
-offset_bottom = 294.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_om7hi")
+[node name="TexturePanel" parent="Sprite3D/SubViewport" instance=ExtResource("2_jbaiw")]
 
-[node name="MarginContainer" type="MarginContainer" parent="Sprite3D/SubViewport/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -158.5
-offset_right = 20.0
-offset_bottom = 158.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Sprite3D/SubViewport/Panel/MarginContainer"]
-custom_minimum_size = Vector2(300, 30)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Hi, this is atest. i am now going to tpy ea lot of text onto this thing and its going to totally not"
-autowrap_mode = 3
+[editable path="Sprite3D/SubViewport/TexturePanel"]

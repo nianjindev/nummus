@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func init_coins():
 	var no_repeat: Array[CoinStats]
-#	for i in Inventory.inventory:
+#	for i in Inventory.inventory: # disabling because we are allowing coins in your inventory to spawn, but they shouldn't spawn twice in the same shop
 #		no_repeat.append(i.coin_id)
 	print(no_repeat)
 	for z in z_positions:
