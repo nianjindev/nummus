@@ -33,6 +33,5 @@ func _on_health_bar_value_updated():
 	
 func _on_bar_ui_toggled(visible: bool):
 	fortune_bars.visible = visible
-	
 
 	

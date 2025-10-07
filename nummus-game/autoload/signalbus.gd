@@ -1,26 +1,31 @@
 extends Node
-
+@warning_ignore("unused_signal")
 signal coin_flipped(state: String)
+@warning_ignore("unused_signal")
 signal skill_check_begin(time: float)
 signal skill_check_finish(success: bool)
 
 
 signal current_enemy_defeated()
-
+@warning_ignore("unused_signal")
 signal level_loaded
 
 ######## Change Values ########
 signal change_fortune_and_update_ui(add: bool, amount: int, update_ui: bool)
 signal change_misfortune_and_update_ui(add: bool, amount: int, update_ui: bool)
 signal change_health_and_update_ui(add: bool, amount: int, update_ui: bool)
+@warning_ignore("unused_signal")
 signal change_enemy_health(add: bool, amount: int)
 
 ######## UI ########
 signal update_fortune_bar_ui() 
 signal update_misfortune_bar_ui()
 signal update_health_bar_ui()
+@warning_ignore("unused_signal")
 signal toggle_game_ui(show: bool)
+@warning_ignore("unused_signal")
 signal toggle_coin_flip_ui(show: bool)
+@warning_ignore("unused_signal")
 signal toggle_bar_ui(show: bool)
  
 

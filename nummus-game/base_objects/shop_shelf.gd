@@ -9,8 +9,8 @@ func _ready() -> void:
 
 func init_coins():
 	var no_repeat: Array[CoinStats]
-	for i in Inventory.inventory:
-		no_repeat.append(i.coin_id)
+#	for i in Inventory.inventory:
+#		no_repeat.append(i.coin_id)
 	print(no_repeat)
 	for z in z_positions:
 		var new_coin_rs = Constants.COINS.values().pick_random()
