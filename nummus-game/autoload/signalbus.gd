@@ -27,6 +27,7 @@ signal toggle_game_ui(show: bool)
 signal toggle_coin_flip_ui(show: bool)
 @warning_ignore("unused_signal")
 signal toggle_bar_ui(show: bool)
+signal toggle_level_completed_ui(show: bool)
  
 
 func _ready():
@@ -43,8 +44,8 @@ func _on_skill_check(success: bool):
 		Globals.in_favor = false
 
 func _on_current_enemy_defeated():
-	Signalbus.toggle_game_ui.emit(false)
-	LevelManager.next_stage()
+	toggle_level_completed_ui.emit(true)
+
 	# open win menu
 
 func _on_fortune_changed(add: bool, amount: int, update_ui: bool):
