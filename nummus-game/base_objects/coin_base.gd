@@ -43,9 +43,9 @@ func _ready():
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0
 
-	# hoverable
-	area.mouse_entered.connect(toggle_visible.bind(true))
-	area.mouse_exited.connect(toggle_visible.bind(false))
+	# # hoverable
+	# area.mouse_entered.connect(toggle_visible.bind(true))
+	# area.mouse_exited.connect(toggle_visible.bind(false))
 
 	# transform me
 	if current_state == Constants.display_type.PLAY:
@@ -110,8 +110,19 @@ func flip(state: int):
 	
 	check_flipped_side(rng.rand_weighted(weights), state)
 
-
+func generate_description(stats: Dictionary) -> String:
+	var s: String = "[br]"
+	for i in stats:
+		s += i.upper() + "[br]"
+	return s
 
 func toggle_visible(on: bool):
+	hoverable.visible = on
+func _on_area_3d_mouse_entered() -> void:
 	if current_state == Constants.display_type.SHOP:
-		hoverable.visible = on
+		toggle_visible(true)
+		if Input.is_action_just_pressed("click"):
+			print("yuh")
+
+func _on_area_3d_mouse_exited() -> void:
+	toggle_visible(false)

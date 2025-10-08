@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqvlxbv3lfiuj"
-path.s3tc="res://.godot/imported/old_abe.png-3b1a43a27c00fc51ce960e9ca3ae1a54.s3tc.ctex"
+uid="uid://dtm7v3q72n0pw"
+path.s3tc="res://.godot/imported/under_money.png-520ec9b7db05cbe5361c1a8e94065288.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/2d/old_abe.png"
-dest_files=["res://.godot/imported/old_abe.png-3b1a43a27c00fc51ce960e9ca3ae1a54.s3tc.ctex"]
+source_file="res://assets/2d/bar_textures/under_money.png"
+dest_files=["res://.godot/imported/under_money.png-520ec9b7db05cbe5361c1a8e94065288.s3tc.ctex"]
 
 [params]
 

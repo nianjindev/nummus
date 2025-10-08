@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtrmefh7wqlh6"
-path.s3tc="res://.godot/imported/fbcoin_64fitted.png-b212dc0dd0a9fe4d15b3fb28b8c467e1.s3tc.ctex"
+uid="uid://chjocgt1hmv02"
+path.s3tc="res://.godot/imported/1787.png-5e5ba9733f99fdb615869244b673e09a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/2d/fbcoin_64fitted.png"
-dest_files=["res://.godot/imported/fbcoin_64fitted.png-b212dc0dd0a9fe4d15b3fb28b8c467e1.s3tc.ctex"]
+source_file="res://assets/2d/mapped_coin_textures/1787.png"
+dest_files=["res://.godot/imported/1787.png-5e5ba9733f99fdb615869244b673e09a.s3tc.ctex"]
 
 [params]
 

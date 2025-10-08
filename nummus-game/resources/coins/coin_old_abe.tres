@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CoinStats" load_steps=4 format=3 uid="uid://dj73eohb1fsui"]
 
-[ext_resource type="Texture2D" uid="uid://cqvlxbv3lfiuj" path="res://assets/2d/old_abe.png" id="1_64lkw"]
+[ext_resource type="Texture2D" uid="uid://cqvlxbv3lfiuj" path="res://assets/2d/mapped_coin_textures/old_abe.png" id="1_64lkw"]
 [ext_resource type="Script" uid="uid://c1jkf850n711e" path="res://resources/coins/coin_class.gd" id="1_aan4f"]
 [ext_resource type="Script" uid="uid://bc2v64v213l6x" path="res://resources/coins/coin_effects/effect_old_abe.gd" id="2_qdqro"]
 
@@ -13,6 +13,6 @@ coin_stats = Dictionary[String, int]({
 "head": 1,
 "tail": 0
 })
-description = "Always lands heads. 6 Damage."
+description = "Abraham Rincoln."
 effect = ExtResource("2_qdqro")
 metadata/_custom_type_script = "uid://c1jkf850n711e"

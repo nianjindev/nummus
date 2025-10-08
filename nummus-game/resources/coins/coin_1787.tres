@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CoinStats" load_steps=4 format=3 uid="uid://bgh5v2n073rl7"]
 
 [ext_resource type="Script" uid="uid://c1jkf850n711e" path="res://resources/coins/coin_class.gd" id="1_8fets"]
-[ext_resource type="Texture2D" uid="uid://chjocgt1hmv02" path="res://assets/2d/1787.png" id="1_fn7bn"]
+[ext_resource type="Texture2D" uid="uid://chjocgt1hmv02" path="res://assets/2d/mapped_coin_textures/1787.png" id="1_fn7bn"]
 [ext_resource type="Script" uid="uid://c62tdgrjh8hal" path="res://resources/coins/coin_effects/effect_1787.gd" id="2_6oosx"]
 
 [resource]
@@ -12,6 +12,6 @@ coin_stats = Dictionary[String, int]({
 "damage": 5,
 "money": 3
 })
-description = "Heads: [color=red][wave amp=50.0 freq=5.0 connected=1]4 DMG[/wave][/color][br]Tails:[color=yellow]$3[/color]"
+description = "The first ever minted coin!"
 effect = ExtResource("2_6oosx")
 metadata/_custom_type_script = "uid://c1jkf850n711e"

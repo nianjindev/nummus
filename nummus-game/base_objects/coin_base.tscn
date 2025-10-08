@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://3nddafo22hjr" path="res://base_objects/coin_base.gd" id="1_3p7bc"]
 [ext_resource type="ArrayMesh" uid="uid://blluovflfwqwc" path="res://assets/3d/coin_remapped64.obj" id="1_im0vi"]
-[ext_resource type="Texture2D" uid="uid://dtrmefh7wqlh6" path="res://assets/2d/fbcoin_64fitted.png" id="2_e84nm"]
+[ext_resource type="Texture2D" uid="uid://dtrmefh7wqlh6" path="res://assets/2d/mapped_coin_textures/fbcoin_64fitted.png" id="2_e84nm"]
 [ext_resource type="Resource" uid="uid://d35ga8hv2jlvh" path="res://resources/coins/coin_base.tres" id="2_ern4t"]
 [ext_resource type="PackedScene" uid="uid://btm435kprguv0" path="res://base_objects/hoverable.tscn" id="4_2xdfg"]
 
@@ -187,3 +187,5 @@ shape = SubResource("CylinderShape3D_e84nm")
 visible = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

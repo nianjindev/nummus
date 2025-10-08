@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bci38xaomk08c"
-path="res://.godot/imported/bar_under_big.png-865e8052337d86ba63597600532fd704.ctex"
+uid="uid://vd81sj6fun6c"
+path="res://.godot/imported/lucky.png-b9cbd79503ce719287fc8a276e6807ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2d/bar_under_big.png"
-dest_files=["res://.godot/imported/bar_under_big.png-865e8052337d86ba63597600532fd704.ctex"]
+source_file="res://assets/2d/mapped_coin_textures/lucky.png"
+dest_files=["res://.godot/imported/lucky.png-b9cbd79503ce719287fc8a276e6807ec.ctex"]
 
 [params]
 

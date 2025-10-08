@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bronhad3508ye"
-path="res://.godot/imported/progress_health.png-33b37f96c04494d2780471ca2fd3a388.ctex"
+uid="uid://g7vd2mnpnmic"
+path="res://.godot/imported/fortune_face.png-957a273919f6834c39b333180481dbd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2d/progress_health.png"
-dest_files=["res://.godot/imported/progress_health.png-33b37f96c04494d2780471ca2fd3a388.ctex"]
+source_file="res://assets/2d/bar_textures/fortune_face.png"
+dest_files=["res://.godot/imported/fortune_face.png-957a273919f6834c39b333180481dbd3.ctex"]
 
 [params]
 

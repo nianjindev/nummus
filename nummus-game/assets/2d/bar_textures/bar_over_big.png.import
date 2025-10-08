@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt4k6s7mesjg5"
-path="res://.godot/imported/mass_GUI.png-461b187129df5243b54d668face36ea8.ctex"
+uid="uid://jch5sbhi1vs0"
+path="res://.godot/imported/bar_over_big.png-6f1a94b94e039597917d6c20df32e6fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2d/mass_GUI.png"
-dest_files=["res://.godot/imported/mass_GUI.png-461b187129df5243b54d668face36ea8.ctex"]
+source_file="res://assets/2d/bar_textures/bar_over_big.png"
+dest_files=["res://.godot/imported/bar_over_big.png-6f1a94b94e039597917d6c20df32e6fb.ctex"]
 
 [params]
 

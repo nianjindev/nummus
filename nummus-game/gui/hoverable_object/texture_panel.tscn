@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8fd0h78jf6w4"]
 
-[ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/under_money.png" id="1_m2ixq"]
+[ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/bar_textures/under_money.png" id="1_m2ixq"]
 
 [node name="TexturePanel" type="TextureRect"]
 anchors_preset = 8

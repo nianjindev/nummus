@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cef8ru8rhxwv" path="res://base_objects/shop_shelf.tscn" id="2_hxjiy"]
 [ext_resource type="ArrayMesh" uid="uid://di4p7r3k6ddnu" path="res://assets/3d/shop_wall.obj" id="4_ya44s"]
 [ext_resource type="ArrayMesh" uid="uid://dc1ulk0am4cx4" path="res://assets/3d/shop_table.obj" id="5_hhiwf"]
-[ext_resource type="Texture2D" uid="uid://oydm4bxteeau" path="res://assets/2d/shopkeeper.png" id="6_ya44s"]
+[ext_resource type="Texture2D" uid="uid://oydm4bxteeau" path="res://assets/2d/character_sprites/shopkeeper.png" id="6_ya44s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hxjiy"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

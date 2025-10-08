@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Enemy" load_steps=11 format=3 uid="uid://dcspy7387pquk"]
 
-[ext_resource type="Texture2D" uid="uid://bnofq2hlt6kgu" path="res://assets/2d/smug_guy.png" id="1_2mvsy"]
-[ext_resource type="Texture2D" uid="uid://bfjhgcbnrhvtu" path="res://assets/2d/smug_guy-Sheet.png" id="1_8gs5x"]
+[ext_resource type="Texture2D" uid="uid://bnofq2hlt6kgu" path="res://assets/2d/character_sprites/smug_guy.png" id="1_2mvsy"]
+[ext_resource type="Texture2D" uid="uid://bfjhgcbnrhvtu" path="res://assets/2d/character_sprites/smug_guy-Sheet.png" id="1_8gs5x"]
 [ext_resource type="Script" uid="uid://dlb0rp3fkxykt" path="res://resources/enemies/enemy_class.gd" id="1_kbqwn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vwhxa"]
