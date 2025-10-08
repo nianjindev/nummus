@@ -14,6 +14,7 @@ var weights: Array[float] = [0.5, 0.5]
 
 # coin stats
 @export var coin_id: CoinStats
+var coin_json_id: String
 var coin_stats: Dictionary
 var coin_effect: RefCounted
 var coin_price: int
@@ -37,20 +38,17 @@ func _ready():
 	coin_mesh.material_override.texture_filter = 0
 
 	# stats and names
-	coin_stats = coin_id.coin_stats
+	# coin_stats = coin_id.coin_stats
 	coin_effect = coin_id.effect.new()
-	self.name = coin_id.name
-	hoverable.description.text = coin_id.description + generate_description(coin_stats)
+	coin_json_id = coin_id.json_id
+	# self.name = coin_id.name
+	# hoverable.description.text = coin_id.description + generate_description(coin_stats)
 	
-	coin_price = coin_id.price
-	hoverable.title.text = coin_id.name + " [color=yellow]$" + str(coin_price) + "[/color]"
+	# coin_price = coin_id.price
+	# hoverable.title.text = coin_id.name + " [color=yellow]$" + str(coin_price) + "[/color]"
 
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0
-
-	# # hoverable
-	# area.mouse_entered.connect(toggle_visible.bind(true))
-	# area.mouse_exited.connect(toggle_visible.bind(false))
 
 	# transform me
 	if current_state == Constants.display_type.PLAY:
@@ -58,6 +56,23 @@ func _ready():
 	elif current_state == Constants.display_type.SHOP:
 		scale = Vector3(0.3,0.3,0.3)
 		rotate_z(-PI/2)
+
+	# json parse
+	var file = FileAccess.open(Constants.JSON_PATHS.coins, FileAccess.READ)
+	assert(FileAccess.file_exists(Constants.JSON_PATHS.coins),"File doesnt exist")
+	var json = file.get_as_text()
+	var json_object = JSON.new()
+
+	json_object.parse(json)
+	for coin in json_object.data:
+		if coin == coin_json_id:
+			print("matched " + coin)
+			coin_stats = json_object.data.get(coin).get("coin_stats")
+			self.name = json_object.data.get(coin).get("name")
+			coin_price = json_object.data.get(coin).get("price")
+			hoverable.title.text = json_object.data.get(coin).get("name") + " [color=yellow]$" + str(coin_price) + "[/color]"
+			hoverable.description.text = json_object.data.get(coin).get("description") + generate_description(coin_stats)
+			
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Signalbus.toggle_coin_flip_ui.emit(true)
@@ -122,8 +137,8 @@ func generate_description(stats: Dictionary) -> String: # on heads: damage:5 ; o
 			for j in stats.get(i):
 				for k in stats.get(i).values():
 					s += get_stat_line(j,k)
-		elif i == "on_tails":
-			s += "On Tails[br]"
+		elif i == "on_tails" and stats.get(i).size() > 0:
+			s += "On Tails:[br]"
 			for j in stats.get(i):
 				for k in stats.get(i).values():
 					s += get_stat_line(j,k)

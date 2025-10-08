@@ -24,4 +24,8 @@ const COINS: Dictionary = {
 	#"healthy":"",
 }
 
+const JSON_PATHS: Dictionary = {
+	"coins":"res://assets/resource_json/coins.json"
+}
+
 enum display_type{PLAY, SHOP, HAND}

@@ -6,14 +6,7 @@
 
 [resource]
 script = ExtResource("1_aan4f")
-name = "Old Abe"
+json_id = "coin_old_abe"
 coin_texture = ExtResource("1_64lkw")
-coin_stats = Dictionary[String, Dictionary]({
-"on_heads": {
-"damage": 7
-}
-})
-description = "Always lands heads."
 effect = ExtResource("2_qdqro")
-price = 5
 metadata/_custom_type_script = "uid://c1jkf850n711e"

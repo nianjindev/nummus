@@ -1,0 +1,41 @@
+{
+	"coin_base":{
+		"name":"Coin",
+		"description":"Basic coin.",
+		"price":3,
+		"coin_stats":{
+			"on_heads":{
+				"damage":5
+			},
+			"on_tails":{
+				"heal":3
+			}
+		}
+	},
+	"coin_1787":{
+		"name":"Coin of 1787",
+		"description":"The first ever minted coin!",
+		"price":6,
+		"coin_stats":{
+			"on_heads":{
+				"damage":3
+			},
+			"on_tails":{
+				"money":3
+			}
+		}
+	},
+	"coin_old_abe":{
+		"name":"Old Abe",
+		"description":"Always lands heads.",
+		"price":5,
+		"coin_stats":{
+			"on_heads":{
+				"damage":7
+			},
+			"on_tails":{
+				
+			}
+		}
+	}
+}
