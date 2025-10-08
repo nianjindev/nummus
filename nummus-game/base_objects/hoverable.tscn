@@ -22,4 +22,7 @@ size = Vector2i(1024, 1024)
 
 [node name="TexturePanel" parent="Sprite3D/SubViewport" instance=ExtResource("2_jbaiw")]
 
+[node name="Title" parent="Sprite3D/SubViewport/TexturePanel/MarginContainer" index="1"]
+bbcode_enabled = true
+
 [editable path="Sprite3D/SubViewport/TexturePanel"]

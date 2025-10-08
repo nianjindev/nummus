@@ -16,13 +16,14 @@ var weights: Array[float] = [0.5, 0.5]
 @export var coin_id: CoinStats
 var coin_stats: Dictionary
 var coin_effect: RefCounted
+var coin_price: int
 
 # coin state
 @export var current_state: Constants.display_type
+var is_mouse_over: bool = false
 
 # func _init(state: Constants.display_type) -> void:
 # 	current_state = state
-
 
 func _ready():
 	# flip signal
@@ -34,11 +35,15 @@ func _ready():
 	coin_mesh.material_override = StandardMaterial3D.new()
 	coin_mesh.material_override.albedo_texture = coin_id.coin_texture
 	coin_mesh.material_override.texture_filter = 0
+
+	# stats and names
 	coin_stats = coin_id.coin_stats
 	coin_effect = coin_id.effect.new()
 	self.name = coin_id.name
-	hoverable.description.text = coin_id.description
-	hoverable.title.text = coin_id.name
+	hoverable.description.text = coin_id.description + generate_description(coin_stats)
+	
+	coin_price = coin_id.price
+	hoverable.title.text = coin_id.name + " [color=yellow]$" + str(coin_price) + "[/color]"
 
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0
@@ -91,9 +96,7 @@ func check_flipped_side(flipped_side: int, state: int):
 			animation_player.play("flip_tails_fail")
 			
 			print("Wrong")
-	
 
-	
 func set_weights():
 	weights.set(sides.find(Sides.HEADS), Globals.head_weight)
 	weights.set(sides.find(Sides.TAILS), Globals.tail_weight)
@@ -110,19 +113,45 @@ func flip(state: int):
 	
 	check_flipped_side(rng.rand_weighted(weights), state)
 
-func generate_description(stats: Dictionary) -> String:
+func generate_description(stats: Dictionary) -> String: # on heads: damage:5 ; on tails: heal:5 (example dictionary)
 	var s: String = "[br]"
 	for i in stats:
-		s += i.upper() + "[br]"
+		# look for on heads
+		if i == "on_heads":
+			s += "On Heads:[br]"
+			for j in stats.get(i):
+				for k in stats.get(i).values():
+					s += get_stat_line(j,k)
+		elif i == "on_tails":
+			s += "On Tails[br]"
+			for j in stats.get(i):
+				for k in stats.get(i).values():
+					s += get_stat_line(j,k)
 	return s
-
+func get_stat_line(type: String, value: int):
+	match type:
+		"damage":
+			return "[color=red]" + str(value) + " DMG[/color][br]"
+		"heal":
+			return "[color=green]" + str(value) + " HP[/color][br]"
+		"money":
+			return "[color=yellow]$" + str(value) + "[/color][br]"
+	return "[color=blue]" + str(value) + " " + type + "[/color][br]"
 func toggle_visible(on: bool):
 	hoverable.visible = on
 func _on_area_3d_mouse_entered() -> void:
 	if current_state == Constants.display_type.SHOP:
 		toggle_visible(true)
-		if Input.is_action_just_pressed("click"):
-			print("yuh")
-
+		is_mouse_over = true
+func _input(event: InputEvent) -> void:
+	if is_mouse_over and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		buy_me()
 func _on_area_3d_mouse_exited() -> void:
 	toggle_visible(false)
+	is_mouse_over = false
+func buy_me():
+	if Globals.can_afford(coin_price):
+		Inventory.inventory.append(self.duplicate())
+		Globals.change_money(true, -coin_price)
+	else:
+		print("you broke lol")
