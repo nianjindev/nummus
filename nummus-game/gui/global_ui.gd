@@ -14,13 +14,14 @@ func _ready():
 	Signalbus.toggle_bar_ui.connect(_on_bar_ui_toggled)
 	Signalbus.update_fortune_bar_ui.connect(_on_fortune_bar_value_updated)
 	Signalbus.update_misfortune_bar_ui.connect(_on_misfortune_bar_value_updated)
-	Signalbus.update_health_bar_ui.connect(_on_health_bar_value_updated)
+	Signalbus.update_health_bar_ui.connect(change_health_amount)
 	
 func change_money_amount():
 	amount.text = "$" + str(Globals.money)
 	
 func change_health_amount():
-	health_bar.value = Globals.health
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(health_bar, "value", Globals.health, 0.4)
 
 func _on_fortune_bar_value_updated():
 	fortune_bar.value = Globals.fortune
@@ -28,10 +29,5 @@ func _on_fortune_bar_value_updated():
 func _on_misfortune_bar_value_updated():
 	misfortune_bar.value = Globals.misfortune
 	
-func _on_health_bar_value_updated():
-	health_bar.value = Globals.health
-	
-func _on_bar_ui_toggled(visible: bool):
-	fortune_bars.visible = visible
-
-	
+func _on_bar_ui_toggled(on: bool):
+	fortune_bars.visible = on

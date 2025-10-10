@@ -7,11 +7,13 @@ class_name Debug
 @onready var fps: Label = $PanelContainer/VBoxContainer/FPS
 @onready var give_money: Button = $PanelContainer/VBoxContainer/give_money
 @onready var next_stage: Button = $PanelContainer/VBoxContainer/next_stage
+@onready var take_dmg: Button = $PanelContainer/VBoxContainer/take_dmg
 
 func _ready() -> void:
 	visible = false
 	give_money.pressed.connect(Globals.change_money.bind(true, 20))
 	next_stage.pressed.connect(LevelManager.next_stage)
+	take_dmg.pressed.connect(Signalbus._on_health_changed.bind(true, -5, true))
 func _input(event: InputEvent) -> void:
 	if OS.is_debug_build():
 		if event.is_action_pressed("debug"):

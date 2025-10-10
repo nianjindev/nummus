@@ -38,14 +38,8 @@ func _ready():
 	coin_mesh.material_override.texture_filter = 0
 
 	# stats and names
-	# coin_stats = coin_id.coin_stats
 	coin_effect = coin_id.effect.new()
 	coin_json_id = coin_id.json_id
-	# self.name = coin_id.name
-	# hoverable.description.text = coin_id.description + generate_description(coin_stats)
-	
-	# coin_price = coin_id.price
-	# hoverable.title.text = coin_id.name + " [color=yellow]$" + str(coin_price) + "[/color]"
 
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0
@@ -54,9 +48,16 @@ func _ready():
 	if current_state == Constants.display_type.PLAY:
 		scale = Vector3(0.1,0.1,0.1)
 		rotation = Vector3(0, 0, 0)
+		hoverable.visible = false
 	elif current_state == Constants.display_type.SHOP:
 		scale = Vector3(0.3,0.3,0.3)
 		rotation = Vector3(0, 0, -PI/2)
+		hoverable.visible = true
+	elif current_state == Constants.display_type.HAND:
+		scale = Vector3(0.1,0.1,0.1)
+		rotation = Vector3(0, 0, 0)
+		hoverable.visible = false
+		animation_player.play("spinning")
 
 	# json parse
 	var file = FileAccess.open(Constants.JSON_PATHS.coins, FileAccess.READ)
@@ -172,7 +173,7 @@ func _on_area_3d_mouse_exited() -> void:
 	is_mouse_over = false
 func buy_me():
 	if Globals.can_afford(coin_price):
-		Inventory.inventory.append(self.duplicate(8))
+		Inventory.add_item(self.duplicate())
 		Globals.change_money(true, -coin_price)
 	else:
 		print("you broke lol")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgkq1874nru5o"]
+[gd_scene load_steps=14 format=3 uid="uid://cgkq1874nru5o"]
 
 [ext_resource type="Script" uid="uid://4wjymveihx57" path="res://gui/global_ui.gd" id="1_s6kbw"]
 [ext_resource type="Script" uid="uid://bbxm05mjnkk3g" path="res://gui/stage.gd" id="5_t228w"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://clg6eg705e2lx" path="res://assets/2d/bar_textures/misfortune_face.png" id="11_50bnc"]
 [ext_resource type="Texture2D" uid="uid://bci38xaomk08c" path="res://assets/2d/bar_textures/bar_under_big.png" id="12_qujq2"]
 [ext_resource type="Texture2D" uid="uid://jch5sbhi1vs0" path="res://assets/2d/bar_textures/bar_over_big.png" id="13_crqig"]
+[ext_resource type="PackedScene" uid="uid://dgl2frifwu5vi" path="res://gui/inventory_ui.tscn" id="13_jxs7b"]
 [ext_resource type="Texture2D" uid="uid://bronhad3508ye" path="res://assets/2d/bar_textures/progress_health.png" id="14_h1f0h"]
 [ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/bar_textures/under_money.png" id="15_ll540"]
 
@@ -130,6 +131,7 @@ offset_right = 726.0
 offset_bottom = -140.5
 grow_vertical = 0
 max_value = 20.0
+step = 0.1
 value = 20.0
 texture_under = ExtResource("12_qujq2")
 texture_over = ExtResource("13_crqig")
@@ -161,5 +163,8 @@ theme_override_font_sizes/normal_font_size = 56
 text = "$0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InventoryUI" parent="." instance=ExtResource("13_jxs7b")]
+layout_mode = 1
 
 [connection signal="pressed" from="Stage/NextStage" to="Stage" method="_on_next_stage_pressed"]

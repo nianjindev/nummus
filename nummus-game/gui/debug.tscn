@@ -33,3 +33,9 @@ alignment = 0
 layout_mode = 2
 text = "Go to next stage"
 alignment = 0
+
+[node name="take_dmg" type="Button" parent="PanelContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+text = "Take 5 damage"
+alignment = 0

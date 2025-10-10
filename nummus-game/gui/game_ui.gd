@@ -4,7 +4,7 @@ extends Control
 
 
 func _ready():
-	toggle_all(false)
+	level_check()
 	%LevelCompleted.hide()
 	Signalbus.toggle_game_ui.connect(toggle_all)
 	Signalbus.toggle_coin_flip_ui.connect(_on_coin_flip_ui_toggled)

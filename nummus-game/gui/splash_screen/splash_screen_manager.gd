@@ -7,6 +7,8 @@ extends Control
 @export var out_time: float = 0.5
 @export var splash_screen_container: Node
 
+var main_menu: String = Constants.UI_PATHS.main_menu
+
 var splash_screens: Array
 
 
@@ -30,8 +32,8 @@ func fade():
 		tween.tween_property(screen, "modulate:a", 0.0, fade_out_time)
 		tween.tween_interval(out_time)
 		await tween.finished
-	SceneManager.goto_scene(Constants.UI_PATHS.main_menu)
+	SceneManager.goto_scene(main_menu)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed():
-		SceneManager.goto_scene(Constants.UI_PATHS.main_menu)
+		SceneManager.goto_scene(main_menu)
