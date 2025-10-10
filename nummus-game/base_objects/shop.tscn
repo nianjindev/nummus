@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://smvg3nwqqw6x"]
+[gd_scene load_steps=9 format=3 uid="uid://smvg3nwqqw6x"]
 
 [ext_resource type="ArrayMesh" uid="uid://clj1nhn3sqwg8" path="res://assets/3d/shop_floor.obj" id="1_yxe34"]
 [ext_resource type="PackedScene" uid="uid://cef8ru8rhxwv" path="res://base_objects/shop_shelf.tscn" id="2_hxjiy"]
+[ext_resource type="PackedScene" uid="uid://bh6iucofsqx83" path="res://base_objects/shopkeeper.tscn" id="4_hxjiy"]
 [ext_resource type="ArrayMesh" uid="uid://di4p7r3k6ddnu" path="res://assets/3d/shop_wall.obj" id="4_ya44s"]
 [ext_resource type="ArrayMesh" uid="uid://dc1ulk0am4cx4" path="res://assets/3d/shop_table.obj" id="5_hhiwf"]
-[ext_resource type="Texture2D" uid="uid://oydm4bxteeau" path="res://assets/2d/character_sprites/shopkeeper.png" id="6_ya44s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hxjiy"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -18,47 +18,6 @@ background_mode = 2
 sky = SubResource("Sky_036b0")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhiwf"]
-atlas = ExtResource("6_ya44s")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_48b30"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hhiwf")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="Animation" id="Animation_7frlh"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_fw1ev"]
-resource_name = "idle"
-length = 2.8667
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.46667, 2.8667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.13, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_orwns"]
-_data = {
-&"RESET": SubResource("Animation_7frlh"),
-&"idle": SubResource("Animation_fw1ev")
-}
 
 [node name="Shop" type="Node3D"]
 metadata/_edit_lock_ = true
@@ -92,21 +51,8 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -
 mesh = ExtResource("5_hhiwf")
 skeleton = NodePath("../..")
 
-[node name="Shopkeeper" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5582032, 1.9134233, -3.220599)
-
-[node name="ShopkeeperSprite" type="AnimatedSprite3D" parent="Shopkeeper"]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
-sprite_frames = SubResource("SpriteFrames_48b30")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Shopkeeper"]
-root_node = NodePath("../ShopkeeperSprite")
-libraries = {
-&"": SubResource("AnimationLibrary_orwns")
-}
-autoplay = "idle"
+[node name="Shopkeeper" parent="." instance=ExtResource("4_hxjiy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5582032, 1.8028202, -3.9652872)
 
 [node name="ShopShelf" parent="." instance=ExtResource("2_hxjiy")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6964942, 2.1363757, -4.366078)

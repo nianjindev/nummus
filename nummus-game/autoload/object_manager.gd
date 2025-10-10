@@ -8,7 +8,7 @@ var current_coin: Coin
 func create_coin(coin_path: String, state: Constants.display_type) -> Coin:
 	current_coin = coin_base.instantiate()
 	current_coin.current_state = state
-	current_coin.coin_id = ResourceLoader.load(coin_path)
+	current_coin.coin_id = ResourceLoader.load(coin_path).duplicate(true)
 	return current_coin
 
 func spawn_base_enemy():

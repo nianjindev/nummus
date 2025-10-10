@@ -5,6 +5,9 @@ signal coin_flipped(state: String)
 signal skill_check_begin(time: float)
 signal skill_check_finish(success: bool)
 
+### Scenes
+@warning_ignore("unused_signal")
+signal scene_changed()
 
 signal current_enemy_defeated()
 @warning_ignore("unused_signal")

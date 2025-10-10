@@ -53,9 +53,10 @@ func _ready():
 	# transform me
 	if current_state == Constants.display_type.PLAY:
 		scale = Vector3(0.1,0.1,0.1)
+		rotation = Vector3(0, 0, 0)
 	elif current_state == Constants.display_type.SHOP:
 		scale = Vector3(0.3,0.3,0.3)
-		rotate_z(-PI/2)
+		rotation = Vector3(0, 0, -PI/2)
 
 	# json parse
 	var file = FileAccess.open(Constants.JSON_PATHS.coins, FileAccess.READ)
@@ -152,8 +153,13 @@ func get_stat_line(type: String, value: int):
 		"money":
 			return "[color=yellow]$" + str(value) + "[/color][br]"
 	return "[color=blue]" + str(value) + " " + type + "[/color][br]"
+
+
 func toggle_visible(on: bool):
-	hoverable.visible = on
+	if on:
+		hoverable.animation.play("fly_out")
+	else:
+		hoverable.animation.play_backwards("fly_out")
 func _on_area_3d_mouse_entered() -> void:
 	if current_state == Constants.display_type.SHOP:
 		toggle_visible(true)
@@ -166,7 +172,7 @@ func _on_area_3d_mouse_exited() -> void:
 	is_mouse_over = false
 func buy_me():
 	if Globals.can_afford(coin_price):
-		Inventory.inventory.append(self.duplicate())
+		Inventory.inventory.append(self.duplicate(8))
 		Globals.change_money(true, -coin_price)
 	else:
 		print("you broke lol")

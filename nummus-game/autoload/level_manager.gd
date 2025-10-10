@@ -7,6 +7,8 @@ var next_stage_scene: String
 func _ready() -> void:
 	current_stage = 1
 	current_level  = level_progression[0]
+	# we're just gonna give the player his first coin here okay
+	Inventory.add_item(ObjectManager.create_coin(Constants.COINS.base, Constants.display_type.PLAY))
 func next_stage():
 	if SceneManager.current_scene.name == "BaseLevel":
 		next_stage_scene = Constants.SCENE_PATHS.shop
@@ -19,5 +21,6 @@ func next_stage():
 		else:
 			current_stage += 1
 		next_stage_scene = Constants.SCENE_PATHS.base_level
+		# set resource here
 	SceneManager.goto_scene(next_stage_scene)
 		

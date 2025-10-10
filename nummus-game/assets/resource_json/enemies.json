@@ -1,0 +1,30 @@
+{
+	"smug_man":{
+		"name": "Smug Man",
+		"health": 5,
+		"dialogue":{
+			"hurt":[
+				"AGGH",
+                "####!"
+			],
+			"attack":[
+				"how'd that feel bro",
+                "GREEN FN"
+			]
+		},
+		"events":{
+			"attack":{
+				"weight":1,
+				"damage":5
+			},
+			"heal":{
+				"weight":1,
+				"heal":3
+			},
+			"poison":{
+				"weight":3,
+				"damage":1
+			}
+		}
+	}
+}

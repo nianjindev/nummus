@@ -23,6 +23,7 @@ func _deferred_goto_scene(path):
 
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
+	Signalbus.scene_changed.emit()
 	return
 func goto_scene(path):
 	_deferred_goto_scene.call_deferred(path)

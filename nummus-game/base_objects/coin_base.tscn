@@ -184,7 +184,6 @@ mesh = ExtResource("1_im0vi")
 shape = SubResource("CylinderShape3D_e84nm")
 
 [node name="Hoverable" parent="." instance=ExtResource("4_2xdfg")]
-visible = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
