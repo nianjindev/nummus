@@ -21,6 +21,9 @@ signal money_changed
 var head_weight: float = 0.5
 var tail_weight: float = 0.5
 
+# hand size
+var max_purse:int = 10
+var max_hand:int = 5
 
 func change_money(add: bool, amount: int):
 	if add:

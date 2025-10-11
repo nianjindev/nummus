@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LevelStats" load_steps=3 format=3 uid="uid://c1rmsj70m6txh"]
+
+[ext_resource type="Script" uid="uid://dlb0rp3fkxykt" path="res://resources/enemies/enemy_class.gd" id="1_plxkm"]
+[ext_resource type="Script" uid="uid://bvs85acskh042" path="res://resources/levels/level_class.gd" id="2_a72hl"]
+
+[resource]
+script = ExtResource("2_a72hl")
+metadata/_custom_type_script = "uid://bvs85acskh042"

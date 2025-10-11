@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=6 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
+[ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
+[ext_resource type="Texture2D" uid="uid://chjrtn6sxdj75" path="res://assets/2d/hand_textures/button_blue.png" id="3_24vp8"]
+[ext_resource type="Texture2D" uid="uid://dr4hohxmtjhjt" path="res://assets/2d/hand_textures/button_red.png" id="4_ubwhq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdk76"]
 bg_color = Color(0.13433978, 0.34444046, 0.44050446, 1)
@@ -20,66 +23,115 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Heads" type="Button" parent="CoinFlipButtons"]
+[node name="Heads" type="TextureButton" parent="CoinFlipButtons"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 740.0
-offset_top = 951.0
-offset_right = 940.0
-offset_bottom = 1040.0
+offset_left = 695.0
+offset_top = 891.0
+offset_right = 845.0
+offset_bottom = 1041.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
-text = "Heads"
+texture_normal = ExtResource("2_hojdg")
+stretch_mode = 0
 
-[node name="Tails" type="Button" parent="CoinFlipButtons"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 943.0
-offset_top = 950.0
-offset_right = 1167.0
-offset_bottom = 1039.0
-grow_horizontal = 2
-grow_vertical = 0
-focus_mode = 0
-text = "Tails"
-
-[node name="Skip" type="Button" parent="CoinFlipButtons"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 842.0
-offset_top = 865.0
-offset_right = 1039.0
-offset_bottom = 948.0
-grow_horizontal = 2
-grow_vertical = 0
-focus_mode = 0
-text = "Skip"
-
-[node name="LevelCompleted" type="ColorRect" parent="."]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="CoinFlipButtons/Heads"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
+offset_left = -20.0
+offset_top = -7.5
+offset_right = 20.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Heads"
+
+[node name="Tails" type="TextureButton" parent="CoinFlipButtons"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 995.0
+offset_top = 891.0
+offset_right = 1145.0
+offset_bottom = 1041.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("3_24vp8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CoinFlipButtons/Tails"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -7.5
+offset_right = 20.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tails"
+
+[node name="Skip" type="TextureButton" parent="CoinFlipButtons"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 845.0
+offset_top = 891.0
+offset_right = 995.0
+offset_bottom = 1041.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("4_ubwhq")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CoinFlipButtons/Skip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -7.5
+offset_right = 20.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Skip"
+
+[node name="LevelCompleted" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -963.0
+offset_top = -554.0
+offset_right = 957.0
+offset_bottom = 526.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4117647)

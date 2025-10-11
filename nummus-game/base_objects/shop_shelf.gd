@@ -20,4 +20,3 @@ func init_coins():
 		self.add_child(new_coin)
 		new_coin.position.y = 1.1
 		new_coin.position.z = z
-		
