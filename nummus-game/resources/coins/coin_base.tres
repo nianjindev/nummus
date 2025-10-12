@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="CoinStats" load_steps=4 format=3 uid="uid://d35ga8hv2jlvh"]
 
 [ext_resource type="Script" uid="uid://c1jkf850n711e" path="res://resources/coins/coin_class.gd" id="1_3i1ip"]
-[ext_resource type="Texture2D" uid="uid://dtrmefh7wqlh6" path="res://assets/2d/mapped_coin_textures/fbcoin_64fitted.png" id="2_j5nci"]
+[ext_resource type="Texture2D" uid="uid://d08lfhwjrrml3" path="res://assets/2d/mapped_coin_textures/base.png" id="1_kfhv1"]
 [ext_resource type="Script" uid="uid://bqmooqm1vpylv" path="res://resources/coins/coin_effects/effect_base.gd" id="2_kfhv1"]
 
 [resource]
 script = ExtResource("1_3i1ip")
 json_id = "coin_base"
-coin_texture = ExtResource("2_j5nci")
+coin_texture = ExtResource("1_kfhv1")
 effect = ExtResource("2_kfhv1")
 metadata/_custom_type_script = "uid://c1jkf850n711e"
