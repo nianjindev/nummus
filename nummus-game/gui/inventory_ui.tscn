@@ -1,33 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgl2frifwu5vi"]
+[gd_scene load_steps=2 format=3 uid="uid://dgl2frifwu5vi"]
 
 [ext_resource type="Script" uid="uid://dnxqi6e2cpftv" path="res://gui/inventory_ui.gd" id="1_xf41r"]
-[ext_resource type="Texture2D" uid="uid://vd81sj6fun6c" path="res://assets/2d/mapped_coin_textures/lucky.png" id="2_2a5yy"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w42wb"]
-atlas = ExtResource("2_2a5yy")
-region = Rect2(2, 0, 15, 15)
 
 [node name="InventoryUI" type="Control"]
 clip_contents = true
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -615.0
-offset_bottom = 165.0
-grow_horizontal = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -325.0
+offset_right = 450.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_xf41r")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0.48235294, 0.6431373, 0.22352941)
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = SubResource("AtlasTexture_w42wb")
-expand_mode = 2
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(20, 20)
