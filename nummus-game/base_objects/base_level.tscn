@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://vwukeorb6yvs"]
 
-[ext_resource type="ArrayMesh" uid="uid://df0dli0p2ydry" path="res://assets/3d/coin_table.obj" id="1_3o4py"]
 [ext_resource type="Script" uid="uid://d22vmb2a3xedj" path="res://base_objects/base_level.gd" id="1_ftfrf"]
+[ext_resource type="PackedScene" uid="uid://dwu8pi66hpjiu" path="res://base_objects/table_handler.tscn" id="2_iothi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqk2v"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -34,7 +34,4 @@ shadow_blur = 0.897
 transform = Transform3D(-4.3711385e-08, -0.34693566, 0.9378889, 0, 0.9378889, 0.34693566, -0.99999994, 1.5165039e-08, -4.0996426e-08, 1.3244811, 1.0790656, 0)
 fov = 85.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0, 0)
-mesh = ExtResource("1_3o4py")
-skeleton = NodePath("")
+[node name="TableHandler" parent="." instance=ExtResource("2_iothi")]
