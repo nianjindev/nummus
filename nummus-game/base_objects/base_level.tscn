@@ -31,7 +31,7 @@ transform = Transform3D(-0.8660253, -0.4330129, 0.2500001, 0, 0.49999994, 0.8660
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.01570728, -0.34689286, 0.9377732, 0, 0.9378889, 0.34693566, -0.9998766, -0.0054494157, 0.014731685, 1.3244811, 1.0790656, 0)
+transform = Transform3D(0.015707279, -0.34689286, 0.9377732, 0, 0.9378889, 0.34693566, -0.99987656, -0.0054494157, 0.014731685, 1.3244811, 1.0790656, 0)
 fov = 90.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

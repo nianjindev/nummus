@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=9 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
@@ -7,6 +7,43 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdk76"]
 bg_color = Color(0.13433978, 0.34444046, 0.44050446, 1)
+
+[sub_resource type="Animation" id="Animation_hojdg"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.8666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_24vp8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ubwhq"]
+_data = {
+&"RESET": SubResource("Animation_24vp8"),
+&"fade_out": SubResource("Animation_hojdg")
+}
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -187,6 +224,40 @@ size_flags_horizontal = 8
 size_flags_vertical = 10
 text = "Next Stage"
 icon_alignment = 2
+
+[node name="LevelSplash" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LevelText" type="RichTextLabel" parent="LevelSplash"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = -125.0
+offset_right = 475.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 136
+bbcode_enabled = true
+text = "Limbo - 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SplashFade" type="AnimationPlayer" parent="LevelSplash"]
+libraries = {
+&"": SubResource("AnimationLibrary_ubwhq")
+}
 
 [connection signal="pressed" from="CoinFlipButtons/Heads" to="." method="_on_heads_pressed"]
 [connection signal="pressed" from="CoinFlipButtons/Tails" to="." method="_on_tails_pressed"]
