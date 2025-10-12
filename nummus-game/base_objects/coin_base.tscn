@@ -209,6 +209,7 @@ material_override = SubResource("StandardMaterial3D_2xdfg")
 mesh = ExtResource("4_ern4t")
 
 [node name="Area3D" type="Area3D" parent="."]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 visible = false

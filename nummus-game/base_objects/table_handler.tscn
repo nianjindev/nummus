@@ -1,32 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwu8pi66hpjiu"]
+[gd_scene load_steps=3 format=3 uid="uid://dwu8pi66hpjiu"]
 
 [ext_resource type="Script" uid="uid://dace5j0sr7fyi" path="res://base_objects/table_handler.gd" id="1_x0v6v"]
 [ext_resource type="ArrayMesh" uid="uid://df0dli0p2ydry" path="res://assets/3d/coin_table.obj" id="2_86dke"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2aj6y"]
-size = Vector3(1.9002686, 0.062927246, 1)
-
 [node name="TableHandler" type="Node3D"]
 script = ExtResource("1_x0v6v")
-
-[node name="TableModel" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TableModel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015075684, 0.375885, 0)
-shape = SubResource("BoxShape3D_2aj6y")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TableModel"]
-transform = Transform3D(0.21051848, 0, 0, 0, 0.21051848, 0, 0, 0, 0.64167446, 0, 0, 0)
-mesh = ExtResource("2_86dke")
-skeleton = NodePath("")
 
 [node name="Markers" type="Node3D" parent="."]
 
 [node name="EndpointL" type="Marker3D" parent="Markers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.4, 0.706)
 
 [node name="EndpointR" type="Marker3D" parent="Markers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.4, -0.7)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 1, 0)
+[node name="TableModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0, 0)
+mesh = ExtResource("2_86dke")
+skeleton = NodePath("")
