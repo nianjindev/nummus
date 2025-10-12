@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource("1_3i1ip")
 json_id = "coin_base"
-coin_texture = ExtResource("1_kfhv1")
+coin_texture = ExtResource("2_j5nci")
 effect = ExtResource("2_kfhv1")
 metadata/_custom_type_script = "uid://c1jkf850n711e"

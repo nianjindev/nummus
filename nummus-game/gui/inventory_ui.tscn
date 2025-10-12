@@ -3,117 +3,31 @@
 [ext_resource type="Script" uid="uid://dnxqi6e2cpftv" path="res://gui/inventory_ui.gd" id="1_xf41r"]
 [ext_resource type="Texture2D" uid="uid://vd81sj6fun6c" path="res://assets/2d/mapped_coin_textures/lucky.png" id="2_2a5yy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2a5yy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w42wb"]
 atlas = ExtResource("2_2a5yy")
 region = Rect2(2, 0, 15, 15)
 
 [node name="InventoryUI" type="Control"]
 clip_contents = true
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -589.25
-offset_top = -393.25
-offset_right = 589.25
-offset_bottom = 393.25
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -615.0
+offset_bottom = 165.0
+grow_horizontal = 0
 script = ExtResource("1_xf41r")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.32156864, 0.2627451, 0.46666667)
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -234.0
-offset_top = -234.0
-offset_right = -119.0
-offset_bottom = -119.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(4, 4)
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 5
-
-[node name="TextureRect" type="TextureRect" parent="ColorRect/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect2" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect3" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect8" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect9" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect10" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect11" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect12" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect13" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect14" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect15" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect16" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect17" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect4" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect5" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect6" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
-
-[node name="TextureRect7" type="TextureRect" parent="ColorRect/GridContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_2a5yy")
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_w42wb")
+expand_mode = 2
