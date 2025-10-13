@@ -6,14 +6,21 @@ class_name Enemy
 @onready var health_text: Label3D = $EnemySprite/HealthText
 @export var enemy_id: EnemyStats
 @onready var animated_sprite: AnimatedSprite3D = $EnemySprite
+
+var max_health: int
 var health: int
+
+var hurt_small_length: float = 0.5
+var hurt_medium_length: float = 1
+
 
 func _ready():
 	Signalbus.change_enemy_health.connect(change_health)
-	health = enemy_id.health
 	animated_sprite.sprite_frames = enemy_id.enemy_expressions
+	health = enemy_id.health
+	max_health = enemy_id.health
 	animated_sprite.play("neutral")
-
+	health_text.text = str(health as int)+"/" + str(max_health)
 	# transform
 	position = Vector3(-1.604,1,0.0)
 	rotate_y(PI/2)
@@ -21,10 +28,10 @@ func _ready():
 
 func play_hurt_animation():
 	animated_sprite.play("hurt")
-	animation_player.play("hurt_small")
-	await animation_player.animation_finished
+	animation_player.speed_scale = 0
+	await get_tree().create_timer(hurt_small_length).timeout
+	animation_player.speed_scale = 1
 	animated_sprite.play("neutral")
-	animation_player.play("idle")
 
 func play_death_animation():
 	animated_sprite.play("very_hurt")
@@ -54,4 +61,4 @@ func change_health(add: bool, amount: int):
 			take_damage(amount - health)
 		else:
 			heal(health - amount)
-	health_text.text = str(health as int)+"/5"
+	health_text.text = str(health as int)+"/" + str(max_health)

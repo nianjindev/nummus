@@ -60,7 +60,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"neutral",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -82,5 +82,5 @@ animations = [{
 [resource]
 script = ExtResource("1_kbqwn")
 enemy_expressions = SubResource("SpriteFrames_kbqwn")
-health = 10
+health = 100
 metadata/_custom_type_script = "uid://dlb0rp3fkxykt"
