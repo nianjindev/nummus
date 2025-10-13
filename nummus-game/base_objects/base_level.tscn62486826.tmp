@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://vwukeorb6yvs"]
+
+[ext_resource type="Script" uid="uid://d22vmb2a3xedj" path="res://base_objects/base_level.gd" id="1_ftfrf"]
+[ext_resource type="PackedScene" uid="uid://dwu8pi66hpjiu" path="res://base_objects/table_handler.tscn" id="2_iothi"]
+[ext_resource type="ArrayMesh" uid="uid://d2tjgm2vawtym" path="res://assets/3d/coin_purse_open.obj" id="3_d3dva"]
+[ext_resource type="ArrayMesh" uid="uid://bmmobbrhil6md" path="res://assets/3d/coin_purse_closed.obj" id="4_bgm65"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqk2v"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_iothi"]
+sky_material = SubResource("ProceduralSkyMaterial_aqk2v")
+
+[sub_resource type="Environment" id="Environment_dwbse"]
+background_mode = 2
+sky = SubResource("Sky_iothi")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="BaseLevel" type="Node3D"]
+script = ExtResource("1_ftfrf")
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dwbse")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660253, -0.4330129, 0.2500001, 0, 0.49999994, 0.86602545, -0.50000024, 0.74999994, -0.43301257, 0.73161906, 2.7068377, -1.0599079)
+light_energy = 2.155
+light_specular = 1.07
+shadow_enabled = true
+shadow_blur = 0.897
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.361182e-08, -0.28287718, 0.95915616, 2.9486855e-09, 0.95915616, 0.28287718, -1, 1.5165039e-08, -4.099643e-08, 1.5741451, 1.0703781, 0)
+fov = 60.0
+
+[node name="Purse" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1075234, 0, 0, 0, 0.1075234, 0, 0, 0, 0.1075234, 0.5075082, 0.42909357, -0.87402403)
+mesh = ExtResource("3_d3dva")
+
+[node name="Discard" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.108, 0, 0, 0, 0.108, 0, 0, 0, 0.108, 0.50772446, 0.43, 0.8369046)
+mesh = ExtResource("4_bgm65")
+
+[node name="TableHandler" parent="." instance=ExtResource("2_iothi")]

@@ -47,6 +47,7 @@ func _on_skill_check(success: bool):
 		Globals.in_favor = false
 
 func _on_current_enemy_defeated():
+	toggle_coin_flip_ui.emit(false)
 	toggle_level_completed_ui.emit(true)
 
 	# open win menu

@@ -2,6 +2,7 @@ extends Node3D
 
 var current_hand: Array[Coin]
 @onready var table = $TableHandler
+@onready var camera_3d: Camera3D = $Camera3D
 
 func _ready() -> void:
 	# Inventory.add_item(ObjectManager.create_coin(Constants.COINS.base, Constants.display_type.PLAY))

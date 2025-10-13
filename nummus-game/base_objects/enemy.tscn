@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3tgw7j1mag6w"]
+[gd_scene load_steps=7 format=3 uid="uid://d3tgw7j1mag6w"]
 
 [ext_resource type="Script" uid="uid://y2i1v32uojnf" path="res://base_objects/enemy.gd" id="1_7frlh"]
 
 [sub_resource type="Animation" id="Animation_7frlh"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_fw1ev"]
 resource_name = "idle"
@@ -22,9 +34,19 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, -0.13, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_2kuny"]
+resource_name = "hurt_small"
+length = 0.5
+
+[sub_resource type="Animation" id="Animation_gmcc3"]
+resource_name = "death"
+length = 3.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orwns"]
 _data = {
 &"RESET": SubResource("Animation_7frlh"),
+&"death": SubResource("Animation_gmcc3"),
+&"hurt_small": SubResource("Animation_2kuny"),
 &"idle": SubResource("Animation_fw1ev")
 }
 
