@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://vwukeorb6yvs"]
+[gd_scene load_steps=9 format=3 uid="uid://vwukeorb6yvs"]
 
 [ext_resource type="Script" uid="uid://d22vmb2a3xedj" path="res://base_objects/base_level.gd" id="1_ftfrf"]
 [ext_resource type="PackedScene" uid="uid://dwu8pi66hpjiu" path="res://base_objects/table_handler.tscn" id="2_iothi"]
+[ext_resource type="PackedScene" uid="uid://bggqvxqjboy3t" path="res://base_objects/player_camera.tscn" id="2_nboak"]
 [ext_resource type="ArrayMesh" uid="uid://d2tjgm2vawtym" path="res://assets/3d/coin_purse_open.obj" id="3_d3dva"]
 [ext_resource type="ArrayMesh" uid="uid://bmmobbrhil6md" path="res://assets/3d/coin_purse_closed.obj" id="4_bgm65"]
 
@@ -32,9 +33,8 @@ light_specular = 1.07
 shadow_enabled = true
 shadow_blur = 0.897
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.361182e-08, -0.28287718, 0.95915616, 2.9486855e-09, 0.95915616, 0.28287718, -1, 1.5165039e-08, -4.099643e-08, 1.5741451, 1.0703781, 0)
-fov = 60.0
+[node name="PlayerCamera" parent="." instance=ExtResource("2_nboak")]
+transform = Transform3D(-4.4581025e-08, -0.28287718, 0.95915616, 2.9486855e-09, 0.95915616, 0.28287718, -1, 1.5439204e-08, -4.1926047e-08, 1.5741451, 1.0703781, 0)
 
 [node name="Purse" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1075234, 0, 0, 0, 0.1075234, 0, 0, 0, 0.1075234, 0.5075082, 0.42909357, -0.87402403)

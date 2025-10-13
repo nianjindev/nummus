@@ -17,6 +17,14 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_gmcc3"]
+resource_name = "death"
+length = 3.0
+
+[sub_resource type="Animation" id="Animation_2kuny"]
+resource_name = "hurt_small"
+length = 0.5
+
 [sub_resource type="Animation" id="Animation_fw1ev"]
 resource_name = "idle"
 length = 2.8667
@@ -33,14 +41,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -0.13, 0), Vector3(0, 0, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_2kuny"]
-resource_name = "hurt_small"
-length = 0.5
-
-[sub_resource type="Animation" id="Animation_gmcc3"]
-resource_name = "death"
-length = 3.0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orwns"]
 _data = {

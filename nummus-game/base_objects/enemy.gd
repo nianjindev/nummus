@@ -12,6 +12,7 @@ var health: int
 
 var hurt_small_length: float = 0.5
 var hurt_medium_length: float = 1
+var death_length: float = 3.0
 
 
 func _ready():
@@ -27,16 +28,19 @@ func _ready():
 	scale = Vector3(0.6,0.6,0.6)
 
 func play_hurt_animation():
+	Signalbus.enemy_hurt_visuals.emit()
 	animated_sprite.play("hurt")
 	animation_player.speed_scale = 0
+	
 	await get_tree().create_timer(hurt_small_length).timeout
-	animation_player.speed_scale = 1
+	
 	animated_sprite.play("neutral")
-
+	animation_player.speed_scale = 1
+	
 func play_death_animation():
 	animated_sprite.play("very_hurt")
-	animation_player.play("death")
-	await animation_player.animation_finished
+	await get_tree().create_timer(death_length).timeout
+	
 	Signalbus.current_enemy_defeated.emit()
 
 func take_damage(amount: int):
