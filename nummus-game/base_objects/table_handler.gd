@@ -9,7 +9,7 @@ class_name Table
 var increment: float
 
 func _ready() -> void:
-	check_spacing()
+	check_spacing(Globals.max_hand)
 
 func check_spacing(hand_size: int):
 	increment = (abs(endpoint_l.position.z) + abs(endpoint_r.position.z))/(hand_size-1)
