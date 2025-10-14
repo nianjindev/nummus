@@ -31,7 +31,9 @@ signal toggle_coin_flip_ui(show: bool)
 @warning_ignore("unused_signal")
 signal toggle_bar_ui(show: bool)
 signal toggle_level_completed_ui(show: bool)
- 
+
+######## VFX ########
+signal enemy_hurt_visuals()
 
 func _ready():
 	skill_check_finish.connect(_on_skill_check)

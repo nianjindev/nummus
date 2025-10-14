@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=11 format=3 uid="uid://dcspy7387pquk"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=11 format=3 uid="uid://dcspy7387pquk"]
 
 [ext_resource type="Texture2D" uid="uid://bnofq2hlt6kgu" path="res://assets/2d/character_sprites/smug_guy.png" id="1_2mvsy"]
 [ext_resource type="Texture2D" uid="uid://bfjhgcbnrhvtu" path="res://assets/2d/character_sprites/smug_guy-Sheet.png" id="1_8gs5x"]
@@ -60,7 +60,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"neutral",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -82,4 +82,5 @@ animations = [{
 [resource]
 script = ExtResource("1_kbqwn")
 enemy_expressions = SubResource("SpriteFrames_kbqwn")
+health = 100
 metadata/_custom_type_script = "uid://dlb0rp3fkxykt"

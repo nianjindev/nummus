@@ -2,11 +2,13 @@ extends Node3D
 
 var current_hand: Array[Coin]
 @onready var table = $TableHandler
+@onready var camera: Camera3D = $PlayerCamera
 
 func _ready() -> void:
 	# Inventory.add_item(ObjectManager.create_coin(Constants.COINS.base, Constants.display_type.PLAY))
 	spawn_coin()
 	ObjectManager.spawn_base_enemy()
+	
 
 func spawn_coin():
 	var hand_size: int = max(Globals.max_hand, Inventory.inventory.size())
