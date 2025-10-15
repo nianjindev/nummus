@@ -22,14 +22,14 @@ var coin_price: int
 # coin state
 @export var current_state: Constants.display_type
 var is_mouse_over: bool = false
-
-# func _init(state: Constants.display_type) -> void:
-# 	current_state = state
+var floating: int = 1
 
 func _ready():
 	# flip signal
 	if current_state == null:
 		current_state = Constants.display_type.SHOP
+
+	# signals
 	Signalbus.coin_flipped.connect(flip)
 
 	# instance of coin resources
@@ -44,6 +44,10 @@ func _ready():
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0
 
+	set_state_transforms()
+	parse_json()
+
+func set_state_transforms() -> void:
 	# transform me
 	if current_state == Constants.display_type.PLAY:
 		scale = Vector3(0.1,0.1,0.1)
@@ -59,6 +63,7 @@ func _ready():
 		hoverable.visible = false
 		animation_player.play("spinning")
 
+func parse_json() -> void:
 	# json parse
 	var file = FileAccess.open(Constants.JSON_PATHS.coins, FileAccess.READ)
 	assert(FileAccess.file_exists(Constants.JSON_PATHS.coins),"File doesnt exist")
@@ -74,8 +79,7 @@ func _ready():
 			coin_price = json_object.data.get(coin).get("price")
 			hoverable.title.text = json_object.data.get(coin).get("name") + " [color=yellow]$" + str(coin_price) + "[/color]"
 			hoverable.description.text = json_object.data.get(coin).get("description") + generate_description(coin_stats)
-			
-	
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Signalbus.toggle_coin_flip_ui.emit(true)
 	
@@ -161,16 +165,24 @@ func toggle_visible(on: bool):
 		hoverable.animation.play("fly_out")
 	else:
 		hoverable.animation.play_backwards("fly_out")
+
 func _on_area_3d_mouse_entered() -> void:
 	if current_state == Constants.display_type.SHOP:
 		toggle_visible(true)
-		is_mouse_over = true
+	is_mouse_over = true
+
 func _input(event: InputEvent) -> void:
 	if is_mouse_over and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		buy_me()
+		if current_state == Constants.display_type.SHOP:
+			buy_me()
+		if current_state == Constants.display_type.PLAY:
+			self.position += Vector3(0, 0.07, 0) * floating
+			floating *= -1
+
 func _on_area_3d_mouse_exited() -> void:
 	toggle_visible(false)
 	is_mouse_over = false
+
 func buy_me():
 	if Globals.can_afford(coin_price):
 		Inventory.add_item(self.duplicate())
