@@ -58,6 +58,7 @@ root_node = NodePath("../EnemySprite")
 libraries = {
 &"": SubResource("AnimationLibrary_orwns")
 }
+autoplay = "idle"
 
 [node name="EnemySprite" type="AnimatedSprite3D" parent="."]
 

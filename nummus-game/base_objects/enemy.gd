@@ -36,9 +36,7 @@ func play_hurt_animation():
 	
 	animated_sprite.play("neutral")
 	animation_player.speed_scale = 1
-	
-	
-	
+
 func play_death_animation():
 	Signalbus.enemy_hurt_visuals.emit()
 	animated_sprite.play("very_hurt")
@@ -46,7 +44,7 @@ func play_death_animation():
 	Signalbus.toggle_coin_flip_ui.emit(false)
 	animation_player.speed_scale = 0
 	
-	await get_tree().create_timer(death_length).timeout
+	await get_tree().create_timer(3).timeout
 	
 	Signalbus.current_enemy_defeated.emit()
 
