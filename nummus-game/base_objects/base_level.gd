@@ -2,7 +2,6 @@ extends Node3D
 
 var current_hand: Array[Coin]
 @onready var table = $TableHandler
-@onready var camera: Camera3D = $PlayerCamera
 
 func _ready() -> void:
 	# Inventory.add_item(ObjectManager.create_coin(Constants.COINS.base, Constants.display_type.PLAY))
@@ -18,3 +17,5 @@ func spawn_coin():
 		new_coin.current_state = Constants.display_type.PLAY
 		SceneManager.current_scene.add_child.call_deferred(new_coin)
 		new_coin.position = table.coin_positions[i]
+
+			

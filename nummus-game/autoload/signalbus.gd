@@ -34,7 +34,7 @@ signal toggle_level_completed_ui(show: bool)
 signal update_side_percent_ui(heads: float, tails: float)
 
 ######## VFX ########
-signal enemy_hurt_visuals()
+signal enemy_visuals()
 
 func _ready():
 	skill_check_finish.connect(_on_skill_check)
@@ -42,6 +42,8 @@ func _ready():
 	change_fortune_and_update_ui.connect(_on_fortune_changed)
 	change_misfortune_and_update_ui.connect(_on_misfortune_changed)
 	change_health_and_update_ui.connect(_on_health_changed)
+	
+
 
 func _on_skill_check(success: bool):
 	if success:
@@ -86,4 +88,3 @@ func _on_health_changed(add: bool, amount: int, update_ui: bool):
 	
 	if update_ui:
 		update_health_bar_ui.emit()
-	
