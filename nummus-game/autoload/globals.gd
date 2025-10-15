@@ -44,6 +44,8 @@ func change_health(add: bool, amount: int):
 func reset_weights():
 	head_weight = 0.5
 	tail_weight = 0.5
+	
+	Signalbus.update_side_percent_ui.emit(head_weight, tail_weight)
 
 func can_afford(price: int) -> bool:
 	if price <= money:

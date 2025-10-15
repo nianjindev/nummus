@@ -26,6 +26,8 @@ var floating: int = 1
 
 func _ready():
 	# flip signal
+	set_weights()
+	
 	if current_state == null:
 		current_state = Constants.display_type.SHOP
 
@@ -121,6 +123,7 @@ func check_flipped_side(flipped_side: int, state: int):
 func set_weights():
 	weights.set(sides.find(Sides.HEADS), Globals.head_weight)
 	weights.set(sides.find(Sides.TAILS), Globals.tail_weight)
+	Signalbus.update_side_percent_ui.emit(weights[Sides.HEADS], weights[Sides.TAILS])
 		
 func flip(state: int):
 	if state == Sides.SKIP:

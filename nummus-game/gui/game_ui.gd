@@ -4,7 +4,8 @@ extends Control
 @onready var level_text: RichTextLabel = $LevelSplash/LevelText
 @onready var level_splash: ColorRect = $LevelSplash
 @onready var splash_fade: AnimationPlayer = $LevelSplash/SplashFade
-
+@onready var heads_percent: RichTextLabel = $CoinFlipButtons/Heads/HeadsPercent
+@onready var tails_percent: RichTextLabel = $CoinFlipButtons/Tails/TailsPercent
 
 func _ready():
 	level_check()
@@ -13,6 +14,7 @@ func _ready():
 	Signalbus.toggle_game_ui.connect(toggle_all)
 	Signalbus.toggle_coin_flip_ui.connect(_on_coin_flip_ui_toggled)
 	Signalbus.toggle_level_completed_ui.connect(_on_level_completed_toggled)
+	Signalbus.update_side_percent_ui.connect(_on_side_percent_updated)
 	
 	LevelManager.enter_level.connect(commence_level)
 	
@@ -43,10 +45,8 @@ func _on_coin_flip_ui_toggled(on: bool):
 func _on_heads_pressed() -> void:
 	Signalbus.coin_flipped.emit(Sides.HEADS)
 
-
 func _on_tails_pressed() -> void:
 	Signalbus.coin_flipped.emit(Sides.TAILS)
-
 
 func _on_skip_pressed() -> void:
 	Signalbus.coin_flipped.emit(Sides.SKIP)
@@ -57,3 +57,8 @@ func _on_level_completed_toggled(on: bool) -> void:
 	
 func _on_next_stage_pressed() -> void:
 	LevelManager.next_stage()
+	
+func _on_side_percent_updated(heads: float, tails: float) -> void:
+	heads_percent.text = str(int(round(heads * 100))) + "%"
+	tails_percent.text = str(int(round(tails * 100))) + "%"
+	
