@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgkq1874nru5o"]
+[gd_scene load_steps=15 format=3 uid="uid://cgkq1874nru5o"]
 
 [ext_resource type="Script" uid="uid://4wjymveihx57" path="res://gui/global_ui.gd" id="1_s6kbw"]
 [ext_resource type="Script" uid="uid://bbxm05mjnkk3g" path="res://gui/stage.gd" id="5_t228w"]
+[ext_resource type="Texture2D" uid="uid://becrm8gwggipt" path="res://assets/2d/bar_textures/fortune_text_bar.png" id="6_jxs7b"]
 [ext_resource type="Texture2D" uid="uid://25p6o6gq0bqn" path="res://assets/2d/bar_textures/bar_under_small.png" id="6_qbh03"]
+[ext_resource type="Texture2D" uid="uid://jhepe38x2bp7" path="res://assets/2d/bar_textures/misfortune_text_bar.png" id="7_qwhgh"]
 [ext_resource type="Texture2D" uid="uid://1gdn7m8wesjy" path="res://assets/2d/bar_textures/bar_over_small.png" id="7_xt8b7"]
 [ext_resource type="Texture2D" uid="uid://bqrn807x3kby1" path="res://assets/2d/bar_textures/progress_fortune.png" id="8_cqrd0"]
 [ext_resource type="Texture2D" uid="uid://3erwkid1bywu" path="res://assets/2d/bar_textures/progress_misfortune.png" id="9_8q2nc"]
-[ext_resource type="Texture2D" uid="uid://g7vd2mnpnmic" path="res://assets/2d/bar_textures/fortune_face.png" id="10_2p7ws"]
-[ext_resource type="Texture2D" uid="uid://clg6eg705e2lx" path="res://assets/2d/bar_textures/misfortune_face.png" id="11_50bnc"]
 [ext_resource type="Texture2D" uid="uid://bci38xaomk08c" path="res://assets/2d/bar_textures/bar_under_big.png" id="12_qujq2"]
+[ext_resource type="Texture2D" uid="uid://b8nnrnw1eewfa" path="res://assets/2d/bar_textures/health_text_bar.png" id="12_qwhgh"]
 [ext_resource type="Texture2D" uid="uid://jch5sbhi1vs0" path="res://assets/2d/bar_textures/bar_over_big.png" id="13_crqig"]
 [ext_resource type="PackedScene" uid="uid://dgl2frifwu5vi" path="res://gui/inventory_ui.tscn" id="13_jxs7b"]
 [ext_resource type="Texture2D" uid="uid://bronhad3508ye" path="res://assets/2d/bar_textures/progress_health.png" id="14_h1f0h"]
@@ -52,82 +53,26 @@ text = "Next Stage"
 [node name="PlayerInterface" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 21.0
-offset_top = 14.0
-offset_right = 756.0
-offset_bottom = 289.5
+offset_right = 562.0
+offset_bottom = 191.0
 
-[node name="FortuneBars" type="Control" parent="PlayerInterface"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = -332.0
-offset_right = 688.0
-offset_bottom = -9.0
-grow_vertical = 0
-
-[node name="FortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
+[node name="FortuneBars" type="VBoxContainer" parent="PlayerInterface"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -344.0
-offset_top = 43.5
-offset_right = 115.0
-offset_bottom = 90.5
+offset_left = -267.0
+offset_top = -78.0
+offset_right = 267.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_under = ExtResource("6_qbh03")
-texture_over = ExtResource("7_xt8b7")
-texture_progress = ExtResource("8_cqrd0")
 
-[node name="MisfortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -344.0
-offset_top = 101.5
-offset_right = 115.0
-offset_bottom = 148.5
-grow_horizontal = 2
-grow_vertical = 2
-texture_under = ExtResource("6_qbh03")
-texture_over = ExtResource("7_xt8b7")
-texture_progress = ExtResource("9_8q2nc")
-
-[node name="FortuneFace" type="TextureRect" parent="PlayerInterface/FortuneBars"]
-layout_mode = 0
-offset_left = 452.0
-offset_top = 209.0
-offset_right = 492.0
-offset_bottom = 251.0
-texture = ExtResource("10_2p7ws")
-
-[node name="MisfortuneFace" type="TextureRect" parent="PlayerInterface/FortuneBars"]
-layout_mode = 0
-offset_left = 454.0
-offset_top = 265.0
-offset_right = 495.0
-offset_bottom = 307.0
-texture = ExtResource("11_50bnc")
-
-[node name="HealthBar" type="TextureProgressBar" parent="PlayerInterface"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -259.5
-offset_right = 726.0
-offset_bottom = -140.5
-grow_vertical = 0
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
+layout_mode = 2
+size_flags_horizontal = 0
 max_value = 20.0
 step = 0.1
 value = 20.0
@@ -135,12 +80,105 @@ texture_under = ExtResource("12_qujq2")
 texture_over = ExtResource("13_crqig")
 texture_progress = ExtResource("14_h1f0h")
 
+[node name="UnderText" type="TextureRect" parent="PlayerInterface/FortuneBars/HealthBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -24.0
+offset_right = 108.0
+offset_bottom = 23.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("12_qwhgh")
+
+[node name="MarginFortune" type="MarginContainer" parent="PlayerInterface/FortuneBars"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="FortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars/MarginFortune"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_under = ExtResource("6_qbh03")
+texture_over = ExtResource("7_xt8b7")
+texture_progress = ExtResource("8_cqrd0")
+
+[node name="UnderText" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -16.5
+offset_right = 103.0
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("6_jxs7b")
+
+[node name="MarginMisfortune" type="MarginContainer" parent="PlayerInterface/FortuneBars"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="MisfortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars/MarginMisfortune"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_under = ExtResource("6_qbh03")
+texture_over = ExtResource("7_xt8b7")
+texture_progress = ExtResource("9_8q2nc")
+
+[node name="UnderText" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -16.5
+offset_right = 103.0
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("7_qwhgh")
+
+[node name="Amount" type="RichTextLabel" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/UnderText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -14.0
+offset_right = 34.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.6117647, 0.16470589, 0.4392157, 1)
+text = "20/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MoneyBackdrop" type="TextureRect" parent="PlayerInterface"]
 layout_mode = 1
-offset_left = 521.0
-offset_top = 155.0
-offset_right = 711.0
-offset_bottom = 257.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 183.0
+offset_top = 12.5
+offset_right = 365.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("15_ll540")
 
 [node name="Amount" type="RichTextLabel" parent="PlayerInterface/MoneyBackdrop"]
@@ -150,14 +188,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -52.0
-offset_top = -55.0
-offset_right = 48.0
-offset_bottom = 45.0
+offset_left = -71.0
+offset_top = -32.5
+offset_right = 69.0
+offset_bottom = 30.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(1, 1, 0.23921569, 1)
-theme_override_font_sizes/normal_font_size = 56
+theme_override_font_sizes/normal_font_size = 25
 text = "$0"
 horizontal_alignment = 1
 vertical_alignment = 1

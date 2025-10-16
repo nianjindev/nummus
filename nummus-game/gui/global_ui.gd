@@ -1,10 +1,10 @@
 extends Control
 
 @onready var amount: RichTextLabel = $PlayerInterface/MoneyBackdrop/Amount
-@onready var health_bar: TextureProgressBar = $PlayerInterface/HealthBar
-@onready var fortune_bar: TextureProgressBar = $PlayerInterface/FortuneBars/FortuneBar
-@onready var misfortune_bar: TextureProgressBar = $PlayerInterface/FortuneBars/MisfortuneBar
-@onready var fortune_bars: Control = $PlayerInterface/FortuneBars
+@onready var fortune_bars: VBoxContainer = $PlayerInterface/FortuneBars
+@onready var health_bar: TextureProgressBar = $PlayerInterface/FortuneBars/HealthBar
+@onready var fortune_bar: TextureProgressBar = $PlayerInterface/FortuneBars/MarginFortune/FortuneBar
+@onready var misfortune_bar: TextureProgressBar = $PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar
 
 func _ready():
 	Globals.connect("money_changed", Callable(change_money_amount))
