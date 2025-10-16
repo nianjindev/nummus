@@ -26,9 +26,19 @@ func _ready():
 	position = Vector3(-1.604,1,0.0)
 	rotate_y(PI/2)
 	scale = Vector3(0.6,0.6,0.6)
+	Signalbus.enemy_visuals.connect(on_enemy_visuals_played)
+
+func on_enemy_visuals_played(visual: String):
+	match visual:
+		"none":
+			Signalbus.toggle_coin_flip_ui.emit(true)
+		"death":
+			play_death_animation()
+		"hurt":
+			play_hurt_animation()
+		
 
 func play_hurt_animation():
-	Signalbus.enemy_hurt_visuals.emit()
 	animated_sprite.play("hurt")
 	animation_player.speed_scale = 0
 	
@@ -36,14 +46,14 @@ func play_hurt_animation():
 	
 	animated_sprite.play("neutral")
 	animation_player.speed_scale = 1
+	
+	Signalbus.toggle_coin_flip_ui.emit(true)
 
 func play_death_animation():
-	Signalbus.enemy_hurt_visuals.emit()
 	animated_sprite.play("very_hurt")
-	
-	Signalbus.toggle_coin_flip_ui.emit(false)
 	animation_player.speed_scale = 0
-	
+	Signalbus.toggle_coin_flip_ui.emit(false)
+
 	await get_tree().create_timer(3).timeout
 	
 	Signalbus.current_enemy_defeated.emit()
@@ -51,10 +61,10 @@ func play_death_animation():
 func take_damage(amount: int):
 	if health + amount < 0 or health + amount == 0:
 		health = 0
-		play_death_animation()
+		Signalbus.enemy_visuals.emit("death")
 	else:
 		health += amount
-		play_hurt_animation()
+		Signalbus.enemy_visuals.emit("hurt")
 
 func heal(amount: int):
 	health += amount
