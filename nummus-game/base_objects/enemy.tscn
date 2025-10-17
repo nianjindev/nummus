@@ -61,6 +61,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="EnemySprite" type="AnimatedSprite3D" parent="."]
+texture_filter = 0
 
 [node name="HealthText" type="Label3D" parent="EnemySprite"]
 transform = Transform3D(2.255, 0, 0, 0, 2.255, 0, 0, 0, 2.255, 0, 0.9074528, 0)

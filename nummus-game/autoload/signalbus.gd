@@ -23,7 +23,7 @@ signal change_enemy_health(add: bool, amount: int)
 ######## UI ########
 signal update_fortune_bar_ui() 
 signal update_misfortune_bar_ui()
-signal update_health_bar_ui()
+signal update_health_visuals()
 @warning_ignore("unused_signal")
 signal toggle_game_ui(show: bool)
 @warning_ignore("unused_signal")
@@ -43,8 +43,6 @@ func _ready():
 	change_misfortune_and_update_ui.connect(_on_misfortune_changed)
 	change_health_and_update_ui.connect(_on_health_changed)
 	
-
-
 func _on_skill_check(success: bool):
 	if success:
 		Globals.in_favor = true
@@ -87,4 +85,4 @@ func _on_health_changed(add: bool, amount: int, update_ui: bool):
 		Globals.health = amount
 	
 	if update_ui:
-		update_health_bar_ui.emit()
+		update_health_visuals.emit()

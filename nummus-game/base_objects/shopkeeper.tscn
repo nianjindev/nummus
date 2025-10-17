@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh6iucofsqx83"]
+[gd_scene load_steps=12 format=3 uid="uid://b33abnmmtr7nm"]
 
 [ext_resource type="Texture2D" uid="uid://cditkhfq8p0fa" path="res://assets/2d/character_sprites/shopkeeper-Sheet.png" id="1_qcdo4"]
 
@@ -113,5 +113,6 @@ libraries = {
 autoplay = "idle"
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cqvnp")
 animation = &"neutral"

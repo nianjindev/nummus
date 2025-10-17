@@ -16,7 +16,6 @@ var misfortune: int = 0
 var misfortune_gain: int = 5
 
 # signals that interact with GlobalUI
-signal health_changed
 signal money_changed
 
 # luck
@@ -33,15 +32,6 @@ func change_money(add: bool, amount: int):
 	else:
 		money = amount
 	money_changed.emit()
-
-func change_health(add: bool, amount: int):
-	if add:
-		health += amount
-	else:
-		health = amount
-	if health > max_health:
-		health = max_health
-	health_changed.emit()
 
 func reset_weights():
 	head_weight = 0.5
