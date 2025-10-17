@@ -89,15 +89,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			Signalbus.enemy_visuals.emit("none")
 			coin_effect.effect(coin_stats, Sides.HEADS)
 		"flip_heads_fail": # IDEA: all fails do misfortune
-			Signalbus.change_fortune_and_update_ui.emit(true, 20, true)
-			Signalbus.change_misfortune_and_update_ui.emit(true, 20, true)
+			Signalbus.change_fortune_and_update_ui.emit(true, Globals.fortune_gain, true)
+			Signalbus.change_misfortune_and_update_ui.emit(true, Globals.misfortune_gain, true)
 			Signalbus.enemy_visuals.emit("none")
 			return
 		"flip_tails_success":
 			coin_effect.effect(coin_stats, Sides.TAILS)
 		"flip_tails_fail":
-			Signalbus.change_fortune_and_update_ui.emit(true, 20, true)
-			Signalbus.change_misfortune_and_update_ui.emit(true, 20, true)
+			Signalbus.change_fortune_and_update_ui.emit(true, Globals.fortune_gain, true)
+			Signalbus.change_misfortune_and_update_ui.emit(true, Globals.misfortune_gain, true)
 			Signalbus.enemy_visuals.emit("none")
 			return
 	

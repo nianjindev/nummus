@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgkq1874nru5o"]
+[gd_scene load_steps=22 format=3 uid="uid://cgkq1874nru5o"]
 
 [ext_resource type="Script" uid="uid://4wjymveihx57" path="res://gui/global_ui.gd" id="1_s6kbw"]
 [ext_resource type="Script" uid="uid://bbxm05mjnkk3g" path="res://gui/stage.gd" id="5_t228w"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b8nnrnw1eewfa" path="res://assets/2d/bar_textures/health_text_bar.png" id="12_qwhgh"]
 [ext_resource type="Texture2D" uid="uid://jch5sbhi1vs0" path="res://assets/2d/bar_textures/bar_over_big.png" id="13_crqig"]
 [ext_resource type="PackedScene" uid="uid://dgl2frifwu5vi" path="res://gui/inventory_ui.tscn" id="13_jxs7b"]
+[ext_resource type="Script" uid="uid://d28kshbqsls02" path="res://gui/misfortune_marker_row.gd" id="13_s6kbw"]
 [ext_resource type="Texture2D" uid="uid://bronhad3508ye" path="res://assets/2d/bar_textures/progress_health.png" id="14_h1f0h"]
 [ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/bar_textures/under_money.png" id="15_ll540"]
 
@@ -24,9 +25,6 @@ load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30c
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qbh03"]
 load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xt8b7"]
-load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cqrd0"]
 load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
 
@@ -36,10 +34,7 @@ load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30c
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2p7ws"]
 load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_50bnc"]
-load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
-
-[node name="GlobalUI" type="Control"]
+[node name="GlobalUI" type="Control" node_paths=PackedStringArray("fortune_text", "misfortune_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,6 +43,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_s6kbw")
+fortune_text = NodePath("PlayerInterface/FortuneBars/MarginFortune/FortuneBar/UnderText/Amount")
+misfortune_text = NodePath("PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/UnderText/Amount")
 metadata/_edit_lock_ = true
 
 [node name="Stage" type="Control" parent="."]
@@ -145,6 +142,7 @@ theme_override_constants/margin_left = 20
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+max_value = 20.0
 texture_under = ExtResource("6_qbh03")
 texture_over = ExtResource("7_xt8b7")
 texture_progress = ExtResource("8_cqrd0")
@@ -214,12 +212,6 @@ size_flags_horizontal = 10
 texture = SubResource("CompressedTexture2D_qbh03")
 stretch_mode = 4
 
-[node name="Mark4" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar/MarkerRow"]
-layout_mode = 2
-size_flags_horizontal = 10
-texture = SubResource("CompressedTexture2D_xt8b7")
-stretch_mode = 4
-
 [node name="Filler" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar/MarkerRow"]
 layout_mode = 2
 size_flags_horizontal = 10
@@ -234,7 +226,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 max_value = 20.0
 step = 0.0
-value = 16.0
 texture_under = ExtResource("6_qbh03")
 texture_over = ExtResource("7_xt8b7")
 texture_progress = ExtResource("9_8q2nc")
@@ -285,6 +276,7 @@ offset_right = 163.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("13_s6kbw")
 
 [node name="Mark1" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/MarkerRow"]
 layout_mode = 2
@@ -302,12 +294,6 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_horizontal = 10
 texture = SubResource("CompressedTexture2D_2p7ws")
-stretch_mode = 4
-
-[node name="Mark4" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/MarkerRow"]
-layout_mode = 2
-size_flags_horizontal = 10
-texture = SubResource("CompressedTexture2D_50bnc")
 stretch_mode = 4
 
 [node name="Filler" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/MarkerRow"]
