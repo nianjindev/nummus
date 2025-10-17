@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgkq1874nru5o"]
+[gd_scene load_steps=23 format=3 uid="uid://cgkq1874nru5o"]
 
 [ext_resource type="Script" uid="uid://4wjymveihx57" path="res://gui/global_ui.gd" id="1_s6kbw"]
 [ext_resource type="Script" uid="uid://bbxm05mjnkk3g" path="res://gui/stage.gd" id="5_t228w"]
@@ -14,6 +14,30 @@
 [ext_resource type="PackedScene" uid="uid://dgl2frifwu5vi" path="res://gui/inventory_ui.tscn" id="13_jxs7b"]
 [ext_resource type="Texture2D" uid="uid://bronhad3508ye" path="res://assets/2d/bar_textures/progress_health.png" id="14_h1f0h"]
 [ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/bar_textures/under_money.png" id="15_ll540"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qwhgh"]
+load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s6kbw"]
+load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qbh03"]
+load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xt8b7"]
+load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cqrd0"]
+load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8q2nc"]
+load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2p7ws"]
+load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_50bnc"]
+load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
 
 [node name="GlobalUI" type="Control"]
 layout_mode = 3
@@ -158,6 +182,49 @@ text = "20/20"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MarkerRow" type="HBoxContainer" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.5
+offset_top = -17.5
+offset_right = 163.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mark1" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("CompressedTexture2D_qwhgh")
+stretch_mode = 4
+
+[node name="Mark2" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("CompressedTexture2D_s6kbw")
+stretch_mode = 4
+
+[node name="Mark3" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("CompressedTexture2D_qbh03")
+stretch_mode = 4
+
+[node name="Mark4" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("CompressedTexture2D_xt8b7")
+stretch_mode = 4
+
+[node name="Filler" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+stretch_mode = 4
+
 [node name="MarginMisfortune" type="MarginContainer" parent="PlayerInterface/FortuneBars"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
@@ -165,6 +232,9 @@ theme_override_constants/margin_left = 20
 [node name="MisfortuneBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars/MarginMisfortune"]
 layout_mode = 2
 size_flags_horizontal = 0
+max_value = 20.0
+step = 0.0
+value = 16.0
 texture_under = ExtResource("6_qbh03")
 texture_over = ExtResource("7_xt8b7")
 texture_progress = ExtResource("9_8q2nc")
@@ -201,6 +271,49 @@ theme_override_colors/default_color = Color(0.6117647, 0.16470589, 0.4392157, 1)
 text = "20/20"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarkerRow" type="HBoxContainer" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.5
+offset_top = -17.5
+offset_right = 163.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mark1" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("CompressedTexture2D_cqrd0")
+stretch_mode = 4
+
+[node name="Mark2" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("CompressedTexture2D_8q2nc")
+stretch_mode = 4
+
+[node name="Mark3" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("CompressedTexture2D_2p7ws")
+stretch_mode = 4
+
+[node name="Mark4" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("CompressedTexture2D_50bnc")
+stretch_mode = 4
+
+[node name="Filler" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+stretch_mode = 4
 
 [node name="MoneyBackdrop" type="TextureRect" parent="PlayerInterface"]
 layout_mode = 1
