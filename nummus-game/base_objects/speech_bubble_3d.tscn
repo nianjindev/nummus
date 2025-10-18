@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bov88m8v4wj43"]
+
+[ext_resource type="PackedScene" uid="uid://bggujwosko3gr" path="res://base_objects/speech_bubble.tscn" id="1_ab8vy"]
+[ext_resource type="Script" uid="uid://ck05eqiq1pvkk" path="res://base_objects/speech_bubble_3d.gd" id="1_fp82w"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ab8vy"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[node name="SpeechBubble3D" type="Node3D" node_paths=PackedStringArray("speech_bubble_gui")]
+script = ExtResource("1_fp82w")
+speech_bubble_gui = NodePath("Sprite3D/SubViewport/SpeechBubble")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_ab8vy")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+
+[node name="SpeechBubble" parent="Sprite3D/SubViewport" instance=ExtResource("1_ab8vy")]

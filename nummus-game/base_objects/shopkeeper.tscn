@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b33abnmmtr7nm"]
+[gd_scene load_steps=14 format=3 uid="uid://bh6iucofsqx83"]
 
+[ext_resource type="Script" uid="uid://cj4onfl034kox" path="res://base_objects/shopkeeper.gd" id="1_d1nhg"]
 [ext_resource type="Texture2D" uid="uid://cditkhfq8p0fa" path="res://assets/2d/character_sprites/shopkeeper-Sheet.png" id="1_qcdo4"]
+[ext_resource type="PackedScene" uid="uid://bov88m8v4wj43" path="res://base_objects/speech_bubble_3d.tscn" id="2_e8k3m"]
 
 [sub_resource type="Animation" id="Animation_7frlh"]
 length = 0.001
@@ -104,6 +106,7 @@ animations = [{
 }]
 
 [node name="Shopkeeper" type="Node3D"]
+script = ExtResource("1_d1nhg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite3D")
@@ -116,3 +119,10 @@ autoplay = "idle"
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cqvnp")
 animation = &"neutral"
+
+[node name="SpeechBubble3D" parent="AnimatedSprite3D" instance=ExtResource("2_e8k3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

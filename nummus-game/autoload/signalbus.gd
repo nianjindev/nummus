@@ -31,9 +31,15 @@ signal toggle_coin_flip_ui(show: bool)
 @warning_ignore("unused_signal")
 signal toggle_bar_ui(show: bool)
 signal toggle_level_completed_ui(show: bool)
+@warning_ignore("unused_signal")
 signal update_side_percent_ui(heads: float, tails: float)
 
+## dialog lol ##
+@warning_ignore("unused_signal")
+signal shop_dialog(action: String)
+
 ######## VFX ########
+@warning_ignore("unused_signal")
 signal enemy_visuals()
 
 func _ready():

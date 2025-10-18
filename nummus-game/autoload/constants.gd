@@ -25,7 +25,8 @@ const COINS: Dictionary = {
 }
 
 const JSON_PATHS: Dictionary = {
-	"coins":"res://assets/resource_json/coins.json"
+	"coins":"res://assets/resource_json/coins.json",
+	"shopkeeper":"res://assets/resource_json/shopkeeper.json"
 }
 
 enum display_type{PLAY, SHOP, HAND}

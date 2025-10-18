@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bqc7l2fn2sfir"
+path="res://.godot/imported/speech_bubble.aseprite-6d86fce39da8e8bf97c7f25ffca0b72d.res"
+
+[deps]
+
+source_file="res://assets/2d/character_sprites/speech_bubble.aseprite"
+dest_files=["res://.godot/imported/speech_bubble.aseprite-6d86fce39da8e8bf97c7f25ffca0b72d.res"]
+
+[params]
+
