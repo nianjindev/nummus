@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://clj1nhn3sqwg8" path="res://assets/3d/shop_floor.obj" id="1_yxe34"]
 [ext_resource type="PackedScene" uid="uid://cef8ru8rhxwv" path="res://base_objects/shop_shelf.tscn" id="2_hxjiy"]
-[ext_resource type="PackedScene" path="res://base_objects/shopkeeper.tscn" id="4_hxjiy"]
+[ext_resource type="PackedScene" uid="uid://b33abnmmtr7nm" path="res://base_objects/shopkeeper.tscn" id="4_hxjiy"]
 [ext_resource type="ArrayMesh" uid="uid://di4p7r3k6ddnu" path="res://assets/3d/shop_wall.obj" id="4_ya44s"]
 [ext_resource type="ArrayMesh" uid="uid://dc1ulk0am4cx4" path="res://assets/3d/shop_table.obj" id="5_hhiwf"]
 
@@ -26,7 +26,7 @@ environment = SubResource("Environment_ya44s")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.74337864, -0.5792593, 0.33443534, 0.22770296, 0.68929785, 0.6877644, -0.62891954, -0.4351174, 0.6443083, 0, 3.9246154, 2.2999923)
-light_energy = 4.319
+light_energy = 4.154
 light_specular = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -57,9 +57,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5582032, 1.8028202, -3.965
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6964942, 2.1363757, -4.366078)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.410792, -1.8935218)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.410792, -3.3851757)
 light_energy = 14.168
-light_indirect_energy = 1.495
+light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 spot_range = 6.368
-spot_angle = 43.14
+spot_angle = 33.86

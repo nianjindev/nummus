@@ -6,6 +6,8 @@ var health: int = 20
 var max_health: int = 20
 
 var in_favor = false # winning the skill check apparently
+var fortune_channeled = false
+var fortune_channeled_amount = 0.0
 
 var max_fortune: int = 20
 var fortune: int = 0
@@ -38,6 +40,19 @@ func reset_weights():
 	tail_weight = 0.5
 	
 	Signalbus.update_side_percent_ui.emit(head_weight, tail_weight)
+
+func reset_fortune():
+	if Globals.fortune >= 20:
+		Globals.fortune -= 20
+	elif Globals.fortune >= 12:
+		Globals.fortune -= 12
+	elif Globals.fortune >= 8:
+		Globals.fortune -= 8
+	elif Globals.fortune >= 4:
+		Globals.fortune -= 4
+		
+	Globals.fortune_channeled_amount = 0
+	fortune_channeled = false
 
 func can_afford(price: int) -> bool:
 	if price <= money:

@@ -143,6 +143,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 max_value = 20.0
+step = 0.0
+value = 12.0
 texture_under = ExtResource("6_qbh03")
 texture_over = ExtResource("7_xt8b7")
 texture_progress = ExtResource("8_cqrd0")
@@ -213,6 +215,11 @@ texture = SubResource("CompressedTexture2D_qbh03")
 stretch_mode = 4
 
 [node name="Filler" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+stretch_mode = 4
+
+[node name="Filler2" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginFortune/FortuneBar/MarkerRow"]
 layout_mode = 2
 size_flags_horizontal = 10
 stretch_mode = 4
@@ -301,6 +308,11 @@ layout_mode = 2
 size_flags_horizontal = 10
 stretch_mode = 4
 
+[node name="Filler2" type="TextureRect" parent="PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar/MarkerRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+stretch_mode = 4
+
 [node name="MoneyBackdrop" type="TextureRect" parent="PlayerInterface"]
 layout_mode = 1
 anchors_preset = 8
@@ -330,7 +342,7 @@ offset_bottom = 30.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(1, 1, 0.23921569, 1)
-theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/normal_font_size = 30
 text = "$0"
 horizontal_alignment = 1
 vertical_alignment = 1

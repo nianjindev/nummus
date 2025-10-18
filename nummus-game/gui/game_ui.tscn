@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=14 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
 [ext_resource type="Texture2D" uid="uid://chjrtn6sxdj75" path="res://assets/2d/hand_textures/button_blue.png" id="3_24vp8"]
+[ext_resource type="Script" uid="uid://0ebsipktf2xa" path="res://gui/heads.gd" id="3_ubwhq"]
 [ext_resource type="Texture2D" uid="uid://dr4hohxmtjhjt" path="res://assets/2d/hand_textures/button_red.png" id="4_ubwhq"]
+[ext_resource type="Script" uid="uid://c5itycir61dnc" path="res://gui/tails.gd" id="5_ri5v8"]
+[ext_resource type="Script" uid="uid://cy48j0lhcynf0" path="res://gui/skip.gd" id="7_l2737"]
+[ext_resource type="Script" uid="uid://cm88xyn5n5a47" path="res://gui/next_stage.gd" id="8_l2737"]
+[ext_resource type="Script" uid="uid://d1r8gl3ih6rhw" path="res://gui/channel_fortune.gd" id="9_asrox"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdk76"]
 bg_color = Color(0.13433978, 0.34444046, 0.44050446, 1)
@@ -57,8 +62,9 @@ script = ExtResource("1_lqx5y")
 
 [node name="CoinFlipButtons" type="Control" parent="."]
 anchors_preset = 0
+offset_top = -19.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 21.0
 
 [node name="Heads" type="TextureButton" parent="CoinFlipButtons"]
 layout_mode = 1
@@ -75,7 +81,8 @@ grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 texture_normal = ExtResource("2_hojdg")
-stretch_mode = 0
+stretch_mode = 5
+script = ExtResource("3_ubwhq")
 
 [node name="Label" type="Label" parent="CoinFlipButtons/Heads"]
 layout_mode = 1
@@ -93,6 +100,7 @@ grow_vertical = 2
 text = "Heads"
 
 [node name="HeadsPercent" type="RichTextLabel" parent="CoinFlipButtons/Heads"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,6 +132,7 @@ grow_vertical = 0
 focus_mode = 0
 texture_normal = ExtResource("3_24vp8")
 stretch_mode = 0
+script = ExtResource("5_ri5v8")
 
 [node name="Label" type="Label" parent="CoinFlipButtons/Tails"]
 layout_mode = 1
@@ -141,6 +150,7 @@ grow_vertical = 2
 text = "Tails"
 
 [node name="TailsPercent" type="RichTextLabel" parent="CoinFlipButtons/Tails"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -172,6 +182,7 @@ grow_vertical = 0
 focus_mode = 0
 texture_normal = ExtResource("4_ubwhq")
 stretch_mode = 0
+script = ExtResource("7_l2737")
 
 [node name="Label" type="Label" parent="CoinFlipButtons/Skip"]
 layout_mode = 1
@@ -256,6 +267,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 10
 text = "Next Stage"
 icon_alignment = 2
+script = ExtResource("8_l2737")
 
 [node name="LevelSplash" type="ColorRect" parent="."]
 visible = false
@@ -292,7 +304,30 @@ libraries = {
 &"": SubResource("AnimationLibrary_ubwhq")
 }
 
-[connection signal="pressed" from="CoinFlipButtons/Heads" to="." method="_on_heads_pressed"]
-[connection signal="pressed" from="CoinFlipButtons/Tails" to="." method="_on_tails_pressed"]
-[connection signal="pressed" from="CoinFlipButtons/Skip" to="." method="_on_skip_pressed"]
-[connection signal="pressed" from="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/NextStage" to="." method="_on_next_stage_pressed"]
+[node name="ChannelFortune" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -356.0
+offset_top = -139.0
+offset_right = -266.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CHANNEL"
+icon_alignment = 1
+script = ExtResource("9_asrox")
+
+[connection signal="mouse_entered" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_heads_mouse_entered"]
+[connection signal="mouse_exited" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_mouse_exited"]
+[connection signal="pressed" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_heads_pressed"]
+[connection signal="mouse_entered" from="CoinFlipButtons/Tails" to="CoinFlipButtons/Tails" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CoinFlipButtons/Tails" to="CoinFlipButtons/Tails" method="_on_mouse_exited"]
+[connection signal="pressed" from="CoinFlipButtons/Tails" to="CoinFlipButtons/Tails" method="_on_tails_pressed"]
+[connection signal="mouse_entered" from="CoinFlipButtons/Skip" to="CoinFlipButtons/Skip" method="_on_mouse_entered"]
+[connection signal="pressed" from="CoinFlipButtons/Skip" to="CoinFlipButtons/Skip" method="_on_skip_pressed"]
+[connection signal="pressed" from="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/NextStage" to="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/NextStage" method="_on_next_stage_pressed"]
+[connection signal="pressed" from="ChannelFortune" to="ChannelFortune" method="_on_channel_fortune_pressed"]
