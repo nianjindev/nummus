@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://klup7bjoa6ha"]
+
+[node name="AchievementRow" type="MarginContainer"]
+theme_override_constants/margin_left = 70
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Achievement" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "Enemy Defeated"
+fit_content = true
+
+[node name="Reward" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "$3"
+fit_content = true
+horizontal_alignment = 1

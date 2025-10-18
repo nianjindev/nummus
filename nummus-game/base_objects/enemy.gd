@@ -31,6 +31,7 @@ func _ready():
 func on_enemy_visuals_played(visual: String):
 	match visual:
 		"none":
+			print("NONE")
 			Signalbus.toggle_coin_flip_ui.emit(true)
 		"death":
 			play_death_animation()
@@ -54,7 +55,7 @@ func play_death_animation():
 	animation_player.speed_scale = 0
 	Signalbus.toggle_coin_flip_ui.emit(false)
 
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(death_length).timeout
 	
 	Signalbus.current_enemy_defeated.emit()
 

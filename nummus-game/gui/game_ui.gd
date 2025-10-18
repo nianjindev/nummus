@@ -7,10 +7,11 @@ extends Control
 @onready var heads_percent: RichTextLabel = $CoinFlipButtons/Heads/HeadsPercent
 @onready var tails_percent: RichTextLabel = $CoinFlipButtons/Tails/TailsPercent
 @onready var channel_fortune: Button = $ChannelFortune
+@export var level_completed: ColorRect
 
 func _ready():
 	level_check()
-	%LevelCompleted.hide()
+	level_completed.hide()
 	level_splash.visible = false
 	Signalbus.toggle_game_ui.connect(toggle_all)
 	Signalbus.toggle_coin_flip_ui.connect(_on_coin_flip_ui_toggled)
@@ -32,7 +33,7 @@ func commence_level():
 	splash_fade.play("fade_out")
 	await splash_fade.animation_finished
 	level_splash.visible = false
-	
+
 #Toggling UI Visibility
 func toggle_all(on: bool):
 	self.visible = on
@@ -43,7 +44,7 @@ func _on_coin_flip_ui_toggled(on: bool):
 
 func _on_level_completed_toggled(on: bool) -> void:
 	Signalbus.toggle_coin_flip_ui.emit(false)
-	%LevelCompleted.visible = on
+	level_completed.visible = on
 
 #func _on_side_percent_updated() -> void:
 	#heads_percent.text = str(int(Globals.head_weight * 100)) + "%"

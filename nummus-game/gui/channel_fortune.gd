@@ -17,7 +17,6 @@ func _on_channel_fortune_pressed() -> void:
 	if !Globals.fortune_channeled:
 		Globals.fortune_channeled = true
 		calculate_channeled_fortune()
-		
 	else:
 		Globals.fortune_channeled = false
 		reset_channeled_fortune()

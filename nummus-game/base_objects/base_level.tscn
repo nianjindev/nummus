@@ -37,11 +37,11 @@ shadow_blur = 0.897
 transform = Transform3D(-4.4581025e-08, -0.28287718, 0.95915616, 2.9486855e-09, 0.95915616, 0.28287718, -1, 1.5439204e-08, -4.1926047e-08, 1.5741451, 1.0703781, 0)
 
 [node name="Purse" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1075234, 0, 0, 0, 0.1075234, 0, 0, 0, 0.1075234, 0.5075082, 0.42909357, -0.87402403)
+transform = Transform3D(0.1075234, 0, 0, 0, 0.1075234, 0, 0, 0, 0.1075234, 0.23141676, 0.42909357, -0.8278451)
 mesh = ExtResource("3_d3dva")
 
 [node name="Discard" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.108, 0, 0, 0, 0.108, 0, 0, 0, 0.108, 0.50772446, 0.43, 0.8369046)
+transform = Transform3D(0.108, 0, 0, 0, 0.108, 0, 0, 0, 0.108, 0.23163301, 0.43, 0.8642347)
 mesh = ExtResource("4_bgm65")
 
 [node name="TableHandler" parent="." instance=ExtResource("2_iothi")]

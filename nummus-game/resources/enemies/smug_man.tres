@@ -82,5 +82,5 @@ animations = [{
 [resource]
 script = ExtResource("1_kbqwn")
 enemy_expressions = SubResource("SpriteFrames_kbqwn")
-health = 100
+health = 20
 metadata/_custom_type_script = "uid://dlb0rp3fkxykt"
