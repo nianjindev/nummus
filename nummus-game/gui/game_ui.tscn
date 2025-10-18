@@ -1,9 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=17 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
 [ext_resource type="Texture2D" uid="uid://chjrtn6sxdj75" path="res://assets/2d/hand_textures/button_blue.png" id="3_24vp8"]
+[ext_resource type="Script" uid="uid://0ebsipktf2xa" path="res://gui/heads.gd" id="3_ubwhq"]
 [ext_resource type="Texture2D" uid="uid://dr4hohxmtjhjt" path="res://assets/2d/hand_textures/button_red.png" id="4_ubwhq"]
+[ext_resource type="Script" uid="uid://c5itycir61dnc" path="res://gui/tails.gd" id="5_ri5v8"]
+[ext_resource type="Script" uid="uid://cy48j0lhcynf0" path="res://gui/skip.gd" id="7_l2737"]
+[ext_resource type="Script" uid="uid://cs6mwo44kv6vk" path="res://gui/level_completed.gd" id="8_4rcd4"]
+[ext_resource type="Script" uid="uid://cm88xyn5n5a47" path="res://gui/next_stage.gd" id="8_l2737"]
+[ext_resource type="Script" uid="uid://d1r8gl3ih6rhw" path="res://gui/channel_fortune.gd" id="9_asrox"]
+[ext_resource type="Script" uid="uid://bfxir55db4gu8" path="res://gui/achievement_box.gd" id="9_bvxe6"]
+[ext_resource type="PackedScene" uid="uid://klup7bjoa6ha" path="res://gui/achievement_row.tscn" id="10_w86w5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdk76"]
 bg_color = Color(0.13433978, 0.34444046, 0.44050446, 1)
@@ -45,7 +53,7 @@ _data = {
 &"fade_out": SubResource("Animation_hojdg")
 }
 
-[node name="GameUI" type="Control"]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("level_completed")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,11 +62,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_lqx5y")
+level_completed = NodePath("LevelCompleted")
 
 [node name="CoinFlipButtons" type="Control" parent="."]
 anchors_preset = 0
+offset_top = -19.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 21.0
 
 [node name="Heads" type="TextureButton" parent="CoinFlipButtons"]
 layout_mode = 1
@@ -68,14 +78,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 695.0
-offset_top = 891.0
+offset_top = 849.0
 offset_right = 845.0
-offset_bottom = 1041.0
+offset_bottom = 999.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 texture_normal = ExtResource("2_hojdg")
-stretch_mode = 0
+stretch_mode = 5
+script = ExtResource("3_ubwhq")
 
 [node name="Label" type="Label" parent="CoinFlipButtons/Heads"]
 layout_mode = 1
@@ -93,6 +104,7 @@ grow_vertical = 2
 text = "Heads"
 
 [node name="HeadsPercent" type="RichTextLabel" parent="CoinFlipButtons/Heads"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -116,14 +128,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 995.0
-offset_top = 891.0
+offset_top = 849.0
 offset_right = 1145.0
-offset_bottom = 1041.0
+offset_bottom = 999.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 texture_normal = ExtResource("3_24vp8")
 stretch_mode = 0
+script = ExtResource("5_ri5v8")
 
 [node name="Label" type="Label" parent="CoinFlipButtons/Tails"]
 layout_mode = 1
@@ -141,6 +154,7 @@ grow_vertical = 2
 text = "Tails"
 
 [node name="TailsPercent" type="RichTextLabel" parent="CoinFlipButtons/Tails"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -164,14 +178,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 845.0
-offset_top = 891.0
+offset_top = 849.0
 offset_right = 995.0
-offset_bottom = 1041.0
+offset_bottom = 999.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 texture_normal = ExtResource("4_ubwhq")
 stretch_mode = 0
+script = ExtResource("7_l2737")
 
 [node name="Label" type="Label" parent="CoinFlipButtons/Skip"]
 layout_mode = 1
@@ -189,8 +204,6 @@ grow_vertical = 2
 text = "Skip"
 
 [node name="LevelCompleted" type="ColorRect" parent="."]
-unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -204,6 +217,7 @@ offset_bottom = 526.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4117647)
+script = ExtResource("8_4rcd4")
 
 [node name="PanelContainer" type="PanelContainer" parent="LevelCompleted"]
 layout_mode = 0
@@ -224,31 +238,21 @@ theme_override_constants/margin_bottom = 14
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/normal_font_size = 46
 text = "Level Completed"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Achievement" type="RichTextLabel" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "GOOD JOB NIGGA
-"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="Gained" type="RichTextLabel" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="AchievementBox" type="VBoxContainer" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "+1 Apartheid"
-fit_content = true
-horizontal_alignment = 1
+theme_override_constants/separation = 13
+script = ExtResource("9_bvxe6")
+
+[node name="AchievementRow" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/AchievementBox" instance=ExtResource("10_w86w5")]
+layout_mode = 2
 
 [node name="NextStage" type="Button" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -256,6 +260,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 10
 text = "Next Stage"
 icon_alignment = 2
+script = ExtResource("8_l2737")
 
 [node name="LevelSplash" type="ColorRect" parent="."]
 visible = false
@@ -292,7 +297,30 @@ libraries = {
 &"": SubResource("AnimationLibrary_ubwhq")
 }
 
-[connection signal="pressed" from="CoinFlipButtons/Heads" to="." method="_on_heads_pressed"]
-[connection signal="pressed" from="CoinFlipButtons/Tails" to="." method="_on_tails_pressed"]
-[connection signal="pressed" from="CoinFlipButtons/Skip" to="." method="_on_skip_pressed"]
-[connection signal="pressed" from="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/NextStage" to="." method="_on_next_stage_pressed"]
+[node name="ChannelFortune" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -356.0
+offset_top = -181.0
+offset_right = -266.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CHANNEL"
+icon_alignment = 1
+script = ExtResource("9_asrox")
+
+[connection signal="mouse_entered" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_heads_mouse_entered"]
+[connection signal="mouse_exited" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_mouse_exited"]
+[connection signal="pressed" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_heads_pressed"]
+[connection signal="mouse_entered" from="CoinFlipButtons/Tails" to="CoinFlipButtons/Tails" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CoinFlipButtons/Tails" to="CoinFlipButtons/Tails" method="_on_mouse_exited"]
+[connection signal="pressed" from="CoinFlipButtons/Tails" to="CoinFlipButtons/Tails" method="_on_tails_pressed"]
+[connection signal="mouse_entered" from="CoinFlipButtons/Skip" to="CoinFlipButtons/Skip" method="_on_mouse_entered"]
+[connection signal="pressed" from="CoinFlipButtons/Skip" to="CoinFlipButtons/Skip" method="_on_skip_pressed"]
+[connection signal="pressed" from="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/NextStage" to="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/NextStage" method="_on_next_stage_pressed"]
+[connection signal="pressed" from="ChannelFortune" to="ChannelFortune" method="_on_channel_fortune_pressed"]

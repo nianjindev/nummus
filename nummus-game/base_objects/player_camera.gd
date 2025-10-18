@@ -22,7 +22,7 @@ func _process(delta: float):
 		v_offset = randf_range(-_shake_strength , _shake_strength)
 
 func enemy_hurt():
-	set_shake_intensity(.25, 10)
+	set_shake_intensity(.10, 10)
 	trigger_shake()
 
 func _on_enemy_visuals_played(visual: String):

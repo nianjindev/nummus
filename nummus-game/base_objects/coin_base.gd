@@ -94,8 +94,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
 	match anim_name:
 		"flip_heads_success":
-			Signalbus.enemy_visuals.emit("none")
 			coin_effect.effect(coin_stats, Sides.HEADS)
+			return
 		"flip_heads_fail": # IDEA: all fails do misfortune
 			Signalbus.change_fortune_and_update_ui.emit(true, Globals.fortune_gain, true)
 			Signalbus.change_misfortune_and_update_ui.emit(true, Globals.misfortune_gain, true)
@@ -103,6 +103,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			return
 		"flip_tails_success":
 			coin_effect.effect(coin_stats, Sides.TAILS)
+			return
 		"flip_tails_fail":
 			Signalbus.change_fortune_and_update_ui.emit(true, Globals.fortune_gain, true)
 			Signalbus.change_misfortune_and_update_ui.emit(true, Globals.misfortune_gain, true)
@@ -119,7 +120,6 @@ func check_flipped_side(flipped_side: int, state: int):
 			print("Correct")
 		else:
 			animation_player.play("flip_heads_fail")
-			
 			print("Wrong")
 	else:
 		if state == Sides.TAILS:
@@ -127,13 +127,12 @@ func check_flipped_side(flipped_side: int, state: int):
 			print("Correct")
 		else:
 			animation_player.play("flip_tails_fail")
-			
 			print("Wrong")
 
 func set_weights():
 	weights.set(sides.find(Sides.HEADS), Globals.head_weight)
 	weights.set(sides.find(Sides.TAILS), Globals.tail_weight)
-	Signalbus.update_side_percent_ui.emit(weights[Sides.HEADS], weights[Sides.TAILS])
+	#Signalbus.update_side_percent_ui.emit()
 		
 func flip(state: int):
 	if current_coin: 
@@ -145,8 +144,10 @@ func flip(state: int):
 			
 		var rng = RandomNumberGenerator.new()
 		set_weights()
-		
+		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
 		check_flipped_side(rng.rand_weighted(weights), state)
+		
+		Globals.reset_fortune()
 
 func generate_description(stats: Dictionary) -> String: # on heads: damage:5 ; on tails: heal:5 (example dictionary)
 	var s: String = "[br]"

@@ -28,7 +28,7 @@ environment = SubResource("Environment_dwbse")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660253, -0.4330129, 0.2500001, 0, 0.49999994, 0.86602545, -0.50000024, 0.74999994, -0.43301257, 0.73161906, 2.7068377, -1.0599079)
-light_energy = 2.155
+light_energy = 1.495
 light_specular = 1.07
 shadow_enabled = true
 shadow_blur = 0.897
@@ -37,11 +37,20 @@ shadow_blur = 0.897
 transform = Transform3D(-4.4581025e-08, -0.28287718, 0.95915616, 2.9486855e-09, 0.95915616, 0.28287718, -1, 1.5439204e-08, -4.1926047e-08, 1.5741451, 1.0703781, 0)
 
 [node name="Purse" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1075234, 0, 0, 0, 0.1075234, 0, 0, 0, 0.1075234, 0.5075082, 0.42909357, -0.87402403)
+transform = Transform3D(0.1075234, 0, 0, 0, 0.1075234, 0, 0, 0, 0.1075234, 0.23141676, 0.42909357, -0.8278451)
 mesh = ExtResource("3_d3dva")
 
 [node name="Discard" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.108, 0, 0, 0, 0.108, 0, 0, 0, 0.108, 0.50772446, 0.43, 0.8369046)
+transform = Transform3D(0.108, 0, 0, 0, 0.108, 0, 0, 0, 0.108, 0.23163301, 0.43, 0.8642347)
 mesh = ExtResource("4_bgm65")
 
 [node name="TableHandler" parent="." instance=ExtResource("2_iothi")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5546366, 0)
+light_energy = 0.765
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 0.321
+spot_range = 2.288
+spot_angle = 57.99

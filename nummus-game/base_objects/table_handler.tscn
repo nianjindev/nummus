@@ -9,10 +9,10 @@ script = ExtResource("1_x0v6v")
 [node name="Markers" type="Node3D" parent="."]
 
 [node name="EndpointL" type="Marker3D" parent="Markers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.4, 0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.88029665, 0.4491704, 0.4, 0.61620766)
 
 [node name="EndpointR" type="Marker3D" parent="Markers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.4, -0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.88029665, 0.4491704, 0.4, -0.61620766)
 
 [node name="TableModel" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0, 0)
