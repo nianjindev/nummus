@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://clj1nhn3sqwg8" path="res://assets/3d/shop_floor.obj" id="1_yxe34"]
 [ext_resource type="PackedScene" uid="uid://cef8ru8rhxwv" path="res://base_objects/shop_shelf.tscn" id="2_hxjiy"]
-[ext_resource type="PackedScene" uid="uid://b33abnmmtr7nm" path="res://base_objects/shopkeeper.tscn" id="4_hxjiy"]
+[ext_resource type="PackedScene" uid="uid://bh6iucofsqx83" path="res://base_objects/shopkeeper.tscn" id="4_hxjiy"]
 [ext_resource type="ArrayMesh" uid="uid://di4p7r3k6ddnu" path="res://assets/3d/shop_wall.obj" id="4_ya44s"]
 [ext_resource type="ArrayMesh" uid="uid://dc1ulk0am4cx4" path="res://assets/3d/shop_table.obj" id="5_hhiwf"]
 
@@ -51,7 +51,7 @@ mesh = ExtResource("5_hhiwf")
 skeleton = NodePath("../..")
 
 [node name="Shopkeeper" parent="." instance=ExtResource("4_hxjiy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5582032, 1.8028202, -3.9652872)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5582032, 1.8028202, -3.9652872)
 
 [node name="ShopShelf" parent="." instance=ExtResource("2_hxjiy")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6964942, 2.1363757, -4.366078)

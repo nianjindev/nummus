@@ -8,7 +8,7 @@ func add_item(item: Coin) -> bool:
 	if inventory.size() <= 15:
 		inventory.append(item)
 		inventory_changed.emit()
-		print("signal?")
+
 		return true
 	else:
 		return false

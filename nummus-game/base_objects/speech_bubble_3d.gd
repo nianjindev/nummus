@@ -1,3 +1,3 @@
 extends Node3D
 
-@export var speech_bubble_gui: Control
+@export var speech_bubble_gui: MarginContainer

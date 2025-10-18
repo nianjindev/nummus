@@ -5,6 +5,7 @@ const SCENE_PATHS: Dictionary[String, String] = {
 	"base_coin":"uid://bgrch5de5xhey",
 	"base_enemy":"uid://d3tgw7j1mag6w",
 	"shop":"uid://smvg3nwqqw6x",
+	"speech_bubble": "uid://bov88m8v4wj43",
 
 }
 

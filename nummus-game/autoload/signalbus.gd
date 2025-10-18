@@ -36,6 +36,7 @@ signal update_side_percent_ui()
 ## dialog lol ##
 @warning_ignore("unused_signal")
 signal shop_dialog(action: String)
+signal finished_displaying
 
 ######## VFX ########
 @warning_ignore("unused_signal")

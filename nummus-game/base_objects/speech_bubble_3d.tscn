@@ -15,5 +15,6 @@ texture = SubResource("ViewportTexture_ab8vy")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]
 transparent_bg = true
+size = Vector2i(1000, 1000)
 
 [node name="SpeechBubble" parent="Sprite3D/SubViewport" instance=ExtResource("1_ab8vy")]
