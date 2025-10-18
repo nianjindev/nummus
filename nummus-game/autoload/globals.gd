@@ -42,17 +42,20 @@ func reset_weights():
 	Signalbus.update_side_percent_ui.emit(head_weight, tail_weight)
 
 func reset_fortune():
-	if Globals.fortune >= 20:
-		Globals.fortune -= 20
-	elif Globals.fortune >= 12:
-		Globals.fortune -= 12
-	elif Globals.fortune >= 8:
-		Globals.fortune -= 8
-	elif Globals.fortune >= 4:
-		Globals.fortune -= 4
+	if fortune_channeled:
+		if Globals.fortune >= 20:
+			Globals.fortune -= 20
+		elif Globals.fortune >= 12:
+			Globals.fortune -= 12
+		elif Globals.fortune >= 8:
+			Globals.fortune -= 8
+		elif Globals.fortune >= 4:
+			Globals.fortune -= 4
 		
 	Globals.fortune_channeled_amount = 0
 	fortune_channeled = false
+	
+	Signalbus.update_fortune_bar_ui.emit()
 
 func can_afford(price: int) -> bool:
 	if price <= money:
