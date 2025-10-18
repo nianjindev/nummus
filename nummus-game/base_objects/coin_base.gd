@@ -19,10 +19,12 @@ var coin_stats: Dictionary
 var coin_effect: RefCounted
 var coin_price: int
 
+var position_markers: Dictionary[String, Vector3] # 0 is initial, 1 is floating
+
 # coin state
 @export var current_state: Constants.display_type
 var is_mouse_over: bool = false
-var floating: int = 1
+@export var current_coin: bool = false
 
 func _ready():
 	# flip signal
@@ -33,6 +35,7 @@ func _ready():
 
 	# signals
 	Signalbus.coin_flipped.connect(flip)
+	ObjectManager.replace_current_coin.connect(replace_me)
 
 	# instance of coin resources
 	coin_mesh.material_override = StandardMaterial3D.new()
@@ -64,6 +67,11 @@ func set_state_transforms() -> void:
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = false
 		animation_player.play("spinning")
+
+	position_markers["not_floating"] = coin_mesh.position
+	position_markers["floating"] = coin_mesh.position + Vector3(0, 0.4, 0)
+	position_markers["global_init"] = self.position
+	position_markers["playing"] = Vector3(0, 0.4, 0)
 
 func parse_json() -> void:
 	# json parse
@@ -128,16 +136,17 @@ func set_weights():
 	Signalbus.update_side_percent_ui.emit(weights[Sides.HEADS], weights[Sides.TAILS])
 		
 func flip(state: int):
-	if state == Sides.SKIP:
-		return
-	else:
-		Signalbus.toggle_coin_flip_ui.emit(false)
-		coin_effect.pre_effect(coin_stats)
+	if current_coin: 
+		if state == Sides.SKIP:
+			return
+		else:
+			Signalbus.toggle_coin_flip_ui.emit(false)
+			coin_effect.pre_effect(coin_stats)
+			
+		var rng = RandomNumberGenerator.new()
+		set_weights()
 		
-	var rng = RandomNumberGenerator.new()
-	set_weights()
-	
-	check_flipped_side(rng.rand_weighted(weights), state)
+		check_flipped_side(rng.rand_weighted(weights), state)
 
 func generate_description(stats: Dictionary) -> String: # on heads: damage:5 ; on tails: heal:5 (example dictionary)
 	var s: String = "[br]"
@@ -174,6 +183,8 @@ func toggle_visible(on: bool):
 func _on_area_3d_mouse_entered() -> void:
 	if current_state == Constants.display_type.SHOP:
 		toggle_visible(true)
+	if current_state == Constants.display_type.PLAY: # make float
+		tween_me(coin_mesh, position_markers.get("floating"), 0.2)
 	is_mouse_over = true
 
 func _input(event: InputEvent) -> void:
@@ -181,12 +192,29 @@ func _input(event: InputEvent) -> void:
 		if current_state == Constants.display_type.SHOP:
 			buy_me()
 		if current_state == Constants.display_type.PLAY:
-			self.position += Vector3(0, 0.07, 0) * floating
-			floating *= -1
+			if not current_coin:
+				current_coin = ObjectManager.set_current_coin(self)
+				if current_coin:
+					tween_me(self, position_markers.get("playing"), 0.2)
+			elif current_coin:
+				tween_me(self, position_markers.get("global_init"), 0.2)
+				current_coin = false
+				ObjectManager.delete_current_coin()
 
 func _on_area_3d_mouse_exited() -> void:
 	toggle_visible(false)
+	if current_state == Constants.display_type.PLAY:
+		tween_me(coin_mesh, position_markers.get("not_floating"), 0.2)
 	is_mouse_over = false
+
+func tween_me(sprite: Node3D, pos: Vector3, time):
+	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(sprite, "position", pos, time)
+
+func replace_me():
+	if current_coin:
+		tween_me(self, position_markers.get("global_init"), 0.2)
+		current_coin = false
 
 func buy_me():
 	if Globals.can_afford(coin_price):
