@@ -32,6 +32,7 @@ signal toggle_coin_flip_ui(show: bool)
 signal toggle_bar_ui(show: bool)
 signal toggle_level_completed_ui(show: bool)
 signal update_side_percent_ui()
+signal add_achievement(achievement: String, reward: int)
 
 ## dialog lol ##
 @warning_ignore("unused_signal")
