@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d3tgw7j1mag6w"]
 
-[ext_resource type="Script" uid="uid://y2i1v32uojnf" path="res://base_objects/enemy.gd" id="1_7frlh"]
+[ext_resource type="Script" uid="uid://y2i1v32uojnf" path="res://base_objects/npcs/enemy.gd" id="1_7frlh"]
 [ext_resource type="Texture2D" uid="uid://bnofq2hlt6kgu" path="res://assets/2d/character_sprites/smug_guy.png" id="2_gmcc3"]
 
 [sub_resource type="Animation" id="Animation_7frlh"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bh6iucofsqx83"]
 
-[ext_resource type="Script" uid="uid://cj4onfl034kox" path="res://base_objects/shopkeeper.gd" id="1_d1nhg"]
+[ext_resource type="Script" uid="uid://cj4onfl034kox" path="res://base_objects/npcs/shopkeeper.gd" id="1_d1nhg"]
 [ext_resource type="Texture2D" uid="uid://cditkhfq8p0fa" path="res://assets/2d/character_sprites/shopkeeper-Sheet.png" id="1_qcdo4"]
 
 [sub_resource type="Animation" id="Animation_7frlh"]
