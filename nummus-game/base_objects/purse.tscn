@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dipstebap2rep"]
+
+[ext_resource type="Script" uid="uid://jeiyoy8iq447" path="res://purse.gd" id="1_0nad3"]
+[ext_resource type="ArrayMesh" uid="uid://d2tjgm2vawtym" path="res://assets/3d/coin_purse_open.obj" id="2_2wao4"]
+[ext_resource type="ArrayMesh" uid="uid://bmmobbrhil6md" path="res://assets/3d/coin_purse_closed.obj" id="3_x6xnr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnt2j"]
+size = Vector3(1.5, 1, 1)
+
+[node name="Purse" type="Node3D"]
+script = ExtResource("1_0nad3")
+
+[node name="PurseMeshOpened" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("2_2wao4")
+
+[node name="PurseMeshClosed" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_x6xnr")
+
+[node name="HoverArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HoverArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26845032, 0)
+shape = SubResource("BoxShape3D_bnt2j")
