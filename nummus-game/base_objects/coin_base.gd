@@ -18,6 +18,7 @@ var coin_json_id: String
 var coin_stats: Dictionary
 var coin_effect: RefCounted
 var coin_price: int
+var period_inc: int
 
 var position_markers: Dictionary[String, Vector3] # 0 is initial, 1 is floating
 
@@ -75,18 +76,14 @@ func set_state_transforms() -> void:
 
 func parse_json() -> void:
 	# json parse
-	var file = FileAccess.open(Constants.JSON_PATHS.coins, FileAccess.READ)
-	assert(FileAccess.file_exists(Constants.JSON_PATHS.coins),"File doesnt exist")
-	var json = file.get_as_text()
-	var json_object = JSON.new()
-
-	json_object.parse(json)
+	var json_object = ObjectManager.parse_json(Constants.JSON_PATHS.coins)
 	for coin in json_object.data:
 		if coin == coin_json_id:
 			print("matched " + coin)
 			coin_stats = json_object.data.get(coin).get("coin_stats")
 			self.name = json_object.data.get(coin).get("name")
 			coin_price = json_object.data.get(coin).get("price")
+			period_inc = json_object.data.get(coin).get("period")
 			hoverable.title.text = json_object.data.get(coin).get("name") + " [color=yellow]$" + str(coin_price) + "[/color]"
 			hoverable.description.text = json_object.data.get(coin).get("description") + generate_description(coin_stats)
 
@@ -95,22 +92,19 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		"flip_heads_success":
 			coin_effect.effect(coin_stats, Sides.HEADS)
-			return
 		"flip_heads_fail": # IDEA: all fails do misfortune
 			Signalbus.change_fortune_and_update_ui.emit(true, Globals.fortune_gain, true)
 			Signalbus.change_misfortune_and_update_ui.emit(true, Globals.misfortune_gain, true)
 			Signalbus.enemy_visuals.emit("none")
-			return
 		"flip_tails_success":
 			coin_effect.effect(coin_stats, Sides.TAILS)
-			return
 		"flip_tails_fail":
 			Signalbus.change_fortune_and_update_ui.emit(true, Globals.fortune_gain, true)
 			Signalbus.change_misfortune_and_update_ui.emit(true, Globals.misfortune_gain, true)
 			Signalbus.enemy_visuals.emit("none")
-			return
 	
 	Globals.reset_weights()
+	Signalbus.increase_period.emit(period_inc)
 
 func check_flipped_side(flipped_side: int, state: int):
 	#flipped side = index returned by weighted array
@@ -141,11 +135,9 @@ func flip(state: int):
 		else:
 			Signalbus.toggle_coin_flip_ui.emit(false)
 			coin_effect.pre_effect(coin_stats)
-			
-		var rng = RandomNumberGenerator.new()
 		set_weights()
 		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
-		check_flipped_side(rng.rand_weighted(weights), state)
+		check_flipped_side(SeedManager.rng.rand_weighted(weights), state)
 		
 		Globals.reset_fortune()
 

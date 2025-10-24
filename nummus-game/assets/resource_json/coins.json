@@ -3,6 +3,7 @@
 		"name":"Coin",
 		"description":"Basic coin.",
 		"price":3,
+		"period":1,
 		"coin_stats":{
 			"on_heads":{
 				"damage":5
@@ -16,6 +17,7 @@
 		"name":"Coin of 1787",
 		"description":"The first ever minted coin!",
 		"price":6,
+		"period": 1,
 		"coin_stats":{
 			"on_heads":{
 				"damage":3
@@ -29,6 +31,7 @@
 		"name":"Old Abe",
 		"description":"Always lands heads.",
 		"price":5,
+		"period":1,
 		"coin_stats":{
 			"on_heads":{
 				"damage":7

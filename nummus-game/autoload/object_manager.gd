@@ -19,6 +19,16 @@ func spawn_base_enemy():
 	current_enemy.enemy_id = ResourceLoader.load("res://resources/enemies/smug_man.tres")
 	SceneManager.current_scene.add_child.call_deferred(current_enemy)
 
+func parse_json(path: String) -> JSON:
+	# json parse
+	var file = FileAccess.open(path, FileAccess.READ)
+	assert(FileAccess.file_exists(path),"File doesnt exist")
+	var json = file.get_as_text()
+	var json_object: JSON = JSON.new()
+
+	json_object.parse(json)
+	return json_object
+
 func set_current_coin(coin: Coin) -> bool:
 	if current_coin == null:
 		current_coin = coin

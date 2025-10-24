@@ -1,0 +1,25 @@
+{
+	"shopkeeper":{
+		"buy": [
+			"Thanks!",
+			"u a real one on god"
+		],
+		"idle": [
+			"Whats up man",
+			"Yo you should buy something bro",
+			"hi my name is larry",
+			"DUDE you need to try a honey pack they are insane",
+			"due to market changes i'm raising prices"
+		]
+	},
+	"smug_man":{
+		"hurt":[
+			"AGGH",
+			"ow"
+		],
+		"attack":[
+			"how'd that feel bro",
+			"GREEN FN"
+		]
+	}
+}

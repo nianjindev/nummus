@@ -7,38 +7,69 @@ class_name Enemy
 @export var enemy_id: EnemyStats
 @onready var animated_sprite: AnimatedSprite3D = $EnemySprite
 
+# Stats
 var max_health: int
 var health: int
+var period: int
+var moves: Dictionary
+var enemy_json_id: String
 
+# Animation values
 var hurt_small_length: float = 0.5
 var hurt_medium_length: float = 1
 var death_length: float = 3.0
 
+# period system
+var current_period: int = 0
+
 
 func _ready():
 	Signalbus.change_enemy_health.connect(change_health)
+	Signalbus.enemy_visuals.connect(on_enemy_visuals_played)
+	Signalbus.increase_period.connect(increase_p)
+
+	# Init resource
 	animated_sprite.sprite_frames = enemy_id.enemy_expressions
-	health = enemy_id.health
-	max_health = enemy_id.health
+	enemy_json_id = enemy_id.json_id
+	parse_json()
+
 	animated_sprite.play("neutral")
 	health_text.text = str(health as int)+"/" + str(max_health)
 	# transform
 	position = Vector3(-1.604,1,0.0)
 	rotate_y(PI/2)
 	scale = Vector3(0.6,0.6,0.6)
-	Signalbus.enemy_visuals.connect(on_enemy_visuals_played)
+	
+func increase_p(inc: int):
+	if current_period >= period:
+		current_period %= period
+		do_move()
+	current_period += inc
 
-func on_enemy_visuals_played(visual: String):
-	match visual:
-		"none":
-			print("NONE")
-			Signalbus.toggle_coin_flip_ui.emit(true)
-		"death":
-			play_death_animation()
-		"hurt":
-			play_hurt_animation()
-		
+func do_move():
+	var weights: Array[float] = []
+	for move in moves:
+		weights.append(1/moves.get(move).get("weight"))
+	var move = moves.keys().get(SeedManager.rng.rand_weighted(weights))
+	match move:
+		"attack":
+			Signalbus.change_health_and_update_ui.emit(true, -moves.get(move).get("damage"), true)
+		"heal":
+			change_health(true, 3)
+		"poison":
+			print("lol we are never getting here")
+	
 
+func parse_json() -> void:
+	# json parse
+	var json_object = ObjectManager.parse_json(Constants.JSON_PATHS.enemies)
+	for enemy in json_object.data:
+		if enemy == enemy_json_id:
+			max_health = json_object.data.get(enemy).get("health")
+			health = max_health
+			period = json_object.data.get(enemy).get("period")
+			moves = json_object.data.get(enemy).get("moves")
+			
 func play_hurt_animation():
 	animated_sprite.play("hurt")
 	animation_player.speed_scale = 0
@@ -82,3 +113,12 @@ func change_health(add: bool, amount: int):
 		else:
 			heal(health - amount)
 	health_text.text = str(health as int)+"/" + str(max_health)
+func on_enemy_visuals_played(visual: String):
+	match visual:
+		"none":
+			print("NONE")
+			Signalbus.toggle_coin_flip_ui.emit(true)
+		"death":
+			play_death_animation()
+		"hurt":
+			play_hurt_animation()

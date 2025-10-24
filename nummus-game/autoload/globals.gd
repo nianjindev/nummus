@@ -6,6 +6,8 @@ var health: int = 20
 var max_health: int = 20
 
 var in_favor = false # winning the skill check apparently
+
+# fortune
 var fortune_channeled = false
 var fortune_channeled_amount = 0.0
 

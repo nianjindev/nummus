@@ -43,6 +43,9 @@ signal finished_displaying
 @warning_ignore("unused_signal")
 signal enemy_visuals()
 
+# gameplay loop
+signal increase_period(inc: int)
+
 func _ready():
 	skill_check_finish.connect(_on_skill_check)
 	current_enemy_defeated.connect(_on_current_enemy_defeated)

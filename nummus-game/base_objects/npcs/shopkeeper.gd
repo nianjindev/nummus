@@ -23,5 +23,5 @@ func display_idle():
 	await timer.timeout
 	speech_bubble_3d = ResourceLoader.load(Constants.SCENE_PATHS.speech_bubble).instantiate()
 	sprite.add_child(speech_bubble_3d)
-	Signalbus.shop_dialog.emit("idle")
+	Signalbus.shop_dialog.emit("shopkeeper","idle")
 	

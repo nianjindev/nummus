@@ -6,14 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://dipstebap2rep" path="res://base_objects/purse.tscn" id="4_bgm65"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqk2v"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+sky_top_color = Color(1, 0, 0, 1)
+sky_horizon_color = Color(0.6383647, 0.58862835, 1, 1)
+ground_bottom_color = Color(0.22686219, 0.16400787, 4.813075e-08, 1)
+ground_horizon_color = Color(0.6392157, 0.5882353, 1, 1)
 
 [sub_resource type="Sky" id="Sky_iothi"]
 sky_material = SubResource("ProceduralSkyMaterial_aqk2v")
 
 [sub_resource type="Environment" id="Environment_dwbse"]
 background_mode = 2
+background_color = Color(0.5585803, 0.6823688, 0.49300212, 1)
 sky = SubResource("Sky_iothi")
 tonemap_mode = 2
 glow_enabled = true
@@ -35,8 +38,6 @@ shadow_blur = 0.897
 [node name="PlayerCamera" parent="." instance=ExtResource("2_nboak")]
 transform = Transform3D(-4.4581025e-08, -0.28287718, 0.95915616, 2.9486855e-09, 0.95915616, 0.28287718, -1, 1.5439204e-08, -4.1926047e-08, 1.5741451, 1.0703781, 0)
 
-[node name="TableHandler" parent="." instance=ExtResource("2_iothi")]
-
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5546366, 0)
 light_energy = 0.765
@@ -51,3 +52,5 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.40678433, 0.41205037,
 
 [node name="Purse2" parent="." instance=ExtResource("4_bgm65")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.40678433, 0.41205037, -0.85590863)
+
+[node name="TableHandler" parent="." instance=ExtResource("2_iothi")]
