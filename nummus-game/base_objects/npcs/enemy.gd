@@ -17,7 +17,7 @@ var enemy_json_id: String
 # Animation values
 var hurt_small_length: float = 0.5
 var hurt_medium_length: float = 1
-var death_length: float = 3.0
+var death_length: float = 5
 
 # period system
 var current_period: int = 0
@@ -82,7 +82,7 @@ func play_hurt_animation():
 	GuiManager.toggle_coin_flip_ui.emit(true)
 
 func play_death_animation():
-	animated_sprite.play("very_hurt")
+	animated_sprite.play("death")
 	animation_player.speed_scale = 0
 	GuiManager.toggle_coin_flip_ui.emit(false)
 

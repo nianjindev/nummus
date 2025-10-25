@@ -26,3 +26,5 @@ func _input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	fps.text = "FPS: " + str(Engine.get_frames_per_second())
 	
+func _on_kill_enemy_pressed() -> void:
+	Signalbus.change_enemy_health.emit(true, -1000000)
