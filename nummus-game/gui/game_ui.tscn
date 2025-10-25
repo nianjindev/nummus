@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dr4hohxmtjhjt" path="res://assets/2d/hand_textures/button_red.png" id="4_ubwhq"]
 [ext_resource type="Script" path="res://gui/tails.gd" id="5_ri5v8"]
 [ext_resource type="Script" path="res://gui/skip.gd" id="7_l2737"]
-[ext_resource type="Script" path="res://gui/level_completed.gd" id="8_4rcd4"]
+[ext_resource type="Script" uid="uid://cs6mwo44kv6vk" path="res://gui/level_completed.gd" id="8_4rcd4"]
 [ext_resource type="Script" path="res://gui/next_stage.gd" id="8_l2737"]
 [ext_resource type="Script" path="res://gui/channel_fortune.gd" id="9_asrox"]
-[ext_resource type="Script" path="res://gui/achievement_box.gd" id="9_bvxe6"]
+[ext_resource type="Script" uid="uid://bfxir55db4gu8" path="res://gui/achievement_box.gd" id="9_bvxe6"]
 [ext_resource type="PackedScene" uid="uid://d05ar66lokoy2" path="res://gui/achievement_row.tscn" id="10_w86w5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdk76"]

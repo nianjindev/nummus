@@ -15,7 +15,7 @@ func _ready():
 	level_splash.visible = false
 	GuiManager.toggle_game_ui.connect(toggle_all)
 	GuiManager.toggle_coin_flip_ui.connect(_coin_flip_ui_toggled)
-	GuiManager.toggle_level_completed_ui.connect(_level_completed_toggled)
+	GuiManager.toggle_level_completed_ui.connect(_on_level_completed_toggled)
 	 #Signalbus.update_side_percent_ui.connect(_on_side_percent_updated)
 	LevelManager.enter_level.connect(commence_level)
 	# check if scene has changed
@@ -42,9 +42,11 @@ func _coin_flip_ui_toggled(on: bool):
 	coin_flip_buttons.visible = on
 	channel_fortune.visible = on
 
-func _level_completed_toggled(on: bool) -> void:
-	Signalbus.toggle_coin_flip_ui.emit(false)
+func _on_level_completed_toggled(on: bool) -> void:
+	GuiManager.toggle_coin_flip_ui.emit(false)
 	level_completed.visible = on
+
+
 
 #func _on_side_percent_updated() -> void:
 	#heads_percent.text = str(int(Globals.head_weight * 100)) + "%"
