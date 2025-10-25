@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d3tgw7j1mag6w"]
 
 [ext_resource type="Script" uid="uid://y2i1v32uojnf" path="res://base_objects/npcs/enemy.gd" id="1_7frlh"]
-[ext_resource type="Texture2D" uid="uid://bnofq2hlt6kgu" path="res://assets/2d/character_sprites/smug_guy.png" id="2_gmcc3"]
+[ext_resource type="Texture2D" uid="uid://bfjhgcbnrhvtu" path="res://assets/2d/character_sprites/smug_guy-Sheet.png" id="2_smd77"]
 
 [sub_resource type="Animation" id="Animation_7frlh"]
 length = 0.001
@@ -28,7 +28,7 @@ length = 0.5
 
 [sub_resource type="Animation" id="Animation_fw1ev"]
 resource_name = "idle"
-length = 2.8667
+length = 3.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -37,10 +37,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.46667, 2.8667),
+"times": PackedFloat32Array(0, 1.5, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.13, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, -0.1, 0), Vector3(0, -0.23, 0), Vector3(0, -0.1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orwns"]
@@ -51,15 +51,15 @@ _data = {
 &"idle": SubResource("Animation_fw1ev")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqcon"]
-atlas = ExtResource("2_gmcc3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn5wy"]
+atlas = ExtResource("2_smd77")
 region = Rect2(0, 0, 256, 256)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6qf3q"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_sacfc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jqcon")
+"texture": SubResource("AtlasTexture_rn5wy")
 }],
 "loop": true,
 "name": &"default",
@@ -78,8 +78,8 @@ autoplay = "idle"
 
 [node name="EnemySprite" type="AnimatedSprite3D" parent="."]
 texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_6qf3q")
+sprite_frames = SubResource("SpriteFrames_sacfc")
 
 [node name="HealthText" type="Label3D" parent="EnemySprite"]
-transform = Transform3D(2.255, 0, 0, 0, 2.255, 0, 0, 0, 2.255, 0, 0.9074528, 0)
+transform = Transform3D(2.255, 0, 0, 0, 2.255, 0, 0, 0, 2.255, 0, 1.1047853, 0)
 text = "5/5"

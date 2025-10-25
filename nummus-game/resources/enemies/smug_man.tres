@@ -1,8 +1,19 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=11 format=3 uid="uid://dcspy7387pquk"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=13 format=3 uid="uid://dcspy7387pquk"]
 
-[ext_resource type="Texture2D" uid="uid://bnofq2hlt6kgu" path="res://assets/2d/character_sprites/smug_guy.png" id="1_2mvsy"]
 [ext_resource type="Texture2D" uid="uid://bfjhgcbnrhvtu" path="res://assets/2d/character_sprites/smug_guy-Sheet.png" id="1_8gs5x"]
 [ext_resource type="Script" uid="uid://dlb0rp3fkxykt" path="res://resources/enemies/enemy_class.gd" id="1_kbqwn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gs5x"]
+atlas = ExtResource("1_8gs5x")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0k1b"]
+atlas = ExtResource("1_8gs5x")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6wxi"]
+atlas = ExtResource("1_8gs5x")
+region = Rect2(512, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vwhxa"]
 atlas = ExtResource("1_8gs5x")
@@ -16,8 +27,8 @@ region = Rect2(256, 0, 256, 256)
 atlas = ExtResource("1_8gs5x")
 region = Rect2(256, 256, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8gs5x"]
-atlas = ExtResource("1_2mvsy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mvsy"]
+atlas = ExtResource("1_8gs5x")
 region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70u4h"]
@@ -30,6 +41,20 @@ region = Rect2(512, 256, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kbqwn"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gs5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0k1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6wxi")
+}],
+"loop": false,
+"name": &"death",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vwhxa")
@@ -56,7 +81,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8gs5x")
+"texture": SubResource("AtlasTexture_2mvsy")
 }],
 "loop": true,
 "name": &"neutral",
