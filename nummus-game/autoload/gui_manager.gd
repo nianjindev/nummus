@@ -1,6 +1,19 @@
 extends Node
 
 signal gui_spawned
+signal update_fortune_bar_ui() 
+signal update_misfortune_bar_ui()
+signal update_health_visuals()
+@warning_ignore("unused_signal")
+signal toggle_game_ui(show: bool)
+@warning_ignore("unused_signal")
+signal toggle_coin_flip_ui(show: bool)
+@warning_ignore("unused_signal")
+signal toggle_bar_ui(show: bool)
+signal toggle_level_completed_ui(show: bool)
+signal update_side_percent_ui()
+
+
 var all_ui_path: Dictionary[String, String] = {
 	"global_ui_path":"res://gui/global_ui.tscn",
 	"game_ui_path":"res://gui/game_ui.tscn",

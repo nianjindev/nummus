@@ -13,7 +13,7 @@ func _ready() -> void:
 	visible = false
 	give_money.pressed.connect(Globals.change_money.bind(true, 20))
 	next_stage.pressed.connect(LevelManager.next_stage)
-	take_dmg.pressed.connect(Signalbus._on_health_changed.bind(true, -5, true))
+	take_dmg.pressed.connect(Globals.change_player_health.bind(true, -5))
 func _input(event: InputEvent) -> void:
 	if OS.is_debug_build():
 		if event.is_action_pressed("debug"):

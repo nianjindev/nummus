@@ -10,12 +10,12 @@ extends Control
 @onready var health_text: RichTextLabel = $PlayerInterface/FortuneBars/HealthBar/UnderText/Amount
 
 func _ready():
-	Globals.connect("money_changed", Callable(change_money_amount))
+	# Globals.money_changed.connect("money_changed", Callable(change_money_amount))
 	amount.text = "$" + str(Globals.money)
-	Signalbus.toggle_bar_ui.connect(_on_bar_ui_toggled)
-	Signalbus.update_fortune_bar_ui.connect(_on_fortune_updated)
-	Signalbus.update_misfortune_bar_ui.connect(_on_misfortune_updated)
-	Signalbus.update_health_visuals.connect(_on_health_visuals_updated)
+	GuiManager.toggle_bar_ui.connect(_on_bar_ui_toggled)
+	GuiManager.update_fortune_bar_ui.connect(_on_fortune_updated)
+	GuiManager.update_misfortune_bar_ui.connect(_on_misfortune_updated)
+	GuiManager.update_health_visuals.connect(_on_health_visuals_updated)
 	update_all()
 	
 ########### TEXT ###########

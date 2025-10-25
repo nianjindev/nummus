@@ -20,7 +20,7 @@ var misfortune: int = 0
 var misfortune_gain: int = 5
 
 # signals that interact with GlobalUI
-signal money_changed
+signal update_ui
 
 # luck
 var head_weight: float = 0.5
@@ -35,13 +35,21 @@ func change_money(add: bool, amount: int):
 		money += amount
 	else:
 		money = amount
-	money_changed.emit()
+	update_ui.emit()
+
+func change_player_health(add: bool, amount:int):
+	if add:
+		health += amount
+	else:
+		health = amount
+	update_ui.emit()
+	
 
 func reset_weights():
 	head_weight = 0.5
 	tail_weight = 0.5
 	
-	Signalbus.update_side_percent_ui.emit(head_weight, tail_weight)
+	#Signalbus.update_side_percent_ui.emit(head_weight, tail_weight)
 
 func reset_fortune():
 	if fortune_channeled:
@@ -57,7 +65,7 @@ func reset_fortune():
 	Globals.fortune_channeled_amount = 0
 	fortune_channeled = false
 	
-	Signalbus.update_fortune_bar_ui.emit()
+	#Signalbus.update_fortune_bar_ui.emit()
 
 func can_afford(price: int) -> bool:
 	if price <= money:

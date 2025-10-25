@@ -79,12 +79,12 @@ func play_hurt_animation():
 	animated_sprite.play("neutral")
 	animation_player.speed_scale = 1
 	
-	Signalbus.toggle_coin_flip_ui.emit(true)
+	GuiManager.toggle_coin_flip_ui.emit(true)
 
 func play_death_animation():
 	animated_sprite.play("very_hurt")
 	animation_player.speed_scale = 0
-	Signalbus.toggle_coin_flip_ui.emit(false)
+	GuiManager.toggle_coin_flip_ui.emit(false)
 
 	await get_tree().create_timer(death_length).timeout
 	
@@ -117,7 +117,7 @@ func on_enemy_visuals_played(visual: String):
 	match visual:
 		"none":
 			print("NONE")
-			Signalbus.toggle_coin_flip_ui.emit(true)
+			GuiManager.toggle_coin_flip_ui.emit(true)
 		"death":
 			play_death_animation()
 		"hurt":

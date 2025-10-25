@@ -11,7 +11,7 @@ var initial_angle: float
 var in_time: bool
 
 func _ready():
-	Signalbus.skill_check_begin.connect(start_check)
+#	Signalbus.skill_check_begin.connect(start_check)
 	visible = false
 	in_time = false
 
