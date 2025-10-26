@@ -53,7 +53,7 @@ func do_move():
 	var move = moves.keys().get(SeedManager.rng.rand_weighted(weights))
 	match move:
 		"attack":
-			Globals.change_player_health(true, -5)
+			Globals.change_player_health(true, -moves.get(move).get("damage"))
 		"heal":
 			change_health(true, 3)
 		"poison":
@@ -89,6 +89,7 @@ func play_death_animation():
 	await get_tree().create_timer(death_length).timeout
 	
 	Signalbus.current_enemy_defeated.emit()
+	print("ENEMY DEFEATED")
 
 func take_damage(amount: int):
 	if health + amount < 0 or health + amount == 0:
