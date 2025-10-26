@@ -53,7 +53,7 @@ func do_move():
 	var move = moves.keys().get(SeedManager.rng.rand_weighted(weights))
 	match move:
 		"attack":
-			Signalbus.change_health_and_update_ui.emit(true, -moves.get(move).get("damage"), true)
+			Globals.change_player_health(true, -5)
 		"heal":
 			change_health(true, 3)
 		"poison":
