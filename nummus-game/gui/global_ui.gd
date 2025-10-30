@@ -15,7 +15,7 @@ func _ready():
 	GuiManager.toggle_bar_ui.connect(_on_bar_ui_toggled)
 	GuiManager.update_fortune_bar_ui.connect(_on_fortune_updated)
 	GuiManager.update_misfortune_bar_ui.connect(_on_misfortune_updated)
-	GuiManager.update_health_visuals.connect(_on_health_visuals_updated)
+	GuiManager.update_health_ui.connect(_on_health_visuals_updated)
 	update_all()
 	
 ########### TEXT ###########

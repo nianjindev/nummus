@@ -3,7 +3,7 @@ extends Node
 signal gui_spawned
 signal update_fortune_bar_ui() 
 signal update_misfortune_bar_ui()
-signal update_health_visuals()
+signal update_health_ui()
 @warning_ignore("unused_signal")
 signal toggle_game_ui(show: bool)
 @warning_ignore("unused_signal")
@@ -12,6 +12,10 @@ signal toggle_coin_flip_ui(show: bool)
 signal toggle_bar_ui(show: bool)
 signal toggle_level_completed_ui(show: bool)
 signal update_side_percent_ui()
+
+#ENEMY GUI
+signal update_period_text(amount: int)
+signal update_enemy_health_text(amount: int, max_health: int)
 
 
 var all_ui_path: Dictionary[String, String] = {

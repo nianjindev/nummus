@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3tgw7j1mag6w"]
+[gd_scene load_steps=13 format=3 uid="uid://d3tgw7j1mag6w"]
 
 [ext_resource type="Script" uid="uid://y2i1v32uojnf" path="res://base_objects/npcs/enemy.gd" id="1_7frlh"]
 [ext_resource type="Texture2D" uid="uid://bfjhgcbnrhvtu" path="res://assets/2d/character_sprites/smug_guy-Sheet.png" id="2_smd77"]
+[ext_resource type="Script" uid="uid://ci2m33v77siew" path="res://base_objects/npcs/health_text.gd" id="3_sacfc"]
+[ext_resource type="Script" uid="uid://c6nkqsio0ibic" path="res://base_objects/npcs/period_text.gd" id="4_pmwma"]
 
 [sub_resource type="Animation" id="Animation_7frlh"]
 length = 0.001
@@ -66,6 +68,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_sacfc"]
+viewport_path = NodePath("EnemySprite/SubViewport")
+
 [node name="Enemy" type="Node3D"]
 script = ExtResource("1_7frlh")
 
@@ -81,5 +86,57 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_sacfc")
 
 [node name="HealthText" type="Label3D" parent="EnemySprite"]
-transform = Transform3D(2.255, 0, 0, 0, 2.255, 0, 0, 0, 2.255, 0, 1.1047853, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20580767, 1.1047853, 0)
+visible = false
 text = "5/5"
+font_size = 72
+outline_size = 22
+
+[node name="PeriodText" type="Label3D" parent="EnemySprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42337525, 1.1035405, 0)
+visible = false
+text = "1"
+font_size = 72
+outline_size = 22
+
+[node name="SubViewport" type="SubViewport" parent="EnemySprite"]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(512, 128)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EnemySprite/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -20.0
+offset_right = 30.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 54
+
+[node name="PeriodText" type="Label" parent="EnemySprite/SubViewport/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 22
+theme_override_font_sizes/font_size = 72
+text = "1"
+script = ExtResource("4_pmwma")
+
+[node name="HealthText" type="Label" parent="EnemySprite/SubViewport/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 22
+theme_override_font_sizes/font_size = 72
+text = "30/30"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("3_sacfc")
+
+[node name="Sprite3D" type="Sprite3D" parent="EnemySprite"]
+transform = Transform3D(0.5221729, 0, 0, 0, 0.5221729, 0, 0, 0, 0.5221729, 0, 1.1185687, 0)
+texture_filter = 0
+texture = SubResource("ViewportTexture_sacfc")

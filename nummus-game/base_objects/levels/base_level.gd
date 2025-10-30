@@ -21,4 +21,3 @@ func spawn_coin():
 
 func _on_current_enemy_defeated():
 	GuiManager.toggle_level_completed_ui.emit(true)
-	print("LEVEL UI EMITTED")

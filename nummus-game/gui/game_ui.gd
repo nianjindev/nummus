@@ -46,8 +46,6 @@ func _on_level_completed_toggled(on: bool) -> void:
 	GuiManager.toggle_coin_flip_ui.emit(false)
 	level_completed.visible = on
 
-
-
 #func _on_side_percent_updated() -> void:
 	#heads_percent.text = str(int(Globals.head_weight * 100)) + "%"
 	#tails_percent.text = str(int(Globals.tail_weight * 100)) + "%"
