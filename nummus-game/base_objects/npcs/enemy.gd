@@ -4,6 +4,7 @@ class_name Enemy
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_text: Label3D = $EnemySprite/HealthText
+@onready var period_text: Label3D = $EnemySprite/PeriodText
 @export var enemy_id: EnemyStats
 @onready var animated_sprite: AnimatedSprite3D = $EnemySprite
 
@@ -32,9 +33,11 @@ func _ready():
 	animated_sprite.sprite_frames = enemy_id.enemy_expressions
 	enemy_json_id = enemy_id.json_id
 	parse_json()
-
+	
+	# Init UI
 	animated_sprite.play("neutral")
-	health_text.text = str(health as int)+"/" + str(max_health)
+	GuiManager.update_period_text.emit(current_period)
+	GuiManager.update_enemy_health_text.emit(health, max_health)
 	# transform
 	position = Vector3(-1.604,1,0.0)
 	rotate_y(PI/2)
@@ -45,6 +48,8 @@ func increase_p(inc: int):
 		current_period %= period
 		do_move()
 	current_period += inc
+	GuiManager.update_period_text.emit(current_period)
+	GuiManager.update_enemy_health_text.emit(health, max_health)
 
 func do_move():
 	var weights: Array[float] = []
@@ -89,7 +94,6 @@ func play_death_animation():
 	await get_tree().create_timer(death_length).timeout
 	
 	Signalbus.current_enemy_defeated.emit()
-	print("ENEMY DEFEATED")
 
 func take_damage(amount: int):
 	if health + amount < 0 or health + amount == 0:

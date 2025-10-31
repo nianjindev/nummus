@@ -44,7 +44,7 @@ func change_player_health(add: bool, amount:int):
 		health += amount
 	else:
 		health = amount
-	update_ui.emit()
+	GuiManager.update_health_ui.emit()
 	
 func reset_weights():
 	head_weight = 0.5
