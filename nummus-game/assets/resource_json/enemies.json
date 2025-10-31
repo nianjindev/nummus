@@ -6,7 +6,7 @@
 		"moves": {
 			"attack": {
 				"weight": 1.0,
-				"damage": 5.0
+				"damage": 5.0,
 			},
 			"heal": {
 				"weight": 1.0,

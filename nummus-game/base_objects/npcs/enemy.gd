@@ -24,18 +24,16 @@ var death_length: float = 5
 var current_period: int = 0
 
 
+
 func _ready():
 	Signalbus.change_enemy_health.connect(change_health)
-	Signalbus.enemy_visuals.connect(on_enemy_visuals_played)
 	Signalbus.increase_period.connect(increase_p)
-
 	# Init resource
 	animated_sprite.sprite_frames = enemy_id.enemy_expressions
 	enemy_json_id = enemy_id.json_id
 	parse_json()
-	
 	# Init UI
-	animated_sprite.play("neutral")
+	#animated_sprite.play("neutral")
 	GuiManager.update_period_text.emit(current_period)
 	GuiManager.update_enemy_health_text.emit(health, max_health)
 	# transform
@@ -55,16 +53,16 @@ func do_move():
 	var weights: Array[float] = []
 	for move in moves:
 		weights.append(1/moves.get(move).get("weight"))
+	weights=[1,0,0]
 	var move = moves.keys().get(SeedManager.rng.rand_weighted(weights))
 	match move:
 		"attack":
-			Globals.change_player_health(true, -moves.get(move).get("damage"))
+			animation_player.play(enemy_json_id + "/" + move)
 		"heal":
 			change_health(true, 3)
 		"poison":
 			print("lol we are never getting here")
 	
-
 func parse_json() -> void:
 	# json parse
 	var json_object = ObjectManager.parse_json(Constants.JSON_PATHS.enemies)
@@ -74,34 +72,27 @@ func parse_json() -> void:
 			health = max_health
 			period = json_object.data.get(enemy).get("period")
 			moves = json_object.data.get(enemy).get("moves")
-			
+
 func play_hurt_animation():
-	animated_sprite.play("hurt")
-	animation_player.speed_scale = 0
-	
-	await get_tree().create_timer(hurt_small_length).timeout
-	
-	animated_sprite.play("neutral")
-	animation_player.speed_scale = 1
-	
+	animation_player.play(enemy_json_id + "/hurt")
+	await animation_player.animation_finished
 	GuiManager.toggle_coin_flip_ui.emit(true)
 
 func play_death_animation():
-	animated_sprite.play("death")
-	animation_player.speed_scale = 0
+	animation_player.play(enemy_json_id + "/death")
 	GuiManager.toggle_coin_flip_ui.emit(false)
 
-	await get_tree().create_timer(death_length).timeout
+	await animation_player.animation_finished
 	
 	Signalbus.current_enemy_defeated.emit()
 
 func take_damage(amount: int):
 	if health + amount < 0 or health + amount == 0:
 		health = 0
-		Signalbus.enemy_visuals.emit("death")
+		play_death_animation()
 	else:
 		health += amount
-		Signalbus.enemy_visuals.emit("hurt")
+		play_hurt_animation()
 
 func heal(amount: int):
 	health += amount
@@ -117,13 +108,12 @@ func change_health(add: bool, amount: int):
 			take_damage(amount - health)
 		else:
 			heal(health - amount)
-	health_text.text = str(health as int)+"/" + str(max_health)
-func on_enemy_visuals_played(visual: String):
-	match visual:
-		"none":
-			print("NONE")
-			GuiManager.toggle_coin_flip_ui.emit(true)
-		"death":
-			play_death_animation()
-		"hurt":
-			play_hurt_animation()
+
+func deal_damage(add: bool, amount: int):
+	Globals.change_player_health(add, amount)
+
+func trigger_camera_shake(max: float, fade: float):
+	Signalbus.trigger_camera_shake.emit(max, fade)
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	animation_player.play(enemy_json_id + "/idle")

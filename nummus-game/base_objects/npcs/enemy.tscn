@@ -1,89 +1,76 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3tgw7j1mag6w"]
+[gd_scene load_steps=10 format=3 uid="uid://d3tgw7j1mag6w"]
 
 [ext_resource type="Script" uid="uid://y2i1v32uojnf" path="res://base_objects/npcs/enemy.gd" id="1_7frlh"]
-[ext_resource type="Texture2D" uid="uid://bfjhgcbnrhvtu" path="res://assets/2d/character_sprites/smug_guy-Sheet.png" id="2_smd77"]
+[ext_resource type="Resource" uid="uid://dcspy7387pquk" path="res://resources/enemies/smug_man.tres" id="2_pmwma"]
+[ext_resource type="SpriteFrames" uid="uid://dsuivwk12fwsd" path="res://resources/enemies/smug_man/smug_man_anims.tres" id="2_sacfc"]
+[ext_resource type="AnimationLibrary" uid="uid://bjm4btsyels5j" path="res://resources/enemies/smug_man/smug_man.res" id="3_3hvxx"]
 [ext_resource type="Script" uid="uid://ci2m33v77siew" path="res://base_objects/npcs/health_text.gd" id="3_sacfc"]
 [ext_resource type="Script" uid="uid://c6nkqsio0ibic" path="res://base_objects/npcs/period_text.gd" id="4_pmwma"]
 
-[sub_resource type="Animation" id="Animation_7frlh"]
+[sub_resource type="Animation" id="Animation_3hvxx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, -0.16002187, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_gmcc3"]
-resource_name = "death"
-length = 3.0
-
-[sub_resource type="Animation" id="Animation_2kuny"]
-resource_name = "hurt_small"
-length = 0.5
-
-[sub_resource type="Animation" id="Animation_fw1ev"]
-resource_name = "idle"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -0.1, 0), Vector3(0, -0.23, 0), Vector3(0, -0.1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_orwns"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qfgfi"]
 _data = {
-&"RESET": SubResource("Animation_7frlh"),
-&"death": SubResource("Animation_gmcc3"),
-&"hurt_small": SubResource("Animation_2kuny"),
-&"idle": SubResource("Animation_fw1ev")
+&"RESET": SubResource("Animation_3hvxx")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rn5wy"]
-atlas = ExtResource("2_smd77")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sacfc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rn5wy")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_sacfc"]
 viewport_path = NodePath("EnemySprite/SubViewport")
 
 [node name="Enemy" type="Node3D"]
 script = ExtResource("1_7frlh")
+enemy_id = ExtResource("2_pmwma")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../EnemySprite")
 libraries = {
-&"": SubResource("AnimationLibrary_orwns")
+&"": SubResource("AnimationLibrary_qfgfi"),
+&"smug_man": ExtResource("3_3hvxx")
 }
-autoplay = "idle"
+autoplay = "smug_man/idle"
 
 [node name="EnemySprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16002187, 0)
 texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_sacfc")
+sprite_frames = ExtResource("2_sacfc")
+animation = &"attack"
 
 [node name="HealthText" type="Label3D" parent="EnemySprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20580767, 1.1047853, 0)
@@ -140,3 +127,5 @@ script = ExtResource("3_sacfc")
 transform = Transform3D(0.5221729, 0, 0, 0, 0.5221729, 0, 0, 0, 0.5221729, 0, 1.1185687, 0)
 texture_filter = 0
 texture = SubResource("ViewportTexture_sacfc")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
