@@ -71,18 +71,19 @@ func set_state_transforms() -> void:
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = false
 	#init_anim()
-	await _tween_pos()
-	init_anim()
+	_tween_pos()
+	
 	
 func _tween_pos():
 	tween_me(self, tween_pos, 0.1)
+	init_anim()
 
 	
 
 func init_anim():
-	position_markers["not_floating"] = coin_mesh.position
-	position_markers["floating"] = coin_mesh.position + Vector3(0, 0.4, 0)
-	position_markers["global_init"] = self.position
+	position_markers["not_floating"] = Vector3(0,0,0)
+	position_markers["floating"] = Vector3(0, 0.4, 0)
+	position_markers["global_init"] = tween_pos
 	position_markers["playing"] = Vector3(0, 0.4, 0)
 
 func parse_json() -> void:
@@ -199,9 +200,10 @@ func _input(event: InputEvent) -> void:
 			if not current_coin:
 				current_coin = ObjectManager.set_current_coin(self)
 				if current_coin:
+					pass
 					tween_me(self, position_markers.get("playing"), 0.2)
 			elif current_coin:
-				tween_me(self, position_markers.get("global_init"), 0.2)
+				#tween_me(self, tween_pos, 0.2)
 				current_coin = false
 				ObjectManager.delete_current_coin()
 
@@ -217,7 +219,7 @@ func tween_me(sprite: Node3D, pos: Vector3, time):
 
 func replace_me():
 	if current_coin:
-		tween_me(self, position_markers.get("global_init"), 0.2)
+		#tween_me(self, tween_pos, 0.2)
 		current_coin = false
 
 func buy_me():
