@@ -13,7 +13,7 @@ signal current_enemy_defeated()
 signal level_loaded
 
 ######## Change Values ########
-# @warning_ignore("unused_signal")
+@warning_ignore("unused_signal")
 signal change_enemy_health(add: bool, amount: int)
 
 ######## UI ########
@@ -31,6 +31,9 @@ signal enemy_visuals()
 
 # gameplay loop
 signal increase_period(inc: int)
+signal refresh_spacing(hand: int)
+signal return_spacing(spaces: Array[Vector3])
+signal positions_ready
 
 # func _ready():
 	# skill_check_finish.connect(_on_skill_check)

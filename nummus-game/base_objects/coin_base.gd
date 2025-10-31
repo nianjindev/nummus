@@ -21,6 +21,7 @@ var coin_price: int
 var period_inc: int
 
 var position_markers: Dictionary[String, Vector3] # 0 is initial, 1 is floating
+@export var tween_pos: Vector3
 
 # coin state
 @export var current_state: Constants.display_type
@@ -37,6 +38,7 @@ func _ready():
 	# signals
 	Signalbus.coin_flipped.connect(flip)
 	ObjectManager.replace_current_coin.connect(replace_me)
+	
 
 	# instance of coin resources
 	coin_mesh.material_override = StandardMaterial3D.new()
@@ -50,6 +52,7 @@ func _ready():
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0
 
+	Signalbus.positions_ready.connect(_tween_pos)
 	set_state_transforms()
 	parse_json()
 
@@ -58,7 +61,7 @@ func set_state_transforms() -> void:
 	if current_state == Constants.display_type.PLAY:
 		scale = Vector3(0.1,0.1,0.1)
 		rotation = Vector3(0, 0, 0)
-		hoverable.visible = false
+		hoverable.visible = true
 	elif current_state == Constants.display_type.SHOP:
 		scale = Vector3(0.3,0.3,0.3)
 		rotation = Vector3(0, 0, -PI/2)
@@ -67,8 +70,16 @@ func set_state_transforms() -> void:
 		scale = Vector3(0.1,0.1,0.1)
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = false
-		animation_player.play("spinning")
+	#init_anim()
+	await _tween_pos()
+	init_anim()
+	
+func _tween_pos():
+	tween_me(self, tween_pos, 0.1)
 
+	
+
+func init_anim():
 	position_markers["not_floating"] = coin_mesh.position
 	position_markers["floating"] = coin_mesh.position + Vector3(0, 0.4, 0)
 	position_markers["global_init"] = self.position

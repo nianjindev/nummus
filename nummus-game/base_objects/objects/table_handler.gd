@@ -9,6 +9,7 @@ class_name Table
 var increment: float
 
 func _ready() -> void:
+	Signalbus.refresh_spacing.connect(check_spacing)
 	check_spacing(Globals.max_hand)
 
 func check_spacing(hand_size: int):
@@ -17,3 +18,4 @@ func check_spacing(hand_size: int):
 	for i in range(hand_size):
 		positions.append(endpoint_r.position + Vector3(0, 0, increment*i))
 	coin_positions = positions
+	Signalbus.return_spacing.emit(coin_positions)

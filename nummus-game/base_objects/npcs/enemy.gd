@@ -55,7 +55,7 @@ func do_move():
 		"attack":
 			Globals.change_player_health(true, -moves.get(move).get("damage"))
 		"heal":
-			change_health(true, 3)
+			change_health(true, moves.get(move).get("heal"))
 		"poison":
 			print("lol we are never getting here")
 	
