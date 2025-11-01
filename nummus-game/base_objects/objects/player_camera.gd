@@ -6,7 +6,7 @@ extends Camera3D
 var _shake_strength: float = 0
 
 func _ready():
-	Signalbus.enemy_visuals.connect(_on_enemy_visuals_played)
+	Signalbus.trigger_camera_shake.connect(trigger_shake)
 
 func trigger_shake(max: float, fade: float) -> void:
 	max_shake = max
@@ -19,19 +19,5 @@ func _process(delta: float):
 		h_offset = randf_range(-_shake_strength , _shake_strength)
 		v_offset = randf_range(-_shake_strength , _shake_strength)
 
-func enemy_hurt():
-	trigger_shake(.10, 10)
-	
-func enemy_death():
-	trigger_shake(1, 10)
-	await get_tree().create_timer(1).timeout
-	trigger_shake(1, 10)
-	await get_tree().create_timer(1).timeout
-	trigger_shake(1, 3)
 
-func _on_enemy_visuals_played(visual: String):
-	match visual:
-		"hurt":
-			enemy_hurt()
-		"death":
-			enemy_death()
+	

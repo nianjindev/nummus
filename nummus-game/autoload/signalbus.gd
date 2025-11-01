@@ -28,6 +28,7 @@ signal finished_displaying
 ######## VFX ########
 @warning_ignore("unused_signal")
 signal enemy_visuals()
+signal trigger_camera_shake(max: float, fade: float)
 
 # gameplay loop
 signal increase_period(inc: int)
