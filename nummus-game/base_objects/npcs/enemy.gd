@@ -11,7 +11,7 @@ class_name Enemy
 # Stats
 var max_health: int
 var health: int
-var period: int
+var period_length: int
 var moves: Dictionary
 var enemy_json_id: String
 
@@ -22,46 +22,57 @@ var death_length: float = 5
 
 # period system
 var current_period: int = 0
-
+var queued_move
 
 
 func _ready():
 	Signalbus.change_enemy_health.connect(change_health)
-	Signalbus.increase_period.connect(increase_p)
+	Signalbus.decrease_period.connect(decrease_period)
 	# Init resource
 	animated_sprite.sprite_frames = enemy_id.enemy_expressions
 	enemy_json_id = enemy_id.json_id
 	parse_json()
-	# Init UI
-	#animated_sprite.play("neutral")
-	GuiManager.update_period_text.emit(current_period)
-	GuiManager.update_enemy_health_text.emit(health, max_health)
+	
 	# transform
 	position = Vector3(-1.604,1,0.0)
 	rotate_y(PI/2)
 	scale = Vector3(0.6,0.6,0.6)
 	
-func increase_p(inc: int):
-	if current_period >= period && health > 0:
-		current_period %= period
-		do_move()
-	current_period += inc
+	choose_move()
+	# Init UI
 	GuiManager.update_period_text.emit(current_period)
 	GuiManager.update_enemy_health_text.emit(health, max_health)
+	
+func decrease_period(amount: int):
+	if current_period - amount <= 0 && health > 0:
+		current_period = 0
+		do_move()
+		await animation_player.animation_finished
+		choose_move()
+	else:
+		current_period -= amount
+		
+	GuiManager.update_period_text.emit(current_period)
 
-func do_move():
+func choose_move():
 	var weights: Array[float] = []
 	for move in moves:
 		weights.append(1/moves.get(move).get("weight"))
 	weights=[1,0,0]
-	var move = moves.keys().get(SeedManager.rng.rand_weighted(weights))
-	match move:
+	queued_move = moves.keys().get(SeedManager.rng.rand_weighted(weights))
+	current_period = moves.get(queued_move).get("period")
+	GuiManager.update_period_text.emit(current_period)
+
+func do_move():
+	GuiManager.update_period_text.emit(current_period)
+	match queued_move:
 		"attack":
-			animation_player.play(enemy_json_id + "/" + move)
+			animation_player.play(enemy_json_id + "/" + queued_move)
 		"heal":
-			animation_player.play(enemy_json_id + "/" + move)
+			animation_player.play(enemy_json_id + "/" + queued_move)
 		"poison":
 			print("lol we are never getting here")
+	GuiManager.update_enemy_health_text.emit(health, max_health)
 	
 func parse_json() -> void:
 	# json parse
@@ -70,7 +81,7 @@ func parse_json() -> void:
 		if enemy == enemy_json_id:
 			max_health = json_object.data.get(enemy).get("health")
 			health = max_health
-			period = json_object.data.get(enemy).get("period")
+			period_length = json_object.data.get(enemy).get("period")
 			moves = json_object.data.get(enemy).get("moves")
 
 func play_hurt_animation():

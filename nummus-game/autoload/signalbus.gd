@@ -31,7 +31,7 @@ signal enemy_visuals()
 signal trigger_camera_shake(max: float, fade: float)
 
 # gameplay loop
-signal increase_period(inc: int)
+signal decrease_period(amount: int)
 signal refresh_spacing(hand: int)
 signal return_spacing(spaces: Array[Vector3])
 signal positions_ready

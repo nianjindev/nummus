@@ -18,7 +18,7 @@ var coin_json_id: String
 var coin_stats: Dictionary
 var coin_effect: RefCounted
 var coin_price: int
-var period_inc: int
+var period_increment: int
 
 var position_markers: Dictionary[String, Vector3] # 0 is initial, 1 is floating
 @export var tween_pos: Vector3
@@ -95,7 +95,7 @@ func parse_json() -> void:
 			coin_stats = json_object.data.get(coin).get("coin_stats")
 			self.name = json_object.data.get(coin).get("name")
 			coin_price = json_object.data.get(coin).get("price")
-			period_inc = json_object.data.get(coin).get("period")
+			period_increment = json_object.data.get(coin).get("period")
 			hoverable.title.text = json_object.data.get(coin).get("name") + " [color=yellow]$" + str(coin_price) + "[/color]"
 			hoverable.description.text = json_object.data.get(coin).get("description") + generate_description(coin_stats)
 
@@ -116,7 +116,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			GuiManager.toggle_coin_flip_ui.emit(true)
 	
 	Globals.reset_weights()
-	Signalbus.increase_period.emit(period_inc)
+	Signalbus.decrease_period.emit(period_increment)
 
 func check_flipped_side(flipped_side: int, state: int):
 	#flipped side = index returned by weighted array
