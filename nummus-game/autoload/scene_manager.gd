@@ -16,7 +16,7 @@ func _deferred_goto_scene(path):
 	current_scene.free()
 	
 	# Load the new scene.
-	var s = ResourceLoader.load(path)
+	var s = ResourceLoader.load(path).duplicate()
 
 	# Instance the new scene.
 	current_scene = s.instantiate()
