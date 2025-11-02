@@ -63,16 +63,11 @@ func choose_move():
 	weights=[1,0,0]
 	queued_move = moves.keys().get(SeedManager.rng.rand_weighted(weights))
 	current_period = moves.get(queued_move).get("period")
+	var action_text = moves.get(queued_move).get("action_text")
+	GuiManager.update_action_text.emit(action_text)
 
 func do_move():
-	match queued_move:
-		"attack":
-			animation_player.play(enemy_json_id + "/" + queued_move)
-		"heal":
-			animation_player.play(enemy_json_id + "/" + queued_move)
-		"poison":
-			print("lol we are never getting here")
-
+	animation_player.play(enemy_json_id + "/" + queued_move)
 	
 func parse_json() -> void:
 	# json parse
@@ -92,7 +87,7 @@ func play_hurt_animation():
 func play_death_animation():
 	animation_player.play(enemy_json_id + "/death")
 	GuiManager.toggle_coin_flip_ui.emit(false)
-
+	GuiManager.toggle_global_ui.emit(false)
 	await animation_player.animation_finished
 	
 	Signalbus.current_enemy_defeated.emit()

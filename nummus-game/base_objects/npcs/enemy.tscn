@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3tgw7j1mag6w"]
+[gd_scene load_steps=11 format=3 uid="uid://d3tgw7j1mag6w"]
 
 [ext_resource type="Script" uid="uid://y2i1v32uojnf" path="res://base_objects/npcs/enemy.gd" id="1_7frlh"]
 [ext_resource type="Resource" uid="uid://dcspy7387pquk" path="res://resources/enemies/smug_man.tres" id="2_pmwma"]
@@ -6,6 +6,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://bjm4btsyels5j" path="res://resources/enemies/smug_man/smug_man.res" id="3_3hvxx"]
 [ext_resource type="Script" uid="uid://ci2m33v77siew" path="res://base_objects/npcs/health_text.gd" id="3_sacfc"]
 [ext_resource type="Script" uid="uid://c6nkqsio0ibic" path="res://base_objects/npcs/period_text.gd" id="4_pmwma"]
+[ext_resource type="Script" uid="uid://bo8mk5y472tj8" path="res://base_objects/npcs/action_text.gd" id="7_qfgfi"]
 
 [sub_resource type="Animation" id="Animation_3hvxx"]
 length = 0.001
@@ -89,7 +90,7 @@ outline_size = 22
 [node name="SubViewport" type="SubViewport" parent="EnemySprite"]
 transparent_bg = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(512, 128)
+size = Vector2i(1024, 1024)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EnemySprite/SubViewport"]
 anchors_preset = 8
@@ -122,6 +123,20 @@ text = "30/30"
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("3_sacfc")
+
+[node name="ActionText" type="Label" parent="EnemySprite/SubViewport"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 634.73
+offset_top = 106.15997
+offset_right = 744.73004
+offset_bottom = 134.15997
+grow_vertical = 2
+theme_override_constants/outline_size = 19
+theme_override_font_sizes/font_size = 31
+text = "69 DMG"
+script = ExtResource("7_qfgfi")
 
 [node name="Sprite3D" type="Sprite3D" parent="EnemySprite"]
 transform = Transform3D(0.5221729, 0, 0, 0, 0.5221729, 0, 0, 0, 0.5221729, 0, 1.1185687, 0)

@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b8nnrnw1eewfa" path="res://assets/2d/bar_textures/health_text_bar.png" id="12_qwhgh"]
 [ext_resource type="Texture2D" uid="uid://jch5sbhi1vs0" path="res://assets/2d/bar_textures/bar_over_big.png" id="13_crqig"]
 [ext_resource type="PackedScene" uid="uid://dgl2frifwu5vi" path="res://gui/inventory_ui.tscn" id="13_jxs7b"]
-[ext_resource type="Script" uid="uid://d28kshbqsls02" path="res://gui/misfortune_marker_row.gd" id="13_s6kbw"]
+[ext_resource type="Script" path="res://gui/misfortune_marker_row.gd" id="13_s6kbw"]
 [ext_resource type="Texture2D" uid="uid://bronhad3508ye" path="res://assets/2d/bar_textures/progress_health.png" id="14_h1f0h"]
 [ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/bar_textures/under_money.png" id="15_ll540"]
 
