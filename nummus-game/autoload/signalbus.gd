@@ -29,11 +29,13 @@ signal finished_displaying
 ######## VFX ########
 @warning_ignore("unused_signal")
 signal enemy_visuals()
+signal trigger_camera_shake(max: float, fade: float)
 
 # gameplay loop
 @warning_ignore("unused_signal")
 signal increase_period(inc: int)
 @warning_ignore("unused_signal")
+signal decrease_period(amount: int)
 signal refresh_spacing(hand: int)
 @warning_ignore("unused_signal")
 signal return_spacing(spaces: Array[Vector3])

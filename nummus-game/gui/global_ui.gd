@@ -16,7 +16,12 @@ func _ready():
 	GuiManager.update_fortune_bar_ui.connect(_on_fortune_updated)
 	GuiManager.update_misfortune_bar_ui.connect(_on_misfortune_updated)
 	GuiManager.update_health_ui.connect(_on_health_visuals_updated)
+	GuiManager.toggle_global_ui.connect(_on_ui_toggled)
 	update_all()
+	
+
+func _on_ui_toggled(show: bool):
+	self.visible = show
 	
 ########### TEXT ###########
 func update_fortune_text():

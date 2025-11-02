@@ -2,19 +2,20 @@
 	"smug_man": {
 		"name": "Smug Man",
 		"health": 30.0,
-		"period": 5.0,
+		"period": 2.0,
 		"moves": {
 			"attack": {
+				"period": 5,
 				"weight": 1.0,
-				"damage": 5.0
+				"action_text": "5 DMG"
 			},
 			"heal": {
+				"period": 3,
 				"weight": 1.0,
-				"heal": 3.0
+				"action_text": "3 HEAL"
 			},
 			"poison": {
 				"weight": 3.0,
-				"damage": 1.0
 			}
 		}
 	}

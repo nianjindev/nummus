@@ -18,7 +18,7 @@ var coin_json_id: String
 var coin_stats: Dictionary
 var coin_effect: RefCounted
 var coin_price: int
-var period_inc: int
+var period_increment: int
 
 var flipping: bool = false
 
@@ -102,7 +102,7 @@ func parse_json() -> void:
 			coin_stats = json_object.data.get(coin).get("coin_stats")
 			self.name = json_object.data.get(coin).get("name")
 			coin_price = json_object.data.get(coin).get("price")
-			period_inc = json_object.data.get(coin).get("period")
+			period_increment = json_object.data.get(coin).get("period")
 			hoverable.title.text = json_object.data.get(coin).get("name") + " [color=yellow]$" + str(coin_price) + "[/color]"
 			hoverable.description.text = json_object.data.get(coin).get("description") + generate_description(coin_stats)
 
@@ -113,17 +113,16 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		"flip_heads_fail": # IDEA: all fails do misfortune
 			Globals.change_fortune(true, Globals.fortune_gain)
 			Globals.change_misfortune(true, Globals.misfortune_gain)
-			Signalbus.enemy_visuals.emit("none")
+			GuiManager.toggle_coin_flip_ui.emit(true)
 		"flip_tails_success":
 			coin_effect.effect(coin_stats, Sides.TAILS)
 		"flip_tails_fail":
 			Globals.change_fortune(true, Globals.fortune_gain)
 			Globals.change_misfortune(true, Globals.misfortune_gain)
-			Signalbus.enemy_visuals.emit("none")
+			GuiManager.toggle_coin_flip_ui.emit(true)
 	
 	Globals.reset_weights()
-	Signalbus.increase_period.emit(period_inc)
-	flipping = false
+	Signalbus.decrease_period.emit(period_increment)
 
 func check_flipped_side(flipped_side: int, state: int):
 	#flipped side = index returned by weighted array
