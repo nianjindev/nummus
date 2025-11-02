@@ -45,4 +45,14 @@ layout_mode = 2
 text = "Kill enemy"
 alignment = 0
 
+[node name="flip_heads" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Flip heads"
+alignment = 0
+
+[node name="flip_tails" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/kill_enemy" to="." method="_on_kill_enemy_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/flip_heads" to="." method="_on_flip_heads_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/flip_tails" to="." method="_on_flip_tails_pressed"]

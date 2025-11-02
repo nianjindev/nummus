@@ -149,7 +149,8 @@ func flip(state: int):
 			coin_effect.pre_effect(coin_stats)
 		set_weights()
 		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
-		check_flipped_side(SeedManager.rng.rand_weighted(weights), state)
+		var flipped_side = SeedManager.rng.rand_weighted(weights)
+		check_flipped_side(flipped_side, state)
 		
 		Globals.reset_fortune()
 

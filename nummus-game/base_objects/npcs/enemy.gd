@@ -7,6 +7,8 @@ class_name Enemy
 @onready var period_text: Label3D = $EnemySprite/PeriodText
 @export var enemy_id: EnemyStats
 @onready var animated_sprite: AnimatedSprite3D = $EnemySprite
+@onready var period_animation: AnimationPlayer = $EnemySprite/SubViewport/HBoxContainer/PeriodText/AnimationPlayer
+
 
 # Stats
 var max_health: int
@@ -69,7 +71,9 @@ func choose_move():
 func do_move():
 	if animation_player.current_animation != enemy_json_id + "/idle": #prevents the hurt animation from being skipped
 		animation_player.queue(enemy_json_id + "/" + queued_move)
+		await period_animation.animation_finished
 	else:
+		await period_animation.animation_finished
 		animation_player.play(enemy_json_id + "/" + queued_move)
 	
 	

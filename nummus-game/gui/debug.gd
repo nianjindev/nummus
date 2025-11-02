@@ -28,3 +28,13 @@ func _process(_delta: float) -> void:
 	
 func _on_kill_enemy_pressed() -> void:
 	Signalbus.change_enemy_health.emit(true, -1000000)
+
+func _on_flip_heads_pressed() -> void:
+	Globals.head_weight = 1
+	Globals.tail_weight = 0
+	Signalbus.coin_flipped.emit(Sides.HEADS)
+
+func _on_flip_tails_pressed() -> void:
+	Globals.head_weight = 0
+	Globals.tail_weight = 1
+	Signalbus.coin_flipped.emit(Sides.TAILS)

@@ -1,6 +1,6 @@
 extends Button
 
-func calculate_channeled_fortune():
+func set_channeled_fortune():
 	if Globals.fortune >= 20:
 		Globals.fortune_channeled_amount = .5
 	elif Globals.fortune >= 12:
@@ -16,7 +16,7 @@ func reset_channeled_fortune():
 func _on_channel_fortune_pressed() -> void:
 	if !Globals.fortune_channeled:
 		Globals.fortune_channeled = true
-		calculate_channeled_fortune()
+		set_channeled_fortune()
 	else:
 		Globals.fortune_channeled = false
 		reset_channeled_fortune()
