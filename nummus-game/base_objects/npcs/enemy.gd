@@ -54,7 +54,7 @@ func decrease_period(amount: int):
 		current_period -= amount
 		
 	GuiManager.update_period_text.emit(current_period)
-	GuiManager.update_enemy_health_text.emit(health, max_health)
+	
 
 func choose_move():
 	var weights: Array[float] = []
@@ -68,9 +68,11 @@ func choose_move():
 
 func do_move():
 	if animation_player.current_animation != enemy_json_id + "/idle": #prevents the hurt animation from being skipped
-		await animation_player.animation_finished 
+		animation_player.queue(enemy_json_id + "/" + queued_move)
+	else:
+		animation_player.play(enemy_json_id + "/" + queued_move)
 	
-	animation_player.play(enemy_json_id + "/" + queued_move)
+	
 	GuiManager.toggle_coin_flip_ui.emit(false)
 	await animation_player.animation_finished
 	GuiManager.toggle_coin_flip_ui.emit(true)
@@ -86,12 +88,13 @@ func parse_json() -> void:
 			moves = json_object.data.get(enemy).get("moves")
 
 func play_hurt_animation():
+	GuiManager.update_enemy_health_text.emit(health, max_health)
 	animation_player.play(enemy_json_id + "/hurt")
 	await animation_player.animation_finished
 	GuiManager.toggle_coin_flip_ui.emit(true)
 
 func play_death_animation():
-	animation_player.play(enemy_json_id + "/death")
+	animation_player.queue(enemy_json_id + "/death")
 	GuiManager.toggle_coin_flip_ui.emit(false)
 	GuiManager.toggle_global_ui.emit(false)
 	GuiManager.toggle_enemy_ui.emit(false)
