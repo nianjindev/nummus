@@ -109,6 +109,7 @@ func change_health(add: bool, amount: int):
 		else:
 			heal(health - amount)
 
+#Animation Player methods
 func deal_damage(add: bool, amount: int):
 	Globals.change_player_health(add, amount)
 
