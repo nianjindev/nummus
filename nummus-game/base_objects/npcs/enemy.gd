@@ -94,7 +94,7 @@ func play_hurt_animation():
 	GuiManager.toggle_coin_flip_ui.emit(true)
 
 func play_death_animation():
-	animation_player.queue(enemy_json_id + "/death")
+	animation_player.play(enemy_json_id + "/death")
 	GuiManager.toggle_coin_flip_ui.emit(false)
 	GuiManager.toggle_global_ui.emit(false)
 	GuiManager.toggle_enemy_ui.emit(false)
