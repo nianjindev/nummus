@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://dsuivwk12fwsd"]
+[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://dsuivwk12fwsd"]
 
 [ext_resource type="Texture2D" uid="uid://bfjhgcbnrhvtu" path="res://assets/2d/character_sprites/smug_guy-Sheet.png" id="1_32ev4"]
 
@@ -33,6 +33,22 @@ region = Rect2(512, 0, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqsjk"]
 atlas = ExtResource("1_32ev4")
 region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ev4"]
+atlas = ExtResource("1_32ev4")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pofyq"]
+atlas = ExtResource("1_32ev4")
+region = Rect2(0, 1024, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek5ew"]
+atlas = ExtResource("1_32ev4")
+region = Rect2(256, 1024, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aepfg"]
+atlas = ExtResource("1_32ev4")
+region = Rect2(512, 1024, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7q4ol"]
 atlas = ExtResource("1_32ev4")
@@ -94,6 +110,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ev4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pofyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek5ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aepfg")
+}],
+"loop": true,
+"name": &"heal",
 "speed": 5.0
 }, {
 "frames": [{

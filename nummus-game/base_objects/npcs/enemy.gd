@@ -42,7 +42,7 @@ func _ready():
 	scale = Vector3(0.6,0.6,0.6)
 	
 func increase_p(inc: int):
-	if current_period >= period:
+	if current_period >= period && health > 0:
 		current_period %= period
 		do_move()
 	current_period += inc
@@ -59,7 +59,7 @@ func do_move():
 		"attack":
 			animation_player.play(enemy_json_id + "/" + move)
 		"heal":
-			change_health(true, moves.get(move).get("heal"))
+			animation_player.play(enemy_json_id + "/" + move)
 		"poison":
 			print("lol we are never getting here")
 	

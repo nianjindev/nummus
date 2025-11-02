@@ -2,7 +2,7 @@
 	"smug_man": {
 		"name": "Smug Man",
 		"health": 30.0,
-		"period": 5.0,
+		"period": 2.0,
 		"moves": {
 			"attack": {
 				"weight": 1.0,
