@@ -20,6 +20,8 @@ var coin_effect: RefCounted
 var coin_price: int
 var period_inc: int
 
+var flipping: bool = false
+
 var position_markers: Dictionary[String, Vector3] # 0 is initial, 1 is floating
 @export var tween_pos: Vector3
 
@@ -37,7 +39,9 @@ func _ready():
 
 	# signals
 	Signalbus.coin_flipped.connect(flip)
-	ObjectManager.replace_current_coin.connect(replace_me)
+	Inventory.replace_current_coin.connect(replace_me)
+	Signalbus.positions_ready.connect(_tween_pos)
+	#Signalbus.fly_out.connect(_fly_out)
 	
 
 	# instance of coin resources
@@ -52,7 +56,6 @@ func _ready():
 	# change material
 	coin_mesh.material_override.metallic_specular = 0.0
 
-	Signalbus.positions_ready.connect(_tween_pos)
 	set_state_transforms()
 	parse_json()
 
@@ -62,6 +65,8 @@ func set_state_transforms() -> void:
 		scale = Vector3(0.1,0.1,0.1)
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = true
+		_tween_pos()
+		init_anim()
 	elif current_state == Constants.display_type.SHOP:
 		scale = Vector3(0.3,0.3,0.3)
 		rotation = Vector3(0, 0, -PI/2)
@@ -71,14 +76,16 @@ func set_state_transforms() -> void:
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = false
 	#init_anim()
-	_tween_pos()
-	
-	
+
+# func _fly_out():
+# 	print("hi")
+# 	var purse_pos = Vector3(0.407, 0.412, -0.856)
+# 	self.position = purse_pos
+# 	tween_me(self, purse_pos + Vector3(0,0.4,0), 0.1)
+# 	Signalbus.flew_out.emit()
+
 func _tween_pos():
 	tween_me(self, tween_pos, 0.1)
-	init_anim()
-
-	
 
 func init_anim():
 	position_markers["not_floating"] = Vector3(0,0,0)
@@ -91,7 +98,7 @@ func parse_json() -> void:
 	var json_object = ObjectManager.parse_json(Constants.JSON_PATHS.coins)
 	for coin in json_object.data:
 		if coin == coin_json_id:
-			print("matched " + coin)
+			#print("matched " + coin)
 			coin_stats = json_object.data.get(coin).get("coin_stats")
 			self.name = json_object.data.get(coin).get("name")
 			coin_price = json_object.data.get(coin).get("price")
@@ -100,7 +107,6 @@ func parse_json() -> void:
 			hoverable.description.text = json_object.data.get(coin).get("description") + generate_description(coin_stats)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	
 	match anim_name:
 		"flip_heads_success":
 			coin_effect.effect(coin_stats, Sides.HEADS)
@@ -117,6 +123,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
 	Globals.reset_weights()
 	Signalbus.increase_period.emit(period_inc)
+	flipping = false
 
 func check_flipped_side(flipped_side: int, state: int):
 	#flipped side = index returned by weighted array
@@ -141,7 +148,8 @@ func set_weights():
 	#Signalbus.update_side_percent_ui.emit()
 		
 func flip(state: int):
-	if current_coin: 
+	if current_coin:
+		flipping = true
 		if state == Sides.SKIP:
 			return
 		else:
@@ -190,22 +198,22 @@ func _on_area_3d_mouse_entered() -> void:
 		toggle_visible(true)
 	if current_state == Constants.display_type.PLAY: # make float
 		tween_me(coin_mesh, position_markers.get("floating"), 0.2)
+		toggle_visible(true)
 	is_mouse_over = true
 
 func _input(event: InputEvent) -> void:
 	if is_mouse_over and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if current_state == Constants.display_type.SHOP:
 			buy_me()
-		if current_state == Constants.display_type.PLAY:
+		if current_state == Constants.display_type.PLAY and flipping == false:
 			if not current_coin:
-				current_coin = ObjectManager.set_current_coin(self)
+				current_coin = Inventory.set_current_coin(self)
 				if current_coin:
-					pass
 					tween_me(self, position_markers.get("playing"), 0.2)
 			elif current_coin:
 				#tween_me(self, tween_pos, 0.2)
 				current_coin = false
-				ObjectManager.delete_current_coin()
+				Inventory.delete_current_coin()
 
 func _on_area_3d_mouse_exited() -> void:
 	toggle_visible(false)
@@ -229,3 +237,7 @@ func buy_me():
 		self.queue_free()
 	else:
 		print("you broke lol")
+
+func discard_me():
+	if current_coin:
+		Inventory.discard_coin()

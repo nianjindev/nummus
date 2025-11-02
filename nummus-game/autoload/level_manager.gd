@@ -25,4 +25,5 @@ func next_stage():
 		next_stage_scene = Constants.SCENE_PATHS.base_level
 		enter_level.emit()
 		# set resource here
+	Inventory.reset_inv()
 	SceneManager.goto_scene(next_stage_scene)

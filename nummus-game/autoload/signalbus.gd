@@ -17,12 +17,13 @@ signal level_loaded
 signal change_enemy_health(add: bool, amount: int)
 
 ######## UI ########
-
+@warning_ignore("unused_signal")
 signal add_achievement(achievement: String, reward: int)
 
 ## dialog lol ##
 @warning_ignore("unused_signal")
 signal shop_dialog(action: String)
+@warning_ignore("unused_signal")
 signal finished_displaying
 
 ######## VFX ########
@@ -30,10 +31,17 @@ signal finished_displaying
 signal enemy_visuals()
 
 # gameplay loop
+@warning_ignore("unused_signal")
 signal increase_period(inc: int)
+@warning_ignore("unused_signal")
 signal refresh_spacing(hand: int)
+@warning_ignore("unused_signal")
 signal return_spacing(spaces: Array[Vector3])
+@warning_ignore("unused_signal")
 signal positions_ready
+
+signal fly_out
+signal flew_out
 
 # func _ready():
 	# skill_check_finish.connect(_on_skill_check)
