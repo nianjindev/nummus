@@ -6,6 +6,8 @@ func _ready() -> void:
 	#Inventory.spawn_hand()
 	ObjectManager.spawn_base_enemy()
 	Signalbus.current_enemy_defeated.connect(_on_current_enemy_defeated)
+	GuiManager.toggle_level_completed_ui.emit(false)
+	GuiManager.toggle_coin_flip_ui.emit(true)
 
 func _on_current_enemy_defeated():
 	GuiManager.toggle_level_completed_ui.emit(true)

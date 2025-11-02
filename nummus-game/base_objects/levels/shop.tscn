@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://smvg3nwqqw6x"]
+[gd_scene load_steps=10 format=3 uid="uid://smvg3nwqqw6x"]
 
+[ext_resource type="Script" uid="uid://dgh6jdcmj318b" path="res://base_objects/levels/shop.gd" id="1_0nd36"]
 [ext_resource type="ArrayMesh" uid="uid://clj1nhn3sqwg8" path="res://assets/3d/shop_floor.obj" id="1_5kqab"]
 [ext_resource type="ArrayMesh" uid="uid://di4p7r3k6ddnu" path="res://assets/3d/shop_wall.obj" id="2_0nd36"]
 [ext_resource type="ArrayMesh" uid="uid://dc1ulk0am4cx4" path="res://assets/3d/shop_table.obj" id="3_duxtl"]
@@ -20,6 +21,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Shop" type="Node3D"]
+script = ExtResource("1_0nd36")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ya44s")
