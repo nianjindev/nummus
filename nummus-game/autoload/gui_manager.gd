@@ -18,6 +18,7 @@ signal update_side_percent_ui()
 signal update_period_text(amount: int)
 signal update_enemy_health_text(amount: int, max_health: int)
 signal update_action_text(text: String)
+signal toggle_enemy_ui(show: bool)
 
 
 var all_ui_path: Dictionary[String, String] = {

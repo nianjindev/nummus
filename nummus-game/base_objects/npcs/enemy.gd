@@ -67,7 +67,13 @@ func choose_move():
 	GuiManager.update_action_text.emit(action_text)
 
 func do_move():
+	if animation_player.current_animation != enemy_json_id + "/idle": #prevents the hurt animation from being skipped
+		await animation_player.animation_finished 
+	
 	animation_player.play(enemy_json_id + "/" + queued_move)
+	GuiManager.toggle_coin_flip_ui.emit(false)
+	await animation_player.animation_finished
+	GuiManager.toggle_coin_flip_ui.emit(true)
 	
 func parse_json() -> void:
 	# json parse
@@ -88,6 +94,7 @@ func play_death_animation():
 	animation_player.play(enemy_json_id + "/death")
 	GuiManager.toggle_coin_flip_ui.emit(false)
 	GuiManager.toggle_global_ui.emit(false)
+	GuiManager.toggle_enemy_ui.emit(false)
 	await animation_player.animation_finished
 	
 	Signalbus.current_enemy_defeated.emit()
@@ -123,4 +130,5 @@ func trigger_camera_shake(max: float, fade: float):
 	Signalbus.trigger_camera_shake.emit(max, fade)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	animation_player.play(enemy_json_id + "/idle")
+	if health > 0:
+		animation_player.play(enemy_json_id + "/idle")

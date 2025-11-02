@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3tgw7j1mag6w"]
+[gd_scene load_steps=12 format=3 uid="uid://d3tgw7j1mag6w"]
 
 [ext_resource type="Script" uid="uid://y2i1v32uojnf" path="res://base_objects/npcs/enemy.gd" id="1_7frlh"]
 [ext_resource type="Resource" uid="uid://dcspy7387pquk" path="res://resources/enemies/smug_man.tres" id="2_pmwma"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ci2m33v77siew" path="res://base_objects/npcs/health_text.gd" id="3_sacfc"]
 [ext_resource type="Script" uid="uid://c6nkqsio0ibic" path="res://base_objects/npcs/period_text.gd" id="4_pmwma"]
 [ext_resource type="Script" uid="uid://bo8mk5y472tj8" path="res://base_objects/npcs/action_text.gd" id="7_qfgfi"]
+[ext_resource type="Script" uid="uid://dmlojl3d52u34" path="res://base_objects/npcs/sub_viewport_container.gd" id="8_77r6l"]
 
 [sub_resource type="Animation" id="Animation_3hvxx"]
 length = 0.001
@@ -138,9 +139,10 @@ theme_override_font_sizes/font_size = 31
 text = "69 DMG"
 script = ExtResource("7_qfgfi")
 
-[node name="Sprite3D" type="Sprite3D" parent="EnemySprite"]
+[node name="SubViewportContainer" type="Sprite3D" parent="EnemySprite"]
 transform = Transform3D(0.5221729, 0, 0, 0, 0.5221729, 0, 0, 0, 0.5221729, 0, 1.1185687, 0)
 texture_filter = 0
 texture = SubResource("ViewportTexture_sacfc")
+script = ExtResource("8_77r6l")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
