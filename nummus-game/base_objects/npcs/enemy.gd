@@ -46,6 +46,7 @@ func _ready():
 func decrease_period(amount: int):
 	if current_period - amount <= 0 && health > 0:
 		current_period = 0
+		GuiManager.update_period_text.emit(current_period)
 		do_move()
 		await animation_player.animation_finished
 		choose_move()
@@ -53,6 +54,7 @@ func decrease_period(amount: int):
 		current_period -= amount
 		
 	GuiManager.update_period_text.emit(current_period)
+	GuiManager.update_enemy_health_text.emit(health, max_health)
 
 func choose_move():
 	var weights: Array[float] = []
@@ -61,10 +63,8 @@ func choose_move():
 	weights=[1,0,0]
 	queued_move = moves.keys().get(SeedManager.rng.rand_weighted(weights))
 	current_period = moves.get(queued_move).get("period")
-	GuiManager.update_period_text.emit(current_period)
 
 func do_move():
-	GuiManager.update_period_text.emit(current_period)
 	match queued_move:
 		"attack":
 			animation_player.play(enemy_json_id + "/" + queued_move)
@@ -72,7 +72,7 @@ func do_move():
 			animation_player.play(enemy_json_id + "/" + queued_move)
 		"poison":
 			print("lol we are never getting here")
-	GuiManager.update_enemy_health_text.emit(health, max_health)
+
 	
 func parse_json() -> void:
 	# json parse
