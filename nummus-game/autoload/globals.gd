@@ -35,7 +35,7 @@ func change_money(add: bool, amount: int):
 		money += amount
 	else:
 		money = amount
-	update_ui.emit()
+	GuiManager.update_money_text.emit()
 
 func change_player_health(add: bool, amount:int):
 	if health + amount > max_health or health + amount < 0 or amount > max_health:

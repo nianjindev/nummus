@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cgkq1874nru5o"]
+[gd_scene load_steps=23 format=3 uid="uid://cgkq1874nru5o"]
 
 [ext_resource type="Script" uid="uid://4wjymveihx57" path="res://gui/global_ui.gd" id="1_s6kbw"]
 [ext_resource type="Script" uid="uid://bbxm05mjnkk3g" path="res://gui/stage.gd" id="5_t228w"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://gui/misfortune_marker_row.gd" id="13_s6kbw"]
 [ext_resource type="Texture2D" uid="uid://bronhad3508ye" path="res://assets/2d/bar_textures/progress_health.png" id="14_h1f0h"]
 [ext_resource type="Texture2D" uid="uid://dtm7v3q72n0pw" path="res://assets/2d/bar_textures/under_money.png" id="15_ll540"]
+[ext_resource type="Script" uid="uid://r3vnso8f7r43" path="res://gui/money_text.gd" id="15_qbh03"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qwhgh"]
 load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
@@ -328,7 +329,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_ll540")
 
-[node name="Amount" type="RichTextLabel" parent="PlayerInterface/MoneyBackdrop"]
+[node name="MoneyText" type="RichTextLabel" parent="PlayerInterface/MoneyBackdrop"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -346,6 +347,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "$0"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("15_qbh03")
 
 [node name="InventoryUI" parent="." instance=ExtResource("13_jxs7b")]
 visible = false

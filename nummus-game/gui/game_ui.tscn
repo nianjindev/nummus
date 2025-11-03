@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=16 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
@@ -9,9 +9,8 @@
 [ext_resource type="Script" path="res://gui/skip.gd" id="7_l2737"]
 [ext_resource type="Script" uid="uid://cs6mwo44kv6vk" path="res://gui/level_completed.gd" id="8_4rcd4"]
 [ext_resource type="Script" path="res://gui/next_stage.gd" id="8_l2737"]
-[ext_resource type="Script" path="res://gui/channel_fortune.gd" id="9_asrox"]
+[ext_resource type="Script" uid="uid://d1r8gl3ih6rhw" path="res://gui/channel_fortune.gd" id="9_asrox"]
 [ext_resource type="Script" uid="uid://bfxir55db4gu8" path="res://gui/achievement_box.gd" id="9_bvxe6"]
-[ext_resource type="PackedScene" uid="uid://d05ar66lokoy2" path="res://gui/achievement_row.tscn" id="10_w86w5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdk76"]
 bg_color = Color(0.13433978, 0.34444046, 0.44050446, 1)
@@ -250,9 +249,6 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 13
 script = ExtResource("9_bvxe6")
-
-[node name="AchievementRow" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer/AchievementBox" instance=ExtResource("10_w86w5")]
-layout_mode = 2
 
 [node name="NextStage" type="Button" parent="LevelCompleted/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -15,7 +15,7 @@ const UI_PATHS: Dictionary[String, String] = {
 	"skill_check_path":"res://gui/skill_check.tscn",
 	"debug_menu":"res://gui/debug.tscn",
 	"main_menu":"uid://bydht7j8q5mvr",
-	"achievement_row":"uid://klup7bjoa6ha",
+	"achievement_row":"res://gui/achievement_row.tscn",
 }
 
 const COINS: Dictionary = {
