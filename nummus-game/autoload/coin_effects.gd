@@ -6,3 +6,5 @@ func heal_health(hp: int):
 	Globals.change_player_health(true, 4)
 func give_money(money: int):
 	Globals.change_money(true, money)
+func give_shield(shield: int):
+	Globals.change_shield(true, shield)

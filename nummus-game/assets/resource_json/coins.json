@@ -9,7 +9,7 @@
 				"damage":5
 			},
 			"on_tails":{
-				"heal":3
+				"shield":3
 			}
 		}
 	},
