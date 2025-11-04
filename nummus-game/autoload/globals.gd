@@ -4,6 +4,7 @@ extends Node
 var money: int = 0
 var health: int = 20
 var max_health: int = 20
+var shield: int = 0
 
 var in_favor = false # winning the skill check apparently
 
@@ -38,12 +39,30 @@ func change_money(add: bool, amount: int):
 	GuiManager.update_money_text.emit()
 
 func change_player_health(add: bool, amount:int):
-	if health + amount > max_health or health + amount < 0 or amount > max_health:
-		health = health
-	elif add:
-		health += amount
+	if add:
+		if amount < 0: #if dealing damage
+			if shield + amount >= 0: #if shield is active
+				change_shield(true, amount)
+			else:
+				if health + (shield + amount) < 0:
+					health = 0
+				else:
+					health += (shield + amount)
+				change_shield(false, 0)
+		else:
+			if health + amount > max_health:
+				health = max_health
+			else:
+				health += amount
+		if health + amount < 0:
+			health = 0
 	else:
-		health = amount
+		if amount < 0:
+			health = 0
+		elif amount > max_health:
+			health = max_health
+		else:
+			health = amount
 	GuiManager.update_health_ui.emit()
 	
 func reset_weights():
@@ -88,3 +107,17 @@ func change_misfortune(add: bool, amount: int):
 	else:
 		misfortune = amount
 	GuiManager.update_misfortune_bar_ui.emit()
+
+func change_shield(add: bool, amount: int):
+	if add:
+		if shield + amount < 0:
+			shield = 0
+		else:
+			shield += amount
+	else:
+		if amount < 0:
+			shield = 0
+		else:
+			shield = amount
+		
+	GuiManager.update_shield_ui.emit()
