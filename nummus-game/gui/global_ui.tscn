@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cgkq1874nru5o"]
+[gd_scene load_steps=29 format=3 uid="uid://cgkq1874nru5o"]
 
 [ext_resource type="Script" uid="uid://4wjymveihx57" path="res://gui/global_ui.gd" id="1_s6kbw"]
 [ext_resource type="Script" uid="uid://bbxm05mjnkk3g" path="res://gui/stage.gd" id="5_t228w"]
@@ -36,6 +36,192 @@ load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30c
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2p7ws"]
 load_path = "res://.godot/imported/empty_marker.png-135d7ad7e5346e07fb42b13fb30cedc2.ctex"
+
+[sub_resource type="Animation" id="Animation_cqrd0"]
+resource_name = "new_animation"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(78, 77), Vector2(82.05194, 81), Vector2(78, 77)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(657.93506, 23), Vector2(655.90906, 21), Vector2(657.93506, 23)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShieldText:theme_override_font_sizes/normal_font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [18, 22, 18]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShieldText:theme_override_constants/outline_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [6, 8, 6]
+}
+
+[sub_resource type="Animation" id="Animation_8q2nc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(78, 77)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(657.93506, 23)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShieldText:theme_override_font_sizes/normal_font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [22]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShieldText:theme_override_constants/outline_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShieldText:theme_override_colors/default_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_2p7ws"]
+resource_name = "lose_shield"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(78, 77), Vector2(82.05194, 81), Vector2(78, 77)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(657.93506, 23), Vector2(655.90906, 21), Vector2(657.93506, 23)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShieldText:theme_override_font_sizes/normal_font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [18, 22, 18]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShieldText:theme_override_constants/outline_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [6, 8, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShieldText:theme_override_colors/default_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.85441494, 0.19382292, 0.19719732, 1), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2p7ws"]
+_data = {
+&"RESET": SubResource("Animation_8q2nc"),
+&"gain_shield": SubResource("Animation_cqrd0"),
+&"lose_shield": SubResource("Animation_2p7ws")
+}
 
 [node name="GlobalUI" type="Control" node_paths=PackedStringArray("fortune_text", "misfortune_text")]
 layout_mode = 3
@@ -353,16 +539,16 @@ script = ExtResource("15_qbh03")
 
 [node name="Shield" type="TextureRect" parent="PlayerInterface"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 105.0
-offset_top = -67.5
-offset_right = 183.0
-offset_bottom = 9.5
-grow_horizontal = 0
+offset_left = 376.93506
+offset_top = -72.5
+offset_right = 454.93506
+offset_bottom = 4.5
+grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_xt8b7")
 script = ExtResource("17_cqrd0")
@@ -380,10 +566,16 @@ offset_right = 20.0
 offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 18
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 22
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerInterface/Shield"]
+libraries = {
+&"": SubResource("AnimationLibrary_2p7ws")
+}
 
 [node name="InventoryUI" parent="." instance=ExtResource("13_jxs7b")]
 visible = false

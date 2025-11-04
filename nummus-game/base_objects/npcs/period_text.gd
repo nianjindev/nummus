@@ -10,7 +10,6 @@ func _ready():
 func _on_ui_updated(amount: int):
 	text = str(amount)
 	if amount == 0:
-		
 		animation_player.play("period_end")
 	else:
 		animation_player.play("period_neutral")

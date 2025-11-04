@@ -54,8 +54,6 @@ func change_player_health(add: bool, amount:int):
 				health = max_health
 			else:
 				health += amount
-		if health + amount < 0:
-			health = 0
 	else:
 		if amount < 0:
 			health = 0

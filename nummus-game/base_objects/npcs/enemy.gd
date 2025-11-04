@@ -52,6 +52,7 @@ func decrease_period(amount: int):
 		do_move()
 		await animation_player.animation_finished
 		choose_move()
+		Globals.change_shield(false, 0)
 	else:
 		current_period -= amount
 		
