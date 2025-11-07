@@ -5,7 +5,8 @@ var money: int = 0
 var health: int = 20
 var max_health: int = 20
 
-var in_favor = false # winning the skill check apparently
+var in_favor: bool = false # winning the skill check apparently
+var flipping: bool = false
 
 # fortune
 var fortune_channeled = false
