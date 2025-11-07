@@ -13,6 +13,9 @@ signal toggle_coin_flip_ui(show: bool)
 signal toggle_bar_ui(show: bool)
 signal toggle_level_completed_ui(show: bool)
 signal update_side_percent_ui()
+signal update_money_text()
+signal update_shield_ui()
+signal toggle_shield_ui(show: bool)
 
 #ENEMY GUI
 signal update_period_text(amount: int)

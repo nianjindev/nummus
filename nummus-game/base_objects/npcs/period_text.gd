@@ -1,5 +1,7 @@
 extends Label
 
+@onready var enemy_anim: AnimationPlayer = $"../../../../AnimationPlayer"
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready():

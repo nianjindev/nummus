@@ -1,6 +1,5 @@
 extends Control
 
-@onready var amount: RichTextLabel = $PlayerInterface/MoneyBackdrop/Amount
 @onready var fortune_bars: VBoxContainer = $PlayerInterface/FortuneBars
 @onready var health_bar: TextureProgressBar = $PlayerInterface/FortuneBars/HealthBar
 @onready var fortune_bar: TextureProgressBar = $PlayerInterface/FortuneBars/MarginFortune/FortuneBar
@@ -11,7 +10,6 @@ extends Control
 
 func _ready():
 	# Globals.money_changed.connect("money_changed", Callable(change_money_amount))
-	amount.text = "$" + str(Globals.money)
 	GuiManager.toggle_bar_ui.connect(_on_bar_ui_toggled)
 	GuiManager.update_fortune_bar_ui.connect(_on_fortune_updated)
 	GuiManager.update_misfortune_bar_ui.connect(_on_misfortune_updated)
@@ -64,6 +62,3 @@ func update_all():
 
 func _on_bar_ui_toggled(on: bool):
 	fortune_bars.visible = on
-
-func change_money_amount():
-	amount.text = "$" + str(Globals.money)
