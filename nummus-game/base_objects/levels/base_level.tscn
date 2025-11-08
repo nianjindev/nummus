@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://vwukeorb6yvs"]
+[gd_scene load_steps=7 format=3 uid="uid://vwukeorb6yvs"]
 
 [ext_resource type="Script" uid="uid://d22vmb2a3xedj" path="res://base_objects/levels/base_level.gd" id="1_ftfrf"]
 [ext_resource type="PackedScene" uid="uid://dwu8pi66hpjiu" path="res://base_objects/objects/table_handler.tscn" id="2_iothi"]
 [ext_resource type="PackedScene" uid="uid://bggqvxqjboy3t" path="res://base_objects/objects/player_camera.tscn" id="2_nboak"]
-[ext_resource type="PackedScene" uid="uid://dipstebap2rep" path="res://base_objects/purse.tscn" id="4_bgm65"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqk2v"]
 sky_top_color = Color(1, 0, 0, 1)
@@ -46,11 +45,5 @@ shadow_enabled = true
 shadow_bias = 0.321
 spot_range = 2.288
 spot_angle = 57.99
-
-[node name="Purse" parent="." instance=ExtResource("4_bgm65")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.40678433, 0.41205037, 0.92732143)
-
-[node name="Purse2" parent="." instance=ExtResource("4_bgm65")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.40678433, 0.41205037, -0.85590863)
 
 [node name="TableHandler" parent="." instance=ExtResource("2_iothi")]

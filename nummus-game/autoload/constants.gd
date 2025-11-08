@@ -32,4 +32,8 @@ const JSON_PATHS: Dictionary = {
 	"enemies":"res://assets/resource_json/enemies.json"
 }
 
+const ANIM_PATHS: Dictionary = {
+	"coin_anim":"uid://cc420o0fj6ssr"
+}
+
 enum display_type{PLAY, SHOP, HAND}

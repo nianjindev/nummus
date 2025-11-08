@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dipstebap2rep"]
 
-[ext_resource type="Script" uid="uid://jeiyoy8iq447" path="res://purse.gd" id="1_0nad3"]
+[ext_resource type="Script" uid="uid://jeiyoy8iq447" path="res://base_objects/objects/purse.gd" id="1_0nad3"]
 [ext_resource type="ArrayMesh" uid="uid://d2tjgm2vawtym" path="res://assets/3d/coin_purse_open.obj" id="2_2wao4"]
 [ext_resource type="ArrayMesh" uid="uid://bmmobbrhil6md" path="res://assets/3d/coin_purse_closed.obj" id="3_x6xnr"]
 

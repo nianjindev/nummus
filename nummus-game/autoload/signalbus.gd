@@ -8,6 +8,7 @@ signal coin_flipped(state: String)
 ### Scenes
 @warning_ignore("unused_signal")
 signal scene_changed()
+@warning_ignore("unused_signal")
 signal current_enemy_defeated()
 @warning_ignore("unused_signal")
 signal level_loaded
@@ -29,6 +30,7 @@ signal finished_displaying
 ######## VFX ########
 @warning_ignore("unused_signal")
 signal enemy_visuals()
+@warning_ignore("unused_signal")
 signal trigger_camera_shake(max: float, fade: float)
 
 # gameplay loop
@@ -36,14 +38,16 @@ signal trigger_camera_shake(max: float, fade: float)
 signal increase_period(inc: int)
 @warning_ignore("unused_signal")
 signal decrease_period(amount: int)
+@warning_ignore("unused_signal")
 signal refresh_spacing(hand: int)
 @warning_ignore("unused_signal")
 signal return_spacing(spaces: Array[Vector3])
 @warning_ignore("unused_signal")
 signal positions_ready
-
-signal fly_out
-signal flew_out
+@warning_ignore("unused_signal")
+signal discard_played
+# signal fly_out
+# signal flew_out
 
 # func _ready():
 	# skill_check_finish.connect(_on_skill_check)

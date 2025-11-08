@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgrch5de5xhey"]
+[gd_scene load_steps=15 format=3 uid="uid://bgrch5de5xhey"]
 
 [ext_resource type="Script" uid="uid://3nddafo22hjr" path="res://base_objects/coin_base.gd" id="1_3p7bc"]
 [ext_resource type="Resource" uid="uid://d35ga8hv2jlvh" path="res://resources/coins/coin_base.tres" id="2_ern4t"]
@@ -15,6 +15,30 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -157,9 +181,37 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 7.668, 0), Vector3(0, 9.5556, 0), Vector3(0, 8.87105, 0), Vector3(0, 7.691, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ern4t"]
+resource_name = "discard"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08029122, 0.12012072, 0.16058244, 0.20009583, 0.24055755),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0), Vector3(0.12818682, 0.51804066, 0.20312619), Vector3(0.16969484, 0.57917535, 0.3093471), Vector3(0.21662271, 0.6519653, 0.3793682), Vector3(0.21662271, 0.6213568, 0.7954155), Vector3(0.21662271, 0.6213568, 0.888784), Vector3(0.3180443, 0.50594455, 0.95231885)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08029122, 0.12012072, 0.16058244, 0.20009583, 0.24055755),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.43110174, -0.20847376, -0.5777171), Vector3(0.645913, -0.57008463, -1.1317024), Vector3(0.14928962, -1.0149989, -1.9456668), Vector3(0.055317283, -1.4686267, -3.1165817), Vector3(0.11591458, -1.5635841, 2.1526527), Vector3(0.10446349, -1.6216369, 1.6363791)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7kbo"]
 _data = {
 &"RESET": SubResource("Animation_ldnf3"),
+&"discard": SubResource("Animation_ern4t"),
 &"flip_heads_fail": SubResource("Animation_im0vi"),
 &"flip_heads_success": SubResource("Animation_trcn2"),
 &"flip_tails_fail": SubResource("Animation_3p7bc"),
@@ -173,14 +225,11 @@ stencil_outline_thickness = 1.845
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_e84nm"]
 height = 0.4
-radius = 0.75
+radius = 0.8964844
 
 [node name="CoinBase" type="Node3D"]
 script = ExtResource("1_3p7bc")
 coin_id = ExtResource("2_ern4t")
-tween_pos = null
-current_state = null
-current_coin = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CoinMesh")

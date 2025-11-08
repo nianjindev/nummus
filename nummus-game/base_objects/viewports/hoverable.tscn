@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://51xixnftbdec" path="res://base_objects/viewports/hoverable.gd" id="1_jbaiw"]
 [ext_resource type="PackedScene" uid="uid://b8fd0h78jf6w4" path="res://gui/hoverable_object/texture_panel.tscn" id="2_jbaiw"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dd0wm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4ex0q"]
 viewport_path = NodePath("Sprite3D/SubViewport")
 
 [sub_resource type="Animation" id="Animation_pj6s0"]
@@ -102,7 +102,7 @@ transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 modulate = Color(1, 1, 1, 0)
 billboard = 1
 no_depth_test = true
-texture = SubResource("ViewportTexture_dd0wm")
+texture = SubResource("ViewportTexture_4ex0q")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]
 transparent_bg = true

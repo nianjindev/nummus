@@ -19,9 +19,18 @@ func reset_inv():
 	current_hand.clear()
 	current_coin = null
 
+func discard_to_temp():
+	for coin in discard:
+		coin.current_coin = false
+		temp_inv.append(coin.duplicate())
+	discard.clear()
+
 func new_hand():
 	var hand_size: int = min(Globals.max_hand, temp_inv.size())
-	print(temp_inv.size())
+
+	if hand_size == 0:
+		discard_to_temp()
+		hand_size = min(Globals.max_hand, temp_inv.size())
 	
 	for i in range(hand_size): # Ideally, remove from inventory into hand!
 		var new_coin: Coin = Inventory.temp_inv.pick_random()
@@ -49,6 +58,10 @@ func add_item(item: Coin) -> bool:
 
 func set_spacing(positions: Array[Vector3]):
 	# They SHOULD be the same
+	if positions.size() == 0:
+		# print("Ran out of coins, attempting to get new hand")
+		# new_hand()
+		return
 
 	for i in min(current_hand.size(), positions.size()):
 		current_hand[i].tween_pos = positions[i]
@@ -63,8 +76,9 @@ func remove_item(item: Coin) -> bool:
 		return false
 
 func discard_coin():
-	discard.append(current_coin) # needs to be visibly removed!
-	current_coin = null
+	discard.append(current_coin.duplicate()) # needs to be visibly removed!
+	await Signalbus.discard_played
+	current_coin.queue_free()
 
 func set_current_coin(coin: Coin) -> bool:
 	if current_coin == null:
@@ -84,3 +98,7 @@ func delete_current_coin():
 	current_hand.append(current_coin)
 	Signalbus.refresh_spacing.emit(current_hand.size())
 	current_coin = null
+
+func _process(_delta: float) -> void:
+	if current_coin == null and current_hand.size() == 0 : # wow I added a process func! how inefficient oh well lol!!
+		new_hand()

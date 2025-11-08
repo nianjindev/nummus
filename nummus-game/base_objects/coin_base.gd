@@ -124,10 +124,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			Globals.change_fortune(true, Globals.fortune_gain)
 			Globals.change_misfortune(true, Globals.misfortune_gain)
 			GuiManager.toggle_coin_flip_ui.emit(true)
+		"discard":
+			Globals.flipping = false
+			Signalbus.discard_played.emit()
+			return
 
 	Globals.reset_weights()
 	Signalbus.decrease_period.emit(period_increment)
-	Globals.flipping = false
+	
+	discard_me()
 
 
 func check_flipped_side(flipped_side: int, state: int):
@@ -257,5 +262,7 @@ func buy_me():
 
 
 func discard_me():
+	print("Hello, im %s and I just discarded" % self.name)
 	if current_coin:
+		animation_player.play("discard")
 		Inventory.discard_coin()
