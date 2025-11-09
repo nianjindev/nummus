@@ -267,5 +267,7 @@ func discard_me():
 	if current_coin:
 		var enemy_anim = get_parent().get_node("Enemy").get_node("AnimationPlayer")
 		await enemy_anim.animation_finished
+		current_coin = false;
 		animation_player.play("discard")
 		Inventory.discard_coin()
+		
