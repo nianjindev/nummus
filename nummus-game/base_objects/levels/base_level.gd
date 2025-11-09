@@ -13,3 +13,4 @@ func _ready() -> void:
 func _on_current_enemy_defeated():
 	GuiManager.toggle_level_completed_ui.emit(true)
 	Signalbus.add_achievement.emit("Enemy defeated", 3)
+	Globals.change_shield(false, 0)

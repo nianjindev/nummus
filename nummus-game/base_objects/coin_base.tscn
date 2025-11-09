@@ -45,6 +45,33 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ern4t"]
+resource_name = "discard"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08029122, 0.12012072, 0.16058244, 0.20009583, 0.24055755),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0), Vector3(0.12818682, 0.51804066, 0.20312619), Vector3(0.16969484, 0.57917535, 0.3093471), Vector3(0.21662271, 0.6519653, 0.3793682), Vector3(0.21662271, 0.6213568, 0.7954155), Vector3(0.21662271, 0.6213568, 0.888784), Vector3(0.3180443, 0.50594455, 0.95231885)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08029122, 0.12012072, 0.16058244, 0.20009583, 0.24055755),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.43110174, -0.20847376, -0.5777171), Vector3(0.645913, -0.57008463, -1.1317024), Vector3(0.14928962, -1.0149989, -1.9456668), Vector3(0.055317283, -1.4686267, -3.1165817), Vector3(0.11591458, -1.5635841, 2.1526527), Vector3(0.10446349, -1.6216369, 1.6363791)]
+}
+
 [sub_resource type="Animation" id="Animation_im0vi"]
 resource_name = "flip_heads_fail"
 tracks/0/type = "position_3d"
@@ -179,33 +206,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 7.668, 0), Vector3(0, 9.5556, 0), Vector3(0, 8.87105, 0), Vector3(0, 7.691, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ern4t"]
-resource_name = "discard"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08029122, 0.12012072, 0.16058244, 0.20009583, 0.24055755),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.4, 0), Vector3(0.12818682, 0.51804066, 0.20312619), Vector3(0.16969484, 0.57917535, 0.3093471), Vector3(0.21662271, 0.6519653, 0.3793682), Vector3(0.21662271, 0.6213568, 0.7954155), Vector3(0.21662271, 0.6213568, 0.888784), Vector3(0.3180443, 0.50594455, 0.95231885)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08029122, 0.12012072, 0.16058244, 0.20009583, 0.24055755),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.43110174, -0.20847376, -0.5777171), Vector3(0.645913, -0.57008463, -1.1317024), Vector3(0.14928962, -1.0149989, -1.9456668), Vector3(0.055317283, -1.4686267, -3.1165817), Vector3(0.11591458, -1.5635841, 2.1526527), Vector3(0.10446349, -1.6216369, 1.6363791)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7kbo"]

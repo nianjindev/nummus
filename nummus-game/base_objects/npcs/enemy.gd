@@ -77,7 +77,6 @@ func do_move():
 		await period_animation.animation_finished
 		animation_player.play(enemy_json_id + "/" + queued_move)
 	
-	
 	GuiManager.toggle_coin_flip_ui.emit(false)
 	await animation_player.animation_finished
 	GuiManager.toggle_coin_flip_ui.emit(true)
@@ -97,6 +96,7 @@ func play_hurt_animation():
 	animation_player.play(enemy_json_id + "/hurt")
 	await animation_player.animation_finished
 	GuiManager.toggle_coin_flip_ui.emit(true)
+	
 
 func play_death_animation():
 	animation_player.play(enemy_json_id + "/death")
@@ -108,6 +108,7 @@ func play_death_animation():
 	Signalbus.current_enemy_defeated.emit()
 
 func take_damage(amount: int):
+	display_player_damage(amount)
 	if health + amount < 0 or health + amount == 0:
 		health = 0
 		play_death_animation()
@@ -140,3 +141,9 @@ func trigger_camera_shake(max: float, fade: float):
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0:
 		animation_player.play(enemy_json_id + "/idle")
+		
+func display_player_damage(amount: int):
+	var current_damage_text = ResourceLoader.load(Constants.UI_PATHS.player_damage_text).instantiate()
+	current_damage_text.text = str(amount)
+	add_child(current_damage_text)
+	current_damage_text.get_node("AnimationPlayer").play("appear")

@@ -23,6 +23,7 @@ var misfortune_gain: int = 5
 
 # signals that interact with GlobalUI
 signal update_ui
+var enemy_visuals_finished = false;
 
 # luck
 var head_weight: float = 0.5

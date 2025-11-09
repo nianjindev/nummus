@@ -30,6 +30,7 @@ var is_mouse_over: bool = false
 
 
 func _ready():
+	
 	# flip signal
 	set_weights()
 
@@ -264,5 +265,7 @@ func buy_me():
 func discard_me():
 	print("Hello, im %s and I just discarded" % self.name)
 	if current_coin:
+		var enemy_anim = get_parent().get_node("Enemy").get_node("AnimationPlayer")
+		await enemy_anim.animation_finished
 		animation_player.play("discard")
 		Inventory.discard_coin()
