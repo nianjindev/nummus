@@ -146,4 +146,6 @@ func display_player_damage(amount: int):
 	var current_damage_text = ResourceLoader.load(Constants.UI_PATHS.player_damage_text).instantiate()
 	current_damage_text.text = str(amount)
 	add_child(current_damage_text)
-	current_damage_text.get_node("AnimationPlayer").play("appear")
+	current_damage_text.transform.origin = Vector3(-1, 0, 2) 
+
+	
