@@ -117,14 +117,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		"flip_heads_fail": # IDEA: all fails do misfortune
 			Globals.change_fortune(true, Globals.fortune_gain)
 			Globals.change_misfortune(true, Globals.misfortune_gain)
-			GuiManager.toggle_coin_flip_ui.emit(true)
 		"flip_tails_success":
 			coin_effect.effect(coin_stats, Sides.TAILS)
-			GuiManager.toggle_coin_flip_ui.emit(true)
 		"flip_tails_fail":
 			Globals.change_fortune(true, Globals.fortune_gain)
 			Globals.change_misfortune(true, Globals.misfortune_gain)
-			GuiManager.toggle_coin_flip_ui.emit(true)
 		"discard":
 			Globals.flipping = false
 			Signalbus.discard_played.emit()
@@ -271,4 +268,6 @@ func discard_me():
 		current_coin = false;
 		animation_player.play("discard")
 		Inventory.discard_coin()
+		GuiManager.toggle_coin_flip_ui.emit(true)
+		
 		
