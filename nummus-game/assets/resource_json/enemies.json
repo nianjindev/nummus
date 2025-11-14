@@ -5,7 +5,7 @@
 		"period": 2.0,
 		"moves": {
 			"attack": {
-				"period": 5,
+				"period": 3,
 				"weight": 1.0,
 				"action_text": "5 DMG"
 			},
@@ -13,9 +13,6 @@
 				"period": 3,
 				"weight": 1.0,
 				"action_text": "3 HEAL"
-			},
-			"poison": {
-				"weight": 3.0,
 			}
 		}
 	}

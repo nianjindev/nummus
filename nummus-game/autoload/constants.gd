@@ -23,6 +23,7 @@ const COINS: Dictionary = {
 	"base":"uid://d35ga8hv2jlvh",
 	"1787":"uid://bgh5v2n073rl7",
 	"old_abe":"uid://dj73eohb1fsui",
+	"corrosive":"uid://b0vhhuw5oktg8"
 	#"lucky":"",
 	#"healthy":"",
 }
@@ -37,4 +38,4 @@ const ANIM_PATHS: Dictionary = {
 	"coin_anim":"uid://cc420o0fj6ssr"
 }
 
-enum display_type{PLAY, SHOP, HAND}
+enum DisplayType{PLAY, SHOP, HAND}

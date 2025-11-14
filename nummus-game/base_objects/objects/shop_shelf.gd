@@ -14,7 +14,7 @@ func init_coins():
 		while (ResourceLoader.load(new_coin_rs) in no_repeat) and (no_repeat.size() < Constants.COINS.values().size()):
 			print("Finding new coin, dupe found")
 			new_coin_rs = Constants.COINS.values().pick_random()
-		var new_coin: Coin = ObjectManager.create_coin(new_coin_rs, Constants.display_type.SHOP)
+		var new_coin: Coin = ObjectManager.create_coin(new_coin_rs, Constants.DisplayType.SHOP)
 		no_repeat.append(new_coin.coin_id)
 		print(no_repeat)
 		self.add_child(new_coin)

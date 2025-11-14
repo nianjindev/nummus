@@ -40,5 +40,19 @@
 				
 			}
 		}
+	},
+	"coin_corrosive":{
+		"name":"Corrosive Coin",
+		"description": "Poisons enemy for 3 turns",
+		"price": 6,
+		"period": 1,
+		"coin_stats":{
+			"on_heads":{
+				"poison":3
+			},
+			"on_tails":{
+				"shield":3
+			}
+		}
 	}
 }

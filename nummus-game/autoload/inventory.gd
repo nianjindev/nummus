@@ -34,7 +34,7 @@ func new_hand():
 	
 	for i in range(hand_size): # Ideally, remove from inventory into hand!
 		var new_coin: Coin = Inventory.temp_inv.pick_random()
-		new_coin.current_state = Constants.display_type.PLAY
+		new_coin.current_state = Constants.DisplayType.PLAY
 		SceneManager.current_scene.add_child.call_deferred(new_coin)
 		temp_inv.remove_at(temp_inv.find(new_coin))
 		current_hand.append(new_coin)

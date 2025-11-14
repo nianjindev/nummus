@@ -7,5 +7,7 @@ func effect(stats: Dictionary, side):
 		CommonEffects.give_money(stats.on_tails.money)
 func pre_effect(_stats: Dictionary):
 	pass
-func recurring(_stats: Dictionary):
-	pass # Don't change if there is no recurring effect
+func get_repeat() -> int:
+	return repeat
+func recurring(stats: Dictionary) -> Dictionary:
+	return stats

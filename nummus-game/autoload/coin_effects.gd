@@ -8,3 +8,7 @@ func give_money(money: int):
 	Globals.change_money(true, money)
 func give_shield(shield: int):
 	Globals.change_shield(true, shield)
+func multiply_stat(stats: Dictionary, stat_name: String, factor: float) -> Dictionary:
+	if stats.find_key(stat_name) != null:
+		stats[stat_name] *= factor
+	return stats

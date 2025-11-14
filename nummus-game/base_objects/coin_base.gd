@@ -24,7 +24,7 @@ var position_markers: Dictionary[String, Vector3] # 0 is initial, 1 is floating
 @export var tween_pos: Vector3
 
 # coin state
-@export var current_state: Constants.display_type
+@export var current_state: Constants.DisplayType
 var is_mouse_over: bool = false
 @export var current_coin: bool = false
 
@@ -35,7 +35,7 @@ func _ready():
 	set_weights()
 
 	if current_state == null:
-		current_state = Constants.display_type.SHOP
+		current_state = Constants.DisplayType.SHOP
 
 	# signals
 	Signalbus.coin_flipped.connect(flip)
@@ -61,17 +61,17 @@ func _ready():
 
 func set_state_transforms() -> void:
 	# transform me
-	if current_state == Constants.display_type.PLAY:
+	if current_state == Constants.DisplayType.PLAY:
 		scale = Vector3(0.1, 0.1, 0.1)
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = true
 		_tween_pos()
 		init_anim()
-	elif current_state == Constants.display_type.SHOP:
+	elif current_state == Constants.DisplayType.SHOP:
 		scale = Vector3(0.3, 0.3, 0.3)
 		rotation = Vector3(0, 0, -PI / 2)
 		hoverable.visible = true
-	elif current_state == Constants.display_type.HAND:
+	elif current_state == Constants.DisplayType.HAND:
 		scale = Vector3(0.1, 0.1, 0.1)
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = false
@@ -133,7 +133,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Globals.reset_weights()
 	Signalbus.decrease_period.emit(period_increment)
 	
-	
 	animation_player.play("RESET")
 
 
@@ -169,6 +168,7 @@ func flip(state: int):
 		else:
 			GuiManager.toggle_coin_flip_ui.emit(false)
 			coin_effect.pre_effect(coin_stats)
+			coin_stats = RecursiveEffect.run_recurring(coin_stats)
 		set_weights()
 		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
 		var flipped_side = SeedManager.rng.rand_weighted(weights)
@@ -213,9 +213,9 @@ func toggle_visible(on: bool):
 
 
 func _on_area_3d_mouse_entered() -> void:
-	if current_state == Constants.display_type.SHOP:
+	if current_state == Constants.DisplayType.SHOP:
 		toggle_visible(true)
-	if current_state == Constants.display_type.PLAY: # make float
+	if current_state == Constants.DisplayType.PLAY: # make float
 		tween_me(coin_mesh, position_markers.get("floating"), 0.2)
 		toggle_visible(true)
 	is_mouse_over = true
@@ -223,9 +223,9 @@ func _on_area_3d_mouse_entered() -> void:
 
 func _input(event: InputEvent) -> void:
 	if is_mouse_over and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if current_state == Constants.display_type.SHOP:
+		if current_state == Constants.DisplayType.SHOP:
 			buy_me()
-		if current_state == Constants.display_type.PLAY and Globals.flipping == false:
+		if current_state == Constants.DisplayType.PLAY and Globals.flipping == false:
 			if not current_coin:
 				current_coin = Inventory.set_current_coin(self)
 				if current_coin:
@@ -238,7 +238,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_area_3d_mouse_exited() -> void:
 	toggle_visible(false)
-	if current_state == Constants.display_type.PLAY:
+	if current_state == Constants.DisplayType.PLAY:
 		tween_me(coin_mesh, position_markers.get("not_floating"), 0.2)
 	is_mouse_over = false
 

@@ -4,7 +4,7 @@ extends Node
 @onready var coin_base = ResourceLoader.load(Constants.SCENE_PATHS.base_coin)
 var current_enemy: Enemy
 
-func create_coin(coin_path: String, state: Constants.display_type) -> Coin:
+func create_coin(coin_path: String, state: Constants.DisplayType) -> Coin:
 	var new_coin: Coin
 	new_coin = coin_base.instantiate()
 	new_coin.current_state = state

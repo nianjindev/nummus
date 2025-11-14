@@ -63,7 +63,6 @@ func choose_move():
 	var weights: Array[float] = []
 	for move in moves:
 		weights.append(1/moves.get(move).get("weight"))
-	weights=[1,0,0]
 	queued_move = moves.keys().get(SeedManager.rng.rand_weighted(weights))
 	current_period = moves.get(queued_move).get("period")
 	var action_text = moves.get(queued_move).get("action_text")
