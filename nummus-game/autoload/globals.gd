@@ -23,6 +23,7 @@ var misfortune_gain: int = 5
 
 # signals that interact with GlobalUI
 signal update_ui
+var enemy_visuals_finished = false;
 
 # luck
 var head_weight: float = 0.5
@@ -63,6 +64,11 @@ func change_player_health(add: bool, amount:int):
 		else:
 			health = amount
 	GuiManager.update_health_ui.emit()
+	
+	if health < (.2 * max_health):
+		GuiManager.toggle_low_health_ui.emit(true)
+	else:
+		GuiManager.toggle_low_health_ui.emit(false)
 	
 func reset_weights():
 	head_weight = 0.5

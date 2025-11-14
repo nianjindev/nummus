@@ -16,6 +16,7 @@ const UI_PATHS: Dictionary[String, String] = {
 	"debug_menu":"res://gui/debug.tscn",
 	"main_menu":"uid://bydht7j8q5mvr",
 	"achievement_row":"res://gui/achievement_row.tscn",
+	"player_damage_text": "res://gui/damage_text.tscn"
 }
 
 const COINS: Dictionary = {

@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=18 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
 [ext_resource type="Texture2D" uid="uid://chjrtn6sxdj75" path="res://assets/2d/hand_textures/button_blue.png" id="3_24vp8"]
 [ext_resource type="Script" path="res://gui/heads.gd" id="3_ubwhq"]
+[ext_resource type="Script" uid="uid://bsxyoqyyvyfdj" path="res://gui/low_health.gd" id="3_w86w5"]
 [ext_resource type="Texture2D" uid="uid://dr4hohxmtjhjt" path="res://assets/2d/hand_textures/button_red.png" id="4_ubwhq"]
 [ext_resource type="Script" path="res://gui/tails.gd" id="5_ri5v8"]
 [ext_resource type="Script" path="res://gui/skip.gd" id="7_l2737"]
@@ -11,6 +12,7 @@
 [ext_resource type="Script" path="res://gui/next_stage.gd" id="8_l2737"]
 [ext_resource type="Script" uid="uid://d1r8gl3ih6rhw" path="res://gui/channel_fortune.gd" id="9_asrox"]
 [ext_resource type="Script" uid="uid://bfxir55db4gu8" path="res://gui/achievement_box.gd" id="9_bvxe6"]
+[ext_resource type="Texture2D" uid="uid://8hdf8q4yypft" path="res://assets/2d/FX/lowhealth.png" id="12_bvxe6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdk76"]
 bg_color = Color(0.13433978, 0.34444046, 0.44050446, 1)
@@ -62,6 +64,16 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_lqx5y")
 level_completed = NodePath("LevelCompleted")
+
+[node name="LowHealth" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.9882353, 0.09411765, 0.5686275, 0.5411765)
+z_index = -7
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("12_bvxe6")
+script = ExtResource("3_w86w5")
 
 [node name="CoinFlipButtons" type="Control" parent="."]
 anchors_preset = 0
@@ -209,10 +221,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -963.0
-offset_top = -554.0
-offset_right = 957.0
-offset_bottom = 526.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4117647)
