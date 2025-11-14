@@ -129,6 +129,8 @@ func change_health(add: bool, amount: int):
 			take_damage(amount - health)
 		else:
 			heal(health - amount)
+			
+	GuiManager.update_enemy_health_text.emit(health, max_health)
 
 #Animation Player methods
 func deal_damage(add: bool, amount: int):

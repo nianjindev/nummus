@@ -26,17 +26,20 @@ func check_for_event():
 	
 	if Globals.misfortune <= 20:
 		current_weights = light_weights
+		event_type = "light"
 	elif Globals.misfortune <= 35:
 		current_weights = medium_weights
+		event_type = "medium"
 	elif Globals.misfortune < 50:
 		current_weights = heavy_weights
+		event_type = "heavy"
 		
 	if (decision[rng.rand_weighted(current_weights)]):
 		choose_event(event_type)
 
 func choose_event(event_type: String):
 	var effect = ""
-	var amount = 0
+	var amount = 0.0
 	
 	match event_type:
 		"light": 
@@ -49,9 +52,10 @@ func choose_event(event_type: String):
 			effect = heavy_keys[rng.randi_range(0, heavy_keys.size() - 1)]
 			amount = events["heavy"][effect]
 			
+	print(amount)
 	execute_event(effect, amount)
 	
-func execute_event(effect: String, amount: int):
+func execute_event(effect: String, amount: float):
 	match effect:
 		"player_damage":
 			Globals.change_player_health(true, -(Globals.max_health * amount))
