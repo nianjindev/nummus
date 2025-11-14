@@ -128,11 +128,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			Globals.flipping = false
 			Signalbus.discard_played.emit()
 			return
+		"RESET":
+			discard_me()
+			return
 
 	Globals.reset_weights()
 	Signalbus.decrease_period.emit(period_increment)
 	
-	discard_me()
+	
+	animation_player.play("RESET")
 
 
 func check_flipped_side(flipped_side: int, state: int):
