@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=22 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://d1r8gl3ih6rhw" path="res://gui/channel_fortune.gd" id="9_asrox"]
 [ext_resource type="Script" uid="uid://bfxir55db4gu8" path="res://gui/achievement_box.gd" id="9_bvxe6"]
 [ext_resource type="Texture2D" uid="uid://8hdf8q4yypft" path="res://assets/2d/FX/lowhealth.png" id="12_bvxe6"]
+[ext_resource type="Script" uid="uid://dl4se3i4q1m0d" path="res://gui/misfortune_inflicted.gd" id="14_meomy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdk76"]
 bg_color = Color(0.13433978, 0.34444046, 0.44050446, 1)
@@ -52,6 +53,74 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_24vp8"),
 &"fade_out": SubResource("Animation_hojdg")
+}
+
+[sub_resource type="Animation" id="Animation_4oujh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.46608835, 0.27739635, 0.7637293, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f1box"]
+resource_name = "appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 1.2924665, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.46666667, 0.2784314, 0.7647059, 0), Color(0.46666667, 0.2784314, 0.7647059, 1), Color(0.46666667, 0.2784314, 0.7647059, 1), Color(0.46666667, 0.2784314, 0.7647059, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"show"
+}, {
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_misfortune"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ha3dy"]
+_data = {
+&"RESET": SubResource("Animation_4oujh"),
+&"appear": SubResource("Animation_f1box")
 }
 
 [node name="GameUI" type="Control" node_paths=PackedStringArray("level_completed")]
@@ -321,6 +390,50 @@ grow_vertical = 0
 text = "CHANNEL"
 icon_alignment = 1
 script = ExtResource("9_asrox")
+
+[node name="MisfortuneInflicted" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -942.0
+offset_top = -559.0
+offset_right = 942.0
+offset_bottom = 479.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.46608835, 0.27739635, 0.7637293, 1)
+theme_override_font_sizes/normal_font_size = 241
+text = "MISFORTUNE"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("14_meomy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MisfortuneInflicted"]
+libraries = {
+&"": SubResource("AnimationLibrary_ha3dy")
+}
+
+[node name="MisfortuneEvent" type="RichTextLabel" parent="MisfortuneInflicted"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -465.0
+offset_top = 78.0
+offset_right = 465.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 116
+text = "Weight:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_heads_mouse_entered"]
 [connection signal="mouse_exited" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_mouse_exited"]

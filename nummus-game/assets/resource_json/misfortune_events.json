@@ -1,0 +1,16 @@
+{
+	"light": {
+		"player_damage": 0.05,
+		"weight": -0.1
+	},
+	
+	"medium": {
+		"player_damage": 0.1,
+		"weight": -0.2
+	},
+	
+	"heavy": {
+		"player_damage": 0.3,
+		"weight": -0.5
+	}
+}

@@ -17,7 +17,7 @@ var max_fortune: int = 20
 var fortune: int = 0
 var fortune_gain: int = 5
 
-var max_misfortune: int = 20
+var max_misfortune: int = 50
 var misfortune: int = 0
 var misfortune_gain: int = 5
 
@@ -28,6 +28,8 @@ var enemy_visuals_finished = false;
 # luck
 var head_weight: float = 0.5
 var tail_weight: float = 0.5
+var affect_player_success: bool = false
+var success_weight: float = 0
 
 # hand size
 var max_purse:int = 10
@@ -92,6 +94,13 @@ func reset_fortune():
 	
 	GuiManager.update_fortune_bar_ui.emit()
 
+func reset_misfortune():
+	change_misfortune(false, 0)
+
+func reset_success_weight():
+	affect_player_success = false
+	success_weight = 0
+
 func can_afford(price:int):
 	return price <= money
 
@@ -109,6 +118,8 @@ func change_misfortune(add: bool, amount: int):
 		misfortune = max_misfortune
 	elif add:
 		misfortune += amount
+		if amount > 0:
+			MisfortuneHandler.check_for_event()
 	else:
 		misfortune = amount
 	GuiManager.update_misfortune_bar_ui.emit()

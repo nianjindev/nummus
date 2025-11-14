@@ -17,6 +17,7 @@ signal update_money_text()
 signal update_shield_ui()
 signal toggle_shield_ui(show: bool)
 signal toggle_low_health_ui(show: bool)
+signal show_misfortune_inflicted(effect_string: String)
 
 #ENEMY GUI
 signal update_period_text(amount: int)
