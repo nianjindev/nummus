@@ -117,6 +117,7 @@ func take_damage(amount: int):
 
 func heal(amount: int):
 	health += amount
+	GuiManager.update_enemy_health_text.emit(health, max_health)
 
 func change_health(add: bool, amount: int):
 	if add:
@@ -130,7 +131,7 @@ func change_health(add: bool, amount: int):
 		else:
 			heal(health - amount)
 			
-	GuiManager.update_enemy_health_text.emit(health, max_health)
+	
 
 #Animation Player methods
 func deal_damage(add: bool, amount: int):
