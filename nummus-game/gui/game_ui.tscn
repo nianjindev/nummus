@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=26 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
@@ -14,6 +14,61 @@
 [ext_resource type="Script" uid="uid://bfxir55db4gu8" path="res://gui/achievement_box.gd" id="9_bvxe6"]
 [ext_resource type="Texture2D" uid="uid://8hdf8q4yypft" path="res://assets/2d/FX/lowhealth.png" id="12_bvxe6"]
 [ext_resource type="Script" uid="uid://dl4se3i4q1m0d" path="res://gui/misfortune_inflicted.gd" id="14_meomy"]
+
+[sub_resource type="Animation" id="Animation_meomy"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.9882353, 0.09019608, 0.5686275, 0), Color(0.9882353, 0.09019608, 0.5686275, 0.5411765), Color(0.9882353, 0.09019608, 0.5686275, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ha3dy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9882353, 0.09019608, 0.5686275, 0.5411765)]
+}
+
+[sub_resource type="Animation" id="Animation_mxtsb"]
+resource_name = "low_health"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.9882353, 0.09019608, 0.2627451, 0.24705882), Color(1, 0, 0, 0.6627451), Color(0.9882353, 0.09019608, 0.2627451, 0.24705882)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mxtsb"]
+_data = {
+&"RESET": SubResource("Animation_ha3dy"),
+&"hurt": SubResource("Animation_meomy"),
+&"low_health": SubResource("Animation_mxtsb")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdk76"]
 bg_color = Color(0.13433978, 0.34444046, 0.44050446, 1)
@@ -135,14 +190,19 @@ script = ExtResource("1_lqx5y")
 level_completed = NodePath("LevelCompleted")
 
 [node name="LowHealth" type="TextureRect" parent="."]
-visible = false
-modulate = Color(0.9882353, 0.09411765, 0.5686275, 0.5411765)
+modulate = Color(0.9882353, 0.09019608, 0.5686275, 0.5411765)
 z_index = -7
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("12_bvxe6")
 script = ExtResource("3_w86w5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LowHealth"]
+libraries = {
+&"": SubResource("AnimationLibrary_mxtsb")
+}
+autoplay = "low_health"
 
 [node name="CoinFlipButtons" type="Control" parent="."]
 anchors_preset = 0
@@ -284,6 +344,7 @@ grow_vertical = 2
 text = "Skip"
 
 [node name="LevelCompleted" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
