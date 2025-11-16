@@ -57,6 +57,7 @@ func _ready():
 
 	set_state_transforms()
 	parse_json()
+	area.show()
 
 
 func set_state_transforms() -> void:
@@ -136,6 +137,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func check_flipped_side(flipped_side: int, state: int):
 	#flipped side = index returned by weighted array
+	area.hide()
 	if sides[flipped_side] == Sides.HEADS:
 		if state == Sides.HEADS:
 			animation_player.play("flip_heads_success")
