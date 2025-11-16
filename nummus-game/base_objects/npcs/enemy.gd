@@ -36,9 +36,9 @@ func _ready():
 	parse_json()
 	
 	# transform
-	position = Vector3(-1.604,1,0.0)
+	position = Vector3(-16.04,10,0.0)
 	rotate_y(PI/2)
-	scale = Vector3(0.6,0.6,0.6)
+	scale = Vector3(6,6,6)
 	
 	choose_move()
 	# Init UI

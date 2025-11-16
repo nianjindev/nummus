@@ -28,14 +28,14 @@ metadata/_edit_lock_ = true
 environment = SubResource("Environment_dwbse")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660253, -0.4330129, 0.2500001, 0, 0.49999994, 0.86602545, -0.50000024, 0.74999994, -0.43301257, 0.73161906, 2.7068377, -1.0599079)
+transform = Transform3D(-0.8660253, -0.4330129, 0.2500001, 0, 0.49999994, 0.86602545, -0.50000024, 0.74999994, -0.43301257, 7.32, 27.07, -10.6)
 light_energy = 1.495
 light_specular = 1.07
 shadow_enabled = true
 shadow_blur = 0.897
 
 [node name="PlayerCamera" parent="." instance=ExtResource("2_nboak")]
-transform = Transform3D(-4.4581025e-08, -0.28287718, 0.95915616, 2.9486855e-09, 0.95915616, 0.28287718, -1, 1.5439204e-08, -4.1926047e-08, 1.5741451, 1.0703781, 0)
+transform = Transform3D(-4.4581025e-08, -0.28287718, 0.95915616, 2.9486855e-09, 0.95915616, 0.28287718, -1, 1.5439204e-08, -4.1926047e-08, 15.74, 10.7, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5546366, 0)

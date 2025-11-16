@@ -62,7 +62,6 @@ func _ready():
 func set_state_transforms() -> void:
 	# transform me
 	if current_state == Constants.DisplayType.PLAY:
-		scale = Vector3(0.1, 0.1, 0.1)
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = true
 		_tween_pos()
@@ -72,7 +71,6 @@ func set_state_transforms() -> void:
 		rotation = Vector3(0, 0, -PI / 2)
 		hoverable.visible = true
 	elif current_state == Constants.DisplayType.HAND:
-		scale = Vector3(0.1, 0.1, 0.1)
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = false
 #init_anim()
@@ -93,7 +91,7 @@ func init_anim():
 	position_markers["not_floating"] = Vector3(0, 0, 0)
 	position_markers["floating"] = Vector3(0, 0.4, 0)
 	position_markers["global_init"] = tween_pos
-	position_markers["playing"] = Vector3(0, 0.4, 0)
+	position_markers["playing"] = Vector3(0, 4, 0)
 
 
 func parse_json() -> void:

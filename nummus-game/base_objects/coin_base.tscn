@@ -363,7 +363,6 @@ height = 0.4
 radius = 0.8964844
 
 [node name="CoinBase" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3180443, 0.50594455, 0.95231885)
 script = ExtResource("1_3p7bc")
 coin_id = ExtResource("2_ern4t")
 
