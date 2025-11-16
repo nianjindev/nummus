@@ -15,6 +15,21 @@
 [ext_resource type="Texture2D" uid="uid://8hdf8q4yypft" path="res://assets/2d/FX/lowhealth.png" id="12_bvxe6"]
 [ext_resource type="Script" uid="uid://dl4se3i4q1m0d" path="res://gui/misfortune_inflicted.gd" id="14_meomy"]
 
+[sub_resource type="Animation" id="Animation_ha3dy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9882353, 0.09019608, 0.5686275, 0.5411765)]
+}
+
 [sub_resource type="Animation" id="Animation_meomy"]
 resource_name = "hurt"
 length = 0.2
@@ -29,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.9882353, 0.09019608, 0.5686275, 0), Color(0.9882353, 0.09019608, 0.5686275, 0.5411765), Color(0.9882353, 0.09019608, 0.5686275, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ha3dy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.9882353, 0.09019608, 0.5686275, 0.5411765)]
 }
 
 [sub_resource type="Animation" id="Animation_mxtsb"]
@@ -190,6 +190,7 @@ script = ExtResource("1_lqx5y")
 level_completed = NodePath("LevelCompleted")
 
 [node name="LowHealth" type="TextureRect" parent="."]
+visible = false
 modulate = Color(0.9882353, 0.09019608, 0.5686275, 0.5411765)
 z_index = -7
 layout_mode = 0

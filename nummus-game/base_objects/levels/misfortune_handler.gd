@@ -2,8 +2,8 @@ extends Node
 
 var events = {}
 var rng = SeedManager.rng
-var light_weights = PackedFloat32Array([1, 0])
-var medium_weights = PackedFloat32Array([0.25, 0.75])
+var light_weights = PackedFloat32Array([0.15, 0.85])
+var medium_weights = PackedFloat32Array([0.30, 0.70])
 var heavy_weights = PackedFloat32Array([0.60, 0.40])
 var decision = [true, false]
 
