@@ -270,8 +270,9 @@ func discard_me():
 		if enemy_anim.current_animation.find("idle") == -1:
 			await enemy_anim.animation_finished
 		current_coin = false;
-		animation_player.play("discard")
 		Inventory.discard_coin()
+		animation_player.play("discard")
+		await animation_player.animation_finished
 		GuiManager.toggle_coin_flip_ui.emit(true)
 		
 		

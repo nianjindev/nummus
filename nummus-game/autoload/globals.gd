@@ -45,7 +45,7 @@ func change_money(add: bool, amount: int):
 func change_player_health(add: bool, amount:int):
 	if add:
 		if amount < 0: #if dealing damage
-			if shield + amount >= 0: #if shield is active
+			if shield + amount >= 0: #if shield blacks the damage
 				change_shield(true, amount)
 			else:
 				if health + (shield + amount) < 0:
@@ -53,6 +53,7 @@ func change_player_health(add: bool, amount:int):
 				else:
 					health += (shield + amount)
 				change_shield(false, 0)
+				Signalbus.trigger_camera_shake.emit(1, 10)
 		else:
 			if health + amount > max_health:
 				health = max_health

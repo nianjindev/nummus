@@ -1,12 +1,12 @@
 extends Control
 
-@onready var fortune_bars: VBoxContainer = $PlayerInterface/FortuneBars
-@onready var health_bar: TextureProgressBar = $PlayerInterface/FortuneBars/HealthBar
-@onready var fortune_bar: TextureProgressBar = $PlayerInterface/FortuneBars/MarginFortune/FortuneBar
-@onready var misfortune_bar: TextureProgressBar = $PlayerInterface/FortuneBars/MarginMisfortune/MisfortuneBar
+@export var fortune_bars: VBoxContainer
+@export var health_bar: TextureProgressBar 
+@export var fortune_bar: TextureProgressBar
+@export var misfortune_bar: TextureProgressBar
 @export var fortune_text: RichTextLabel
 @export var misfortune_text: RichTextLabel
-@onready var health_text: RichTextLabel = $PlayerInterface/FortuneBars/HealthBar/UnderText/Amount
+@export var health_text: RichTextLabel
 
 func _ready():
 	# Globals.money_changed.connect("money_changed", Callable(change_money_amount))
