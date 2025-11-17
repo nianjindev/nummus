@@ -1,7 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://cgkq1874nru5o"]
+[gd_scene load_steps=30 format=3 uid="uid://cgkq1874nru5o"]
 
 [ext_resource type="Script" uid="uid://4wjymveihx57" path="res://gui/global_ui.gd" id="1_s6kbw"]
-[ext_resource type="Script" uid="uid://b6oxe1hvjoa3d" path="res://gui/health_bar.gd" id="5_2p7ws"]
 [ext_resource type="Texture2D" uid="uid://becrm8gwggipt" path="res://assets/2d/bar_textures/fortune_text_bar.png" id="6_jxs7b"]
 [ext_resource type="Texture2D" uid="uid://25p6o6gq0bqn" path="res://assets/2d/bar_textures/bar_under_small.png" id="6_qbh03"]
 [ext_resource type="Texture2D" uid="uid://jhepe38x2bp7" path="res://assets/2d/bar_textures/misfortune_text_bar.png" id="7_qwhgh"]
@@ -225,7 +224,7 @@ _data = {
 &"lose_shield": SubResource("Animation_2p7ws")
 }
 
-[node name="GlobalUI" type="Control" node_paths=PackedStringArray("fortune_bars")]
+[node name="GlobalUI" type="Control" node_paths=PackedStringArray("fortune_bars", "health_bar", "health_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,6 +234,9 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_s6kbw")
 fortune_bars = NodePath("PlayerInterface/FortuneBars")
+health_bar = NodePath("PlayerInterface/FortuneBars/HealthBar")
+health_text = NodePath("PlayerInterface/FortuneBars/HealthBar/UnderText/Amount")
+metadata/_edit_lock_ = true
 
 [node name="PlayerInterface" type="Control" parent="."]
 anchors_preset = 0
@@ -255,7 +257,7 @@ offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars" node_paths=PackedStringArray("health_text")]
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerInterface/FortuneBars"]
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 20.0
@@ -264,8 +266,6 @@ value = 20.0
 texture_under = ExtResource("12_qujq2")
 texture_over = ExtResource("13_crqig")
 texture_progress = ExtResource("14_h1f0h")
-script = ExtResource("5_2p7ws")
-health_text = NodePath("UnderText/HealthText")
 
 [node name="UnderText" type="TextureRect" parent="PlayerInterface/FortuneBars/HealthBar"]
 layout_mode = 1
@@ -282,7 +282,7 @@ grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("12_qwhgh")
 
-[node name="HealthText" type="RichTextLabel" parent="PlayerInterface/FortuneBars/HealthBar/UnderText"]
+[node name="Amount" type="RichTextLabel" parent="PlayerInterface/FortuneBars/HealthBar/UnderText"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

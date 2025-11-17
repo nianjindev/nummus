@@ -9,7 +9,7 @@ func _ready():
 	Signalbus.trigger_camera_shake.connect(trigger_shake)
 
 func trigger_shake(max: float, fade: float) -> void:
-	max_shake = max
+	max_shake += max
 	shake_fade = fade
 	_shake_strength = max_shake
 

@@ -47,7 +47,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Success:emitting")
+tracks/3/path = NodePath("../Success:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -59,7 +59,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Failure:emitting")
+tracks/4/path = NodePath("../Failure:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -134,7 +134,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Failure:emitting")
+tracks/3/path = NodePath("../Failure:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -181,7 +181,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Success:emitting")
+tracks/3/path = NodePath("../Success:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -228,7 +228,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Failure:emitting")
+tracks/3/path = NodePath("../Failure:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -275,7 +275,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Success:emitting")
+tracks/3/path = NodePath("../Success:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -299,6 +299,10 @@ _data = {
 albedo_texture = ExtResource("3_ern4t")
 stencil_flags = 2
 stencil_outline_thickness = 1.845
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e84nm"]
+height = 0.4
+radius = 0.8964844
 
 [sub_resource type="Curve" id="Curve_ern4t"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09448819, 1), 0.0, 0.0, 0, 0, Vector2(0.7086614, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -337,11 +341,11 @@ radial_segments = 16
 particle_flag_align_y = true
 emission_shape = 4
 emission_point_count = 1
-direction = Vector3(0, -1, 0)
+direction = Vector3(0, 1, 0)
 spread = 90.0
 initial_velocity_min = 158.4
 initial_velocity_max = 162.15
-gravity = Vector3(0, 300, 0)
+gravity = Vector3(0, -300, 0)
 scale_min = 0.5
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_tiqga")
@@ -358,12 +362,7 @@ top_radius = 2.03
 bottom_radius = 0.0
 height = 12.89
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_e84nm"]
-height = 0.4
-radius = 0.8964844
-
 [node name="CoinBase" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_3p7bc")
 coin_id = ExtResource("2_ern4t")
 
@@ -374,11 +373,18 @@ libraries = {
 }
 
 [node name="CoinMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_2xdfg")
 mesh = ExtResource("4_ern4t")
 
-[node name="Success" type="GPUParticles3D" parent="CoinMesh"]
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_e84nm")
+
+[node name="Hoverable" parent="." instance=ExtResource("4_2xdfg")]
+
+[node name="Success" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
 emitting = false
 amount = 12
 lifetime = 0.5
@@ -392,7 +398,8 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_ern4t")
 draw_pass_1 = SubResource("CylinderMesh_nyihw")
 
-[node name="Failure" type="GPUParticles3D" parent="CoinMesh"]
+[node name="Failure" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
 emitting = false
 amount = 12
 lifetime = 0.5
@@ -405,13 +412,6 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_tiqga")
 draw_pass_1 = SubResource("CylinderMesh_fmtaq")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CylinderShape3D_e84nm")
-
-[node name="Hoverable" parent="." instance=ExtResource("4_2xdfg")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]

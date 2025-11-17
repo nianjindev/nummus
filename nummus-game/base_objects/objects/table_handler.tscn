@@ -16,7 +16,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.88029665, 4.49, 4, 6.16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.88029665, 4.49, 4, -6.16)
 
 [node name="TableModel" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0, 0, 0)
 mesh = ExtResource("2_86dke")
 
 [node name="PurseDiscard" parent="." instance=ExtResource("3_axdkv")]
