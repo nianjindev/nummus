@@ -12,6 +12,7 @@ func _on_misfortune_updated():
  
 func update_misfortune_bar():
 	value = Globals.misfortune
+	max_value = Globals.max_misfortune
 
 func update_misfortune_text():
 	misfortune_text.text = str(Globals.misfortune) + "/" + str(Globals.max_misfortune)

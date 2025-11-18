@@ -1,5 +1,6 @@
 extends Node3D
 
+var flipping_history: PackedInt32Array = []
 
 func _ready() -> void:
 	Inventory.fire_game()

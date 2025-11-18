@@ -23,7 +23,8 @@ const COINS: Dictionary = {
 	"base":"uid://d35ga8hv2jlvh",
 	"1787":"uid://bgh5v2n073rl7",
 	"old_abe":"uid://dj73eohb1fsui",
-	"corrosive":"uid://b0vhhuw5oktg8"
+	"corrosive":"uid://b0vhhuw5oktg8",
+	"guard":"uid://t3858517hbri"
 	#"lucky":"",
 	#"healthy":"",
 }

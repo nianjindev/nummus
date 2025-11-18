@@ -12,6 +12,7 @@ func _on_fortune_updated():
 	
 func update_fortune_bar():
 	value = Globals.fortune
+	max_value = Globals.max_fortune
 	
 func update_fortune_text():
 	fortune_text.text = str(Globals.fortune) + "/" + str(Globals.max_fortune)

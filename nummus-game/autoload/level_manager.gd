@@ -9,8 +9,9 @@ func _ready() -> void:
 	current_stage = 0
 	current_level  = LEVEL_PROGRESSION[0]
 	# we're just gonna give the player his first coins here okay
-	for i in range(5):
+	for i in range(4):
 		Inventory.add_item(ObjectManager.create_coin(Constants.COINS.base, Constants.DisplayType.PLAY))
+	Inventory.add_item(ObjectManager.create_coin(Constants.COINS.guard, Constants.DisplayType.PLAY))
 func next_stage():
 	if SceneManager.current_scene.name == "BaseLevel":
 		next_stage_scene = Constants.SCENE_PATHS.shop

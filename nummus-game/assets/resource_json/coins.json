@@ -54,5 +54,19 @@
 				"shield":3
 			}
 		}
+	},
+	"coin_guard":{
+		"name":"Guard",
+		"description": "An unassuming yet reliable coin.",
+		"price": 6,
+		"period": 1,
+		"coin_stats":{
+			"on_heads":{
+				"shield":5
+			},
+			"on_tails":{
+				"shield":5
+			}
+		}
 	}
 }
