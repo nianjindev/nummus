@@ -47,6 +47,7 @@ func change_player_health(add: bool, amount:int):
 		if amount < 0: #if dealing damage
 			if shield + amount >= 0: #if shield blacks the damage
 				change_shield(true, amount)
+				Signalbus.trigger_camera_shake.emit(0.5, 10)
 			else:
 				if health + (shield + amount) < 0:
 					health = 0

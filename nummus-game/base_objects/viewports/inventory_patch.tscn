@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://omrtjvkuy0go"]
+
+[ext_resource type="Texture2D" uid="uid://ckvs6o8o20dwk" path="res://assets/2d/inventory_patch.png" id="1_ye56l"]
+[ext_resource type="Script" uid="uid://eqnn3xs8xrui" path="res://base_objects/viewports/inventory_patch_grid.gd" id="2_1mby0"]
+[ext_resource type="PackedScene" uid="uid://m1g4a14on3md" path="res://base_objects/objects/id_icon.tscn" id="3_ijlx6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghwqo"]
+texture = ExtResource("1_ye56l")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 9.0
+texture_margin_bottom = 8.0
+
+[node name="InventoryPatch" type="PanelContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.5
+offset_top = -102.0
+offset_right = 51.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ghwqo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="InventoryPatchGrid" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 5
+script = ExtResource("2_1mby0")
+
+[node name="ID_icon" parent="MarginContainer/InventoryPatchGrid" instance=ExtResource("3_ijlx6")]
+layout_mode = 2

@@ -2,9 +2,11 @@ extends Node
 
 @export var inventory: Array[Coin]
 # In game
-var temp_inv: Array[Coin]
 var discard: Array[Coin]
+var current_inv: Array[Coin] = []
 var current_hand: Array[Coin] = []
+var current_hand_size = current_hand.size()
+
 signal inventory_changed()
 signal replace_current_coin()
 
@@ -14,37 +16,64 @@ func _ready() -> void:
 	Signalbus.return_spacing.connect(set_spacing)
 
 func reset_inv():
-	temp_inv.clear()
+	current_inv.clear()
 	discard.clear()
 	current_hand.clear()
 	current_coin = null
 
-func discard_to_temp():
-	for coin in discard:
-		coin.current_coin = false
-		temp_inv.append(coin.duplicate())
-	discard.clear()
+func draw_coin():
+	if current_inv.is_empty():
+		refill_current_inv_from_discard()
+		await get_tree().create_timer(1).timeout
+	
+	var new_coin: Coin = Inventory.current_inv.pick_random()
+	new_coin.current_state = Constants.DisplayType.PLAY
+	SceneManager.current_scene.add_child.call_deferred(new_coin)
+	current_inv.remove_at(current_inv.find(new_coin))
+	current_hand.append(new_coin)
+	Signalbus.refresh_spacing.emit(current_hand_size)
+	
+	GuiManager.update_inventory_patch.emit("Inventory")
+	GuiManager.update_inventory_patch.emit("Discard")
+
+func refill_current_inv_from_discard():
+	for i in range(Inventory.discard.size()):
+		current_inv.append(discard[0].duplicate())
+		discard.remove_at(0)
+		
+		await get_tree().create_timer(0.1).timeout
+		
+		GuiManager.update_inventory_patch.emit("Inventory")
+		GuiManager.update_inventory_patch.emit("Discard")
 
 func new_hand():
-	var hand_size: int = min(Globals.max_hand, temp_inv.size())
-
-	if hand_size == 0:
-		discard_to_temp()
-		hand_size = min(Globals.max_hand, temp_inv.size())
+	await get_tree().create_timer(0.5).timeout #stylistic choice ong
 	
-	for i in range(hand_size): # Ideally, remove from inventory into hand!
-		var new_coin: Coin = Inventory.temp_inv.pick_random()
+	for i in range(Globals.max_hand): # Ideally, remove from inventory into hand!
+		print(current_inv)
+		var new_coin: Coin = Inventory.current_inv.pick_random()
 		new_coin.current_state = Constants.DisplayType.PLAY
+		
 		SceneManager.current_scene.add_child.call_deferred(new_coin)
-		temp_inv.remove_at(temp_inv.find(new_coin))
+		current_inv.remove_at(current_inv.find(new_coin))
 		current_hand.append(new_coin)
+		
+		current_hand_size = i + 1
+		
+		Signalbus.refresh_spacing.emit(current_hand_size)
+		await get_tree().create_timer(0.1).timeout
+		
+		GuiManager.update_inventory_patch.emit("Inventory")
+		GuiManager.update_inventory_patch.emit("Discard")
 	#Signalbus.fly_out.emit()
-	Signalbus.refresh_spacing.emit(hand_size)
+	
 
 func fire_game():
 	reset_inv()
 	for coin in inventory:
-		temp_inv.append(coin.duplicate())
+		current_inv.append(coin.duplicate())
+	GuiManager.update_inventory_patch.emit("Inventory")
+	GuiManager.update_inventory_patch.emit("Discard")
 	new_hand()
 
 func add_item(item: Coin) -> bool:
@@ -79,6 +108,9 @@ func discard_coin():
 	discard.append(current_coin.duplicate()) # needs to be visibly removed!
 	await Signalbus.discard_played
 	current_coin.queue_free()
+	draw_coin()
+	GuiManager.update_inventory_patch.emit("Inventory")
+	GuiManager.update_inventory_patch.emit("Discard")
 
 func set_current_coin(coin: Coin) -> bool:
 	if current_coin == null:
@@ -99,6 +131,6 @@ func delete_current_coin():
 	Signalbus.refresh_spacing.emit(current_hand.size())
 	current_coin = null
 
-func _process(_delta: float) -> void:
-	if current_coin == null and current_hand.size() == 0 : # wow I added a process func! how inefficient oh well lol!!
-		new_hand()
+#func _process(_delta: float) -> void:
+	#if current_coin == null and current_hand.size() == 0 : # wow I added a process func! how inefficient oh well lol!!
+		#new_hand()

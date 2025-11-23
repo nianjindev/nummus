@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ID_icon" load_steps=2 format=3 uid="uid://iy6met4wd4ov"]
+
+[ext_resource type="Script" uid="uid://cpfu62vl36105" path="res://resources/gui/ID_icon.gd" id="1_sjr7n"]
+
+[resource]
+script = ExtResource("1_sjr7n")
+metadata/_custom_type_script = "uid://cpfu62vl36105"

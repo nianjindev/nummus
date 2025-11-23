@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwu8pi66hpjiu"]
+[gd_scene load_steps=8 format=3 uid="uid://dwu8pi66hpjiu"]
 
 [ext_resource type="Script" uid="uid://dace5j0sr7fyi" path="res://base_objects/objects/table_handler.gd" id="1_x0v6v"]
 [ext_resource type="ArrayMesh" uid="uid://df0dli0p2ydry" path="res://assets/3d/coin_table.obj" id="2_86dke"]
 [ext_resource type="PackedScene" uid="uid://dipstebap2rep" path="res://base_objects/objects/purse.tscn" id="3_axdkv"]
+[ext_resource type="PackedScene" uid="uid://omrtjvkuy0go" path="res://base_objects/viewports/inventory_patch.tscn" id="4_4xn1l"]
+[ext_resource type="Script" uid="uid://dlxivaf2jpg1w" path="res://base_objects/objects/count_ui.gd" id="5_20odo"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4xn1l"]
+viewport_path = NodePath("PurseDiscard/DiscardUI/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_20odo"]
+viewport_path = NodePath("PurseInv/InventoryUI/SubViewport")
 
 [node name="TableHandler" type="Node3D"]
 script = ExtResource("1_x0v6v")
@@ -19,7 +27,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.88029665, 4.49, 4, -6.16)
 mesh = ExtResource("2_86dke")
 
 [node name="PurseDiscard" parent="." instance=ExtResource("3_axdkv")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.14, 4.42, 9.26)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.507932, 4.42, 8.36784)
+
+[node name="DiscardUI" type="Sprite3D" parent="PurseDiscard"]
+transform = Transform3D(-0.16907263, 0, 0.6792749, 0, 0.7, 0, -0.6792749, 0, -0.16907263, 0.019567192, 3.725337, 0.038298607)
+texture_filter = 0
+texture = SubResource("ViewportTexture_4xn1l")
+
+[node name="SubViewport" type="SubViewport" parent="PurseDiscard/DiscardUI"]
+own_world_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(1696, 731)
+
+[node name="Discard" parent="PurseDiscard/DiscardUI/SubViewport" instance=ExtResource("4_4xn1l")]
+
+[node name="DiscardCounter" type="Label3D" parent="PurseDiscard"]
+transform = Transform3D(-0.4539906, 0, 0.89100647, 0, 1, 0, -0.89100647, 0, -0.4539906, 0.96588767, 0.33227825, -0.5293269)
+text = "99
+"
+font_size = 82
+outline_size = 32
+script = ExtResource("5_20odo")
 
 [node name="PurseInv" parent="." instance=ExtResource("3_axdkv")]
-transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 2.47, 4.2, -8.82)
+transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0.838, 4.2, -8.368)
+
+[node name="InventoryUI" type="Sprite3D" parent="PurseInv"]
+transform = Transform3D(0.16934533, 0, 0.679207, 0, 0.7, 0, -0.679207, 0, 0.16934533, 0.019567192, 3.725337, 0.038298607)
+texture_filter = 0
+texture = SubResource("ViewportTexture_20odo")
+
+[node name="SubViewport" type="SubViewport" parent="PurseInv/InventoryUI"]
+own_world_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(1696, 731)
+
+[node name="Inventory" parent="PurseInv/InventoryUI/SubViewport" instance=ExtResource("4_4xn1l")]
+
+[node name="InventoryCounter" type="Label3D" parent="PurseInv"]
+transform = Transform3D(0.45399052, 0, 0.8910065, 0, 1, 0, -0.8910065, 0, 0.45399052, 0.966, 0.332, 0.529)
+text = "99"
+font_size = 82
+outline_size = 32
+script = ExtResource("5_20odo")

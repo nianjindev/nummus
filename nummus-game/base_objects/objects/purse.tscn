@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bmmobbrhil6md" path="res://assets/3d/coin_purse_closed.obj" id="3_x6xnr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bnt2j"]
-size = Vector3(1.5, 1, 1)
+size = Vector3(1.98, 1.585, 1.275)
 
 [node name="Purse" type="Node3D"]
 script = ExtResource("1_0nad3")
@@ -22,3 +22,6 @@ mesh = ExtResource("3_x6xnr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HoverArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26845032, 0)
 shape = SubResource("BoxShape3D_bnt2j")
+
+[connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]

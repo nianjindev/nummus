@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://m1g4a14on3md"]
+
+[ext_resource type="Texture2D" uid="uid://cdm4nt7c8evbm" path="res://assets/2d/mapped_coin_textures/sad_coin.png" id="1_d2wc4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mby0"]
+atlas = ExtResource("1_d2wc4")
+region = Rect2(2, 0, 15, 15)
+
+[node name="ID_icon" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_1mby0")

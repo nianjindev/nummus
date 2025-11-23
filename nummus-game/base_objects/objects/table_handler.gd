@@ -24,4 +24,6 @@ func check_spacing(hand_size: int):
 	
 	for i in range(hand_size):
 		positions.append(endpoint_r.position + Vector3(0, 0, increment*i))
+		
+	positions.reverse()
 	Signalbus.return_spacing.emit(positions)
