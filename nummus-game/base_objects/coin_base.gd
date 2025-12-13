@@ -63,25 +63,18 @@ func _ready():
 func set_state_transforms() -> void:
 	# transform me
 	if current_state == Constants.DisplayType.PLAY:
+		scale = Vector3(1,1,1) # because shop
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = true
-		_tween_pos()
-		init_anim()
+		_tween_pos() # goes to hand
+		init_anim() # really useless code/function
 	elif current_state == Constants.DisplayType.SHOP:
 		scale = Vector3(0.3, 0.3, 0.3)
 		rotation = Vector3(0, 0, -PI / 2)
 		hoverable.visible = true
-	elif current_state == Constants.DisplayType.HAND:
+	elif current_state == Constants.DisplayType.HAND: # unused state
 		rotation = Vector3(0, 0, 0)
 		hoverable.visible = false
-#init_anim()
-
-# func _fly_out():
-# 	print("hi")
-# 	var purse_pos = Vector3(0.407, 0.412, -0.856)
-# 	self.position = purse_pos
-# 	tween_me(self, purse_pos + Vector3(0,0.4,0), 0.1)
-# 	Signalbus.flew_out.emit()
 
 
 func _tween_pos():
