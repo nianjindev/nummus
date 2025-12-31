@@ -1,5 +1,5 @@
 # nummus
-game jam game for the 2025 texas a&m game developers game jam
+game jam game
 
 # description
 nummus is a game where you flip coins and predict if it will land on heads or tails.
