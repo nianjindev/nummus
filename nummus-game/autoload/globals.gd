@@ -35,6 +35,33 @@ var success_weight: float = 0
 var max_purse:int = 10
 var max_hand:int = 5
 
+#scenes
+var queued_actions: Array[Callable] = []
+var is_busy: bool 
+
+func queue_action(function: Callable):
+	queued_actions.append(function)
+	print(queued_actions)
+	try_run_next()
+
+func try_run_next():
+	if is_busy:
+		return
+
+	if queued_actions.is_empty():
+		GuiManager.toggle_coin_flip_ui.emit(true)
+		return
+
+	is_busy = true
+	var next_action: Callable = queued_actions.front()
+	next_action.call()
+
+func action_finished():
+	is_busy = false
+	queued_actions.pop_front()
+	try_run_next()
+		
+
 func change_money(add: bool, amount: int):
 	if add:
 		money += amount

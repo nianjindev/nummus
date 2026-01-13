@@ -65,6 +65,7 @@ func new_hand():
 		
 		GuiManager.update_inventory_patch.emit("Inventory")
 		GuiManager.update_inventory_patch.emit("Discard")
+	Globals.action_finished()
 	#Signalbus.fly_out.emit()
 	
 
@@ -74,7 +75,7 @@ func fire_game():
 		current_inv.append(coin.duplicate())
 	GuiManager.update_inventory_patch.emit("Inventory")
 	GuiManager.update_inventory_patch.emit("Discard")
-	new_hand()
+	Globals.queue_action(new_hand)
 
 func add_item(item: Coin) -> bool:
 	if inventory.size() <= 15:

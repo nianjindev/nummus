@@ -119,11 +119,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			Signalbus.discard_played.emit()
 			return
 		"RESET":
-			discard_me()
+			Globals.queue_action(discard_me)
 			return
 
 	Globals.reset_weights()
-	Signalbus.decrease_period.emit(period_increment)
 	
 	animation_player.play("RESET")
 
@@ -266,6 +265,7 @@ func discard_me():
 		Inventory.discard_coin()
 		animation_player.play("discard")
 		await animation_player.animation_finished
-		GuiManager.toggle_coin_flip_ui.emit(true)
+		Signalbus.decrease_period.emit(period_increment)
+		Globals.action_finished()
 		
 		
