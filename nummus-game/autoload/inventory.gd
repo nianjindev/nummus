@@ -24,7 +24,6 @@ func reset_inv():
 func draw_coin():
 	if current_inv.is_empty():
 		refill_current_inv_from_discard()
-		await get_tree().create_timer(1).timeout
 	
 	var new_coin: Coin = Inventory.current_inv.pick_random()
 	new_coin.current_state = Constants.DisplayType.PLAY
@@ -45,6 +44,7 @@ func refill_current_inv_from_discard():
 		
 		GuiManager.update_inventory_patch.emit("Inventory")
 		GuiManager.update_inventory_patch.emit("Discard")
+	await get_tree().create_timer(1).timeout
 
 func new_hand():
 	await get_tree().create_timer(0.5).timeout #stylistic choice ong

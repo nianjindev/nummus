@@ -98,8 +98,6 @@ func play_hurt_animation():
 	GuiManager.update_enemy_health_text.emit(health, max_health)
 	animation_player.play(enemy_json_id + "/hurt")
 	await animation_player.animation_finished
-	GuiManager.toggle_coin_flip_ui.emit(true)
-	
 
 func play_death_animation():
 	animation_player.play(enemy_json_id + "/death")
