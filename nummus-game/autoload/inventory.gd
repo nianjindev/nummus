@@ -34,6 +34,7 @@ func draw_coin():
 	
 	GuiManager.update_inventory_patch.emit("Inventory")
 	GuiManager.update_inventory_patch.emit("Discard")
+	Globals.action_finished()
 
 func refill_current_inv_from_discard():
 	for i in range(Inventory.discard.size()):
@@ -109,7 +110,7 @@ func discard_coin():
 	discard.append(current_coin.duplicate()) # needs to be visibly removed!
 	await Signalbus.discard_played
 	current_coin.queue_free()
-	draw_coin()
+	Globals.queue_action(draw_coin)
 	GuiManager.update_inventory_patch.emit("Inventory")
 	GuiManager.update_inventory_patch.emit("Discard")
 

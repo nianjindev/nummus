@@ -151,5 +151,3 @@ func display_player_damage(amount: int):
 	current_damage_text.text = str(amount)
 	add_child(current_damage_text)
 	current_damage_text.transform.origin = Vector3(-1, 0, 2) 
-
-	
