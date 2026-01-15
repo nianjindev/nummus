@@ -15,16 +15,23 @@ func _ready() -> void:
 
 func toggle_opened(on: bool):
 	is_mouse_over = on
+	if Globals.input_locked:
+		await Signalbus.actions_finished
+		
 	opened_mesh.visible = on
 	closed_mesh.visible = not on
 
 func _on_hover_area_mouse_entered() -> void:
+	if Globals.input_locked:
+		await Signalbus.actions_finished
+	
 	if name == "PurseDiscard" and not Inventory.discard.is_empty(): #theres probably a better way to do this but idc
 		discard_ui.modulate = Color(1.0, 1.0, 1.0, 1.0) #has to be modulate and not hide or show
 	if name == "PurseInv" and not Inventory.current_inv.is_empty():
 		inventory_ui.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _on_hover_area_mouse_exited() -> void:
+	
 	if name == "PurseDiscard":
 		discard_ui.modulate = Color(1.0, 1.0, 1.0, 0.0)
 	if name == "PurseInv":
