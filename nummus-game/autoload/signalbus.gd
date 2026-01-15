@@ -46,8 +46,6 @@ signal refresh_spacing(hand: int)
 signal return_spacing(spaces: Array[Vector3])
 @warning_ignore("unused_signal")
 signal positions_ready
-@warning_ignore("unused_signal")
-signal discard_played
 
 signal actions_finished
 # signal fly_out

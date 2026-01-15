@@ -116,7 +116,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			Globals.change_misfortune(true, Globals.misfortune_gain)
 		"discard":
 			Globals.flipping = false
-			Signalbus.discard_played.emit()
 			return
 		"RESET":
 			Globals.queue_action(discard_me)
@@ -156,9 +155,10 @@ func flip(state: int):
 	if current_coin:
 		Globals.flipping = true
 		Globals.input_locked = true
-		Signalbus.trigger_camera_coin_follow.emit()
 		
 		if state == Sides.SKIP:
+			Globals.queue_action(discard_me)
+			Globals.reset_fortune()
 			return
 		else:
 			GuiManager.toggle_coin_flip_ui.emit(false)
@@ -168,6 +168,7 @@ func flip(state: int):
 		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
 		var flipped_side = SeedManager.rng.rand_weighted(weights)
 		check_flipped_side(flipped_side, state)
+		Signalbus.trigger_camera_coin_follow.emit()
 
 		Globals.reset_fortune()
 
@@ -271,10 +272,10 @@ func discard_me():
 		if enemy_anim.current_animation.find("idle") == -1:
 			await enemy_anim.animation_finished
 		current_coin = false;
-		Inventory.discard_coin()
 		animation_player.play("discard")
 		await animation_player.animation_finished
 		Signalbus.decrease_period.emit(period_increment)
+		Inventory.discard_coin()
 		Globals.action_finished()
 		
 		

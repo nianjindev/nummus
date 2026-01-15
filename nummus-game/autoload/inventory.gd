@@ -109,7 +109,6 @@ func remove_item(item: Coin) -> bool:
 
 func discard_coin():
 	discard.append(current_coin.duplicate()) # needs to be visibly removed!
-	await Signalbus.discard_played
 	current_coin.queue_free()
 	Globals.queue_action(draw_coin)
 	GuiManager.update_inventory_patch.emit("Inventory")
