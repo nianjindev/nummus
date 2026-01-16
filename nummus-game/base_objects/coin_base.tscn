@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://3nddafo22hjr" path="res://base_objects/coin_base.gd" id="1_3p7bc"]
 [ext_resource type="Resource" uid="uid://d35ga8hv2jlvh" path="res://resources/coins/coin_base.tres" id="2_ern4t"]
-[ext_resource type="Texture2D" uid="uid://cqvlxbv3lfiuj" path="res://assets/2d/mapped_coin_textures/old_abe.png" id="3_ern4t"]
+[ext_resource type="Texture2D" uid="uid://chjocgt1hmv02" path="res://assets/2d/mapped_coin_textures/1787.png" id="3_ern4t"]
 [ext_resource type="PackedScene" uid="uid://btm435kprguv0" path="res://base_objects/viewports/hoverable.tscn" id="4_2xdfg"]
 [ext_resource type="ArrayMesh" uid="uid://bsc4krl7s2wsj" path="res://assets/3d/coin_base.obj" id="4_ern4t"]
 
@@ -71,7 +71,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = false
-tracks/5/path = NodePath(".:material_override:albedo_texture_msdf")
+tracks/5/path = NodePath(".:material_override:emission_enabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -82,27 +82,51 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = false
-tracks/6/path = NodePath(".:material_override:albedo_color")
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:material_override:emission")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.2556759, 0.8111505, 0.3818031, 1)]
+"values": [Color(0.101960786, 0.30980393, 0.0627451, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
-tracks/7/enabled = false
-tracks/7/path = NodePath(".:material_override:emission_enabled")
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:material_override:albedo_texture_force_srgb")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:material_override:emission_energy_multiplier")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.15]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:material_override:albedo_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ern4t"]
@@ -179,6 +203,66 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:material_override:emission_enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:material_override:emission")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.78431374, 0.07058824, 0.019607844, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:material_override:emission_energy_multiplier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.15]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:material_override:albedo_texture_force_srgb")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(0.78431374, 0.07058824, 0.019607844, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_trcn2"]
 resource_name = "flip_heads_success"
@@ -229,7 +313,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:material_override:albedo_texture_msdf")
+tracks/4/path = NodePath(".:material_override:emission_enabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -241,26 +325,50 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath(".:material_override:albedo_color")
-tracks/5/interp = 2
+tracks/5/path = NodePath(".:material_override:emission")
+tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(0.14509805, 0.2, 0, 1), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.101960786, 0.30980393, 0.0627451, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".:material_override:emission_enabled")
+tracks/6/path = NodePath(".:material_override:emission_energy_multiplier")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.99]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:material_override:albedo_texture_force_srgb")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(0.101960786, 0.30980393, 0.0627451, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_3p7bc"]
@@ -308,6 +416,66 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:material_override:emission_enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:material_override:emission")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.78431374, 0.07058823, 0.019607842, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:material_override:emission_energy_multiplier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.15]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:material_override:albedo_texture_force_srgb")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(0.78431374, 0.07058824, 0.019607844, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_p7sxt"]
@@ -371,26 +539,50 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath(".:material_override:albedo_color")
+tracks/5/path = NodePath(".:material_override:emission")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(0.14509805, 0.2, 0, 1), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.101960786, 0.30980393, 0.0627451, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".:material_override:albedo_texture_msdf")
+tracks/6/path = NodePath(".:material_override:emission_energy_multiplier")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.99]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:material_override:albedo_texture_force_srgb")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(0.101960786, 0.30980393, 0.0627451, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7kbo"]
@@ -403,12 +595,10 @@ _data = {
 &"flip_tails_success": SubResource("Animation_p7sxt")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xdfg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nyihw"]
 albedo_texture = ExtResource("3_ern4t")
 emission = Color(0.101960786, 0.30980393, 0.0627451, 1)
-emission_energy_multiplier = 8.99
-stencil_flags = 2
-stencil_outline_thickness = 1.845
+emission_energy_multiplier = 3.15
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_e84nm"]
 height = 0.4
@@ -435,7 +625,7 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_tiqga")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tiqga"]
-albedo_color = Color(0.14527723, 0.19862291, 0, 1)
+albedo_color = Color(0.101960786, 0.30980393, 0.0627451, 1)
 emission_enabled = true
 emission = Color(0.10134893, 0.31170058, 0.06351832, 1)
 emission_energy_multiplier = 8.99
@@ -461,7 +651,7 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_tiqga")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sk6cf"]
-albedo_color = Color(0.25234672, 0.029643333, 0.019262973, 1)
+albedo_color = Color(0.78431374, 0.07058824, 0.019607844, 1)
 emission_enabled = true
 emission = Color(0.78431374, 0.07058824, 0.019607844, 1)
 emission_energy_multiplier = 3.15
@@ -483,7 +673,7 @@ libraries = {
 }
 
 [node name="CoinMesh" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_2xdfg")
+material_override = SubResource("StandardMaterial3D_nyihw")
 mesh = ExtResource("4_ern4t")
 
 [node name="Area3D" type="Area3D" parent="."]
