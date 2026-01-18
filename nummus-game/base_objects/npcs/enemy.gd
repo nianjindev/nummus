@@ -148,6 +148,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		
 func display_player_damage(amount: int):
 	var current_damage_text = ResourceLoader.load(Constants.UI_PATHS.player_damage_text).instantiate()
-	current_damage_text.text = str(amount)
+	current_damage_text.get_node("PathFollow3D").get_node("DamageText").text = str(amount)
 	add_child(current_damage_text)
-	current_damage_text.transform.origin = Vector3(-1, 0, 2) 
+	current_damage_text.transform.origin = Vector3(-.5, 0, 1) 
