@@ -9,5 +9,5 @@ func pre_effect(_stats: Dictionary):
 	pass
 func get_repeat() -> int:
 	return repeat
-func recurring(stats: Dictionary) -> Dictionary:
+func recurring(stats: Dictionary, _state: int) -> Dictionary:
 	return stats

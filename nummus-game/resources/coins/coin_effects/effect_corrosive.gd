@@ -7,7 +7,7 @@ func effect(stats: Dictionary, side):
 		CommonEffects.give_shield(stats.on_tails.shield)
 func pre_effect(_stats: Dictionary):
 	pass
-func recurring(stats: Dictionary) -> Dictionary:
+func recurring(stats: Dictionary, state: Side) -> Dictionary:
 	print("test")
 	CommonEffects.do_damage(3)
 	return stats

@@ -2,7 +2,7 @@
 	"coin_base":{
 		"name":"Coin",
 		"description":"Basic coin.",
-		"price":3,
+		"price":1,
 		"period":1,
 		"coin_stats":{
 			"on_heads":{
@@ -16,7 +16,7 @@
 	"coin_1787":{
 		"name":"Coin of 1787",
 		"description":"The first ever minted coin!",
-		"price":6,
+		"price":1,
 		"period": 1,
 		"coin_stats":{
 			"on_heads":{
@@ -30,8 +30,8 @@
 	"coin_old_abe":{
 		"name":"Old Abe",
 		"description":"Always lands heads.",
-		"price":5,
-		"period":1,
+		"price":1,
+		"period":2,
 		"coin_stats":{
 			"on_heads":{
 				"damage":7
@@ -44,7 +44,7 @@
 	"coin_corrosive":{
 		"name":"Corrosive Coin",
 		"description": "Poisons enemy for 3 turns",
-		"price": 6,
+		"price": 1,
 		"period": 1,
 		"coin_stats":{
 			"on_heads":{
@@ -56,9 +56,9 @@
 		}
 	},
 	"coin_guard":{
-		"name":"Guard",
+		"name":"Guardian Coin",
 		"description": "An unassuming yet reliable coin.",
-		"price": 6,
+		"price": 1,
 		"period": 1,
 		"coin_stats":{
 			"on_heads":{
@@ -66,6 +66,20 @@
 			},
 			"on_tails":{
 				"shield":5
+			}
+		}
+	},
+	"coin_happy":{
+		"name":"Happy Coin",
+		"description":"If you SMASH, next coin has higher favor.",
+		"price": 1,
+		"period": 1,
+		"coin_stats":{
+			"on_heads":{
+				
+			},
+			"on_tails":{
+				
 			}
 		}
 	}

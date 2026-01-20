@@ -153,7 +153,7 @@ func set_weights():
 	#Signalbus.update_side_percent_ui.emit()
 
 
-func flip(state: int):
+func flip(state: int): # the side you clicked
 	if current_coin:
 		Globals.flipping = true
 		if state == Sides.SKIP:
@@ -161,7 +161,7 @@ func flip(state: int):
 		else:
 			GuiManager.toggle_coin_flip_ui.emit(false)
 			coin_effect.pre_effect(coin_stats)
-			coin_stats = RecursiveEffect.run_recurring(coin_stats)
+			coin_stats = RecursiveEffect.run_recurring(coin_stats, state)
 		set_weights()
 		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
 		var flipped_side = SeedManager.rng.rand_weighted(weights)
@@ -170,7 +170,7 @@ func flip(state: int):
 		Globals.reset_fortune()
 
 
-func generate_description(stats: Dictionary) -> String: # on heads: damage:5 ; on tails: heal:5 (example dictionary)
+func generate_description(stats: Dictionary) -> String:
 	var s: String = "[br]"
 	for i in stats:
 		# look for on heads
@@ -195,7 +195,7 @@ func get_stat_line(type: String, value: int):
 			return "[color=green]" + str(value) + " HP[/color][br]"
 		"money":
 			return "[color=yellow]$" + str(value) + "[/color][br]"
-	return "[color=blue]" + str(value) + " " + type + "[/color][br]"
+	return "[color=light_blue]" + str(value) + " " + type + "[/color][br]"
 
 
 func toggle_visible(on: bool):
