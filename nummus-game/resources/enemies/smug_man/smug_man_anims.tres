@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://dsuivwk12fwsd"]
+[gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://dsuivwk12fwsd"]
 
 [ext_resource type="Texture2D" uid="uid://bfjhgcbnrhvtu" path="res://assets/2d/character_sprites/smug_guy-Sheet.png" id="1_32ev4"]
+[ext_resource type="Texture2D" uid="uid://d1i6bwjcxdphi" path="res://assets/2d/character_sprites/smug_guy/smug_guy_idle.png" id="2_ymxwp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucrfw"]
 atlas = ExtResource("1_32ev4")
@@ -54,9 +55,17 @@ region = Rect2(512, 1024, 256, 256)
 atlas = ExtResource("1_32ev4")
 region = Rect2(256, 256, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mvsy"]
-atlas = ExtResource("1_32ev4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m3pm"]
+atlas = ExtResource("2_ymxwp")
 region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7qnr"]
+atlas = ExtResource("2_ymxwp")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npy1v"]
+atlas = ExtResource("2_ymxwp")
+region = Rect2(512, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70u4h"]
 atlas = ExtResource("1_32ev4")
@@ -139,9 +148,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2mvsy")
+"texture": SubResource("AtlasTexture_3m3pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7qnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npy1v")
 }],
-"loop": true,
+"loop": false,
 "name": &"neutral",
 "speed": 6.0
 }, {

@@ -23,8 +23,7 @@ func reset_inv():
 
 func draw_coin():
 	if current_inv.is_empty():
-		refill_current_inv_from_discard()
-		await get_tree().create_timer(1).timeout
+		await refill_current_inv_from_discard()
 	
 	var new_coin: Coin = Inventory.current_inv.pick_random()
 	new_coin.current_state = Constants.DisplayType.PLAY
@@ -35,6 +34,7 @@ func draw_coin():
 	
 	GuiManager.update_inventory_patch.emit("Inventory")
 	GuiManager.update_inventory_patch.emit("Discard")
+	Globals.action_finished()
 
 func refill_current_inv_from_discard():
 	for i in range(Inventory.discard.size()):
@@ -45,6 +45,8 @@ func refill_current_inv_from_discard():
 		
 		GuiManager.update_inventory_patch.emit("Inventory")
 		GuiManager.update_inventory_patch.emit("Discard")
+	await get_tree().create_timer(0.5).timeout
+
 
 func new_hand():
 	await get_tree().create_timer(0.5).timeout #stylistic choice ong
@@ -65,6 +67,7 @@ func new_hand():
 		
 		GuiManager.update_inventory_patch.emit("Inventory")
 		GuiManager.update_inventory_patch.emit("Discard")
+	Globals.action_finished()
 	#Signalbus.fly_out.emit()
 	
 
@@ -74,7 +77,7 @@ func fire_game():
 		current_inv.append(coin.duplicate())
 	GuiManager.update_inventory_patch.emit("Inventory")
 	GuiManager.update_inventory_patch.emit("Discard")
-	new_hand()
+	Globals.queue_action(new_hand)
 
 func add_item(item: Coin) -> bool:
 	if inventory.size() <= 15:
@@ -106,9 +109,8 @@ func remove_item(item: Coin) -> bool:
 
 func discard_coin():
 	discard.append(current_coin.duplicate()) # needs to be visibly removed!
-	await Signalbus.discard_played
 	current_coin.queue_free()
-	draw_coin()
+	Globals.queue_action(draw_coin)
 	GuiManager.update_inventory_patch.emit("Inventory")
 	GuiManager.update_inventory_patch.emit("Discard")
 

@@ -24,6 +24,7 @@ var misfortune_gain: int = 5
 # signals that interact with GlobalUI
 signal update_ui
 var enemy_visuals_finished = false;
+var input_locked = false
 
 # luck
 var head_weight: float = 0.5
@@ -34,6 +35,36 @@ var success_weight: float = 0
 # hand size
 var max_purse:int = 10
 var max_hand:int = 5
+
+#scenes
+var queued_actions: Array[Callable] = []
+var is_busy: bool 
+
+func queue_action(function: Callable):
+	queued_actions.append(function)
+	print(queued_actions)
+	try_run_next()
+
+func try_run_next():
+	if is_busy:
+		return
+
+	if queued_actions.is_empty():
+		GuiManager.toggle_coin_flip_ui.emit(true)
+		input_locked = false
+		Signalbus.actions_finished.emit()
+		return
+
+	is_busy = true
+	var next_action: Callable = queued_actions.front()
+	next_action.call()
+
+func action_finished():
+	is_busy = false
+	queued_actions.pop_front()
+	await get_tree().create_timer(0.25).timeout
+	try_run_next()
+		
 
 func change_money(add: bool, amount: int):
 	if add:
@@ -47,7 +78,6 @@ func change_player_health(add: bool, amount:int):
 		if amount < 0: #if dealing damage
 			if shield + amount >= 0: #if shield blacks the damage
 				change_shield(true, amount)
-				Signalbus.trigger_camera_shake.emit(0.5, 10)
 			else:
 				if health + (shield + amount) < 0:
 					health = 0

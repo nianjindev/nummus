@@ -32,6 +32,8 @@ signal finished_displaying
 signal enemy_visuals()
 @warning_ignore("unused_signal")
 signal trigger_camera_shake(max: float, fade: float)
+@warning_ignore("unused_signal")
+signal trigger_camera_coin_follow()
 
 # gameplay loop
 @warning_ignore("unused_signal")
@@ -44,8 +46,8 @@ signal refresh_spacing(hand: int)
 signal return_spacing(spaces: Array[Vector3])
 @warning_ignore("unused_signal")
 signal positions_ready
-@warning_ignore("unused_signal")
-signal discard_played
+
+signal actions_finished
 # signal fly_out
 # signal flew_out
 

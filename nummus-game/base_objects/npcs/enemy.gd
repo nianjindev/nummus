@@ -29,7 +29,7 @@ var queued_move
 
 func _ready():
 	Signalbus.change_enemy_health.connect(change_health)
-	Signalbus.decrease_period.connect(decrease_period)
+	Signalbus.decrease_period.connect(queue_decrease_period)
 	# Init resource
 	animated_sprite.sprite_frames = enemy_id.enemy_expressions
 	enemy_json_id = enemy_id.json_id
@@ -44,7 +44,10 @@ func _ready():
 	# Init UI
 	GuiManager.update_period_text.emit(current_period)
 	GuiManager.update_enemy_health_text.emit(health, max_health)
-	
+
+func queue_decrease_period(amount: int):
+	Globals.queue_action(decrease_period.bind(amount))
+
 func decrease_period(amount: int):
 	if current_period - amount <= 0 && health > 0:
 		current_period = 0
@@ -57,6 +60,7 @@ func decrease_period(amount: int):
 		current_period -= amount
 		
 	GuiManager.update_period_text.emit(current_period)
+	Globals.action_finished()
 	
 
 func choose_move():
@@ -94,8 +98,6 @@ func play_hurt_animation():
 	GuiManager.update_enemy_health_text.emit(health, max_health)
 	animation_player.play(enemy_json_id + "/hurt")
 	await animation_player.animation_finished
-	GuiManager.toggle_coin_flip_ui.emit(true)
-	
 
 func play_death_animation():
 	animation_player.play(enemy_json_id + "/death")
@@ -146,8 +148,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		
 func display_player_damage(amount: int):
 	var current_damage_text = ResourceLoader.load(Constants.UI_PATHS.player_damage_text).instantiate()
-	current_damage_text.text = str(amount)
+	current_damage_text.get_node("PathFollow3D").get_node("DamageText").text = str(amount)
 	add_child(current_damage_text)
-	current_damage_text.transform.origin = Vector3(-1, 0, 2) 
-
-	
+	current_damage_text.transform.origin = Vector3(-.5, 0, 1) 

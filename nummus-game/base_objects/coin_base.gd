@@ -116,14 +116,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			Globals.change_misfortune(true, Globals.misfortune_gain)
 		"discard":
 			Globals.flipping = false
-			Signalbus.discard_played.emit()
 			return
 		"RESET":
-			discard_me()
+			Globals.queue_action(discard_me)
 			return
 
 	Globals.reset_weights()
-	Signalbus.decrease_period.emit(period_increment)
 	
 	animation_player.play("RESET")
 
@@ -156,7 +154,11 @@ func set_weights():
 func flip(state: int): # the side you clicked
 	if current_coin:
 		Globals.flipping = true
+		Globals.input_locked = true
+		
 		if state == Sides.SKIP:
+			Globals.queue_action(discard_me)
+			Globals.reset_fortune()
 			return
 		else:
 			GuiManager.toggle_coin_flip_ui.emit(false)
@@ -166,6 +168,7 @@ func flip(state: int): # the side you clicked
 		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
 		var flipped_side = SeedManager.rng.rand_weighted(weights)
 		check_flipped_side(flipped_side, state)
+		Signalbus.trigger_camera_coin_follow.emit()
 
 		Globals.reset_fortune()
 
@@ -206,16 +209,21 @@ func toggle_visible(on: bool):
 
 
 func _on_area_3d_mouse_entered() -> void:
+	is_mouse_over = true
 	if current_state == Constants.DisplayType.SHOP:
 		toggle_visible(true)
 	if current_state == Constants.DisplayType.PLAY: # make float
-		tween_me(coin_mesh, position_markers.get("floating"), 0.2)
-		toggle_visible(true)
-	is_mouse_over = true
+		if Globals.input_locked:
+			await Signalbus.actions_finished
+			
+		if is_mouse_over: #so the coin hovers back up instantly after unlocking input
+			tween_me(coin_mesh, position_markers.get("floating"), 0.1)
+			toggle_visible(true)
+	
 
 
 func _input(event: InputEvent) -> void:
-	if is_mouse_over and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if is_mouse_over and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not Globals.input_locked:
 		if current_state == Constants.DisplayType.SHOP:
 			buy_me()
 		if current_state == Constants.DisplayType.PLAY and Globals.flipping == false:
@@ -230,10 +238,11 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_area_3d_mouse_exited() -> void:
+	is_mouse_over = false
 	toggle_visible(false)
 	if current_state == Constants.DisplayType.PLAY:
 		tween_me(coin_mesh, position_markers.get("not_floating"), 0.2)
-	is_mouse_over = false
+	
 
 
 func tween_me(sprite: Node3D, pos: Vector3, time):
@@ -263,9 +272,10 @@ func discard_me():
 		if enemy_anim.current_animation.find("idle") == -1:
 			await enemy_anim.animation_finished
 		current_coin = false;
-		Inventory.discard_coin()
 		animation_player.play("discard")
 		await animation_player.animation_finished
-		GuiManager.toggle_coin_flip_ui.emit(true)
+		Signalbus.decrease_period.emit(period_increment)
+		Inventory.discard_coin()
+		Globals.action_finished()
 		
 		
