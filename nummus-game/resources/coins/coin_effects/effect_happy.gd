@@ -7,9 +7,9 @@ func effect(stats: Dictionary, side: int):
 		RecursiveEffect.add_recurring(self)
 func pre_effect(_stats: Dictionary):
 	pass
-func get_repeat() -> int:
-	return repeat
+func set_repeat():
+	repeat = 1
 func recurring(stats: Dictionary, state: int) -> Dictionary:
 	if state == Sides.HEADS:
-		CommonEffects.favor_heads(0.5)
+		CommonEffects.favor_heads(0.25)
 	return stats
