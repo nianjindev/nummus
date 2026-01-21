@@ -26,3 +26,5 @@ download [godot v4.5](https://godotengine.org/releases/4.5/)
 import the cloned directory using the `godot.project` file
 
 export the project
+
+project migrated to my main account
