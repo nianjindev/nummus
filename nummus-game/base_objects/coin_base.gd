@@ -103,6 +103,7 @@ func parse_json() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	GuiManager.toggle_chance_wheel.emit(false)
 	match anim_name:
 		"flip_heads_success":
 			coin_effect.effect(coin_stats, Sides.HEADS)
@@ -124,10 +125,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Globals.reset_weights()
 	
 	animation_player.play("RESET")
+	Globals.action_finished()
 
 
 func check_flipped_side(flipped_side: int, state: int):
 	#flipped side = index returned by weighted array
+	#Signalbus.trigger_camera_coin_follow.emit()
 	area.hide()
 	if sides[flipped_side] == Sides.HEADS:
 		if state == Sides.HEADS:
@@ -143,6 +146,7 @@ func check_flipped_side(flipped_side: int, state: int):
 		else:
 			animation_player.play("flip_tails_fail")
 			print("Wrong")
+	
 
 
 func set_weights():
@@ -164,14 +168,25 @@ func flip(state: int): # the side you clicked
 			GuiManager.toggle_coin_flip_ui.emit(false)
 			coin_effect.pre_effect(coin_stats)
 			coin_stats = RecursiveEffect.run_recurring(coin_stats, state)
-		set_weights()
+		
+		Globals.queue_action(run_chance_wheel)
+		
 		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
 		var flipped_side = SeedManager.rng.rand_weighted(weights)
-		check_flipped_side(flipped_side, state)
-		Signalbus.trigger_camera_coin_follow.emit()
+		
+		Globals.queue_action(check_flipped_side.bind(flipped_side, state))
+		
+		await Signalbus.actions_finished
+		
 
 		Globals.reset_fortune()
 
+func run_chance_wheel():
+	GuiManager.toggle_chance_wheel.emit(true)
+	set_weights()
+	GuiManager.update_chance_wheel.emit(str(int(round(weights[Sides.HEADS] * 100))) +"%", str(int(round(weights[Sides.TAILS] * 100))) + "%")
+	await get_tree().create_timer(0.5).timeout
+	Globals.action_finished()
 
 func generate_description(stats: Dictionary) -> String:
 	var s: String = "[br]"

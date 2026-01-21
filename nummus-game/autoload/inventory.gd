@@ -52,7 +52,6 @@ func new_hand():
 	await get_tree().create_timer(0.5).timeout #stylistic choice ong
 	
 	for i in range(Globals.max_hand): # Ideally, remove from inventory into hand!
-		print(current_inv)
 		var new_coin: Coin = Inventory.current_inv.pick_random()
 		new_coin.current_state = Constants.DisplayType.PLAY
 		

@@ -4,10 +4,9 @@ extends Control
 @onready var level_text: RichTextLabel = $LevelSplash/LevelText
 @onready var level_splash: ColorRect = $LevelSplash
 @onready var splash_fade: AnimationPlayer = $LevelSplash/SplashFade
-@onready var heads_percent: RichTextLabel = $CoinFlipButtons/Heads/HeadsPercent
-@onready var tails_percent: RichTextLabel = $CoinFlipButtons/Tails/TailsPercent
 @onready var channel_fortune: Button = $ChannelFortune
 @export var level_completed: ColorRect
+@onready var chance_o_meter: TextureRect = $ChanceOMeter
 
 func _ready():
 	level_check()
@@ -16,6 +15,7 @@ func _ready():
 	GuiManager.toggle_game_ui.connect(toggle_all)
 	GuiManager.toggle_coin_flip_ui.connect(_coin_flip_ui_toggled)
 	GuiManager.toggle_level_completed_ui.connect(_on_level_completed_toggled)
+	GuiManager.toggle_chance_wheel.connect(_on_chance_wheel_toggled)
 	 #Signalbus.update_side_percent_ui.connect(_on_side_percent_updated)
 	LevelManager.enter_level.connect(commence_level)
 	# check if scene has changed
@@ -46,6 +46,5 @@ func _on_level_completed_toggled(on: bool) -> void:
 	GuiManager.toggle_coin_flip_ui.emit(false)
 	level_completed.visible = on
 
-#func _on_side_percent_updated() -> void:
-	#heads_percent.text = str(int(Globals.head_weight * 100)) + "%"
-	#tails_percent.text = str(int(Globals.tail_weight * 100)) + "%"
+func _on_chance_wheel_toggled(show: bool):
+	chance_o_meter.visible = show

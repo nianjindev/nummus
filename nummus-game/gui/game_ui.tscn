@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=28 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://bfxir55db4gu8" path="res://gui/achievement_box.gd" id="9_bvxe6"]
 [ext_resource type="Texture2D" uid="uid://8hdf8q4yypft" path="res://assets/2d/FX/lowhealth.png" id="12_bvxe6"]
 [ext_resource type="Script" uid="uid://dl4se3i4q1m0d" path="res://gui/misfortune_inflicted.gd" id="14_meomy"]
+[ext_resource type="Texture2D" uid="uid://7ofk65eh1atw" path="res://assets/2d/chance-o-meter/base_wheel.png" id="15_f1box"]
+[ext_resource type="Script" uid="uid://djkrrki8hoo4m" path="res://gui/chance_o_meter.gd" id="16_4oujh"]
 
 [sub_resource type="Animation" id="Animation_ha3dy"]
 length = 0.001
@@ -188,6 +190,57 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_lqx5y")
 level_completed = NodePath("LevelCompleted")
+
+[node name="ChanceOMeter" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -203.5
+offset_top = -204.0
+offset_right = 203.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("15_f1box")
+script = ExtResource("16_4oujh")
+
+[node name="HeadsPercent" type="Label" parent="ChanceOMeter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -83.0
+offset_right = -82.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 76
+text = "69%"
+horizontal_alignment = 1
+
+[node name="TailsPercent" type="Label" parent="ChanceOMeter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 87.0
+offset_top = -83.0
+offset_right = 221.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 76
+text = "69%"
+horizontal_alignment = 1
 
 [node name="LowHealth" type="TextureRect" parent="."]
 visible = false

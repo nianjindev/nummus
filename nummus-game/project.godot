@@ -26,10 +26,11 @@ Sides="*res://autoload/sides.gd"
 Constants="*res://autoload/constants.gd"
 Inventory="*res://autoload/inventory.gd"
 RecursiveEffect="*res://autoload/recursive_effect.gd"
-CommonEffects="*res://autoload/coin_effects.gd"
+CommonEffects="*res://autoload/common_effects.gd"
 LevelManager="*res://autoload/level_manager.gd"
 SeedManager="*res://autoload/seed_manager.gd"
 MisfortuneHandler="*res://base_objects/levels/misfortune_handler.gd"
+WeightHandler="*res://weight_handler.gd"
 
 [display]
 

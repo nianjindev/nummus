@@ -1,19 +1,22 @@
 extends Node
 
-var recurring: Dictionary[Object, int]
+var effects: Dictionary[Object, int]
 
-func add_recurring(s: Object):
-	s.set_repeat()
-	recurring[s] = s.repeat
-	print("The number of times I will recur is: " + str(s.get_repeat()))
+func add_recurring(rec_object: Object):
+	rec_object.set_repeat()
+	effects[rec_object] = rec_object.repeat
+	print("The number of times I will recur is: " + str(rec_object.get_repeat()))
+
 func run_recurring(stats: Dictionary, state: int) -> Dictionary:
-	for s in recurring.keys():
-		if recurring[s] == 0:
-			recurring.erase(s)
+	for rec_object in effects.keys():
+		if effects[rec_object] == 0:
+			effects.erase(rec_object)
 			continue
-		recurring[s] -= 1
-		stats = apply_single(s, stats, state)
+			
+		effects[rec_object] -= 1
+		stats = apply_single(rec_object, stats, state)
 	return stats
-func apply_single(s: Object, stats: Dictionary, state: int)->Dictionary:
-	stats = s.recurring(stats, state)
+
+func apply_single(rec_object: Object, stats: Dictionary, state: int)->Dictionary:
+	stats = rec_object.recurring(stats, state)
 	return stats

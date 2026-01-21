@@ -26,7 +26,9 @@ signal update_enemy_health_text(amount: int, max_health: int)
 signal update_action_text(text: String)
 signal toggle_enemy_ui(show: bool)
 
-
+#GAME GUI
+signal toggle_chance_wheel(show: bool)
+signal update_chance_wheel(heads: String, tails: String)
 
 var all_ui_path: Dictionary[String, String] = {
 	"global_ui_path":"res://gui/global_ui.tscn",
