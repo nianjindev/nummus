@@ -25,3 +25,5 @@ func action_finished():
 	queued_weights.pop_front()
 	await get_tree().create_timer(0.25).timeout
 	try_run_next()
+
+# arya somehow puts a script nowhere
