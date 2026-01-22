@@ -2,14 +2,8 @@ extends Effect
 
 func effect(stats: Dictionary, side: int):
 	if side == Sides.HEADS:
-		RecursiveEffect.add_recurring(self)
+		RecursiveEffect.add_recurring_effect(CommonEffects.favor_heads.bind(0.25), 1)
 	elif side == Sides.TAILS:
-		RecursiveEffect.add_recurring(self)
+		RecursiveEffect.add_recurring_effect(CommonEffects.favor_heads.bind(0.25), 1)
 func pre_effect(_stats: Dictionary):
 	pass
-func set_repeat():
-	repeat = 1
-func recurring(stats: Dictionary, state: int) -> Dictionary: # test commit 2
-	if state == Sides.HEADS:
-		CommonEffects.favor_heads(0.25)
-	return stats

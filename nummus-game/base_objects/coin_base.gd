@@ -135,17 +135,13 @@ func check_flipped_side(flipped_side: int, state: int):
 	if sides[flipped_side] == Sides.HEADS:
 		if state == Sides.HEADS:
 			animation_player.play("flip_heads_success")
-			print("Correct")
 		else:
 			animation_player.play("flip_heads_fail")
-			print("Wrong")
 	else:
 		if state == Sides.TAILS:
 			animation_player.play("flip_tails_success")
-			print("Correct")
 		else:
 			animation_player.play("flip_tails_fail")
-			print("Wrong")
 	
 
 
@@ -167,7 +163,7 @@ func flip(state: int): # the side you clicked
 		else:
 			GuiManager.toggle_coin_flip_ui.emit(false)
 			coin_effect.pre_effect(coin_stats)
-			coin_stats = RecursiveEffect.run_recurring(coin_stats, state)
+			coin_stats = RecursiveEffect.run_recurring_effect(coin_stats, state)
 		
 		Globals.queue_action(run_chance_wheel)
 		

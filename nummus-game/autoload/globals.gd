@@ -42,7 +42,6 @@ var is_busy: bool
 
 func queue_action(function: Callable):
 	queued_actions.append(function)
-	print(queued_actions)
 	try_run_next()
 
 func try_run_next():
