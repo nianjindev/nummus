@@ -550,6 +550,21 @@ text = "Weight:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="StatusEffects" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 283.0
+offset_top = -191.0
+offset_right = 863.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 5
+
 [connection signal="mouse_entered" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_heads_mouse_entered"]
 [connection signal="mouse_exited" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_mouse_exited"]
 [connection signal="pressed" from="CoinFlipButtons/Heads" to="CoinFlipButtons/Heads" method="_on_heads_pressed"]

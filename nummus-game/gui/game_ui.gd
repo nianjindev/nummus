@@ -7,6 +7,8 @@ extends Control
 @onready var channel_fortune: Button = $ChannelFortune
 @export var level_completed: ColorRect
 @onready var chance_o_meter: TextureRect = $ChanceOMeter
+@onready var status_effects: GridContainer = $StatusEffects
+
 
 func _ready():
 	level_check()
