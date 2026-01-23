@@ -7,6 +7,6 @@ func _ready():
 	GuiManager.update_chance_wheel.connect(update_percentage)
 	print("ASDASDASD")
 
-func update_percentage(heads: String, tails: String):
-	heads_percent.text = heads
-	tails_percent.text = tails
+func update_percentage(heads: float, tails: float):
+	heads_percent.text = str(int(round(heads * 100))) + "%"
+	tails_percent.text = str(int(round(tails * 100))) + "%"

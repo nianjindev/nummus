@@ -163,9 +163,10 @@ func flip(state: int): # the side you clicked
 		else:
 			GuiManager.toggle_coin_flip_ui.emit(false)
 			coin_effect.pre_effect(coin_stats)
-			coin_stats = RecursiveEffect.run_recurring_effect(coin_stats, state)
+			#coin_stats = RecursiveEffect.run_recurring_effect(coin_stats, state)
 		
 		Globals.queue_action(run_chance_wheel)
+		set_weights()
 		
 		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
 		var flipped_side = SeedManager.rng.rand_weighted(weights)
@@ -179,9 +180,13 @@ func flip(state: int): # the side you clicked
 
 func run_chance_wheel():
 	GuiManager.toggle_chance_wheel.emit(true)
-	set_weights()
-	GuiManager.update_chance_wheel.emit(str(int(round(weights[Sides.HEADS] * 100))) +"%", str(int(round(weights[Sides.TAILS] * 100))) + "%")
+	GuiManager.update_chance_wheel.emit(Globals.head_weight, Globals.tail_weight)
 	await get_tree().create_timer(0.5).timeout
+	
+	RecursiveEffect.run_weight_effects()
+	await RecursiveEffect.run_weight_effects()
+	set_weights()
+	
 	Globals.action_finished()
 
 func generate_description(stats: Dictionary) -> String:
