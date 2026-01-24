@@ -6,7 +6,7 @@ extends Control
 @onready var splash_fade: AnimationPlayer = $LevelSplash/SplashFade
 @onready var channel_fortune: Button = $ChannelFortune
 @export var level_completed: ColorRect
-@onready var chance_o_meter: TextureRect = $ChanceOMeter
+@onready var chance_o_meter: TextureProgressBar = $ChanceOMeter
 @onready var status_effects: GridContainer = $StatusEffects
 
 

@@ -30,7 +30,6 @@ CommonEffects="*res://autoload/common_effects.gd"
 LevelManager="*res://autoload/level_manager.gd"
 SeedManager="*res://autoload/seed_manager.gd"
 MisfortuneHandler="*res://base_objects/levels/misfortune_handler.gd"
-WeightHandler="*res://wheel_handler.gd"
 
 [display]
 

@@ -1,10 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://nv30vjbkrio1"]
+[gd_scene load_steps=30 format=3 uid="uid://nv30vjbkrio1"]
 
 [ext_resource type="Script" uid="uid://c303jsbk6o67u" path="res://gui/game_ui.gd" id="1_lqx5y"]
+[ext_resource type="Texture2D" uid="uid://cqvusj0fwp5hq" path="res://assets/2d/chance-o-meter/wheel_cover.png" id="2_ha3dy"]
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
+[ext_resource type="Texture2D" uid="uid://c14iku13oq0ao" path="res://assets/2d/chance-o-meter/wheel_tails.png" id="2_mxtsb"]
 [ext_resource type="Texture2D" uid="uid://chjrtn6sxdj75" path="res://assets/2d/hand_textures/button_blue.png" id="3_24vp8"]
 [ext_resource type="Script" path="res://gui/heads.gd" id="3_ubwhq"]
 [ext_resource type="Script" uid="uid://bsxyoqyyvyfdj" path="res://gui/low_health.gd" id="3_w86w5"]
+[ext_resource type="Texture2D" uid="uid://dgje3i5ppj082" path="res://assets/2d/chance-o-meter/wheel_heads.png" id="4_4u1xr"]
 [ext_resource type="Texture2D" uid="uid://dr4hohxmtjhjt" path="res://assets/2d/hand_textures/button_red.png" id="4_ubwhq"]
 [ext_resource type="Script" path="res://gui/tails.gd" id="5_ri5v8"]
 [ext_resource type="Script" path="res://gui/skip.gd" id="7_l2737"]
@@ -14,7 +17,6 @@
 [ext_resource type="Script" uid="uid://bfxir55db4gu8" path="res://gui/achievement_box.gd" id="9_bvxe6"]
 [ext_resource type="Texture2D" uid="uid://8hdf8q4yypft" path="res://assets/2d/FX/lowhealth.png" id="12_bvxe6"]
 [ext_resource type="Script" uid="uid://dl4se3i4q1m0d" path="res://gui/misfortune_inflicted.gd" id="14_meomy"]
-[ext_resource type="Texture2D" uid="uid://7ofk65eh1atw" path="res://assets/2d/chance-o-meter/base_wheel.png" id="15_f1box"]
 [ext_resource type="Script" uid="uid://djkrrki8hoo4m" path="res://gui/chance_o_meter.gd" id="16_4oujh"]
 
 [sub_resource type="Animation" id="Animation_ha3dy"]
@@ -191,7 +193,7 @@ mouse_filter = 2
 script = ExtResource("1_lqx5y")
 level_completed = NodePath("LevelCompleted")
 
-[node name="ChanceOMeter" type="TextureRect" parent="."]
+[node name="ChanceOMeter" type="TextureProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -203,7 +205,14 @@ offset_top = -204.0
 offset_right = 203.5
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("15_f1box")
+value = 76.0
+fill_mode = 5
+radial_initial_angle = 90.0
+radial_fill_degrees = 180.0
+radial_center_offset = Vector2(0, 98.095)
+texture_under = ExtResource("2_mxtsb")
+texture_over = ExtResource("2_ha3dy")
+texture_progress = ExtResource("4_4u1xr")
 script = ExtResource("16_4oujh")
 
 [node name="HeadsPercent" type="Label" parent="ChanceOMeter"]

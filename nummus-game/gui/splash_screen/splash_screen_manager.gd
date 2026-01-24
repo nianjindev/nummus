@@ -16,7 +16,6 @@ func _ready():
 	get_screens()
 	fade()
 
-
 func get_screens():
 	splash_screens = splash_screen_container.get_children()
 	for screen in splash_screens:
