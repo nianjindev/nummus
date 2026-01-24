@@ -17,7 +17,6 @@ func _ready():
 	GuiManager.toggle_game_ui.connect(toggle_all)
 	GuiManager.toggle_coin_flip_ui.connect(_coin_flip_ui_toggled)
 	GuiManager.toggle_level_completed_ui.connect(_on_level_completed_toggled)
-	GuiManager.toggle_chance_wheel.connect(_on_chance_wheel_toggled)
 	 #Signalbus.update_side_percent_ui.connect(_on_side_percent_updated)
 	LevelManager.enter_level.connect(commence_level)
 	# check if scene has changed
@@ -47,6 +46,3 @@ func _coin_flip_ui_toggled(on: bool):
 func _on_level_completed_toggled(on: bool) -> void:
 	GuiManager.toggle_coin_flip_ui.emit(false)
 	level_completed.visible = on
-
-func _on_chance_wheel_toggled(show: bool):
-	chance_o_meter.visible = show

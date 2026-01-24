@@ -21,7 +21,7 @@
 
 [sub_resource type="Animation" id="Animation_4u1xr"]
 resource_name = "appear"
-length = 0.15
+length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,8 +29,8 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 0.29730153),
 "update": 0,
 "values": [Vector2(752.5, 1080), Vector2(752.5, 865)]
 }
@@ -240,7 +240,7 @@ anchor_bottom = 1.0
 offset_left = -207.5
 offset_top = -215.0
 offset_right = 207.5
-offset_bottom = 0.00048828125
+offset_bottom = 0.0015869141
 grow_horizontal = 2
 grow_vertical = 0
 value = 76.0

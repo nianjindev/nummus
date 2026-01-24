@@ -103,7 +103,6 @@ func parse_json() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	GuiManager.toggle_chance_wheel.emit(false)
 	match anim_name:
 		"flip_heads_success":
 			coin_effect.effect(coin_stats, Sides.HEADS)
@@ -281,6 +280,7 @@ func discard_me():
 		current_coin = false;
 		animation_player.play("discard")
 		await animation_player.animation_finished
+		GuiManager.toggle_chance_wheel.emit(false)
 		Signalbus.decrease_period.emit(period_increment)
 		Inventory.discard_coin()
 		Globals.action_finished()
