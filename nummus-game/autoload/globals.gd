@@ -8,10 +8,10 @@ var shield: int = 0
 
 var in_favor: bool = false # winning the skill check apparently
 var flipping: bool = false
+var chosen_state: int 
 
 # fortune
 var fortune_channeled = false
-var fortune_channeled_amount = 0.0
 
 var max_fortune: int = 20
 var fortune: int = 0
@@ -109,21 +109,25 @@ func reset_weights():
 	
 	#Signalbus.update_side_percent_ui.emit(head_weight, tail_weight)
 
-func reset_fortune():
-	if fortune_channeled:
-		if fortune >= 20:
-			fortune -= 20
-		elif fortune >= 12:
-			fortune -= 12
-		elif fortune >= 8:
-			fortune -= 8
-		elif fortune >= 4:
-			fortune -= 4
-		
-	fortune_channeled_amount = 0
-	fortune_channeled = false
+func use_fortune():
+	var channeled_amount: float
 	
+	if fortune >= 20:
+		fortune -= 20
+		channeled_amount = .5
+	elif fortune >= 12:
+		fortune -= 12
+		channeled_amount = .2
+	elif fortune >= 8:
+		fortune -= 8
+		channeled_amount = .15
+	elif fortune >= 4:
+		fortune -= 4
+		channeled_amount = .1
+		
+	fortune_channeled = false
 	GuiManager.update_fortune_bar_ui.emit()
+	return channeled_amount
 
 func reset_misfortune():
 	change_misfortune(false, 0)

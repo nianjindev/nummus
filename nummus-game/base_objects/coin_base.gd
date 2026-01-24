@@ -152,17 +152,17 @@ func set_weights():
 
 func flip(state: int): # the side you clicked
 	if current_coin:
+		Globals.chosen_state = state
 		Globals.flipping = true
 		Globals.input_locked = true
+		GuiManager.toggle_coin_flip_ui.emit(false)
 		
 		if state == Sides.SKIP:
 			Globals.queue_action(discard_me)
-			Globals.reset_fortune()
 			return
-		else:
-			GuiManager.toggle_coin_flip_ui.emit(false)
-			coin_effect.pre_effect(coin_stats)
-			#coin_stats = RecursiveEffect.run_recurring_effect(coin_stats, state)
+			
+		coin_effect.pre_effect(coin_stats)
+		#coin_stats = RecursiveEffect.run_recurring_effect(coin_stats, state)
 		
 		Globals.queue_action(run_chance_wheel)
 		set_weights()
@@ -173,7 +173,6 @@ func flip(state: int): # the side you clicked
 		Globals.queue_action(check_flipped_side.bind(flipped_side, state))
 		
 		await Signalbus.actions_finished
-		Globals.reset_fortune()
 
 func run_chance_wheel():
 	GuiManager.toggle_chance_wheel.emit(true)

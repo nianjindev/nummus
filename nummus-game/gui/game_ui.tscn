@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://coju8rupodfxi" path="res://assets/2d/hand_textures/button_green.png" id="2_hojdg"]
 [ext_resource type="Texture2D" uid="uid://c14iku13oq0ao" path="res://assets/2d/chance-o-meter/wheel_tails.png" id="2_mxtsb"]
 [ext_resource type="Texture2D" uid="uid://chjrtn6sxdj75" path="res://assets/2d/hand_textures/button_blue.png" id="3_24vp8"]
-[ext_resource type="Script" path="res://gui/heads.gd" id="3_ubwhq"]
+[ext_resource type="Script" uid="uid://0ebsipktf2xa" path="res://gui/heads.gd" id="3_ubwhq"]
 [ext_resource type="Script" uid="uid://bsxyoqyyvyfdj" path="res://gui/low_health.gd" id="3_w86w5"]
 [ext_resource type="Texture2D" uid="uid://dgje3i5ppj082" path="res://assets/2d/chance-o-meter/wheel_heads.png" id="4_4u1xr"]
 [ext_resource type="Texture2D" uid="uid://dr4hohxmtjhjt" path="res://assets/2d/hand_textures/button_red.png" id="4_ubwhq"]
@@ -18,6 +18,21 @@
 [ext_resource type="Texture2D" uid="uid://8hdf8q4yypft" path="res://assets/2d/FX/lowhealth.png" id="12_bvxe6"]
 [ext_resource type="Script" uid="uid://dl4se3i4q1m0d" path="res://gui/misfortune_inflicted.gd" id="14_meomy"]
 [ext_resource type="Script" uid="uid://djkrrki8hoo4m" path="res://gui/chance_o_meter.gd" id="16_4oujh"]
+
+[sub_resource type="Animation" id="Animation_jvsgh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(752.5, 865)]
+}
 
 [sub_resource type="Animation" id="Animation_4u1xr"]
 resource_name = "appear"
@@ -33,21 +48,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 0.29730153),
 "update": 0,
 "values": [Vector2(752.5, 1080), Vector2(752.5, 865)]
-}
-
-[sub_resource type="Animation" id="Animation_jvsgh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(752.5, 865)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r6p64"]

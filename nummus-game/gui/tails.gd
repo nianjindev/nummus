@@ -2,12 +2,7 @@ extends TextureButton
 
 
 func _on_tails_pressed() -> void:
-	if Globals.fortune_channeled:
-		Globals.tail_weight += Globals.fortune_channeled_amount
-		Globals.head_weight -= Globals.fortune_channeled_amount
-		Signalbus.coin_flipped.emit(Sides.TAILS)
-	else:
-		Signalbus.coin_flipped.emit(Sides.TAILS)
+	Signalbus.coin_flipped.emit(Sides.TAILS)
 	
 
 #func _on_mouse_entered() -> void:
