@@ -27,6 +27,7 @@ signal update_action_text(text: String)
 signal toggle_enemy_ui(show: bool)
 
 #GAME GUI
+signal run_chance_wheel()
 signal toggle_chance_wheel(show: bool)
 signal update_chance_wheel(heads: String, tails: String)
 

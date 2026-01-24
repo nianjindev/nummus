@@ -168,26 +168,17 @@ func flip(state: int): # the side you clicked
 		Globals.queue_action(run_chance_wheel)
 		set_weights()
 		
-		print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
+		#print(str(Globals.head_weight) + " " + str(Globals.tail_weight))
 		var flipped_side = SeedManager.rng.rand_weighted(weights)
 		
 		Globals.queue_action(check_flipped_side.bind(flipped_side, state))
 		
 		await Signalbus.actions_finished
-		
-
 		Globals.reset_fortune()
 
 func run_chance_wheel():
 	GuiManager.toggle_chance_wheel.emit(true)
-	GuiManager.update_chance_wheel.emit(Globals.head_weight, Globals.tail_weight)
-	await get_tree().create_timer(0.5).timeout
-	
-	RecursiveEffect.run_weight_effects()
-	await RecursiveEffect.run_weight_effects()
-	set_weights()
-	
-	Globals.action_finished()
+	GuiManager.run_chance_wheel.emit()
 
 func generate_description(stats: Dictionary) -> String:
 	var s: String = "[br]"
