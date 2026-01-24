@@ -21,11 +21,9 @@ func run_weight_effects():
 		effect.run()
 		GuiManager.update_chance_wheel.emit(Globals.head_weight, Globals.tail_weight)
 		await get_tree().create_timer(0.5).timeout
-	
+		
 	if Globals.fortune_channeled:
-		CommonEffects.WeightModifier.favor_success(Globals.use_fortune())
-		GuiManager.update_chance_wheel.emit(Globals.head_weight, Globals.tail_weight)
-		await get_tree().create_timer(0.5).timeout
+		Globals.use_fortune()
 
 func run_recurring_effect(stats: Dictionary, state: int) -> Dictionary:
 	for effect in weight_effects:

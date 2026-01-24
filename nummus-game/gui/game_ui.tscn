@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bsxyoqyyvyfdj" path="res://gui/low_health.gd" id="3_w86w5"]
 [ext_resource type="Texture2D" uid="uid://dgje3i5ppj082" path="res://assets/2d/chance-o-meter/wheel_heads.png" id="4_4u1xr"]
 [ext_resource type="Texture2D" uid="uid://dr4hohxmtjhjt" path="res://assets/2d/hand_textures/button_red.png" id="4_ubwhq"]
-[ext_resource type="Script" path="res://gui/tails.gd" id="5_ri5v8"]
+[ext_resource type="Script" uid="uid://c5itycir61dnc" path="res://gui/tails.gd" id="5_ri5v8"]
 [ext_resource type="Script" path="res://gui/skip.gd" id="7_l2737"]
 [ext_resource type="Script" uid="uid://cs6mwo44kv6vk" path="res://gui/level_completed.gd" id="8_4rcd4"]
 [ext_resource type="Script" path="res://gui/next_stage.gd" id="8_l2737"]

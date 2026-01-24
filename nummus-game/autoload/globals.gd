@@ -110,24 +110,25 @@ func reset_weights():
 	#Signalbus.update_side_percent_ui.emit(head_weight, tail_weight)
 
 func use_fortune():
-	var channeled_amount: float
-	
 	if fortune >= 20:
 		fortune -= 20
-		channeled_amount = .5
+		CommonEffects.WeightModifier.set_favor(1,0)
 	elif fortune >= 12:
 		fortune -= 12
-		channeled_amount = .2
+		CommonEffects.WeightModifier.favor_success(.2)
 	elif fortune >= 8:
 		fortune -= 8
-		channeled_amount = .15
+		CommonEffects.WeightModifier.favor_success(.15)
 	elif fortune >= 4:
 		fortune -= 4
-		channeled_amount = .1
-		
-	fortune_channeled = false
+		CommonEffects.WeightModifier.favor_success(.1)
+	
 	GuiManager.update_fortune_bar_ui.emit()
-	return channeled_amount
+	GuiManager.update_chance_wheel.emit(Globals.head_weight, Globals.tail_weight)
+	await get_tree().create_timer(0.5).timeout
+	
+	fortune_channeled = false
+	
 
 func reset_misfortune():
 	change_misfortune(false, 0)
@@ -140,8 +141,10 @@ func can_afford(price:int):
 	return price <= money
 
 func change_fortune(add: bool, amount: int):
-	if fortune + amount > max_fortune or fortune + amount < 0 or amount > max_fortune:
-		fortune = fortune
+	if fortune + amount > max_fortune or amount > max_fortune:
+		fortune = max_fortune
+	elif fortune + amount < 0:
+		fortune = 0
 	elif add:
 		fortune += amount
 	else:
