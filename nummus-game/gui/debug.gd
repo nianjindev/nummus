@@ -38,3 +38,13 @@ func _on_flip_tails_pressed() -> void:
 	Globals.head_weight = 0
 	Globals.tail_weight = 1
 	Signalbus.coin_flipped.emit(Sides.TAILS)
+
+
+func _on_give_coin_text_submitted(given_text: String) -> void:
+	if given_text not in Constants.COINS:
+		print("NOT A VALID COIN!!!")
+		return
+	Inventory.add_item(ObjectManager.create_coin(Constants.COINS[given_text], Constants.DisplayType.PLAY))
+	Inventory.current_inv.append(Inventory.inventory[-1].duplicate())
+	GuiManager.update_inventory_icons.emit()
+	GuiManager.update_inventory_patch.emit("Inventory")

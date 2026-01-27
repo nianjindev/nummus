@@ -31,6 +31,9 @@ signal run_chance_wheel()
 signal toggle_chance_wheel(show: bool)
 signal update_chance_wheel(heads: String, tails: String)
 
+#INVENTORY GUI
+signal update_inventory_icons()
+
 var all_ui_path: Dictionary[String, String] = {
 	"global_ui_path":"res://gui/global_ui.tscn",
 	"game_ui_path":"res://gui/game_ui.tscn",

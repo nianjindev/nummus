@@ -9,7 +9,8 @@ func _ready():
 	icons.clear()
 	GuiManager.update_inventory_patch.connect(update_ui)
 	set_path()
-	initialize_icons()
+	GuiManager.update_inventory_icons.connect(initialize_icons)
+	GuiManager.update_inventory_icons.emit()
 
 func update_ui(type: String):
 	if type == patch.name:

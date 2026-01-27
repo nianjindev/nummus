@@ -3,6 +3,7 @@ extends Node
 var effects: Dictionary[Callable, int]
 
 var weight_effects: Array[Object] = []
+var weight_modifiers: Array[Object] = []
 
 func add_recurring_effect(function: Callable, period_length: int):
 	if function.get_object() == CommonEffects.WeightModifier:
@@ -24,6 +25,8 @@ func run_weight_effects():
 		
 	if Globals.fortune_channeled:
 		Globals.use_fortune()
+		GuiManager.update_chance_wheel.emit(Globals.head_weight, Globals.tail_weight)
+		await get_tree().create_timer(0.5).timeout
 
 func run_recurring_effect(stats: Dictionary, state: int) -> Dictionary:
 	for effect in weight_effects:
